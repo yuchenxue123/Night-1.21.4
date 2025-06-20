@@ -4,6 +4,7 @@ import cute.neko.night.setting.type.mode.SubMode
 import cute.neko.night.utils.client.player
 import cute.neko.night.utils.client.world
 import cute.neko.night.utils.player.inventory.ExtraItemTags.RUBBISH_ITEM_TAG
+import net.minecraft.block.Blocks
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.component.type.AttributeModifiersComponent
 import net.minecraft.enchantment.Enchantment
@@ -113,6 +114,44 @@ private val DAMAGE_HIGH_VERSION = mapOf<Item, Double>(
     Items.NETHERITE_SHOVEL to 6.5,
 )
 
+private val ARMOR_PROTECTION = mapOf<Item, Double>(
+    // leather
+    Items.LEATHER_HELMET to 1.0,
+    Items.LEATHER_CHESTPLATE to 3.0,
+    Items.LEATHER_LEGGINGS to 2.0,
+    Items.LEATHER_BOOTS to 1.0,
+
+    // golden
+    Items.GOLDEN_HELMET to 2.0,
+    Items.GOLDEN_CHESTPLATE to 5.0,
+    Items.GOLDEN_LEGGINGS to 3.0,
+    Items.GOLDEN_BOOTS to 1.0,
+
+    // chainmail
+    Items.CHAINMAIL_HELMET to 2.0,
+    Items.CHAINMAIL_CHESTPLATE to 5.0,
+    Items.CHAINMAIL_LEGGINGS to 4.0,
+    Items.CHAINMAIL_BOOTS to 1.0,
+
+    // iron
+    Items.IRON_HELMET to 2.0,
+    Items.IRON_CHESTPLATE to 6.0,
+    Items.IRON_LEGGINGS to 5.0,
+    Items.IRON_BOOTS to 2.0,
+
+    // diamond
+    Items.DIAMOND_HELMET to 3.0,
+    Items.DIAMOND_CHESTPLATE to 8.0,
+    Items.DIAMOND_LEGGINGS to 6.0,
+    Items.DIAMOND_BOOTS to 3.0,
+
+    // nether
+    Items.NETHERITE_HELMET to 3.1,
+    Items.NETHERITE_CHESTPLATE to 8.1,
+    Items.NETHERITE_LEGGINGS to 6.1,
+    Items.NETHERITE_BOOTS to 3.1,
+)
+
 enum class DamageVersion(override val modeName: String) : SubMode {
     OLD("Old"),
     HIGH("High")
@@ -145,6 +184,9 @@ fun ItemStack.getAttributeValue(attribute: RegistryEntry<EntityAttribute>) = ite
     .filter { modifier -> modifier.attribute() == attribute }
     .firstNotNullOfOrNull { modifier -> modifier.modifier().value() }
 
+fun ItemStack.getSharpnessDamage(level: Int = getEnchantmentLevel(Enchantments.SHARPNESS)) =
+    if (level == 0) 0.0 else 0.5 * level + 0.5
+
 // calculate the attack damage
 val ItemStack.attackDamage: Double
     get() {
@@ -154,20 +196,39 @@ val ItemStack.attackDamage: Double
         return entityDamage + baseDamage + getSharpnessDamage()
     }
 
-// get damage from the map
-fun Item.getDamage(version: DamageVersion): Double {
-    return when (version) {
-        DamageVersion.OLD -> DAMAGE_OLD_VERSION.getOrDefault(this, 0.0)
-        DamageVersion.HIGH -> DAMAGE_HIGH_VERSION.getOrDefault(this, 0.0)
+fun ItemStack.getDamage(version: DamageVersion): Double  {
+    val damageWithNoEnchantment = when (version) {
+        DamageVersion.OLD -> DAMAGE_OLD_VERSION.getOrDefault(this.item, 0.0)
+        DamageVersion.HIGH -> DAMAGE_HIGH_VERSION.getOrDefault(this.item, 0.0)
     }
+
+    return damageWithNoEnchantment + getSharpnessDamage()
 }
 
-fun ItemStack.getDamage(version: DamageVersion): Double = this.item.getDamage(version)
+fun ItemStack.getProtection(): Double {
+    val protectionWithNoEnchantment = ARMOR_PROTECTION.getOrDefault(this.item, 0.0)
+
+    val enchantmentAddition= EnchantmentWeight(
+        Enchantments.PROTECTION to 0.98,
+        Enchantments.FIRE_PROTECTION to 0.5,
+        Enchantments.BLAST_PROTECTION to 0.25,
+        Enchantments.PROJECTILE_PROTECTION to 0.1,
+    ).calculate(this)
+
+    return protectionWithNoEnchantment + enchantmentAddition
+}
+
+fun ItemStack.getDigSpeed(): Float {
+    return when {
+        isIn(ItemTags.AXES) -> return getMiningSpeedMultiplier(Blocks.OAK_PLANKS.defaultState)
+        isIn(ItemTags.PICKAXES) -> return getMiningSpeedMultiplier(Blocks.STONE.defaultState)
+        isIn(ItemTags.SHOVELS) -> return getMiningSpeedMultiplier(Blocks.DIRT.defaultState)
+        else -> 0f
+    }
+}
 
 fun ItemStack.isRubbish(): Boolean =
     this.isIn(RUBBISH_ITEM_TAG) || this.isIn(ItemTags.HOES) || this.isIn(ItemTags.SHOVELS)
 
 fun Item.isRubbish(): Boolean = this.defaultStack.isRubbish()
 
-fun ItemStack.getSharpnessDamage(level: Int = getEnchantmentLevel(Enchantments.SHARPNESS)) =
-    if (level == 0) 0.0 else 0.5 * level + 0.5

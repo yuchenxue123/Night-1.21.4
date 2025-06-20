@@ -5,8 +5,8 @@ import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.event.events.game.player.PlayerVelocityEvent
 import cute.neko.night.event.handle
-import cute.neko.night.utils.extensions.rotation
-import cute.neko.night.utils.extensions.setRotation
+import cute.neko.night.utils.entity.rotation
+import cute.neko.night.utils.entity.setRotation
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.movement.DirectionalInput
 import cute.neko.night.utils.rotation.RotationUtils.angleDifference

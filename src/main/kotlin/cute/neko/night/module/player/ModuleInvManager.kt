@@ -4,16 +4,13 @@ import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.event.handle
 import cute.neko.night.module.ClientModule
 import cute.neko.night.module.ModuleCategory
-import cute.neko.night.utils.player.inventory.getEnchantmentLevel
-import cute.neko.night.utils.player.inventory.isRubbish
+import cute.neko.night.utils.client.chat
+import cute.neko.night.utils.player.inventory.*
 import cute.neko.night.utils.time.TimeTracker
 import net.minecraft.client.gui.screen.ingame.InventoryScreen
-import net.minecraft.enchantment.Enchantment
 import net.minecraft.enchantment.Enchantments
-import net.minecraft.item.Item
 import net.minecraft.item.ItemStack
 import net.minecraft.item.Items
-import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.tag.ItemTags
 import net.minecraft.screen.ScreenHandler
 import net.minecraft.screen.slot.Slot
@@ -33,6 +30,8 @@ object ModuleInvManager : ClientModule(
 
     private val delay by int("Delay", 50, 0..3000, 50)
 
+    val version by mode("Version", DamageVersion.OLD)
+
     private var active = false
     private var slotIndex = 0
 
@@ -41,6 +40,13 @@ object ModuleInvManager : ClientModule(
     override fun disable() {
         active = false
         slotIndex = 0
+
+        if (mc.currentScreen is InventoryScreen) {
+            val sb = mc.currentScreen as InventoryScreen
+            sb.screenHandler.slots.forEach {
+                chat("${it.stack.name} - ${it.id}")
+            }
+        }
     }
 
     private val onPlayerTick = handle<PlayerTickEvent> {
@@ -58,14 +64,14 @@ object ModuleInvManager : ClientModule(
             val screenHandler = screen.screenHandler
             val size = screenHandler.slots.size
 
-            val sword = whichIsBetter(screenHandler, Enchantments.SHARPNESS) { it.isIn(ItemTags.SWORDS) }
-            val pickaxe = whichIsBetter(screenHandler, Enchantments.EFFICIENCY) { it.isIn(ItemTags.PICKAXES) }
-            val axe = whichIsBetter(screenHandler, Enchantments.EFFICIENCY) { it.isIn(ItemTags.AXES) }
-            val bow = whichIsBetter(screenHandler, Enchantments.POWER) { it.item == Items.BOW }
-            val head = whichIsBetter(screenHandler, Enchantments.PROTECTION) { it.isIn(ItemTags.HEAD_ARMOR) }
-            val chest = whichIsBetter(screenHandler, Enchantments.PROTECTION) { it.isIn(ItemTags.CHEST_ARMOR) }
-            val leg = whichIsBetter(screenHandler, Enchantments.PROTECTION) { it.isIn(ItemTags.LEG_ARMOR) }
-            val foot = whichIsBetter(screenHandler, Enchantments.PROTECTION) { it.isIn(ItemTags.FOOT_ARMOR) }
+            val sword = whichIsBetter(screenHandler, ItemType.SWORD)
+            val pickaxe = whichIsBetter(screenHandler, ItemType.PICKAXES)
+            val axe = whichIsBetter(screenHandler, ItemType.AXES)
+            val bow = whichIsBetter(screenHandler, ItemType.BOW)
+            val head = whichIsBetter(screenHandler, ItemType.HEAD)
+            val chest = whichIsBetter(screenHandler, ItemType.CHEST)
+            val leg = whichIsBetter(screenHandler, ItemType.LEG)
+            val foot = whichIsBetter(screenHandler, ItemType.FOOT)
 
             if (tracker.hasPassedTime(delay.toLong())) {
                 // skip empty slot
@@ -95,13 +101,31 @@ object ModuleInvManager : ClientModule(
                         || stack.isIn(ItemTags.HEAD_ARMOR) && slot.id != head
                         || stack.isIn(ItemTags.CHEST_ARMOR) && slot.id != chest
                         || stack.isIn(ItemTags.LEG_ARMOR) && slot.id != leg
-                        || stack.isIn(ItemTags.FOOT_ARMOR) && slot.id != foot
-                        ) {
+                        || stack.isIn(ItemTags.FOOT_ARMOR) && slot.id != foot)
+                    {
                         interactionManager.clickSlot(
                             screenHandler.syncId,
                             slot.id,
                             1,
                             SlotActionType.THROW,
+                            player
+                        )
+                    }
+
+                    // 1-4 craft
+                    // 5-8 armor
+                    if ((slot.id == head && slot.id != 5)
+                        || (slot.id == chest && slot.id != 6)
+                        || (slot.id == leg && slot.id != 7)
+                        || (slot.id == foot && slot.id != 8)
+                        )
+                    {
+                        chat("$head - ${slot.id}")
+                        interactionManager.clickSlot(
+                            screenHandler.syncId,
+                            slot.id,
+                            0,
+                            SlotActionType.QUICK_MOVE,
                             player
                         )
                     }
@@ -122,73 +146,22 @@ object ModuleInvManager : ClientModule(
         slotIndex = 0
     }
 
-    private fun whichIsBetter(screen: ScreenHandler, enchantment: RegistryKey<Enchantment>, filter: (ItemStack) -> Boolean): Int {
+    private fun whichIsBetter(screen: ScreenHandler, type: ItemType): Int {
         return screen.slots
-            .filter { filter.invoke(it.stack) }
-            .sortedWith(
-                compareBy<Slot> {
-                    -map.getOrDefault(it.stack.item, 0f)
-                }.thenBy {
-                    -it.stack.getEnchantmentLevel(enchantment)
-                }
-            )
+            .filter { type.condition.invoke(it.stack) }
+            .sortedWith(type.compare)
             .firstOrNull()?.id ?: -1
     }
 
-    /**
-     * Map item to value
-     */
-    private val map = mapOf<Item, Float>(
-        // weapon and tool
-        // golden
-        Items.GOLDEN_SWORD to 1f,
-        Items.GOLDEN_PICKAXE to 1f,
-        Items.GOLDEN_AXE to 1f,
-        // wooden
-        Items.WOODEN_SWORD to 2f,
-        Items.WOODEN_PICKAXE to 2f,
-        Items.WOODEN_AXE to 2f,
-        // stone
-        Items.STONE_SWORD to 3f,
-        Items.STONE_PICKAXE to 3f,
-        Items.STONE_AXE to 3f,
-        // iron
-        Items.IRON_SWORD to 4f,
-        Items.IRON_PICKAXE to 4f,
-        Items.IRON_AXE to 4f,
-        // diamond
-        Items.DIAMOND_SWORD to 5f,
-        Items.DIAMOND_PICKAXE to 5f,
-        Items.DIAMOND_AXE to 5f,
-        // nether
-        Items.NETHERITE_SWORD to 6f,
-        Items.NETHERITE_PICKAXE to 6f,
-        Items.NETHERITE_AXE to 6f,
+    private enum class ItemType(val condition: (ItemStack) -> Boolean, val compare: Comparator<Slot>) {
+        SWORD({stack -> stack.isIn(ItemTags.SWORDS)}, compareBy { -it.stack.getDamage(version) }),
+        PICKAXES({stack -> stack.isIn(ItemTags.PICKAXES)}, compareBy { -it.stack.getDigSpeed() }),
+        AXES({stack -> stack.isIn(ItemTags.AXES)}, compareBy { -it.stack.getDigSpeed()}),
+        BOW({stack -> stack.item == Items.BOW }, compareBy { -it.stack.getEnchantmentLevel(Enchantments.POWER) }),
 
-        // armor
-        // leather
-        Items.LEATHER_HELMET to 1f,
-        Items.LEATHER_CHESTPLATE to 1f,
-        Items.LEATHER_LEGGINGS to 1f,
-        Items.LEATHER_BOOTS to 1f,
-        // golden
-        Items.GOLDEN_HELMET to 1.5f,
-        Items.GOLDEN_CHESTPLATE to 1.5f,
-        Items.GOLDEN_LEGGINGS to 1.5f,
-        // iron
-        Items.IRON_HELMET to 2f,
-        Items.IRON_CHESTPLATE to 2f,
-        Items.IRON_LEGGINGS to 2f,
-        Items.IRON_BOOTS to 2f,
-        // diamond
-        Items.DIAMOND_HELMET to 3f,
-        Items.DIAMOND_CHESTPLATE to 3f,
-        Items.DIAMOND_LEGGINGS to 3f,
-        Items.DIAMOND_BOOTS to 3f,
-        // nether
-        Items.NETHERITE_HELMET to 4f,
-        Items.NETHERITE_CHESTPLATE to 4f,
-        Items.NETHERITE_LEGGINGS to 4f,
-        Items.NETHERITE_BOOTS to 4f,
-    )
+        HEAD({stack -> stack.isIn(ItemTags.HEAD_ARMOR)}, compareBy { -it.stack.getProtection() }),
+        CHEST({stack -> stack.isIn(ItemTags.CHEST_ARMOR)}, compareBy { -it.stack.getProtection() }),
+        LEG({stack -> stack.isIn(ItemTags.LEG_ARMOR)}, compareBy { -it.stack.getProtection() }),
+        FOOT({stack -> stack.isIn(ItemTags.FOOT_ARMOR)}, compareBy { -it.stack.getProtection() })
+    }
 }

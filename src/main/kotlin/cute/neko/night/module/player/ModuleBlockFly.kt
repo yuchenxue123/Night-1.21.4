@@ -6,7 +6,11 @@ import cute.neko.night.module.ClientModule
 import cute.neko.night.module.ModuleCategory
 import cute.neko.night.setting.type.mode.SubMode
 import cute.neko.night.utils.client.Priority
-import cute.neko.night.utils.extensions.*
+import cute.neko.night.utils.entity.direction
+import cute.neko.night.utils.extensions.sequence
+import cute.neko.night.utils.extensions.squared
+import cute.neko.night.utils.extensions.step
+import cute.neko.night.utils.extensions.times
 import cute.neko.night.utils.movement.MoveDirection
 import cute.neko.night.utils.player.inventory.Slots
 import cute.neko.night.utils.rotation.RaytraceUtils

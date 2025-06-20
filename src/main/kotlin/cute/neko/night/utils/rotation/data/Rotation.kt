@@ -1,7 +1,7 @@
 package cute.neko.night.utils.rotation.data
 
 import cute.neko.night.utils.client.player
-import cute.neko.night.utils.extensions.rotation
+import cute.neko.night.utils.entity.rotation
 import cute.neko.night.utils.rotation.RotationManager
 import cute.neko.night.utils.rotation.RotationUtils
 import cute.neko.night.utils.rotation.RotationUtils.angleDifference

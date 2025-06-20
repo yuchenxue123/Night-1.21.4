@@ -1,6 +1,7 @@
-package cute.neko.night.utils.extensions
+package cute.neko.night.utils.entity
 
 import cute.neko.night.utils.client.player
+import cute.neko.night.utils.extensions.squared
 import cute.neko.night.utils.movement.DirectionalInput
 import cute.neko.night.utils.rotation.data.Rotation
 import net.minecraft.client.network.ClientPlayerEntity

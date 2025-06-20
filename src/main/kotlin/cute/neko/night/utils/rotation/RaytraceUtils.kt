@@ -1,6 +1,6 @@
 package cute.neko.night.utils.rotation
 
-import cute.neko.night.utils.extensions.rotation
+import cute.neko.night.utils.entity.rotation
 import cute.neko.night.utils.extensions.squared
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.rotation.data.Rotation

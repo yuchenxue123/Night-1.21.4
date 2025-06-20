@@ -4,8 +4,6 @@ import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.event.handle
 import cute.neko.night.module.ClientModule
 import cute.neko.night.module.ModuleCategory
-import cute.neko.night.utils.client.chat
-import cute.neko.night.utils.player.inventory.attackDamage
 import cute.neko.night.utils.player.inventory.isRubbish
 import cute.neko.night.utils.time.TimeTracker
 import net.minecraft.client.gui.screen.ingame.GenericContainerScreen
@@ -40,8 +38,6 @@ object ModuleStealer : ClientModule(
         active = false
         slotIndex = 0
         finished = false
-
-        chat(player.mainHandStack.attackDamage.toString())
     }
 
     private val onPlayerTick = handle<PlayerTickEvent> {

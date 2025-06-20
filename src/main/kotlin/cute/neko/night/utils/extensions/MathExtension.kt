@@ -17,7 +17,6 @@ fun Double.decimals(n: Int): Double {
     return rounded.toDouble()
 }
 
-
 fun Double.toRadians(): Double = this * 0.017453292519943295
 fun Double.toDegrees(): Double = this * 57.29577951308232
 fun Double.step(step: Double): Double = round(this / step) * step

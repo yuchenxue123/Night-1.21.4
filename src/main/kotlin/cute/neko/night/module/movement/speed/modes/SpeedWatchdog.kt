@@ -2,8 +2,8 @@ package cute.neko.night.module.movement.speed.modes
 
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.event.handle
-import cute.neko.night.utils.extensions.moving
-import cute.neko.night.utils.extensions.strafe
+import cute.neko.night.utils.entity.moving
+import cute.neko.night.utils.entity.strafe
 import net.minecraft.entity.effect.StatusEffects
 
 

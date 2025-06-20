@@ -7,8 +7,8 @@ import cute.neko.night.module.ModuleCategory
 import cute.neko.night.setting.config.types.TargetOption
 import cute.neko.night.setting.type.mode.SubMode
 import cute.neko.night.utils.client.Priority
-import cute.neko.night.utils.extensions.box
-import cute.neko.night.utils.extensions.rotation
+import cute.neko.night.utils.entity.box
+import cute.neko.night.utils.entity.rotation
 import cute.neko.night.utils.misc.RandomUtils
 import cute.neko.night.utils.rotation.RaytraceUtils
 import cute.neko.night.utils.rotation.RotationManager
