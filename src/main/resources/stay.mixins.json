@@ -1,0 +1,28 @@
+{
+  "required": true,
+  "package": "cute.neko.injection.mixins",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "client.MixinMinecraftClient",
+    "entity.MixinEntity",
+    "entity.MixinLivingEntity",
+    "entity.MixinPlayerEntity",
+    "network.MixinClientConnection"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "client.MixinInput",
+    "client.MixinKeyboard",
+    "client.MixinKeyboardInput",
+    "entity.MixinClientPlayerEntity",
+    "gui.MixinChatScreen",
+    "gui.MixinInGameHud",
+    "network.MixinClientPlayNetworkHandler",
+    "render.MixinGameRenderer",
+    "render.MixinHeldItemRenderer",
+    "render.MixinLightmapTextureManager",
+    "render.MixinLivingEntityRenderer"
+  ]
+}

@@ -1,0 +1,69 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
+plugins {
+	id("fabric-loom") version("${loom_version}")
+	id("org.jetbrains.kotlin.jvm") version("${kotlin_version}")
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
+
+repositories {
+}
+
+loom {
+	accessWidenerPath = file("src/main/resources/liquidbounce.accesswidener")
+}
+
+fabricApi {
+	configureDataGeneration {
+		client = true
+	}
+}
+
+dependencies {
+	// Minecraft
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+
+	// Fabric
+	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
+
+	// NanoVg
+	include(implementation "org.lwjgl:lwjgl-nanovg:${lwjgl_version}")
+	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-windows")
+	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-linux")
+	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-macos")
+
+	//
+	include(implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinx_coroutines}")
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	options.release = 21
+}
+
+tasks.withType(KotlinCompile).configureEach {
+	kotlinOptions {
+		jvmTarget = 21
+	}
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}

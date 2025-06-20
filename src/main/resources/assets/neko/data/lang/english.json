@@ -1,0 +1,59 @@
+{
+  "neko.module.category.combat.name": "Combat",
+  "neko.module.category.movement.name": "Movement",
+  "neko.module.category.player.name": "Player",
+  "neko.module.category.render.name": "Render",
+  "neko.module.category.misc.name": "Misc",
+
+
+
+  "neko.module.AntiVelocity.name": "AntiVelocity",
+  "neko.module.KillAura.name": "KillAura",
+
+  "neko.module.Test.name": "Test",
+  "neko.module.Disabler.name": "Disabler",
+
+  "neko.module.InvMove.name": "InvMove",
+  "neko.module.NoPush.name": "NoPush",
+  "neko.module.NoJumpDelay.name": "NoJumpDelay",
+  "neko.module.Sprint.name": "Sprint",
+  "neko.module.Speed.name": "Speed",
+
+  "neko.module.BlockFly.name": "BlockFly",
+  "neko.module.Stealer.name": "Stealer",
+  "neko.module.InvManager.name": "InvManager",
+  "neko.module.Eagle.name": "Eagle",
+
+  "neko.module.ClickScreen.name": "ClickScreen",
+  "neko.module.ClientSetting.name": "ClientSetting",
+  "neko.module.Brightness.name": "Brightness",
+  "neko.module.Rotations.name": "Rotations",
+  "neko.module.Interface.name": "Interface",
+  "neko.module.NoHurtCam.name": "NoHurtCam",
+
+
+
+  "neko.module.AntiVelocity.desc": "Anti knock back.",
+  "neko.module.KillAura.desc": "Auto attack around entity.",
+
+  "neko.module.Test.desc": "Test something.",
+  "neko.module.Disabler.desc": "Disable some checks of anti-cheat.",
+
+  "neko.module.InvMove.desc": "Move when inventory open.",
+  "neko.module.NoPush.desc": "Remove push by other entity.",
+  "neko.module.NoJumpDelay.desc": "Cancel you jump delay.",
+  "neko.module.Sprint.desc": "Auto sprint.",
+  "neko.module.Speed.desc": "Increase your move speed.",
+
+  "neko.module.BlockFly.desc": "Auto place block below your feet.",
+  "neko.module.Stealer.desc": "Stealer items from the container.",
+  "neko.module.InvManager.desc": "Clean your inventory.",
+  "neko.module.Eagle.desc": "Auto sneak at the eagle of block.",
+
+  "neko.module.ClickScreen.desc": "Display click screen.",
+  "neko.module.ClientSetting.desc": "Some settings of client.",
+  "neko.module.Brightness.desc": "Make you feeling bright.",
+  "neko.module.Rotations.desc": "Render client rotations.",
+  "neko.module.Interface.desc": "Render some visual widgets on screen.",
+  "neko.module.NoHurtCam.desc": "Remove cam animation when player receive hurt."
+}

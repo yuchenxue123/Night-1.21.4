@@ -1,0 +1,59 @@
+{
+  "neko.module.category.combat.name": "战斗",
+  "neko.module.category.movement.name": "移动",
+  "neko.module.category.player.name": "玩家",
+  "neko.module.category.render.name": "视觉",
+  "neko.module.category.misc.name": "杂项",
+
+
+
+  "neko.module.AntiVelocity.name": "反击退",
+  "neko.module.KillAura.name": "杀戮光环",
+
+  "neko.module.Test.name": "测试",
+  "neko.module.Disabler.name": "禁用器",
+
+  "neko.module.InvMove.name": "背包移动",
+  "neko.module.NoJumpDelay.name": "无跳跃延迟",
+  "neko.module.NoPush.name": "不推",
+  "neko.module.Sprint.name": "疾跑",
+  "neko.module.Speed.name": "速度",
+
+  "neko.module.BlockFly.name": "自动搭路",
+  "neko.module.Stealer.name": "顺手牵羊",
+  "neko.module.InvManager.name": "背包整理",
+  "neko.module.Eagle.name": "边缘蹲下",
+
+  "neko.module.ClickScreen.name": "配置界面",
+  "neko.module.ClientSetting.name": "设置",
+  "neko.module.Brightness.name": "光明",
+  "neko.module.Rotations.name": "转头",
+  "neko.module.Interface.name": "界面",
+  "neko.module.NoHurtCam.name": "无伤害抖动",
+
+
+
+  "neko.module.AntiVelocity.desc": "减少玩家击退",
+  "neko.module.KillAura.desc": "自动攻击附近的实体",
+
+  "neko.module.Test.desc": "测试东西",
+  "neko.module.Disabler.desc": "禁用一些反作弊的检测",
+
+  "neko.module.InvMove.desc": "当背包打开时移动",
+  "neko.module.NoJumpDelay.desc": "取消你的跳跃延迟",
+  "neko.module.NoPush.desc": "使实体碰撞失效",
+  "neko.module.Sprint.desc": "自动疾跑",
+  "neko.module.Speed.desc": "加快你的移动速度",
+
+  "neko.module.BlockFly.desc": "自动在你的脚下放置方块",
+  "neko.module.Stealer.desc": "偷取容器里的物品",
+  "neko.module.InvManager.desc": "整理你背包的物品",
+  "neko.module.Eagle.desc": "自动在方块边缘蹲下",
+
+  "neko.module.ClickScreen.desc": "打开配置界面",
+  "neko.module.ClientSetting.desc": "客户端的一些设置",
+  "neko.module.Brightness.desc": "让你感到光明",
+  "neko.module.Rotations.desc": "显示客户端转头",
+  "neko.module.Interface.desc": "显示视觉组件",
+  "neko.module.NoHurtCam.desc": "取消伤害抖动动画"
+}
