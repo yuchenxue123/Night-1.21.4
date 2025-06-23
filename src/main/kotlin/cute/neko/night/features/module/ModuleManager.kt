@@ -15,6 +15,7 @@ import cute.neko.night.features.module.player.ModuleBlockFly
 import cute.neko.night.features.module.player.ModuleEagle
 import cute.neko.night.features.module.player.ModuleInvManager
 import cute.neko.night.features.module.player.ModuleStealer
+import cute.neko.night.features.module.player.nofall.ModuleNoFall
 import cute.neko.night.features.module.render.*
 import cute.neko.night.utils.interfaces.Accessor
 import net.minecraft.client.gui.screen.ChatScreen
@@ -47,6 +48,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleStealer,
             ModuleInvManager,
             ModuleEagle,
+            ModuleNoFall,
 
             // render
             ModuleBrightness,

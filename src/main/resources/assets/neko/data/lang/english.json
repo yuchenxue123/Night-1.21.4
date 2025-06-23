@@ -12,6 +12,7 @@
 
   "neko.module.Test.name": "Test",
   "neko.module.Disabler.name": "Disabler",
+  "neko.module.AntiBot.name": "AntiBot",
 
   "neko.module.InvMove.name": "InvMove",
   "neko.module.NoPush.name": "NoPush",
@@ -23,9 +24,10 @@
   "neko.module.Stealer.name": "Stealer",
   "neko.module.InvManager.name": "InvManager",
   "neko.module.Eagle.name": "Eagle",
+  "neko.module.NoFall.name": "NoFall",
 
   "neko.module.ClickScreen.name": "ClickScreen",
-  "neko.module.Settings.name": "ClientSetting",
+  "neko.module.Settings.name": "Settings",
   "neko.module.Brightness.name": "Brightness",
   "neko.module.Rotations.name": "Rotations",
   "neko.module.Interface.name": "Interface",
@@ -38,6 +40,7 @@
 
   "neko.module.Test.desc": "Test something.",
   "neko.module.Disabler.desc": "Disable some checks of anti-cheat.",
+  "neko.module.AntiBot.desc": "Bot will remove from your targets.",
 
   "neko.module.InvMove.desc": "Move when inventory open.",
   "neko.module.NoPush.desc": "Remove push by other entity.",
@@ -49,6 +52,7 @@
   "neko.module.Stealer.desc": "Stealer items from the container.",
   "neko.module.InvManager.desc": "Clean your inventory.",
   "neko.module.Eagle.desc": "Auto sneak at the eagle of block.",
+  "neko.module.NoFall.desc": "No fall down damage.",
 
   "neko.module.ClickScreen.desc": "Display click screen.",
   "neko.module.Settings.desc": "Some settings of client.",

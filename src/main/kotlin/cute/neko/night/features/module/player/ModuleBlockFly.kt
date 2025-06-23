@@ -128,6 +128,7 @@ object ModuleBlockFly : ClientModule(
                     BlockHitResult(it.vec, it.direction, it.pos, false),
                 ).isAccepted) {
                 player.swingHand(Hand.MAIN_HAND)
+                data = null
             }
         }
     }

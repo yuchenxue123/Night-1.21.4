@@ -12,6 +12,7 @@
 
   "neko.module.Test.name": "测试",
   "neko.module.Disabler.name": "禁用器",
+  "neko.module.AntiBot.name": "火眼金睛",
 
   "neko.module.InvMove.name": "背包移动",
   "neko.module.NoJumpDelay.name": "无跳跃延迟",
@@ -23,6 +24,7 @@
   "neko.module.Stealer.name": "顺手牵羊",
   "neko.module.InvManager.name": "背包整理",
   "neko.module.Eagle.name": "边缘蹲下",
+  "neko.module.NoFall.name": "如履平地",
 
   "neko.module.ClickScreen.name": "配置界面",
   "neko.module.Settings.name": "设置",
@@ -38,6 +40,7 @@
 
   "neko.module.Test.desc": "测试东西",
   "neko.module.Disabler.desc": "禁用一些反作弊的检测",
+  "neko.module.AntiBot.desc": "识别一些机器人",
 
   "neko.module.InvMove.desc": "当背包打开时移动",
   "neko.module.NoJumpDelay.desc": "取消你的跳跃延迟",
@@ -49,6 +52,7 @@
   "neko.module.Stealer.desc": "偷取容器里的物品",
   "neko.module.InvManager.desc": "整理你背包的物品",
   "neko.module.Eagle.desc": "自动在方块边缘蹲下",
+  "neko.module.NoFall.desc": "防止摔落伤害",
 
   "neko.module.ClickScreen.desc": "打开配置界面",
   "neko.module.Settings.desc": "客户端的一些设置",

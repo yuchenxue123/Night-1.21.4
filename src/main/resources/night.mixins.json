@@ -23,6 +23,7 @@
     "render.MixinGameRenderer",
     "render.MixinHeldItemRenderer",
     "render.MixinLightmapTextureManager",
-    "render.MixinLivingEntityRenderer"
+    "render.MixinLivingEntityRenderer",
+    "render.MixinRenderTickCounter$Dynamic"
   ]
 }
