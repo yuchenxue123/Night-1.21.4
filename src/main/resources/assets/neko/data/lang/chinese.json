@@ -25,7 +25,7 @@
   "neko.module.Eagle.name": "边缘蹲下",
 
   "neko.module.ClickScreen.name": "配置界面",
-  "neko.module.ClientSetting.name": "设置",
+  "neko.module.Settings.name": "设置",
   "neko.module.Brightness.name": "光明",
   "neko.module.Rotations.name": "转头",
   "neko.module.Interface.name": "界面",
@@ -51,7 +51,7 @@
   "neko.module.Eagle.desc": "自动在方块边缘蹲下",
 
   "neko.module.ClickScreen.desc": "打开配置界面",
-  "neko.module.ClientSetting.desc": "客户端的一些设置",
+  "neko.module.Settings.desc": "客户端的一些设置",
   "neko.module.Brightness.desc": "让你感到光明",
   "neko.module.Rotations.desc": "显示客户端转头",
   "neko.module.Interface.desc": "显示视觉组件",

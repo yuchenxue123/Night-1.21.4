@@ -25,7 +25,7 @@
   "neko.module.Eagle.name": "Eagle",
 
   "neko.module.ClickScreen.name": "ClickScreen",
-  "neko.module.ClientSetting.name": "ClientSetting",
+  "neko.module.Settings.name": "ClientSetting",
   "neko.module.Brightness.name": "Brightness",
   "neko.module.Rotations.name": "Rotations",
   "neko.module.Interface.name": "Interface",
@@ -51,7 +51,7 @@
   "neko.module.Eagle.desc": "Auto sneak at the eagle of block.",
 
   "neko.module.ClickScreen.desc": "Display click screen.",
-  "neko.module.ClientSetting.desc": "Some settings of client.",
+  "neko.module.Settings.desc": "Some settings of client.",
   "neko.module.Brightness.desc": "Make you feeling bright.",
   "neko.module.Rotations.desc": "Render client rotations.",
   "neko.module.Interface.desc": "Render some visual widgets on screen.",
