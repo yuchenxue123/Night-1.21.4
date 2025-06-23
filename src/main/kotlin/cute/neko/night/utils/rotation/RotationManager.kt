@@ -10,9 +10,8 @@ import cute.neko.night.utils.entity.setRotation
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.movement.DirectionalInput
 import cute.neko.night.utils.rotation.RotationUtils.angleDifference
-import cute.neko.night.utils.rotation.api.rotationPriority
 import cute.neko.night.utils.rotation.data.Rotation
-import cute.neko.night.utils.rotation.data.RotationTarget
+import cute.neko.night.utils.rotation.data.RotationRequest
 import cute.neko.night.utils.rotation.features.MovementCorrection
 import net.minecraft.client.input.KeyboardInput
 import net.minecraft.entity.Entity
@@ -20,6 +19,7 @@ import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket
 import net.minecraft.util.math.MathHelper
+import java.util.*
 import kotlin.math.abs
 import kotlin.math.hypot
 
@@ -32,77 +32,67 @@ import kotlin.math.hypot
 object RotationManager : EventListener, Accessor {
 
     /**
-     * The rotation plan your will complete.
-     * Contains (rotation, correction, horizontal speed, vertical speed).
+     * 请求转头储存，并按优先级排序
      */
-    var rotationTarget: RotationTarget? = null
+    private val requests = PriorityQueue<RotationRequest>(
+        compareByDescending { it.priority }
+    )
 
     /**
-     * The rotation we want aim at.
-     * The sever will change your rotation sometime,
-     * so it may not be your actual rotation.
+     * 活动的请求转头
      */
-    var currentRotation: Rotation? = null
-        set(value) {
-            previousRotation = if (value == null) {
-                null
-            } else {
-                field ?: mc.player?.rotation ?: Rotation.ZERO
-            }
-
-            field = value
+    val activeRequest: RotationRequest?
+        get() {
+            if (requests.isEmpty()) return null
+            return requests.peek()
         }
 
-    // previous rotation
+    /**
+     * 客户端转头，自己的目标转头
+     */
+    var currentRotation: Rotation? = null
+
+    /**
+     * 更新前的转头
+     */
     var previousRotation: Rotation? = null
 
     /**
-     * The rotation recognized by the server.
-     * It is your actual rotation, seen by other players.
+     * 服务器转头，其他玩家看到的转头
      */
     var serverRotation: Rotation = Rotation.ZERO
 
     /**
-     * Input rotation target
+     * 请求转头
      */
-    fun applyRotation(rotation: RotationTarget?) {
-        rotation?.let {
-            if (rotationTarget == null) {
-                rotationTarget = it
-                return
-            }
-
-            if (it.controller.rotationPriority.value
-                >= rotationTarget!!.controller.rotationPriority.value
-            ) {
-                rotationTarget = it
-            }
-        } ?: run {
-            rotationTarget = null
-        }
+    fun request(request: RotationRequest) {
+        requests.removeIf { it.listener == request.listener }
+        requests.add(request)
 
         update()
     }
 
-    /**
-     * Reset rotation
-     */
-    fun reset(listener: EventListener) {
-        rotationTarget?.let {
-            if (listener != it.controller) {
-                return
-            }
-        }
+    fun remove(listener: EventListener) {
+        requests.removeIf { it.listener == listener }
 
-        applyRotation(null)
+        update()
+    }
+
+    fun reset() {
+        requests.clear()
+
+        update()
     }
 
     private fun update() {
-        updateCurrentRotation()
-    }
+        if (requests.isEmpty()) {
+            currentRotation = null
+            return
+        }
 
-    private fun updateCurrentRotation() {
-        rotationTarget?.let { target ->
+        previousRotation = currentRotation ?: player.rotation
+
+        activeRequest?.let { target ->
             val lastRotation = (currentRotation ?: player.rotation)
 
             val yawDifference = angleDifference(target.rotation.yaw, lastRotation.yaw)
@@ -121,14 +111,15 @@ object RotationManager : EventListener, Accessor {
             )
 
             currentRotation = nextRotation
-        } ?: run {
-            currentRotation = null
         }
     }
 
+
     @Suppress("unused")
     private val onPlayerMotionPre = handle<PlayerMotionEvent.Pre> { event ->
-        val correction = rotationTarget?.correction ?: return@handle
+        update()
+
+        val correction = activeRequest?.correction ?: MovementCorrection.NONE
 
         currentRotation?.let {
             when (correction) {
@@ -146,14 +137,14 @@ object RotationManager : EventListener, Accessor {
 
     @Suppress("unused")
     private val onPlayerVelocityUpdate = handle<PlayerVelocityEvent> { event ->
-        rotationTarget?.correction?.let { correction ->
-            if (correction != MovementCorrection.NONE) {
-                val rotation = currentRotation ?: return@handle
+        val correction = activeRequest?.correction ?: MovementCorrection.NONE
 
+        currentRotation?.let {
+            if (correction != MovementCorrection.NONE) {
                 event.velocity = Entity.movementInputToVelocity(
                     event.movementInput,
                     event.speed,
-                    rotation.yaw
+                    it.yaw
                 )
             }
         }
@@ -184,10 +175,11 @@ object RotationManager : EventListener, Accessor {
      */
     fun transformInput(input: DirectionalInput): DirectionalInput {
         val player = mc.player ?: return input
-        val target = rotationTarget ?: return input
         val rotation = currentRotation ?: return input
 
-        if (target.correction != MovementCorrection.SILENT) {
+        val correction = activeRequest?.correction ?: MovementCorrection.NONE
+
+        if (correction != MovementCorrection.SILENT) {
             return input
         }
 

@@ -1,7 +1,7 @@
 package cute.neko.injection.mixins.render;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import cute.neko.night.module.render.ModuleBrightness;
+import cute.neko.night.features.module.render.ModuleBrightness;
 import net.minecraft.client.render.LightmapTextureManager;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

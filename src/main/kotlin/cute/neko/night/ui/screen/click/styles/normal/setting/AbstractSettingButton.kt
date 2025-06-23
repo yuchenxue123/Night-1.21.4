@@ -1,6 +1,6 @@
 package cute.neko.night.ui.screen.click.styles.normal.setting
 
-import cute.neko.night.setting.AbstractSetting
+import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.screen.click.styles.normal.NormalMain
 import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.MAIN_PANEL_WIDTH

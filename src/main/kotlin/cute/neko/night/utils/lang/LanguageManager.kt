@@ -1,6 +1,6 @@
 package cute.neko.night.utils.lang
 
-import cute.neko.night.module.render.ModuleClientSetting
+import cute.neko.night.features.module.render.ModuleSettings
 import cute.neko.night.utils.misc.AssetsManager
 import java.util.concurrent.ConcurrentHashMap
 
@@ -32,7 +32,7 @@ object LanguageManager {
     }
 
     fun translate(key: String): String {
-        val language = ModuleClientSetting.language
+        val language = ModuleSettings.language
 
         val map = map[language] ?: return key
 
@@ -44,7 +44,7 @@ object LanguageManager {
     }
 
     fun hasTranslate(key: String): Boolean {
-        val language = ModuleClientSetting.language
+        val language = ModuleSettings.language
 
         val map = map[language] ?: return false
 

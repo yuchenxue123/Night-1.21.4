@@ -1,6 +1,6 @@
 package cute.neko.injection.mixins.gui;
 
-import cute.neko.night.module.render.ModuleInterface;
+import cute.neko.night.features.module.render.ModuleInterface;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.entity.Entity;

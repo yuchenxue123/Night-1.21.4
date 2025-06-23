@@ -1,6 +1,6 @@
 package cute.neko.injection.mixins.render;
 
-import cute.neko.night.module.render.ModuleAnimation;
+import cute.neko.night.features.module.render.ModuleAnimation;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.render.VertexConsumerProvider;
 import net.minecraft.client.render.item.HeldItemRenderer;

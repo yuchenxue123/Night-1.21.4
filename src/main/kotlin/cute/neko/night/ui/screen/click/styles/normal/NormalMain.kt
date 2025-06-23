@@ -1,10 +1,9 @@
 package cute.neko.night.ui.screen.click.styles.normal
 
-import cute.neko.night.module.ClientModule
-import cute.neko.night.setting.type.mode.AbstractModeSetting
-import cute.neko.night.setting.type.mode.MultiEnumSetting
-import cute.neko.night.setting.type.number.AbstractNumberSetting
-import cute.neko.night.setting.type.primitive.BooleanSetting
+import cute.neko.night.features.setting.type.mode.AbstractModeSetting
+import cute.neko.night.features.setting.type.mode.MultiEnumSetting
+import cute.neko.night.features.setting.type.number.AbstractNumberSetting
+import cute.neko.night.features.setting.type.primitive.BooleanSetting
 import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.MAIN_PANEL_WIDTH
@@ -42,7 +41,7 @@ object NormalMain : Screen {
 
     private const val MODULE_INFO_HEIGHT = 60f
 
-    var module: ClientModule? = null
+    var module: cute.neko.night.features.module.ClientModule? = null
         set(value) {
             field = value
             reset()

@@ -1,11 +1,11 @@
 {
 	"schemaVersion": 1,
-	"id": "stay",
+	"id": "night",
 	"version": "${version}",
-	"name": "Stay",
+	"name": "Night",
 	"description": "This is an example description! Tell everyone what your mod is about!",
 	"authors": [
-		"Me!"
+		"yuchenxue"
 	],
 	"contact": {
 		"homepage": "https://fabricmc.net/",
@@ -17,13 +17,10 @@
 		"main": [],
 		"fabric-datagen": [
 			"cute.neko.generator.DataGenerator"
-		],
-		"custom_entrypoint": [
-			"cute.neko.Client"
 		]
 	},
 	"mixins": [
-		"stay.mixins.json"
+		"night.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.10",

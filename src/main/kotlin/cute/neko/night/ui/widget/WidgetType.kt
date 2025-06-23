@@ -1,6 +1,6 @@
 package cute.neko.night.ui.widget
 
-import cute.neko.night.setting.type.mode.SubMode
+import cute.neko.night.features.setting.type.mode.SubMode
 
 /**
  * @author yuchenxue

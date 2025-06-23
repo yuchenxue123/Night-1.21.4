@@ -1,13 +1,12 @@
 package cute.neko.night.config
 
 import com.google.gson.JsonObject
-import cute.neko.night.module.ClientModule
-import cute.neko.night.module.ModuleManager
-import cute.neko.night.setting.type.mode.AbstractModeSetting
-import cute.neko.night.setting.type.mode.MultiEnumSetting
-import cute.neko.night.setting.type.number.FloatSetting
-import cute.neko.night.setting.type.number.IntegerSetting
-import cute.neko.night.setting.type.primitive.BooleanSetting
+import cute.neko.night.features.module.ModuleManager
+import cute.neko.night.features.setting.type.mode.AbstractModeSetting
+import cute.neko.night.features.setting.type.mode.MultiEnumSetting
+import cute.neko.night.features.setting.type.number.FloatSetting
+import cute.neko.night.features.setting.type.number.IntegerSetting
+import cute.neko.night.features.setting.type.primitive.BooleanSetting
 import cute.neko.night.utils.client.KeyboardUtils
 
 /**
@@ -52,7 +51,7 @@ object ConfigUtils {
     /**
      * 获取模块的配置Json
      */
-    fun getModuleConfig(module: ClientModule): JsonObject {
+    fun getModuleConfig(module: cute.neko.night.features.module.ClientModule): JsonObject {
         val json = JsonObject()
 
         // state
@@ -100,7 +99,7 @@ object ConfigUtils {
     /**
      * 加载模块配置
      */
-    fun loadModuleConfig(module: ClientModule, json: JsonObject) {
+    fun loadModuleConfig(module: cute.neko.night.features.module.ClientModule, json: JsonObject) {
         // state
         if (json.has("state")) {
             module.state = json.get("state").asBoolean

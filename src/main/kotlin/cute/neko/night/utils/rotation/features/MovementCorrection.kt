@@ -1,6 +1,6 @@
 package cute.neko.night.utils.rotation.features
 
-import cute.neko.night.setting.type.mode.SubMode
+import cute.neko.night.features.setting.type.mode.SubMode
 
 /**
  * @author yuchenxue

@@ -1,8 +1,8 @@
 package cute.neko.night
 
-import cute.neko.night.command.CommandManager
 import cute.neko.night.config.ConfigSystem
-import cute.neko.night.module.ModuleManager
+import cute.neko.night.features.command.CommandManager
+import cute.neko.night.features.module.ModuleManager
 import cute.neko.night.ui.widget.WidgetManager
 import cute.neko.night.utils.client.FileUtils
 import cute.neko.night.utils.client.KeyboardUtils

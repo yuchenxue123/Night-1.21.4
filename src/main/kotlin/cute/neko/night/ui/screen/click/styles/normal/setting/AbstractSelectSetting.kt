@@ -1,6 +1,6 @@
 package cute.neko.night.ui.screen.click.styles.normal.setting
 
-import cute.neko.night.setting.AbstractSetting
+import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.ui.isHovered
 import cute.neko.night.ui.screen.click.styles.normal.setting.mode.ModeButton
 import cute.neko.night.utils.animation.AnimationType

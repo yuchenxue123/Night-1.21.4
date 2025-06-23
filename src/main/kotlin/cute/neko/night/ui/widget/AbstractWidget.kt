@@ -1,6 +1,6 @@
 package cute.neko.night.ui.widget
 
-import cute.neko.night.module.render.ModuleInterface
+import cute.neko.night.features.module.render.ModuleInterface
 import cute.neko.night.ui.interfaces.Drawable
 import cute.neko.night.utils.interfaces.Nameable
 

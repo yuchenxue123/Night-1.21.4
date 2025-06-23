@@ -1,7 +1,7 @@
 package cute.neko.night.ui.screen.click.styles.normal
 
-import cute.neko.night.module.ModuleCategory
-import cute.neko.night.module.ModuleManager
+import cute.neko.night.features.module.ModuleCategory
+import cute.neko.night.features.module.ModuleManager
 import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.MIDDLE_PANEL_WIDTH

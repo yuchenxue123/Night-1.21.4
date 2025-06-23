@@ -4,7 +4,7 @@ import com.llamalad7.mixinextras.sugar.Local;
 import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.render.ScreenRenderEvent;
 import cute.neko.night.event.events.game.render.WorldRenderEvent;
-import cute.neko.night.module.render.ModuleNoHurtCam;
+import cute.neko.night.features.module.render.ModuleNoHurtCam;
 import cute.neko.night.utils.nano.NanoUtils;
 import kotlin.Unit;
 import net.minecraft.client.MinecraftClient;

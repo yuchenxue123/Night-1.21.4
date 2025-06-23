@@ -1,8 +1,8 @@
 package cute.neko.night.ui.screen.click.styles.normal.setting
 
-import cute.neko.night.setting.type.number.AbstractNumberSetting
-import cute.neko.night.setting.type.number.FloatSetting
-import cute.neko.night.setting.type.number.IntegerSetting
+import cute.neko.night.features.setting.type.number.AbstractNumberSetting
+import cute.neko.night.features.setting.type.number.FloatSetting
+import cute.neko.night.features.setting.type.number.IntegerSetting
 import cute.neko.night.ui.screen.special.Slider
 import cute.neko.night.utils.extensions.decimals
 import cute.neko.night.utils.extensions.step

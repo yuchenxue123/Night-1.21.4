@@ -4,8 +4,8 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerAfterJumpEvent;
 import cute.neko.night.event.events.game.player.PlayerJumpEvent;
-import cute.neko.night.module.movement.ModuleNoJumpDelay;
-import cute.neko.night.module.movement.ModuleNoPush;
+import cute.neko.night.features.module.movement.ModuleNoJumpDelay;
+import cute.neko.night.features.module.movement.ModuleNoPush;
 import cute.neko.night.utils.rotation.RotationManager;
 import cute.neko.night.utils.rotation.features.MovementCorrection;
 import net.minecraft.client.MinecraftClient;
@@ -69,7 +69,7 @@ public abstract class MixinLivingEntity extends MixinEntity {
     @ModifyExpressionValue(method = "jump", at = @At(value = "NEW", target = "(DDD)Lnet/minecraft/util/math/Vec3d;"))
     private Vec3d hookFixRotation(Vec3d original) {
         var rotation = RotationManager.INSTANCE.getCurrentRotation();
-        var rotationTarget = RotationManager.INSTANCE.getRotationTarget();
+        var rotationTarget = RotationManager.INSTANCE.getActiveRequest();
 
         if ((Object) this != MinecraftClient.getInstance().player) {
             return original;

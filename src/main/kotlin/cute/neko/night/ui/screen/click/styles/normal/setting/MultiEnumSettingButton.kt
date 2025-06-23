@@ -1,6 +1,6 @@
 package cute.neko.night.ui.screen.click.styles.normal.setting
 
-import cute.neko.night.setting.type.mode.MultiEnumSetting
+import cute.neko.night.features.setting.type.mode.MultiEnumSetting
 import cute.neko.night.ui.screen.click.styles.normal.setting.mode.ModeButton
 
 /**
