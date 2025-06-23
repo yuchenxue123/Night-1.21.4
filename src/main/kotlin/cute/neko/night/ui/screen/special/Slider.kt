@@ -4,10 +4,10 @@ import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.data.Point
 import cute.neko.night.utils.nano.NanoUtils
 import cute.neko.night.utils.nano.font.NanoFontManager
 import net.minecraft.client.gui.DrawContext
+import org.joml.Vector2f
 import java.awt.Color
 import kotlin.math.max
 
@@ -99,7 +99,7 @@ class Slider : Screen {
 
             val pw = max(font.width(text) + 8f, 16f) / 2
 
-            val start = Point(
+            val start = Vector2f(
                 renderX + ((width - radius * 2) * process) + radius,
                 renderY - tagDistance
             )
@@ -108,10 +108,10 @@ class Slider : Screen {
                 start.x,
                 start.y,
                 arrayOf(
-                    Point(start.x + pw, start.y - 8f),
-                    Point(start.x + pw, start.y - 32f),
-                    Point(start.x - pw, start.y - 32f),
-                    Point(start.x - pw, start.y - 8f)
+                    Vector2f(start.x + pw, start.y - 8f),
+                    Vector2f(start.x + pw, start.y - 32f),
+                    Vector2f(start.x - pw, start.y - 32f),
+                    Vector2f(start.x - pw, start.y - 8f)
                 ),
                 Color(180, 180, 180, ((tagDistance / 8f) * 80).toInt())
             )

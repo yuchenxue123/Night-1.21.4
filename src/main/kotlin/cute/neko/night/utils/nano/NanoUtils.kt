@@ -1,8 +1,8 @@
 package cute.neko.night.utils.nano
 
-import cute.neko.night.utils.data.Point
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.nano.NanoManager.nvg
+import org.joml.Vector2f
 import org.lwjgl.nanovg.NanoVG
 import java.awt.Color
 
@@ -111,7 +111,7 @@ object NanoUtils : Accessor {
     fun drawPolyline(
         x: Float,
         y: Float,
-        points: Array<Point>,
+        points: Array<Vector2f>,
         width: Float,
         color: Color,
         closed: Boolean = false,
@@ -143,7 +143,7 @@ object NanoUtils : Accessor {
     fun drawPolygon(
         x: Float,
         y: Float,
-        points: Array<Point>,
+        points: Array<Vector2f>,
         color: Color,
     ) {
         if (points.isEmpty()) {
