@@ -39,7 +39,8 @@ public abstract class MixinMinecraftClient {
     @Nullable
     public abstract Overlay getOverlay();
 
-    @Shadow public abstract Window getWindow();
+    @Shadow
+    public abstract Window getWindow();
 
     @Inject(method = "<init>", at = @At(value = "INVOKE",
             target = "Lnet/minecraft/client/MinecraftClient;onResolutionChanged()V")

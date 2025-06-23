@@ -26,12 +26,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity extends MixinEntity {
-
+    @Shadow
+    public abstract float getJumpVelocity();
 
     @Shadow
-    protected abstract float getJumpVelocity();
+    public int jumpingCooldown;
 
-    @Shadow private int jumpingCooldown;
     @Unique
     private PlayerJumpEvent jumpEvent;
 
