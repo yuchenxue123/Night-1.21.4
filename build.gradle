@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
 	id("fabric-loom") version("${loom_version}")
 	id("org.jetbrains.kotlin.jvm") version("${kotlin_version}")
@@ -55,11 +57,11 @@ tasks.withType(JavaCompile).configureEach {
 	options.release = 21
 }
 
-//tasks.withType(KotlinCompile).configureEach {
-//	kotlinOptions {
-//		jvmTarget = 21
-//	}
-//}
+tasks.withType(KotlinCompile).configureEach {
+	kotlinOptions {
+		jvmTarget = 21
+	}
+}
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_21
