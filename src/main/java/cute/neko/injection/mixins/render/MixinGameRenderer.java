@@ -40,10 +40,13 @@ public abstract class MixinGameRenderer {
     public BufferBuilderStorage buffers;
 
 
-    @Inject(method = "renderWorld", at = @At(value = "FIELD",
-            target = "Lnet/minecraft/client/render/GameRenderer;renderHand:Z",
-            opcode = Opcodes.GETFIELD,
-            ordinal = 0)
+    @Inject(method = "renderWorld",
+            at = @At(
+                    value = "FIELD",
+                    target = "Lnet/minecraft/client/render/GameRenderer;renderHand:Z",
+                    opcode = Opcodes.GETFIELD,
+                    ordinal = 0
+            )
     )
     public void hookWorldRenderEvent(RenderTickCounter tickCounter, CallbackInfo ci, @Local(ordinal = 2) Matrix4f matrix4f2) {
         var newMatStack = new MatrixStack();

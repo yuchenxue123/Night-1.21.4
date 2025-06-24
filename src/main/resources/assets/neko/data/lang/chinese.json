@@ -32,6 +32,7 @@
   "neko.module.Rotations.name": "转头",
   "neko.module.Interface.name": "界面",
   "neko.module.NoHurtCam.name": "无伤害抖动",
+  "neko.module.NameTags.name": "内幕他给",
 
 
 
@@ -59,5 +60,6 @@
   "neko.module.Brightness.desc": "让你感到光明",
   "neko.module.Rotations.desc": "显示客户端转头",
   "neko.module.Interface.desc": "显示视觉组件",
-  "neko.module.NoHurtCam.desc": "取消伤害抖动动画"
+  "neko.module.NoHurtCam.desc": "取消伤害抖动动画",
+  "neko.module.NameTags.desc": "玩家名称可穿墙看到"
 }

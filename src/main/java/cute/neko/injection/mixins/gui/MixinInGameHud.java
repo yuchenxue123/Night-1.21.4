@@ -38,8 +38,12 @@ public class MixinInGameHud {
         });
     }
 
-    @Redirect(method = "renderMiscOverlays", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/gui/hud/InGameHud;renderVignetteOverlay(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/entity/Entity;)V")
+    @Redirect(
+            method = "renderMiscOverlays",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/gui/hud/InGameHud;renderVignetteOverlay(Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/entity/Entity;)V"
+            )
     )
     private void hookRemoveVignette(InGameHud instance, DrawContext context, Entity entity) {
         if (!ModuleInterface.INSTANCE.getShouldHideVignette()) {

@@ -19,10 +19,13 @@ public class MixinRenderTickCounter$Dynamic {
     @Shadow
     private float lastFrameDuration;
 
-    @Inject(method = "beginRenderTick(J)I", at = @At(value = "FIELD",
-            target = "Lnet/minecraft/client/render/RenderTickCounter$Dynamic;prevTimeMillis:J",
-            opcode = Opcodes.PUTFIELD,
-            ordinal = 0)
+    @Inject(
+            method = "beginRenderTick(J)I",
+            at = @At(value = "FIELD",
+                    target = "Lnet/minecraft/client/render/RenderTickCounter$Dynamic;prevTimeMillis:J",
+                    opcode = Opcodes.PUTFIELD,
+                    ordinal = 0
+            )
     )
     public void onBeginRenderTick(long timeMillis, CallbackInfoReturnable<Integer> ci) {
         float timerSpeed = Timer.INSTANCE.get();

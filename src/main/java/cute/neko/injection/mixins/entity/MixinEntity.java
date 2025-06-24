@@ -36,7 +36,13 @@ public abstract class MixinEntity {
     @Shadow
     public abstract double getX();
 
-    @ModifyExpressionValue(method = "updateVelocity", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;movementInputToVelocity(Lnet/minecraft/util/math/Vec3d;FF)Lnet/minecraft/util/math/Vec3d;"))
+    @ModifyExpressionValue(
+            method = "updateVelocity",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/Entity;movementInputToVelocity(Lnet/minecraft/util/math/Vec3d;FF)Lnet/minecraft/util/math/Vec3d;"
+            )
+    )
     public Vec3d hookVelocity(Vec3d original, @Local(argsOnly = true) Vec3d movementInput, @Local(argsOnly = true) float speed, @Local(argsOnly = true) float yaw) {
         if ((Object) this != MinecraftClient.getInstance().player) {
             return original;

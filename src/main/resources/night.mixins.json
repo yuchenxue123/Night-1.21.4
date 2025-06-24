@@ -20,6 +20,7 @@
     "gui.MixinChatScreen",
     "gui.MixinInGameHud",
     "network.MixinClientPlayNetworkHandler",
+    "render.MixinEntityRenderer",
     "render.MixinGameRenderer",
     "render.MixinHeldItemRenderer",
     "render.MixinLightmapTextureManager",

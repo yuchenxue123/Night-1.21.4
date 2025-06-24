@@ -36,10 +36,13 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
     @Unique
     private int airTicks = 0;
 
-    @Inject(method = "tick", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;tick()V",
-            shift = At.Shift.BEFORE,
-            ordinal = 0),
+    @Inject(
+            method = "tick",
+            at = @At(value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/AbstractClientPlayerEntity;tick()V",
+                    shift = At.Shift.BEFORE,
+                    ordinal = 0
+            ),
             cancellable = true
     )
     private void hookTickEvent(CallbackInfo ci) {
@@ -80,8 +83,12 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         EventManager.INSTANCE.callEvent(playerMotionEvent);
     }
 
-    @ModifyExpressionValue(method = "sendMovementPackets", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/ClientPlayerEntity;getX()D")
+    @ModifyExpressionValue(
+            method = "sendMovementPackets",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;getX()D"
+            )
     )
     private double modifyXPosition(double original) {
         if ((Object) this != client.player) {
@@ -91,8 +98,12 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         return playerMotionEvent.getX();
     }
 
-    @ModifyExpressionValue(method = "sendMovementPackets", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/ClientPlayerEntity;getY()D")
+    @ModifyExpressionValue(
+            method = "sendMovementPackets",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;getY()D"
+            )
     )
     private double modifyYPosition(double original) {
         if ((Object) this != client.player) {
@@ -102,8 +113,12 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         return playerMotionEvent.getY();
     }
 
-    @ModifyExpressionValue(method = "sendMovementPackets", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/ClientPlayerEntity;getZ()D")
+    @ModifyExpressionValue(
+            method = "sendMovementPackets",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;getZ()D"
+            )
     )
     private double modifyZPosition(double original) {
         if ((Object) this != client.player) {
@@ -113,8 +128,12 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         return playerMotionEvent.getZ();
     }
 
-    @ModifyExpressionValue(method = "sendMovementPackets", at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/ClientPlayerEntity;isOnGround()Z")
+    @ModifyExpressionValue(
+            method = "sendMovementPackets",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;isOnGround()Z"
+            )
     )
     private boolean modifyOnGround(boolean original) {
         if ((Object) this != client.player) {
@@ -124,8 +143,12 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         return playerMotionEvent.getGround();
     }
 
-    @ModifyExpressionValue(method = {"sendMovementPackets", "tick"}, at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/ClientPlayerEntity;getYaw()F")
+    @ModifyExpressionValue(
+            method = {"sendMovementPackets", "tick"},
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;getYaw()F"
+            )
     )
     private float hookSilentRotationYaw(float original) {
         if ((Object) this != client.player) {
@@ -140,8 +163,12 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         return rotation.getYaw();
     }
 
-    @ModifyExpressionValue(method = {"sendMovementPackets", "tick"}, at = @At(value = "INVOKE",
-            target = "Lnet/minecraft/client/network/ClientPlayerEntity;getPitch()F")
+    @ModifyExpressionValue(
+            method = {"sendMovementPackets", "tick"},
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/network/ClientPlayerEntity;getPitch()F"
+            )
     )
     private float hookSilentRotationPitch(float original) {
         if ((Object) this != client.player) {

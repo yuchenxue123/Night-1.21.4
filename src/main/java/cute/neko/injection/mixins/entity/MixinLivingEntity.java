@@ -48,7 +48,13 @@ public abstract class MixinLivingEntity extends MixinEntity {
         }
     }
 
-    @ModifyExpressionValue(method = "jump", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getJumpVelocity()F"))
+    @ModifyExpressionValue(
+            method = "jump",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/LivingEntity;getJumpVelocity()F"
+            )
+    )
     private float hookJumpEvent(float original) {
         if (((Object) this) != MinecraftClient.getInstance().player) {
             return original;
@@ -66,7 +72,13 @@ public abstract class MixinLivingEntity extends MixinEntity {
         EventManager.INSTANCE.callEvent(new PlayerAfterJumpEvent());
     }
 
-    @ModifyExpressionValue(method = "jump", at = @At(value = "NEW", target = "(DDD)Lnet/minecraft/util/math/Vec3d;"))
+    @ModifyExpressionValue(
+            method = "jump",
+            at = @At(
+                    value = "NEW",
+                    target = "(DDD)Lnet/minecraft/util/math/Vec3d;"
+            )
+    )
     private Vec3d hookFixRotation(Vec3d original) {
         var rotation = RotationManager.INSTANCE.getCurrentRotation();
         var rotationTarget = RotationManager.INSTANCE.getActiveRequest();

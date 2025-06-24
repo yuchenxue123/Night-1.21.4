@@ -37,7 +37,13 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, S extends LivingE
         return null;
     }
 
-    @ModifyExpressionValue(method = "updateRenderState(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;F)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/render/entity/LivingEntityRenderer;clampBodyYaw(Lnet/minecraft/entity/LivingEntity;FF)F"))
+    @ModifyExpressionValue(
+            method = "updateRenderState(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;F)V",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/render/entity/LivingEntityRenderer;clampBodyYaw(Lnet/minecraft/entity/LivingEntity;FF)F"
+            )
+    )
     private float hookBodyYaw(float original, LivingEntity entity, S state, float tickDelta) {
         if (entity != MinecraftClient.getInstance().player) {
             return original;
@@ -51,7 +57,13 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, S extends LivingE
         return original;
     }
 
-    @ModifyExpressionValue(method = "updateRenderState(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;F)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/MathHelper;lerpAngleDegrees(FFF)F"))
+    @ModifyExpressionValue(
+            method = "updateRenderState(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;F)V",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/util/math/MathHelper;lerpAngleDegrees(FFF)F"
+            )
+    )
     private float hookHeadYaw(float original, LivingEntity entity, S state, float tickDelta) {
         if (entity != MinecraftClient.getInstance().player) {
             return original;
@@ -65,7 +77,13 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, S extends LivingE
         return original;
     }
 
-    @ModifyExpressionValue(method = "updateRenderState(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;F)V", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/LivingEntity;getLerpedPitch(F)F"))
+    @ModifyExpressionValue(
+            method = "updateRenderState(Lnet/minecraft/entity/LivingEntity;Lnet/minecraft/client/render/entity/state/LivingEntityRenderState;F)V",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/entity/LivingEntity;getLerpedPitch(F)F"
+            )
+    )
     private float hookHeadPitch(float original, LivingEntity entity, S state, float tickDelta) {
         if (entity != MinecraftClient.getInstance().player) {
             return original;

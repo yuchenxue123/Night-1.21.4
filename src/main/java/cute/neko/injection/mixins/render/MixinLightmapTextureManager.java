@@ -14,7 +14,13 @@ import org.spongepowered.asm.mixin.injection.At;
 @Mixin(LightmapTextureManager.class)
 public class MixinLightmapTextureManager {
 
-    @ModifyExpressionValue(method = "update", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/option/SimpleOption;getValue()Ljava/lang/Object;"))
+    @ModifyExpressionValue(
+            method = "update",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Lnet/minecraft/client/option/SimpleOption;getValue()Ljava/lang/Object;"
+            )
+    )
     private Object modifyExpressionValue(Object original) {
 
         if (ModuleBrightness.BrightnessGamma.INSTANCE.getRunning()) {

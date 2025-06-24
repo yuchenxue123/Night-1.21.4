@@ -58,6 +58,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleRotations,
             ModuleInterface,
             ModuleNoHurtCam,
+            ModuleNameTags,
 
             // misc
             ModuleDisabler,
