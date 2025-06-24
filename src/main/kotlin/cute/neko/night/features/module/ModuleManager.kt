@@ -5,6 +5,7 @@ import cute.neko.night.event.events.game.misc.KeyboardEvent
 import cute.neko.night.event.handle
 import cute.neko.night.features.module.combat.ModuleKillAura
 import cute.neko.night.features.module.combat.antivelocity.ModuleAntiVelocity
+import cute.neko.night.features.module.misc.ModuleAntiBot
 import cute.neko.night.features.module.misc.ModuleTest
 import cute.neko.night.features.module.misc.disabler.ModuleDisabler
 import cute.neko.night.features.module.movement.ModuleNoJumpDelay
@@ -59,8 +60,10 @@ object ModuleManager : EventListener, Accessor {
             ModuleNoHurtCam,
 
             // misc
-            ModuleTest,
             ModuleDisabler,
+            ModuleAntiBot,
+
+            ModuleTest,
         )
     }
 
