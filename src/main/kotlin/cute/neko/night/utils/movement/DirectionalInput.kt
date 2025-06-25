@@ -40,5 +40,27 @@ class DirectionalInput(
         val BACKWARDS = DirectionalInput(forwards = false, backwards = true, left = false, right = false)
         val LEFT = DirectionalInput(forwards = false, backwards = false, left = true, right = false)
         val RIGHT = DirectionalInput(forwards = false, backwards = false, left = false, right = true)
+
+        fun of(input: Input): DirectionalInput {
+            return DirectionalInput(input.untransformed)
+        }
+
+        fun of(input: PlayerInput): DirectionalInput {
+            return DirectionalInput(
+                input.forward,
+                input.backward,
+                input.left,
+                input.right
+            )
+        }
+
+        fun of(movementForward: Float, movementSideways: Float): DirectionalInput {
+            return DirectionalInput(
+                forwards = movementForward > 0.0,
+                backwards = movementForward < 0.0,
+                left = movementSideways > 0.0,
+                right = movementSideways < 0.0
+            )
+        }
     }
 }

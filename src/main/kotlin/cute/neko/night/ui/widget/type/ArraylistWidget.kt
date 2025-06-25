@@ -1,5 +1,6 @@
 package cute.neko.night.ui.widget.type
 
+import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleManager
 import cute.neko.night.features.module.render.ModuleInterface
 import cute.neko.night.ui.interfaces.Drawable
@@ -70,7 +71,7 @@ object ArraylistWidget : AbstractWidget(
     }
 
     class TextDrawable(
-        val module: cute.neko.night.features.module.ClientModule
+        val module: ClientModule
     ) : Drawable {
         val font = NanoFontManager.GENSHIN
 
