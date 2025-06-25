@@ -43,6 +43,7 @@ object NormalMain : Screen {
 
     var module: cute.neko.night.features.module.ClientModule? = null
         set(value) {
+            if (value == field) return
             field = value
             reset()
         }
