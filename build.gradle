@@ -33,7 +33,6 @@ dependencies {
 	// Fabric
 	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-	modImplementation "net.fabricmc:fabric-language-kotlin:${project.fabric_kotlin_version}"
 
 	// NanoVg
 	include(implementation "org.lwjgl:lwjgl-nanovg:${lwjgl_version}")
@@ -41,8 +40,11 @@ dependencies {
 	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-linux")
 	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-macos")
 
-	//
+	// Kotlin
+	include(implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}")
+	include(implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
 	include(implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinx_coroutines}")
+
 }
 
 processResources {
