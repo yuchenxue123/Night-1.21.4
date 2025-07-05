@@ -15,7 +15,7 @@ object ModuleInterface : ClientModule(
 ) {
     private val hideVignette by boolean("HideVignette", true)
 
-    val widgets = enum("Widgets", arrayOf(WidgetType.ARRAYLIST))
+    val widgets = enum("Widgets", arrayOf(WidgetType.ARRAYLIST, WidgetType.DYNAMIC_ISLAND))
 
     // array list
     val sideline by boolean("Sideline", false) { widgets.isActive(WidgetType.ARRAYLIST) }

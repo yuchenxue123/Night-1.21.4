@@ -52,4 +52,13 @@ public abstract class MixinEntity {
         EventManager.INSTANCE.callEvent(event);
         return event.getVelocity();
     }
+
+    @ModifyExpressionValue(method = "move", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/Entity;isControlledByPlayer()Z"))
+    private boolean fixFallDistanceCalculation(boolean original) {
+        if ((Object) this == MinecraftClient.getInstance().player) {
+            return false;
+        }
+
+        return original;
+    }
 }

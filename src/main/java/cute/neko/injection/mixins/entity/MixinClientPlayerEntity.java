@@ -5,9 +5,11 @@ import cute.neko.injection.addition.ClientPlayerEntityAddition;
 import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerMotionEvent;
 import cute.neko.night.event.events.game.player.PlayerTickEvent;
+import cute.neko.night.event.events.game.player.PlayerUseMultiplier;
 import cute.neko.night.utils.rotation.RotationManager;
 import cute.neko.night.utils.rotation.data.Rotation;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.input.Input;
 import net.minecraft.client.network.ClientPlayerEntity;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -28,6 +30,8 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
     @Shadow
     @Final
     protected MinecraftClient client;
+    @Shadow
+    public Input input;
     @Unique
     private PlayerMotionEvent.Pre playerMotionEvent;
 
@@ -81,6 +85,20 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
                 player.isOnGround()
         );
         EventManager.INSTANCE.callEvent(playerMotionEvent);
+    }
+
+    @Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z", ordinal = 0))
+    private void hookCustomMultiplier(CallbackInfo callbackInfo) {
+        final Input input = this.input;
+        // reverse
+        input.movementForward /= 0.2f;
+        input.movementSideways /= 0.2f;
+
+        // then
+        final PlayerUseMultiplier playerUseMultiplier = new PlayerUseMultiplier(0.2f, 0.2f);
+        EventManager.INSTANCE.callEvent(playerUseMultiplier);
+        input.movementForward *= playerUseMultiplier.getForward();
+        input.movementSideways *= playerUseMultiplier.getSideways();
     }
 
     @ModifyExpressionValue(

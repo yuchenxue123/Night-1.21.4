@@ -63,8 +63,8 @@ open class SimpleAnimation : Animation<Float, SimpleAnimation> {
             return target
         }
 
-        val time = tracker.elapsed / duration
-        val result = start + (target - start) * type.apply(time)
+        val process = (tracker.elapsed / duration).coerceIn(0f, 1f)
+        val result = start + (target - start) * type.apply(process)
 
         return result
     }

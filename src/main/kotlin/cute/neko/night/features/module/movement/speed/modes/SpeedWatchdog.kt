@@ -26,20 +26,19 @@ object SpeedWatchdog : SpeedMode("Watchdog") {
 
 
         if (player.isOnGround) {
-            if (player.moving) {
+            if (player.moving && !mc.options.jumpKey.isPressed) {
                 player.jump()
             }
 
             val level = player.getStatusEffect(StatusEffects.SPEED)?.amplifier ?: 0
 
             val speed = if (level == 0) {
-                0.48f + 0.036f
+                0.48f
             } else {
                 0.48f + (level + 1) * 0.12f
             }
 
             player.strafe(speed.toDouble())
-        } else {
         }
     }
 }

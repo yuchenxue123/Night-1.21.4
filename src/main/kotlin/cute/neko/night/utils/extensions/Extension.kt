@@ -29,11 +29,9 @@ fun <E : Enum<E>> E.previous(): E = declaringJavaClass.enumConstants.run {
 }
 
 inline fun <T> Iterable<T>.sum(selector: (T) -> Float): Float {
-    val iterator = iterator()
-    if (!iterator.hasNext()) throw NoSuchElementException()
-    var sum = selector(iterator.next())
-    while (iterator.hasNext()) {
-        sum += selector(iterator.next())
+    var sum = 0f
+    for (element in this) {
+        sum += selector(element)
     }
     return sum
 }

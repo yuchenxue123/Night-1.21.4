@@ -16,6 +16,8 @@ object EventManager {
 
         if (!handlers.contains(hook)) {
             handlers.add(hook)
+
+            handlers.sortedByDescending { it.priority }
         }
     }
 
@@ -45,7 +47,7 @@ object EventManager {
 
         for (eventHook in targets) {
 
-            if (!eventHook.ignoresCondition && !eventHook.handlerClass.running) continue
+            if (!eventHook.always && !eventHook.handlerClass.running) continue
 
             runCatching {
                 eventHook.handler(event)

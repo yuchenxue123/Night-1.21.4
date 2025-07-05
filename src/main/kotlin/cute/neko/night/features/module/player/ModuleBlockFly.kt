@@ -4,12 +4,10 @@ import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
+import cute.neko.night.features.module.movement.speed.ModuleSpeed
 import cute.neko.night.features.setting.type.mode.SubMode
 import cute.neko.night.utils.entity.direction
-import cute.neko.night.utils.extensions.sequence
-import cute.neko.night.utils.extensions.squared
-import cute.neko.night.utils.extensions.step
-import cute.neko.night.utils.extensions.times
+import cute.neko.night.utils.extensions.*
 import cute.neko.night.utils.kotlin.Priority
 import cute.neko.night.utils.movement.MoveDirection
 import cute.neko.night.utils.player.inventory.Slots
@@ -25,7 +23,6 @@ import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
-import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.Vec3d
 import org.lwjgl.glfw.GLFW
 import kotlin.math.abs
@@ -66,6 +63,8 @@ object ModuleBlockFly : ClientModule(
     private val correction by mode("MovementCorrection", MovementCorrection.NONE)
 
     private val raytrace by boolean("Raytrace", false)
+
+    private val speedKeep by boolean("SpeedKeep", true)
 
     private var data: PlaceData? = null
 
@@ -154,17 +153,7 @@ object ModuleBlockFly : ClientModule(
                 var pitch = when {
                     direction.opposite == Direction.UP -> 79f
                     else -> {
-                        var default = 75f
-
-                        for (i in generateSequence(-90f) { it + 0.5f }.takeWhile { it in -90f..90f }) {
-                            val blockPos = RaytraceUtils.raytrace(rotation = Rotation(yaw, i)).blockPos
-                            if (blockPos == pos) {
-                                default = i
-                                break
-                            }
-                        }
-
-                        default
+                        findPitch(pos, yaw) ?: 85f
                     }
                 }
 
@@ -176,22 +165,37 @@ object ModuleBlockFly : ClientModule(
             }
 
             RotationMode.TWIST -> {
-                val rotation = RotationUtils.toRotation(pos.toCenterPos()).normalize()
-                val direct = player.direction
-                val moveDirection = MoveDirection.parse(direct, 30f)
-                val yaw = if (!moveDirection.diagonal) {
-                    if (MathHelper.abs(MathHelper.wrapDegrees(rotation.yaw - direct - 118f))
-                        < MathHelper.abs(MathHelper.wrapDegrees(rotation.yaw - direct + 118f))
-                        ) {
-                        direct + 118f
-                    } else {
-                        direct - 118f
+                val direct = player.direction + 180f
+
+                val yaw = direct % 360f
+
+                val north = yaw < 80f || yaw > 280f
+                val south = yaw > 100f && yaw < 260f
+                val east = yaw > 10f && yaw < 170f
+                val west = yaw > 190f && yaw < 350f
+
+                val yawF = if (player.blockPos.down().getState()?.isAir == true)
+                {
+                    direct + 70f
+                }
+                else if (MoveDirection.parse(direct, 6f).diagonal)
+                {
+                    when {
+                        north && west -> 45f
+                        north && east -> 135f
+                        south && east -> 225f
+                        south && west -> 315f
+                        else -> (direct + 60f) % 360
                     }
-                } else {
-                    direct + 132
+                }
+                else
+                {
+                    (direct + 60f) % 360
                 }
 
-                return Rotation(yaw, rotation.pitch)
+                val pitchF = if (player.isOnGround) 78f else 88f
+
+                return Rotation(yawF, pitchF)
             }
 
             RotationMode.STEP -> {
@@ -206,6 +210,17 @@ object ModuleBlockFly : ClientModule(
                 return rotation.normalize()
             }
         }
+    }
+
+    private fun findPitch(pos: BlockPos, yaw: Float): Float? {
+        for (i in generateSequence(-90f) { it + 1f }.takeWhile { it in -90f..90f }) {
+            val blockPos = RaytraceUtils.raytrace(rotation = Rotation(yaw, i)).blockPos
+            if (blockPos == pos) {
+                return i
+            }
+        }
+
+        return null
     }
 
 
@@ -253,7 +268,10 @@ object ModuleBlockFly : ClientModule(
             return false
         }
 
-        val directions = BlockSearchDirections.NORMAL.directions
+        val directions = when {
+            speedKeep && ModuleSpeed.running -> BlockSearchDirections.HORIZONTAL.directions
+            else -> BlockSearchDirections.NORMAL.directions
+        }
 
         directions.forEach direction@ { direction ->
             val offset = pos.offset(direction.opposite)

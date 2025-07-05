@@ -25,6 +25,8 @@
   "neko.module.InvManager.name": "InvManager",
   "neko.module.Eagle.name": "Eagle",
   "neko.module.NoFall.name": "NoFall",
+  "neko.module.DelayPacket.name": "DelayPacket",
+  "neko.module.Timer.name": "Timer",
 
   "neko.module.ClickScreen.name": "ClickScreen",
   "neko.module.Settings.name": "Settings",
@@ -54,6 +56,8 @@
   "neko.module.InvManager.desc": "Clean your inventory.",
   "neko.module.Eagle.desc": "Auto sneak at the eagle of block.",
   "neko.module.NoFall.desc": "No fall down damage.",
+  "neko.module.DelayPacket.desc": "Save packets, delayed send to server.",
+  "neko.module.Timer.desc": "Scale the game tick speed.",
 
   "neko.module.ClickScreen.desc": "Display click screen.",
   "neko.module.Settings.desc": "Some settings of client.",

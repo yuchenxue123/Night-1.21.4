@@ -10,7 +10,7 @@ import cute.neko.night.features.setting.config.types.ToggleConfigurable
  * @date 2025/05/10
  */
 
-class ChoicesConfigurable<T : Choice>(
+open class ChoicesConfigurable<T : Choice>(
     name: String,
     private val choices: Array<T>,
     default: T = choices[0],

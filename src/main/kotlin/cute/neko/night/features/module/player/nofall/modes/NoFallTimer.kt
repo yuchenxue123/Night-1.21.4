@@ -29,14 +29,16 @@ object NoFallTimer : NoFallMode("Timer") {
             return@handle
         }
 
+        if (switch) {
+            Timer.reset()
+            switch = false
+        }
+
         if (player.fallDistance - player.velocity.y > 3.3) {
             Timer.set(0.5f)
             network.sendPacket(PlayerMoveC2SPacket.OnGroundOnly(true, false))
             player.fallDistance = 0f
             switch = true
-        } else if (switch) {
-            Timer.reset()
-            switch = false
         }
     }
 }

@@ -7,6 +7,7 @@ import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.module.misc.ModuleAntiBot
 import cute.neko.night.features.setting.config.types.TargetOption
 import cute.neko.night.features.setting.type.mode.SubMode
+import cute.neko.night.utils.entity.Blink
 import cute.neko.night.utils.entity.box
 import cute.neko.night.utils.entity.rotation
 import cute.neko.night.utils.kotlin.Priority
@@ -17,6 +18,7 @@ import cute.neko.night.utils.rotation.RotationUtils
 import cute.neko.night.utils.rotation.data.RotationRequest
 import cute.neko.night.utils.rotation.features.MovementCorrection
 import net.minecraft.entity.LivingEntity
+import net.minecraft.registry.tag.ItemTags
 import net.minecraft.util.Hand
 import org.lwjgl.glfw.GLFW
 
@@ -73,6 +75,7 @@ object ModuleKillAura : ClientModule(
     private var target: LivingEntity? = null
 
     override fun disable() {
+        unblock()
         RotationManager.remove(this)
     }
 
@@ -161,6 +164,18 @@ object ModuleKillAura : ClientModule(
                 interactionManager.attackEntity(player, entity)
             }
         }
+    }
+
+    private fun block() {
+        if (player.mainHandStack.isIn(ItemTags.SWORDS)) {
+            if (interactionManager.interactItem(player, Hand.MAIN_HAND).isAccepted) {
+                player.swingHand(Hand.MAIN_HAND)
+            }
+        }
+    }
+
+    private fun unblock() {
+        interactionManager.stopUsingItem(player)
     }
 
 

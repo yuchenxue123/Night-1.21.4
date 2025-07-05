@@ -12,12 +12,10 @@ import cute.neko.night.features.module.movement.ModuleNoJumpDelay
 import cute.neko.night.features.module.movement.ModuleNoPush
 import cute.neko.night.features.module.movement.ModuleSprint
 import cute.neko.night.features.module.movement.speed.ModuleSpeed
-import cute.neko.night.features.module.player.ModuleBlockFly
-import cute.neko.night.features.module.player.ModuleEagle
-import cute.neko.night.features.module.player.ModuleInvManager
-import cute.neko.night.features.module.player.ModuleStealer
+import cute.neko.night.features.module.player.*
 import cute.neko.night.features.module.player.nofall.ModuleNoFall
 import cute.neko.night.features.module.render.*
+import cute.neko.night.ui.widget.type.DynamicIslandWidget
 import cute.neko.night.utils.interfaces.Accessor
 import net.minecraft.client.gui.screen.ChatScreen
 import net.minecraft.client.util.InputUtil
@@ -30,7 +28,7 @@ import org.lwjgl.glfw.GLFW
 
 object ModuleManager : EventListener, Accessor {
 
-    val modules = mutableListOf<cute.neko.night.features.module.ClientModule>()
+    val modules = mutableListOf<ClientModule>()
 
     fun load() {
         register(
@@ -50,6 +48,8 @@ object ModuleManager : EventListener, Accessor {
             ModuleInvManager,
             ModuleEagle,
             ModuleNoFall,
+            ModuleDelayPacket,
+            ModuleTimer,
 
             // render
             ModuleBrightness,
@@ -79,14 +79,14 @@ object ModuleManager : EventListener, Accessor {
     /**
      * Register modules
      */
-    fun register(vararg array: cute.neko.night.features.module.ClientModule) {
+    fun register(vararg array: ClientModule) {
         modules.addAll(array)
     }
 
     /**
      * Register single module
      */
-    fun register(module: cute.neko.night.features.module.ClientModule) {
+    fun register(module: ClientModule) {
         modules.add(module)
     }
 
@@ -96,10 +96,16 @@ object ModuleManager : EventListener, Accessor {
 
         when (event.action) {
             GLFW.GLFW_PRESS -> {
-                modules.filter {
+                val selects = modules.filter {
                     it.key == event.keyCode && event.key.category == InputUtil.Type.KEYSYM
-                }.forEach { module ->
-                    module.state = !module.state
+                }
+
+                selects.forEach { module ->
+                    module.toggle()
+                }
+
+                if (selects.isNotEmpty()) {
+                    DynamicIslandWidget.push(selects)
                 }
             }
         }

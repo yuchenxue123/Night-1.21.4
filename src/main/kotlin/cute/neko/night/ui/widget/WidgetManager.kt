@@ -5,6 +5,7 @@ import cute.neko.night.event.events.game.render.ScreenRenderEvent
 import cute.neko.night.event.handle
 import cute.neko.night.features.module.render.ModuleInterface
 import cute.neko.night.ui.widget.type.ArraylistWidget
+import cute.neko.night.ui.widget.type.DynamicIslandWidget
 import cute.neko.night.ui.widget.type.TargetWidget
 import cute.neko.night.utils.interfaces.Accessor
 
@@ -20,7 +21,8 @@ object WidgetManager : Accessor, EventListener {
     fun load() {
         register(
             ArraylistWidget,
-            TargetWidget
+            TargetWidget,
+            DynamicIslandWidget
         )
     }
 

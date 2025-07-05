@@ -40,13 +40,6 @@ object ModuleInvManager : ClientModule(
     override fun disable() {
         active = false
         slotIndex = 0
-
-        if (mc.currentScreen is InventoryScreen) {
-            val sb = mc.currentScreen as InventoryScreen
-            sb.screenHandler.slots.forEach {
-                chat("${it.stack.name} - ${it.id}")
-            }
-        }
     }
 
     private val onPlayerTick = handle<PlayerTickEvent> {

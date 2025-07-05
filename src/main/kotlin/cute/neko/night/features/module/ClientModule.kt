@@ -56,7 +56,7 @@ open class ClientModule(
 
             // module toggle event
             if (Night.loaded) {
-                chat(Text.of(">> $name ${if(new) "enable" else "disable"}"))
+//                chat(Text.of(">> $name ${if(new) "enable" else "disable"}"))
 
                 EventManager.callEvent(ModuleToggleEvent(this, new))
             }

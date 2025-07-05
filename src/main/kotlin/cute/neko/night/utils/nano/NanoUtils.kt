@@ -5,6 +5,7 @@ import cute.neko.night.utils.nano.NanoManager.nvg
 import org.joml.Vector2f
 import org.lwjgl.nanovg.NanoVG
 import java.awt.Color
+import kotlin.math.PI
 
 
 /**
@@ -157,6 +158,30 @@ object NanoUtils : Accessor {
         points.forEach { p ->
             NanoVG.nvgLineTo(nvg, p.x, p.y)
         }
+
+        NanoVG.nvgClosePath(nvg)
+
+        NanoManager.fillColor(color)
+        NanoVG.nvgFill(nvg)
+    }
+
+    fun drawIsland(x: Float, y: Float, width: Float, height: Float, color: Color, radius: Float = 12f) {
+
+        // center
+        NanoVG.nvgBeginPath(nvg)
+
+        NanoVG.nvgMoveTo(nvg, x, y)
+
+        NanoVG.nvgArcTo(nvg, x - radius, y, x - radius, y + radius, radius)
+        NanoVG.nvgLineTo(nvg, x - radius, y + height - radius)
+
+        NanoVG.nvgArcTo(nvg, x - radius, y + height, x + radius, y + height, radius)
+        NanoVG.nvgLineTo(nvg, x + width, y + height)
+
+        NanoVG.nvgArcTo(nvg, x + width + radius, y + height, x + width + radius, y + height - radius, radius)
+        NanoVG.nvgLineTo(nvg, x + width + radius, y + radius)
+
+        NanoVG.nvgArcTo(nvg, x + width + radius, y, x + width, y, radius)
 
         NanoVG.nvgClosePath(nvg)
 

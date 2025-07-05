@@ -25,6 +25,8 @@
   "neko.module.InvManager.name": "背包整理",
   "neko.module.Eagle.name": "边缘蹲下",
   "neko.module.NoFall.name": "如履平地",
+  "neko.module.DelayPacket.name": "延迟发包",
+  "neko.module.Timer.name": "游戏加速",
 
   "neko.module.ClickScreen.name": "配置界面",
   "neko.module.Settings.name": "设置",
@@ -54,6 +56,8 @@
   "neko.module.InvManager.desc": "整理你背包的物品",
   "neko.module.Eagle.desc": "自动在方块边缘蹲下",
   "neko.module.NoFall.desc": "防止摔落伤害",
+  "neko.module.DelayPacket.desc": "积累数据包，然后一次性发送到服务器",
+  "neko.module.Timer.desc": "修改客户端的游戏游戏刻刻速率",
 
   "neko.module.ClickScreen.desc": "打开配置界面",
   "neko.module.Settings.desc": "客户端的一些设置",
