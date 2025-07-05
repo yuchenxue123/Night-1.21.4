@@ -165,6 +165,7 @@ object ModuleBlockFly : ClientModule(
             }
 
             RotationMode.TWIST -> {
+                // skid
                 val direct = player.direction + 180f
 
                 val yaw = direct % 360f
@@ -294,24 +295,6 @@ object ModuleBlockFly : ClientModule(
 
         return false
     }
-
-    private fun isDiagonal(threshold: Float): Boolean {
-        val yaw = player.direction
-        val normalizedYaw = abs((yaw + 360) % 360)
-
-        val north = abs(normalizedYaw) < threshold || abs(normalizedYaw - 360) < threshold
-        val south = abs(normalizedYaw - 180) < threshold
-        val east = abs(normalizedYaw - 90) < threshold
-        val west = abs(normalizedYaw - 270) < threshold
-
-        return !north && !south && !east && !west
-    }
-
-    data class BlockData(
-        val pos: BlockPos,
-        val direction: Direction,
-        val vec: Vec3d,
-    )
 
     data class PlaceData(
         val pos: BlockPos,

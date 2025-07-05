@@ -75,7 +75,6 @@ object ModuleKillAura : ClientModule(
     private var target: LivingEntity? = null
 
     override fun disable() {
-        unblock()
         RotationManager.remove(this)
     }
 
@@ -165,19 +164,6 @@ object ModuleKillAura : ClientModule(
             }
         }
     }
-
-    private fun block() {
-        if (player.mainHandStack.isIn(ItemTags.SWORDS)) {
-            if (interactionManager.interactItem(player, Hand.MAIN_HAND).isAccepted) {
-                player.swingHand(Hand.MAIN_HAND)
-            }
-        }
-    }
-
-    private fun unblock() {
-        interactionManager.stopUsingItem(player)
-    }
-
 
     private var lastClickTime = 0L
 
