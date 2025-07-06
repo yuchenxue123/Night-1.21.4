@@ -1,5 +1,6 @@
 package cute.neko.night.ui.screen.click.styles.normal.buttons
 
+import cute.neko.night.features.module.ClientModule
 import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.ui.screen.click.styles.normal.NormalMain
@@ -18,7 +19,7 @@ import java.awt.Color
  */
 
 class NormalModuleButton(
-    val module: cute.neko.night.features.module.ClientModule
+    val module: ClientModule
 ) : Screen {
 
     private val renderX: Float

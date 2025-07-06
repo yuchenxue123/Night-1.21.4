@@ -1,5 +1,6 @@
 package cute.neko.night.ui.screen.click.styles.normal
 
+import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.setting.type.mode.AbstractModeSetting
 import cute.neko.night.features.setting.type.mode.MultiEnumSetting
 import cute.neko.night.features.setting.type.number.AbstractNumberSetting
@@ -41,7 +42,7 @@ object NormalMain : Screen {
 
     private const val MODULE_INFO_HEIGHT = 60f
 
-    var module: cute.neko.night.features.module.ClientModule? = null
+    var module: ClientModule? = null
         set(value) {
             if (value == field) return
             field = value

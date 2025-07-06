@@ -1,6 +1,7 @@
 package cute.neko.night.config
 
 import com.google.gson.JsonObject
+import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleManager
 import cute.neko.night.features.setting.type.mode.AbstractModeSetting
 import cute.neko.night.features.setting.type.mode.MultiEnumSetting
@@ -51,7 +52,7 @@ object ConfigUtils {
     /**
      * 获取模块的配置Json
      */
-    fun getModuleConfig(module: cute.neko.night.features.module.ClientModule): JsonObject {
+    fun getModuleConfig(module: ClientModule): JsonObject {
         val json = JsonObject()
 
         // state
@@ -99,7 +100,7 @@ object ConfigUtils {
     /**
      * 加载模块配置
      */
-    fun loadModuleConfig(module: cute.neko.night.features.module.ClientModule, json: JsonObject) {
+    fun loadModuleConfig(module: ClientModule, json: JsonObject) {
         // state
         if (json.has("state")) {
             module.state = json.get("state").asBoolean

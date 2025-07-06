@@ -1,6 +1,7 @@
 package cute.neko.night.event.events.client
 
 import cute.neko.night.event.Event
+import cute.neko.night.features.module.ClientModule
 
 /**
  * @author yuchenxue
@@ -8,6 +9,6 @@ import cute.neko.night.event.Event
  */
 
 class ModuleToggleEvent(
-    val module: cute.neko.night.features.module.ClientModule,
+    val module: ClientModule,
     val state: Boolean
 ) : Event()

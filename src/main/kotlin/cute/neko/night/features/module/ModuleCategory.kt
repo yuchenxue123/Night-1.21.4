@@ -25,6 +25,6 @@ enum class ModuleCategory(private val renderName: String) {
             }
         }
 
-    val modules: List<cute.neko.night.features.module.ClientModule>
+    val modules: List<ClientModule>
         get() = ModuleManager.modules.filter { it.category == this }.sortedBy { it.name }
 }
