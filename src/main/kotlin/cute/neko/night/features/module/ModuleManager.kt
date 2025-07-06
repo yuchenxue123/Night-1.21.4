@@ -4,7 +4,7 @@ import cute.neko.night.event.EventListener
 import cute.neko.night.event.events.game.misc.KeyboardEvent
 import cute.neko.night.event.handle
 import cute.neko.night.features.module.combat.ModuleKeepSprint
-import cute.neko.night.features.module.combat.ModuleKillAura
+import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.combat.antivelocity.ModuleAntiVelocity
 import cute.neko.night.features.module.misc.ModuleAntiBot
 import cute.neko.night.features.module.misc.ModuleTest

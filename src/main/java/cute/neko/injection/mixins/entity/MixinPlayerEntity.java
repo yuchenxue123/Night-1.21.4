@@ -48,15 +48,11 @@ public abstract class MixinPlayerEntity extends MixinLivingEntity {
 
     @Redirect(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/math/Vec3d;multiply(DDD)Lnet/minecraft/util/math/Vec3d;"))
     private Vec3d keepSprintHook(Vec3d instance, double x, double y, double z) {
-        if ((Object) this != MinecraftClient.getInstance().player) {
-            return instance;
+        if ((Object) this == MinecraftClient.getInstance().player) {
+            if (ModuleKeepSprint.INSTANCE.getRunning()) {
+                x = z = ModuleKeepSprint.INSTANCE.getMotion();
+            }
         }
-
-        if (!ModuleKeepSprint.INSTANCE.getRunning()) {
-            return instance;
-        }
-
-        x = z = ModuleKeepSprint.INSTANCE.getMotion();
 
         return instance.multiply(x, y, z);
     }

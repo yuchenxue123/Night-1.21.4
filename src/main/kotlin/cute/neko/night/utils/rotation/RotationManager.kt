@@ -5,9 +5,11 @@ import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.event.events.game.player.PlayerVelocityEvent
 import cute.neko.night.event.handle
+import cute.neko.night.utils.entity.box
 import cute.neko.night.utils.entity.rotation
 import cute.neko.night.utils.entity.setRotation
 import cute.neko.night.utils.interfaces.Accessor
+import cute.neko.night.utils.kotlin.Priority
 import cute.neko.night.utils.movement.DirectionalInput
 import cute.neko.night.utils.rotation.RotationUtils.angleDifference
 import cute.neko.night.utils.rotation.data.Rotation
@@ -70,6 +72,42 @@ object RotationManager : EventListener, Accessor {
         requests.add(request)
 
         update()
+    }
+
+    fun request(
+        listener: EventListener,
+        rotation: Rotation,
+        priority: Int = Priority.ROTATION_NORMAL,
+        horizontalSpeed: Float = 180f,
+        verticalSpeed: Float = 180f,
+        correction: MovementCorrection = MovementCorrection.NONE
+    ) {
+        request(RotationRequest(
+            listener,
+            rotation,
+            priority,
+            horizontalSpeed,
+            verticalSpeed,
+            correction
+        ))
+    }
+
+    fun request(
+        listener: EventListener,
+        entity: Entity,
+        priority: Int = Priority.ROTATION_NORMAL,
+        horizontalSpeed: Float = 180f,
+        verticalSpeed: Float = 180f,
+        correction: MovementCorrection = MovementCorrection.NONE
+    ) {
+        request(RotationRequest(
+            listener,
+            RotationUtils.toRotation(entity.box.center).normalize(),
+            priority,
+            horizontalSpeed,
+            verticalSpeed,
+            correction
+        ))
     }
 
     fun remove(listener: EventListener) {
