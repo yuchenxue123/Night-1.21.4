@@ -9,6 +9,7 @@
 
   "neko.module.AntiVelocity.name": "反击退",
   "neko.module.KillAura.name": "杀戮光环",
+  "neko.module.KeepSprint.name": "攻击机炮",
 
   "neko.module.Test.name": "测试",
   "neko.module.Disabler.name": "禁用器",
@@ -40,6 +41,7 @@
 
   "neko.module.AntiVelocity.desc": "减少玩家击退",
   "neko.module.KillAura.desc": "自动攻击附近的实体",
+  "neko.module.KeepSprint.desc": "攻击时不减速，保持疾跑",
 
   "neko.module.Test.desc": "测试东西",
   "neko.module.Disabler.desc": "禁用一些反作弊的检测",

@@ -9,6 +9,7 @@
 
   "neko.module.AntiVelocity.name": "AntiVelocity",
   "neko.module.KillAura.name": "KillAura",
+  "neko.module.KeepSprint.name": "KeepSprint",
 
   "neko.module.Test.name": "Test",
   "neko.module.Disabler.name": "Disabler",
@@ -40,6 +41,7 @@
 
   "neko.module.AntiVelocity.desc": "Anti knock back.",
   "neko.module.KillAura.desc": "Auto attack around entity.",
+  "neko.module.KeepSprint.desc": "Keep sprint when attack entity。",
 
   "neko.module.Test.desc": "Test something.",
   "neko.module.Disabler.desc": "Disable some checks of anti-cheat.",

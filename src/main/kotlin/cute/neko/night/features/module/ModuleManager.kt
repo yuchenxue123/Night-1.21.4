@@ -3,6 +3,7 @@ package cute.neko.night.features.module
 import cute.neko.night.event.EventListener
 import cute.neko.night.event.events.game.misc.KeyboardEvent
 import cute.neko.night.event.handle
+import cute.neko.night.features.module.combat.ModuleKeepSprint
 import cute.neko.night.features.module.combat.ModuleKillAura
 import cute.neko.night.features.module.combat.antivelocity.ModuleAntiVelocity
 import cute.neko.night.features.module.misc.ModuleAntiBot
@@ -35,6 +36,7 @@ object ModuleManager : EventListener, Accessor {
             // combat
             ModuleAntiVelocity,
             ModuleKillAura,
+            ModuleKeepSprint,
 
             // movement
             ModuleSprint,

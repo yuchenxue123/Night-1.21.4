@@ -78,7 +78,6 @@ open class ClientModule(
         tree(it)
     }
 
-
     override val running: Boolean
         get() = super.running && state
 }
