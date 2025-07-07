@@ -6,7 +6,10 @@ import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.module.movement.speed.ModuleSpeed
 import cute.neko.night.features.setting.type.mode.SubMode
+import cute.neko.night.utils.client.chat
 import cute.neko.night.utils.entity.direction
+import cute.neko.night.utils.entity.moving
+import cute.neko.night.utils.entity.strafe
 import cute.neko.night.utils.extensions.*
 import cute.neko.night.utils.kotlin.Priority
 import cute.neko.night.utils.movement.MoveDirection
@@ -19,6 +22,7 @@ import cute.neko.night.utils.rotation.data.RotationRequest
 import cute.neko.night.utils.rotation.features.MovementCorrection
 import cute.neko.night.utils.rotation.util.BlockSearchDirections
 import net.minecraft.block.BlockState
+import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
@@ -37,6 +41,8 @@ object ModuleBlockFly : ClientModule(
     ModuleCategory.PLAYER,
     key = GLFW.GLFW_KEY_F,
 ) {
+
+    private val tower by boolean("Tower", false)
 
     private val rotations by mode("Rotation", RotationMode.NORMAL)
 
@@ -68,18 +74,49 @@ object ModuleBlockFly : ClientModule(
 
     private var data: PlaceData? = null
 
-    override fun enable() {
-    }
-
     override fun disable() {
         Slots.reset()
+
+        ground = false
 
         RotationManager.remove(this)
     }
 
+    private var ground = false
+
     @Suppress("unused")
-    private val onPlayerTick = handle<PlayerTickEvent> { it: PlayerTickEvent ->
-        val world = mc.world ?: return@handle
+    private val onPlayerTick = handle<PlayerTickEvent> {
+        val player = mc.player ?: return@handle
+
+        if (tower && player.moving) {
+            if (player.isOnGround) {
+                ground = true
+            }
+
+            if (ground && mc.options.jumpKey.isPressed) {
+                when (player.fallTicks % 3) {
+                    0 -> {
+                        val speedAmplifier = player.getStatusEffect(StatusEffects.SPEED)?.amplifier
+                        val strafeSpeed = when (speedAmplifier) {
+                            null -> 0.22f
+                            0 -> 0.22f + 0.036f
+                            else -> 0.22f + 0.042f * (speedAmplifier + 1)
+                        }
+
+                        player.strafe(strafeSpeed.toDouble())
+                        player.velocity.y = 0.4
+                    }
+
+                    1 -> player.velocity.y = 0.33
+
+                    2 -> {
+                        val targetY = player.blockPos.y + 1
+                        val diffY = targetY - player.pos.y
+                        player.velocity.y = diffY
+                    }
+                }
+            }
+        }
 
         findBlock()
 

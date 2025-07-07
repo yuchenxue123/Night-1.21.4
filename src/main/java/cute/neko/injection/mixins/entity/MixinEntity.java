@@ -36,6 +36,8 @@ public abstract class MixinEntity {
     @Shadow
     public abstract double getX();
 
+    @Shadow public float fallDistance;
+
     @ModifyExpressionValue(
             method = "updateVelocity",
             at = @At(

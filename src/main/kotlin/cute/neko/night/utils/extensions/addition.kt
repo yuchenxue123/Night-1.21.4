@@ -2,6 +2,7 @@ package cute.neko.night.utils.extensions
 
 import cute.neko.injection.addition.ClientPlayerEntityAddition
 import cute.neko.injection.addition.InputAddition
+import cute.neko.injection.addition.PlayerEntityAddition
 import net.minecraft.client.input.Input
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.util.PlayerInput
@@ -19,3 +20,6 @@ val ClientPlayerEntity.groundTicks
 
 val ClientPlayerEntity.airTicks
     get() = (this as ClientPlayerEntityAddition).`neko$getAirTicks`()
+
+val ClientPlayerEntity.fallTicks
+    get() = (this as PlayerEntityAddition).`neko$getFallTicks`()

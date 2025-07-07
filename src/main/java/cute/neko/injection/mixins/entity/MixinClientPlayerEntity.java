@@ -30,8 +30,10 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
     @Shadow
     @Final
     protected MinecraftClient client;
+
     @Shadow
     public Input input;
+
     @Unique
     private PlayerMotionEvent.Pre playerMotionEvent;
 
@@ -89,6 +91,10 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
 
     @Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z", ordinal = 0))
     private void hookCustomMultiplier(CallbackInfo callbackInfo) {
+        if ((Object) this != client.player) {
+            return;
+        }
+
         final Input input = this.input;
         // reverse
         input.movementForward /= 0.2f;
@@ -209,7 +215,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         }
 
         EventManager.INSTANCE.callEvent(
-                new PlayerMotionEvent.Pre(
+                new PlayerMotionEvent.Post(
                         this.getX(), this.getY(), this.getZ(),
                         this.getYaw(), this.getPitch(),
                         this.isOnGround())

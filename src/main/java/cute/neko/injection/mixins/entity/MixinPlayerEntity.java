@@ -3,6 +3,9 @@ package cute.neko.injection.mixins.entity;
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
 import com.mojang.datafixers.util.Either;
+import cute.neko.injection.addition.PlayerEntityAddition;
+import cute.neko.night.event.EventManager;
+import cute.neko.night.event.events.game.player.PlayerTickEvent;
 import cute.neko.night.features.module.combat.ModuleKeepSprint;
 import cute.neko.night.utils.rotation.RotationManager;
 import cute.neko.night.utils.rotation.features.MovementCorrection;
@@ -14,8 +17,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 /**
  * @author yuchenxue
@@ -23,11 +29,25 @@ import org.spongepowered.asm.mixin.injection.Redirect;
  */
 
 @Mixin(PlayerEntity.class)
-public abstract class MixinPlayerEntity extends MixinLivingEntity {
+public abstract class MixinPlayerEntity extends MixinLivingEntity implements PlayerEntityAddition {
 
-    @Shadow public abstract void remove(Entity.RemovalReason reason);
+    @Unique
+    private int fallTicks;
 
-    @Shadow public abstract Either<PlayerEntity.SleepFailureReason, Unit> trySleep(BlockPos pos);
+    @Inject(method = "tickMovement", at = @At(value = "HEAD"))
+    private void hookTickMovement(CallbackInfo callbackInfo) {
+        if ((Object) this != MinecraftClient.getInstance().player) {
+            return;
+        }
+
+        if (isOnGround()) {
+            fallTicks = 0;
+        } else {
+            fallTicks++;
+        }
+
+        EventManager.INSTANCE.callEvent(new PlayerTickEvent());
+    }
 
     @ModifyExpressionValue(method = "attack", at = @At(value = "INVOKE", target = "Lnet/minecraft/entity/player/PlayerEntity;getYaw()F"))
     private float hookFixRotation(float original) {
@@ -66,4 +86,8 @@ public abstract class MixinPlayerEntity extends MixinLivingEntity {
         return !ModuleKeepSprint.INSTANCE.getRunning();
     }
 
+    @Override
+    public int neko$getFallTicks() {
+        return fallTicks;
+    }
 }
