@@ -4,6 +4,7 @@ import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.injection.addition.ClientPlayerEntityAddition;
 import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerMotionEvent;
+import cute.neko.night.event.events.game.player.PlayerMovementTickEvent;
 import cute.neko.night.event.events.game.player.PlayerTickEvent;
 import cute.neko.night.event.events.game.player.PlayerUseMultiplier;
 import cute.neko.night.utils.rotation.RotationManager;
@@ -70,7 +71,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
             return;
         }
 
-        EventManager.INSTANCE.callEvent(new PlayerTickEvent());
+        EventManager.INSTANCE.callEvent(new PlayerMovementTickEvent());
     }
 
     @Inject(method = "sendMovementPackets", at = @At("HEAD"))

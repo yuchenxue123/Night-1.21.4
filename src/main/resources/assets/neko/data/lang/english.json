@@ -20,6 +20,7 @@
   "neko.module.NoJumpDelay.name": "NoJumpDelay",
   "neko.module.Sprint.name": "Sprint",
   "neko.module.Speed.name": "Speed",
+  "neko.module.Fly.name": "Fly",
 
   "neko.module.BlockFly.name": "BlockFly",
   "neko.module.Stealer.name": "Stealer",
@@ -52,6 +53,7 @@
   "neko.module.NoJumpDelay.desc": "Cancel you jump delay.",
   "neko.module.Sprint.desc": "Auto sprint.",
   "neko.module.Speed.desc": "Increase your move speed.",
+  "neko.module.Fly.desc": "Fly in the sky.",
 
   "neko.module.BlockFly.desc": "Auto place block below your feet.",
   "neko.module.Stealer.desc": "Stealer items from the container.",

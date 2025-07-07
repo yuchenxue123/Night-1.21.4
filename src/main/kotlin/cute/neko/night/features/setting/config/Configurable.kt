@@ -39,7 +39,7 @@ open class Configurable(override val name: String) : Nameable {
         name: String,
         value: Float,
         range: ClosedFloatingPointRange<Float> = 1f..7f,
-        step: Float = 0.5f,
+        step: Float = 0.01f,
         visibility: () -> Boolean = { true }
     ) = setting(FloatSetting(name, value, range, step, visibility))
 

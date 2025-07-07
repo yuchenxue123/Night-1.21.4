@@ -20,6 +20,7 @@
   "neko.module.NoPush.name": "不推",
   "neko.module.Sprint.name": "疾跑",
   "neko.module.Speed.name": "速度",
+  "neko.module.Fly.name": "飞行",
 
   "neko.module.BlockFly.name": "自动搭路",
   "neko.module.Stealer.name": "顺手牵羊",
@@ -52,6 +53,7 @@
   "neko.module.NoPush.desc": "使实体碰撞失效",
   "neko.module.Sprint.desc": "自动疾跑",
   "neko.module.Speed.desc": "加快你的移动速度",
+  "neko.module.Fly.desc": "让你遨游天空",
 
   "neko.module.BlockFly.desc": "自动在你的脚下放置方块",
   "neko.module.Stealer.desc": "偷取容器里的物品",
