@@ -39,7 +39,6 @@ class BooleanSettingButton(
 
         val text = setting.name
         font.render(
-            context,
             text,
             renderX + padding,
             renderY + offset + (height - font.height(text)) / 2,

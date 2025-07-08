@@ -47,7 +47,6 @@ object NormalSide : Screen {
 
         val title = Night.CLIENT_NAME
         font.render(
-            context,
             title,
             renderX + (SIDE_PANEL_WIDTH - font.width(title, TITLE_SIZE)) / 2,
             renderY + UP_SPACE + (TITLE_HEIGHT - font.height(title, TITLE_SIZE)) / 2,
@@ -61,7 +60,6 @@ object NormalSide : Screen {
             val color = if (NormalMiddle.category == category) Color.WHITE else Color(200, 200, 200, 255)
 
             font.render(
-                context,
                 text,
                 renderX + (SIDE_PANEL_WIDTH - font.width(text)) / 2,
                 renderY + offset + (CATEGORY_HEIGHT - font.height(text)) / 2,

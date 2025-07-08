@@ -117,7 +117,6 @@ class Slider : Screen {
             )
 
             font.render(
-                context,
                 text,
                 start.x - pw + (pw * 2 - font.width(text)) / 2,
                 start.y - 32f + (24f - font.height(text)) / 2,

@@ -37,6 +37,7 @@
   "neko.module.Interface.name": "Interface",
   "neko.module.NoHurtCam.name": "NoHurtCam",
   "neko.module.NameTags.name": "NameTags",
+  "neko.module.ESP.name": "ESP",
 
 
 
@@ -69,5 +70,6 @@
   "neko.module.Rotations.desc": "Render client rotations.",
   "neko.module.Interface.desc": "Render some visual widgets on screen.",
   "neko.module.NoHurtCam.desc": "Remove cam animation when player receive hurt.",
-  "neko.module.NameTags.desc": "Render a through wall name label."
+  "neko.module.NameTags.desc": "Render a through wall name label.",
+  "neko.module.ESP.desc": "Render a rect overlay player."
 }

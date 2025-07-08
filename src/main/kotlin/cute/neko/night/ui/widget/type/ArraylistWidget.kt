@@ -177,7 +177,6 @@ object ArraylistWidget : AbstractWidget(
 
             // name
             font.render(
-                context,
                 name,
                 renderX + side,
                 renderY + SPACE_TOP_BOTTOM,
@@ -190,7 +189,6 @@ object ArraylistWidget : AbstractWidget(
             // suffix
             if (ModuleInterface.arraySuffix) {
                 font.render(
-                    context,
                     suffix,
                     renderX + side,
                     renderY + SPACE_TOP_BOTTOM,

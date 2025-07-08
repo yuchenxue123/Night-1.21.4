@@ -232,7 +232,6 @@ object DynamicIslandWidget : AbstractWidget(
 
         override fun render(context: DrawContext, renderX: Float, renderY: Float) {
             font.render(
-                context,
                 text,
                 renderX + LEFT_RIGHT_SPACE,
                 renderY + UP_BOTTOM_SPACE,
@@ -319,7 +318,6 @@ object DynamicIslandWidget : AbstractWidget(
                 var interOffset = 0f
                 infos.forEach { info ->
                     font.render(
-                        context,
                         info.text,
                         renderX + LEFT_RIGHT_SPACE + PADDING,
                         renderY + UP_BOTTOM_SPACE + offset + interOffset + PADDING,

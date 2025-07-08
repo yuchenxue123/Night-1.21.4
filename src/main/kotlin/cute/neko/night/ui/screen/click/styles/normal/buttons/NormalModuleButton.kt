@@ -40,7 +40,6 @@ class NormalModuleButton(
         val color = if (module == NormalMain.module) Color.WHITE else Color(200, 200, 200, 255)
 
         font.render(
-            context,
             text,
             renderX + (MIDDLE_PANEL_WIDTH - font.width(text)) / 2,
             renderY + offset + (MODULE_BUTTON_HEIGHT - font.height(text)) / 2,

@@ -15,7 +15,7 @@ import net.minecraft.entity.player.PlayerEntity
  * @date 2025/05/10
  */
 
-class TargetOption : Configurable("Target") {
+open class TargetOption : Configurable("Target") {
 
     private val targets = enum("Targets", TargetType.PLAYERS)
 

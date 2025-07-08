@@ -76,7 +76,6 @@ class NumberSettingButton(
         var tempOffset = padding
 
         font.render(
-            context,
             text,
             renderX + padding,
             renderY + offset + tempOffset,
@@ -86,7 +85,6 @@ class NumberSettingButton(
         tempOffset += font.height(text) + padding
 
         font.render(
-            context,
             min,
             renderX + padding,
             renderY + offset + tempOffset,
@@ -94,7 +92,6 @@ class NumberSettingButton(
         )
 
         font.render(
-            context,
             max,
             renderX + width - padding - font.width(max),
             renderY + offset + tempOffset,

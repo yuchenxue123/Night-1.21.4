@@ -63,6 +63,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleInterface,
             ModuleNoHurtCam,
             ModuleNameTags,
+            ModuleESP,
 
             // misc
             ModuleDisabler,

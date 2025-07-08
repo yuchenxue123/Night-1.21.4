@@ -1,5 +1,6 @@
 package cute.neko.night.utils.extensions
 
+import org.joml.Vector4f
 import java.awt.Color
 
 /**
@@ -7,18 +8,12 @@ import java.awt.Color
  * @date 2025/06/20
  */
 
-val Color.redF: Float
-    get() = red / 255f
-
-val Color.greenF: Float
-    get() = green / 255f
-
-val Color.blueF: Float
-    get() = blue / 255f
-
-val Color.alphaF: Float
-    get() = alpha / 255f
-
+fun Color.float() = Vector4f(
+    (red / 255f).coerceIn(0f, 1f),
+    (green / 255f).coerceIn(0f, 1f),
+    (blue / 255f).coerceIn(0f, 1f),
+    (alpha / 255f).coerceIn(0f, 1f)
+)
 
 fun <E : Enum<E>> E.next(): E = declaringJavaClass.enumConstants.run {
     get((ordinal + 1).mod(size))

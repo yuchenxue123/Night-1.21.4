@@ -94,7 +94,6 @@ object NormalMain : Screen {
             val padding = 16f
 
             font.render(
-                context,
                 text,
                 renderX + padding,
                 renderY + TOP_BOTTOM_SPACE + (MODULE_INFO_HEIGHT - font.height(text)) / 2,
@@ -119,7 +118,6 @@ object NormalMain : Screen {
         if (module != null && settings.isEmpty()) {
             val text = "Empty"
             font.render(
-                context,
                 text,
                 renderX + (MAIN_PANEL_WIDTH - font.width(text)) / 2,
                 renderY + TOP_BOTTOM_SPACE + MODULE_INFO_HEIGHT

@@ -28,26 +28,6 @@ class NanoFont(
     }
 
     fun render(
-        context: DrawContext,
-        text: String,
-        x: Float, y: Float,
-        color: Color,
-        size: Float = this.size,
-    ) {
-        if (font == -1) {
-            return
-        }
-
-        NanoVG.nvgFontSize(nvg, size)
-        NanoVG.nvgFontFace(nvg, name)
-        NanoVG.nvgTextAlign(nvg, NanoVG.NVG_ALIGN_LEFT or NanoVG.NVG_ALIGN_TOP)
-
-        NanoManager.fillColor(color)
-
-        NanoVG.nvgText(nvg, x, y, text)
-    }
-
-    fun render(
         text: String,
         x: Float, y: Float,
         color: Color,

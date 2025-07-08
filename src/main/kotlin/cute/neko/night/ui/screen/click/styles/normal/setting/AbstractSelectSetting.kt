@@ -53,7 +53,6 @@ abstract class AbstractSelectSetting<T : AbstractSetting<*>>(
 
         val text = setting.name
         font.render(
-            context,
             text,
             renderX + padding,
             renderY + offset + padding,

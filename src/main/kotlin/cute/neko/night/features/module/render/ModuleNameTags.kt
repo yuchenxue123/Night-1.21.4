@@ -1,9 +1,20 @@
 package cute.neko.night.features.module.render
 
+import cute.neko.night.event.events.game.render.ScreenRenderEvent
+import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
+import cute.neko.night.features.module.render.share.SharedTargetOption
 import cute.neko.night.features.setting.config.types.choice.Choice
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
+import cute.neko.night.utils.entity.interpolatedBox
+import cute.neko.night.utils.nano.NanoManager.nvg
+import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.WorldToScreen
+import net.minecraft.entity.LivingEntity
+import org.lwjgl.nanovg.NanoVG
+import java.awt.Color
 
 /**
  * @author yuchenxue
@@ -16,10 +27,42 @@ object ModuleNameTags : ClientModule(
 ) {
     val mode = choices("Mode", arrayOf(NameTagsNormal))
 
-//    val targets = tree(TargetOption())
+    private val targets = tree(SharedTargetOption)
+
+    private val font = NanoFontManager.GENSHIN
 
     object NameTagsNormal : Choice("Normal") {
         override val controller: ChoicesConfigurable<*>
             get() = mode
+
+        private val onScreenRender = handle<ScreenRenderEvent> { event ->
+            world.entities.filterIsInstance<LivingEntity>()
+                .filter { targets.isTarget(it) }
+                .forEach { entity ->
+                    WorldToScreen.calculate(entity.interpolatedBox(event.tickDelta)) { x, y, width, height ->
+                        val padding = 8f
+                        val text = entity.name.string
+                        val w = font.width(text) + padding * 2
+                        val h = font.height(text) + padding * 2
+
+                        val startX = x - (w - width) / 2f
+                        val startY = y - h - 4f
+
+                        val distance = player.distanceTo(entity)
+                        val scale = (40f / distance).coerceIn(0.5f, 1f)
+
+                        NanoVG.nvgSave(nvg)
+                        NanoVG.nvgTranslate(nvg, startX + w / 2f, startY + h / 2f)
+                        NanoVG.nvgScale(nvg, scale, scale)
+                        NanoVG.nvgTranslate(nvg, - w / 2f, - h / 2f)
+
+                        NanoUtils.drawRect(0f, 0f, w, h, Color(0, 225, 225, 120))
+
+                        font.render(text, padding, padding, Color.WHITE)
+
+                        NanoVG.nvgRestore(nvg)
+                    }
+                }
+        }
     }
 }

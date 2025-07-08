@@ -5,7 +5,6 @@ import cute.neko.night.utils.nano.NanoManager.nvg
 import org.joml.Vector2f
 import org.lwjgl.nanovg.NanoVG
 import java.awt.Color
-import kotlin.math.PI
 
 
 /**

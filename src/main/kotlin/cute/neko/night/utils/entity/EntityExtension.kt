@@ -2,12 +2,17 @@ package cute.neko.night.utils.entity
 
 import cute.neko.night.utils.client.player
 import cute.neko.night.utils.extensions.squared
+import cute.neko.night.utils.extensions.toVec3d
 import cute.neko.night.utils.movement.DirectionalInput
 import cute.neko.night.utils.rotation.data.Rotation
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.entity.Entity
 import net.minecraft.item.consume.UseAction
 import net.minecraft.util.math.Box
+import net.minecraft.util.math.Vec3d
+import org.joml.Vector3d
+import org.joml.Vector3f
+import org.joml.times
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
@@ -93,5 +98,21 @@ fun getMovementDirectionOfInput(facingYaw: Float, input: DirectionalInput): Floa
     }
 
     return actualYaw
+}
+
+fun Entity.interpolatedPos(tickDelta: Float): Vec3d {
+    return Vector3d(x, y, z)
+        .sub(prevX, prevY, prevZ)
+        .times(tickDelta.toDouble())
+        .add(prevX, prevY, prevZ)
+        .toVec3d()
+}
+
+fun Entity.interpolatedBox(tickDelta: Float): Box {
+    val interpolatedPos = interpolatedPos(tickDelta)
+
+    val origin = Vec3d(x, y, z)
+
+    return box.offset(interpolatedPos.subtract(origin))
 }
 

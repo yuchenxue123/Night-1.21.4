@@ -33,7 +33,7 @@ public class MixinInGameHud {
     @Inject(method = "renderMiscOverlays", at = @At(value = "TAIL"))
     private void hookScreenEvent(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
         NanoUtils.INSTANCE.draw(() -> {
-            EventManager.INSTANCE.callEvent(new ScreenRenderEvent(context, client.getWindow()));
+            EventManager.INSTANCE.callEvent(new ScreenRenderEvent(context, client.getWindow(), tickCounter.getTickDelta(false)));
             return Unit.INSTANCE;
         });
     }

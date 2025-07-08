@@ -11,5 +11,6 @@ import net.minecraft.client.util.Window
 
 class ScreenRenderEvent(
     val context: DrawContext,
-    val window: Window
+    val window: Window,
+    val tickDelta: Float
 ) : Event()

@@ -50,7 +50,6 @@ class ModeButton(val modeName: String) : Screen {
         )
 
         font.render(
-            context,
             modeName,
             renderX + (width - font.width(modeName)) / 2,
             renderY + (height - font.height(modeName)) / 2,

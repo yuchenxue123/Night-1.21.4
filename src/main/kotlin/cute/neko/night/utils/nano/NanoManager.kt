@@ -1,9 +1,6 @@
 package cute.neko.night.utils.nano
 
-import cute.neko.night.utils.extensions.alphaF
-import cute.neko.night.utils.extensions.blueF
-import cute.neko.night.utils.extensions.greenF
-import cute.neko.night.utils.extensions.redF
+import cute.neko.night.utils.extensions.*
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.nano.font.NanoFont
 import cute.neko.night.utils.nano.font.NanoFontManager
@@ -42,13 +39,15 @@ object NanoManager : Accessor {
     }
 
     fun fillColor(color: Color) {
-        val nvgColor = NanoVG.nvgRGBAf(color.redF, color.greenF, color.blueF, color.alphaF, NVGColor.create())
+        val (r, g, b, a) = color.float()
+        val nvgColor = NanoVG.nvgRGBAf(r, g, b, a, NVGColor.create())
 
         NanoVG.nvgFillColor(nvg, nvgColor)
     }
 
     fun strokeColor(color: Color) {
-        val nvgColor = NanoVG.nvgRGBAf(color.redF, color.greenF, color.blueF, color.alphaF, NVGColor.create())
+        val (r, g, b, a) = color.float()
+        val nvgColor = NanoVG.nvgRGBAf(r, g, b, a, NVGColor.create())
 
         NanoVG.nvgStrokeColor(nvg, nvgColor)
     }

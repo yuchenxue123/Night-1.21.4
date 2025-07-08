@@ -26,8 +26,9 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
     private var jump = false
     var disabled = false
 
-    override fun enable() {
+    override fun disable() {
         disabled = false
+        RotationManager.remove(this)
     }
 
     @Suppress("unused")
@@ -42,9 +43,8 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
 
                 RotationManager.request(
                     RotationRequest(
-                        ModuleDisabler,
-                        Rotation((player.yaw - 10f + (Math.random() - 0.5f) * 3f).toFloat(), player.pitch),
-                        0
+                        this,
+                        Rotation((player.yaw - 10f + (Math.random() - 0.5f) * 3f).toFloat(), player.pitch)
                     )
                 )
 
@@ -82,6 +82,7 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
                     execute = false
                     flags = 0
                     disabled = true
+                    RotationManager.remove(this)
                 }
             }
         }
