@@ -53,6 +53,15 @@ object RotationManager : EventListener, Accessor {
      * 客户端转头，自己的目标转头
      */
     var currentRotation: Rotation? = null
+        set(value) {
+            previousRotation = if (value == null) {
+                null
+            } else {
+                field ?: mc.player?.rotation ?: Rotation.ZERO
+            }
+
+            field = value
+        }
 
     /**
      * 更新前的转头
@@ -128,8 +137,6 @@ object RotationManager : EventListener, Accessor {
             return
         }
 
-        previousRotation = currentRotation ?: player.rotation
-
         activeRequest?.let { target ->
             val lastRotation = (currentRotation ?: player.rotation)
 
@@ -155,8 +162,6 @@ object RotationManager : EventListener, Accessor {
 
     @Suppress("unused")
     private val onPlayerMotionPre = handle<PlayerMotionEvent.Pre> { event ->
-        update()
-
         val correction = activeRequest?.correction ?: MovementCorrection.NONE
 
         currentRotation?.let {

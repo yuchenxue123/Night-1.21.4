@@ -89,5 +89,5 @@ object RotationUtils : Accessor {
         hypot(angleDifference(target.yaw, current.yaw), angleDifference(current.pitch, current.pitch))
 
     fun rotationDifference(entity: Entity): Float =
-        rotationDifference(toRotation(entity.box.center, true), RotationManager.serverRotation)
+        rotationDifference(toRotation(entity.box.center), RotationManager.serverRotation)
 }

@@ -30,7 +30,7 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, S extends LivingE
             var prevRotation = RotationManager.INSTANCE.getPreviousRotation();
 
             if (rotation != null && prevRotation != null) {
-                return new Pair<>(rotation, prevRotation);
+                return new Pair<>(prevRotation, rotation);
             }
         }
 
