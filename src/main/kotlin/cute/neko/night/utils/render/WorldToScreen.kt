@@ -6,6 +6,7 @@ import cute.neko.night.event.events.game.render.WorldRenderEvent
 import cute.neko.night.event.handle
 import cute.neko.night.utils.extensions.minus
 import cute.neko.night.utils.interfaces.Accessor
+import cute.neko.night.utils.kotlin.Priority
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Vec3d
@@ -25,7 +26,7 @@ object WorldToScreen : EventListener, Accessor {
     private val cacheMatrix = Matrix4f()
     private val cacheVec3f = Vector3f()
 
-    private val onWorldRender = handle<WorldRenderEvent>(priority = -100) { event ->
+    private val onWorldRender = handle<WorldRenderEvent>(priority =  Priority.FINAL) { event ->
         val matrixStack = event.matrixStack
 
         this.mvMatrix.set(matrixStack.peek().positionMatrix)
@@ -41,16 +42,17 @@ object WorldToScreen : EventListener, Accessor {
         val transformedPos = cacheVec3f.set(relativePos)
             .mulProject(cacheMatrix.set(projectionMatrix).mul(mvMatrix))
 
-        val guiScaleMul = 0.5f
-
-        val screenPos = transformedPos.mul(1.0F, -1.0F, 1.0F).add(1.0F, 1.0F, 0.0F)
-            .mul(guiScaleMul * mc.framebuffer.viewportWidth, guiScaleMul * mc.framebuffer.viewportHeight, 1.0F)
+        val screenPos = transformedPos
+            .mul(1f, -1f, 1f)
+            .add(1f, 1f, 0f)
+            .mul(0.5f, 0.5f, 1f)
+            .mul(mc.window.width.toFloat(), mc.window.height.toFloat(), 1f)
 
         if (transformedPos.z < 1f) {
             callback.invoke(screenPos.x, screenPos.y)
         }
 
-        return if (transformedPos.z < 1.0F) Vector3f(screenPos.x, screenPos.y, transformedPos.z) else null
+        return if (transformedPos.z < 1f) Vector3f(screenPos.x, screenPos.y, transformedPos.z) else null
     }
 
     fun calculate(
