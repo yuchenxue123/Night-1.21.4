@@ -19,6 +19,7 @@
     "entity.MixinClientPlayerEntity",
     "gui.MixinChatScreen",
     "gui.MixinInGameHud",
+    "network.MixinClientPlayerInteractionManager",
     "network.MixinClientPlayNetworkHandler",
     "render.MixinEntityRenderer",
     "render.MixinGameRenderer",

@@ -2,6 +2,7 @@ package cute.neko.injection.mixins.render;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.night.features.module.render.ModuleRotations;
+import cute.neko.night.utils.client.GlobalKt;
 import cute.neko.night.utils.rotation.RotationManager;
 import cute.neko.night.utils.rotation.data.Rotation;
 import net.minecraft.client.MinecraftClient;
@@ -51,7 +52,7 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, S extends LivingE
 
         var overwriteRotation = getRenderRotation(ModuleRotations.BodyPart.BODY);
         if (overwriteRotation != null) {
-            return MathHelper.lerpAngleDegrees(tickDelta, overwriteRotation.getLeft().getYaw(), overwriteRotation.getRight().getYaw());
+            return interpolateAngleDegrees(tickDelta, overwriteRotation.getLeft().getYaw(), overwriteRotation.getRight().getYaw());
         }
 
         return original;
@@ -71,7 +72,7 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, S extends LivingE
 
         var overwriteRotation = getRenderRotation(ModuleRotations.BodyPart.HEAD);
         if (overwriteRotation != null) {
-            return MathHelper.lerpAngleDegrees(tickDelta, overwriteRotation.getLeft().getYaw(), overwriteRotation.getRight().getYaw());
+            return interpolateAngleDegrees(tickDelta, overwriteRotation.getLeft().getYaw(), overwriteRotation.getRight().getYaw());
         }
 
         return original;
@@ -91,9 +92,20 @@ public class MixinLivingEntityRenderer<T extends LivingEntity, S extends LivingE
 
         var overwriteRotation = getRenderRotation(ModuleRotations.BodyPart.HEAD);
         if (overwriteRotation != null) {
-            return MathHelper.lerpAngleDegrees(tickDelta, overwriteRotation.getLeft().getPitch(), overwriteRotation.getRight().getPitch());
+            return interpolateAngleDegrees(tickDelta, overwriteRotation.getLeft().getPitch(), overwriteRotation.getRight().getPitch());
         }
 
         return original;
+    }
+
+    @Unique
+    private float interpolateAngleDegrees(float tickDelta, float previousAngle, float currentAngle) {
+        float delta = currentAngle - previousAngle;
+
+        if (Math.abs(delta) < 1e-7) {
+            return currentAngle;
+        }
+
+        return MathHelper.lerpAngleDegrees(tickDelta, previousAngle, currentAngle);
     }
 }

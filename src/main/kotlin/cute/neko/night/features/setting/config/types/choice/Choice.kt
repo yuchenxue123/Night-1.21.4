@@ -11,7 +11,7 @@ import cute.neko.night.utils.interfaces.Accessor
  * @date 2025/05/10
  */
 
-abstract class Choice(override val modeName: String) : Configurable(modeName), Accessor, SubMode, EventListener {
+abstract class Choice(override val modeName: String) : Configurable(modeName), SubMode, EventListener {
     abstract val controller: ChoicesConfigurable<*>
 
     open fun enable() {}

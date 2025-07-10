@@ -113,7 +113,6 @@ object ModuleInvManager : ClientModule(
                         || (slot.id == foot && slot.id != 8)
                         )
                     {
-                        chat("$head - ${slot.id}")
                         interactionManager.clickSlot(
                             screenHandler.syncId,
                             slot.id,

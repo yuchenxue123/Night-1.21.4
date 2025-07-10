@@ -3,6 +3,7 @@ package cute.neko.night.features.setting.config.types.choice
 import cute.neko.night.event.EventListener
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
+import cute.neko.night.features.setting.config.types.EmptyConfigurable
 import cute.neko.night.features.setting.config.types.ToggleConfigurable
 
 /**
@@ -21,6 +22,7 @@ open class ChoicesConfigurable<T : Choice>(
 
     fun getActive(): T = active
 
+    @Suppress("unused")
     private val mode by mode(name, choices.map { it.modeName }.toTypedArray())
         .listener { old, new ->
             choices.find { it.modeName.equals(old, true)}?.disable()
@@ -32,6 +34,7 @@ open class ChoicesConfigurable<T : Choice>(
     fun newState(new: Boolean) {
         inner.filterIsInstance<ChoicesConfigurable<*>>().forEach { it.newState(new) }
         inner.filterIsInstance<ToggleConfigurable>().forEach { it.newState(new) }
+        inner.filterIsInstance<EmptyConfigurable>().forEach { it.newState(new) }
 
         if (new) {
             this.getActive().enable()

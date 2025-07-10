@@ -2,7 +2,6 @@ package cute.neko.night.features.setting.config.types
 
 import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.type.mode.SubMode
-import cute.neko.night.utils.client.mc
 import net.minecraft.entity.LivingEntity
 import net.minecraft.entity.mob.HostileEntity
 import net.minecraft.entity.mob.SlimeEntity
@@ -20,7 +19,7 @@ open class TargetOption : Configurable("Target") {
     private val targets = enum("Targets", TargetType.PLAYERS)
 
     fun isTarget(entity: LivingEntity): Boolean {
-        if (entity == mc.player) return false
+        if (entity == player) return false
 
         return TargetType.entries.any { targets.isActive(it) && it.isTarget(entity) }
     }

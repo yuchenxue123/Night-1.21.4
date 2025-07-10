@@ -44,10 +44,7 @@ object RotationManager : EventListener, Accessor {
      * 活动的请求转头
      */
     val activeRequest: RotationRequest?
-        get() {
-            if (requests.isEmpty()) return null
-            return requests.peek()
-        }
+        get() = requests.peek() ?: null
 
     /**
      * 客户端转头，自己的目标转头
@@ -57,7 +54,7 @@ object RotationManager : EventListener, Accessor {
             previousRotation = if (value == null) {
                 null
             } else {
-                field ?: mc.player?.rotation ?: Rotation.ZERO
+                field ?: mc.player?.rotation
             }
 
             field = value
@@ -77,7 +74,7 @@ object RotationManager : EventListener, Accessor {
      * 请求转头
      */
     fun request(request: RotationRequest) {
-        requests.removeIf { it.listener == request.listener }
+        requests.removeAll { it.listener == request.listener }
         requests.add(request)
 
         update()
@@ -120,7 +117,7 @@ object RotationManager : EventListener, Accessor {
     }
 
     fun remove(listener: EventListener) {
-        requests.removeIf { it.listener == listener }
+        requests.removeAll { it.listener == listener }
 
         update()
     }
@@ -132,20 +129,20 @@ object RotationManager : EventListener, Accessor {
     }
 
     private fun update() {
-        if (requests.isEmpty()) {
+        if (requests.isEmpty() || activeRequest == null) {
             currentRotation = null
             return
         }
 
-        activeRequest?.let { target ->
-            val lastRotation = (currentRotation ?: player.rotation)
+        activeRequest?.let { request ->
+            val lastRotation = currentRotation ?: player.rotation
 
-            val yawDifference = angleDifference(target.rotation.yaw, lastRotation.yaw)
-            val pitchDifference = angleDifference(target.rotation.pitch, lastRotation.pitch)
+            val yawDifference = angleDifference(request.rotation.yaw, lastRotation.yaw)
+            val pitchDifference = angleDifference(request.rotation.pitch, lastRotation.pitch)
 
             val rotationDifference = hypot(abs(yawDifference), abs(pitchDifference))
 
-            val (horizontal, vertical) = target.horizontalSpeed to target.verticalSpeed
+            val (horizontal, vertical) = request.horizontalSpeed to request.verticalSpeed
 
             val straightLineYaw = abs(yawDifference / rotationDifference) * horizontal
             val straightLinePitch = abs(pitchDifference / rotationDifference) * vertical

@@ -46,7 +46,8 @@ object ModuleBlockFly : ClientModule(
         NORMAL("Normal"),
         REVERSE("Reverse"),
         TWIST("Twist"),
-        STEP("Step")
+        STEP("Step"),
+        TEST("Test")
     }
 
     private val stepMode by mode("StepType", RotationStepMode.FORTY_FIVE) {
@@ -128,7 +129,6 @@ object ModuleBlockFly : ClientModule(
                     BlockHitResult(it.vec, it.direction, it.pos, false),
                 ).isAccepted) {
                 player.swingHand(Hand.MAIN_HAND)
-                data = null
             }
         }
     }
@@ -210,6 +210,32 @@ object ModuleBlockFly : ClientModule(
                 }
 
                 return rotation.normalize()
+            }
+
+            RotationMode.TEST -> {
+                val yaw = player.direction + 180f
+                val pitch = 78f
+
+                for (x in generateSequence(0f) { it + 0.1f }.takeWhile { it in 0f..180f }) {
+                    for (y in generateSequence(0f) { it + 0.1f }.takeWhile { it in 0f..90f }) {
+                        val candidates = arrayOf(
+                            Rotation(yaw + x, pitch + y),
+                            Rotation(yaw - x, pitch + y),
+                            Rotation(yaw + x, pitch - y),
+                            Rotation(yaw - x, pitch - y)
+                        )
+
+                        candidates.forEach { rotation ->
+                            val raytrace = RaytraceUtils.raytrace(rotation)
+
+                            if (raytrace.blockPos == pos) {
+                                return rotation.normalize()
+                            }
+                        }
+                    }
+                }
+
+                return RotationUtils.toRotation(pos.toCenterPos().add(direction.doubleVector * 0.5)).normalize()
             }
         }
     }

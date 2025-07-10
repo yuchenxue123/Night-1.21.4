@@ -5,6 +5,7 @@ import cute.neko.night.event.EventListener
 import cute.neko.night.event.EventManager
 import cute.neko.night.event.events.client.ModuleToggleEvent
 import cute.neko.night.features.setting.config.Configurable
+import cute.neko.night.features.setting.config.types.EmptyConfigurable
 import cute.neko.night.features.setting.config.types.ToggleConfigurable
 import cute.neko.night.features.setting.config.types.choice.Choice
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
@@ -27,7 +28,7 @@ open class ClientModule(
     var key: Int = GLFW.GLFW_KEY_UNKNOWN,
     val locked: Boolean = false,
     var hidden: Boolean = false,
-) : Configurable(name), EventListener, Accessor {
+) : Configurable(name), EventListener {
 
     val showName: String
         get() {
@@ -61,6 +62,7 @@ open class ClientModule(
 
             inner.filterIsInstance<ChoicesConfigurable<*>>().forEach { it.newState(new) }
             inner.filterIsInstance<ToggleConfigurable>().forEach { it.newState(new) }
+            inner.filterIsInstance<EmptyConfigurable>().forEach { it.newState(new) }
         }
 
     open fun enable() {}

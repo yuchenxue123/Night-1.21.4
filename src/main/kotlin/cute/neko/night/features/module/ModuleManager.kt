@@ -16,6 +16,7 @@ import cute.neko.night.features.module.movement.fly.ModuleFly
 import cute.neko.night.features.module.movement.speed.ModuleSpeed
 import cute.neko.night.features.module.player.*
 import cute.neko.night.features.module.player.nofall.ModuleNoFall
+import cute.neko.night.features.module.player.scaffold.ModuleScaffold
 import cute.neko.night.features.module.render.*
 import cute.neko.night.ui.widget.type.DynamicIslandWidget
 import cute.neko.night.utils.interfaces.Accessor
@@ -54,6 +55,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleNoFall,
             ModuleDelayPacket,
             ModuleTimer,
+//            ModuleScaffold,
 
             // render
             ModuleBrightness,

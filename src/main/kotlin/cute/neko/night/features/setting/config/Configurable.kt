@@ -8,6 +8,7 @@ import cute.neko.night.features.setting.type.mode.SubMode
 import cute.neko.night.features.setting.type.number.FloatSetting
 import cute.neko.night.features.setting.type.number.IntegerSetting
 import cute.neko.night.features.setting.type.primitive.BooleanSetting
+import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.interfaces.Nameable
 
 /**
@@ -15,7 +16,7 @@ import cute.neko.night.utils.interfaces.Nameable
  * @date 2025/05/05
  */
 
-open class Configurable(override val name: String) : Nameable {
+open class Configurable(override val name: String) : Nameable, Accessor {
     private val _settings = mutableListOf<AbstractSetting<*>>()
 
     open val settings: MutableList<AbstractSetting<*>>

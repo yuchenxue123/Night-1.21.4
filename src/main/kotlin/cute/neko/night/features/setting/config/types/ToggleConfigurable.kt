@@ -4,7 +4,6 @@ import cute.neko.night.event.EventListener
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
-import cute.neko.night.utils.interfaces.Accessor
 
 /**
  * @author yuchenxue
@@ -15,7 +14,7 @@ import cute.neko.night.utils.interfaces.Accessor
     name: String,
     state: Boolean,
     private val parent: EventListener? = null
-) : Configurable(name), EventListener, Accessor {
+) : Configurable(name), EventListener {
 
     private val enable by boolean(name, state)
         .listener { _, new ->
@@ -32,6 +31,7 @@ import cute.neko.night.utils.interfaces.Accessor
     fun newState(new: Boolean) {
         inner.filterIsInstance<ChoicesConfigurable<*>>().forEach { it.newState(new) }
         inner.filterIsInstance<ToggleConfigurable>().forEach { it.newState(new) }
+        inner.filterIsInstance<EmptyConfigurable>().forEach { it.newState(new) }
 
         if (new) {
             enable()
