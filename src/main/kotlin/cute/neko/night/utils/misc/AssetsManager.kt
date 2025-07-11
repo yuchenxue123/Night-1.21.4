@@ -3,6 +3,7 @@ package cute.neko.night.utils.misc
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.google.gson.JsonSyntaxException
+import cute.neko.night.utils.client.FileUtils.gson
 import org.lwjgl.system.MemoryUtil
 import java.io.InputStream
 import java.nio.ByteBuffer
@@ -77,7 +78,7 @@ object AssetsManager {
         if (text.isEmpty()) return JsonObject()
 
         return try {
-            Gson().fromJson(text, JsonObject::class.java)
+            gson.fromJson(text, JsonObject::class.java)
         } catch (e: JsonSyntaxException) {
             JsonObject()
         }

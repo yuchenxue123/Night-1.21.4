@@ -2,6 +2,7 @@ package cute.neko.night.features.command
 
 import cute.neko.night.event.EventListener
 import cute.neko.night.features.command.client.BindCommand
+import cute.neko.night.features.command.client.ConfigCommand
 import cute.neko.night.features.command.client.ToggleCommand
 import cute.neko.night.features.command.game.GameModeCommand
 import cute.neko.night.utils.misc.debug.Debug
@@ -24,6 +25,7 @@ object CommandManager : EventListener {
         register(
             BindCommand,
             ToggleCommand,
+            ConfigCommand,
 
             // game
             GameModeCommand,

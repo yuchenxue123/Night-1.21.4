@@ -8,6 +8,7 @@ import cute.neko.night.features.setting.type.mode.MultiEnumSetting
 import cute.neko.night.features.setting.type.number.FloatSetting
 import cute.neko.night.features.setting.type.number.IntegerSetting
 import cute.neko.night.features.setting.type.primitive.BooleanSetting
+import cute.neko.night.utils.client.FileUtils.gson
 import cute.neko.night.utils.client.KeyboardUtils
 
 /**
@@ -77,7 +78,7 @@ object ConfigUtils {
 
                 is AbstractModeSetting -> {
                     val modeJson = JsonObject()
-                    modeJson.addProperty("modes", setting.modes.joinToString(", "))
+                    modeJson.add("modes", gson.toJsonTree(setting.modes))
                     modeJson.addProperty("value", setting.getAsString())
 
                     settingsJson.add(setting.name, modeJson)
@@ -85,7 +86,7 @@ object ConfigUtils {
 
                 is MultiEnumSetting -> {
                     val multiJson = JsonObject()
-                    multiJson.addProperty("selects", setting.selects.joinToString(", "))
+                    multiJson.add("selects", gson.toJsonTree(setting.selects))
                     multiJson.addProperty("actives", setting.getActivesArray().joinToString(", "))
 
                     settingsJson.add(setting.name, multiJson)
@@ -152,7 +153,5 @@ object ConfigUtils {
                 }
             }
         }
-
-
     }
 }
