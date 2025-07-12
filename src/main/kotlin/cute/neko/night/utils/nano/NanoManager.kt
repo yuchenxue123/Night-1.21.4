@@ -38,16 +38,20 @@ object NanoManager : Accessor {
         NanoVG.nvgEndFrame(nvg)
     }
 
+    private val sharedColor = NVGColor.calloc()
+
     fun fillColor(color: Color) {
         val (r, g, b, a) = color.float()
-        val nvgColor = NanoVG.nvgRGBAf(r, g, b, a, NVGColor.create())
+        sharedColor.r(r).g(g).b(b).a(a)
+        val nvgColor = NanoVG.nvgRGBAf(r, g, b, a, sharedColor)
 
         NanoVG.nvgFillColor(nvg, nvgColor)
     }
 
     fun strokeColor(color: Color) {
         val (r, g, b, a) = color.float()
-        val nvgColor = NanoVG.nvgRGBAf(r, g, b, a, NVGColor.create())
+        sharedColor.r(r).g(g).b(b).a(a)
+        val nvgColor = NanoVG.nvgRGBAf(r, g, b, a, sharedColor)
 
         NanoVG.nvgStrokeColor(nvg, nvgColor)
     }
