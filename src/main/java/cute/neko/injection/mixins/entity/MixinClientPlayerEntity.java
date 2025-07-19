@@ -74,7 +74,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         EventManager.INSTANCE.callEvent(new PlayerMovementTickEvent());
     }
 
-    @Inject(method = "sendMovementPackets", at = @At("HEAD"))
+    @Inject(method = "sendMovementPackets", at = @At("HEAD"), cancellable = true)
     private void hookMovementPre(CallbackInfo callbackInfo) {
         ClientPlayerEntity player = (ClientPlayerEntity) (Object) this;
 
@@ -88,6 +88,10 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
                 player.isOnGround()
         );
         EventManager.INSTANCE.callEvent(playerMotionEvent);
+
+        if (playerMotionEvent.isCancelled()) {
+            callbackInfo.cancel();
+        }
     }
 
     @Inject(method = "tickMovement", at = @At(value = "INVOKE", target = "Lnet/minecraft/client/network/ClientPlayerEntity;isUsingItem()Z", ordinal = 0))

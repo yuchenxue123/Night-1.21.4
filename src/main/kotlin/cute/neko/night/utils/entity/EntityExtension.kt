@@ -11,7 +11,6 @@ import net.minecraft.item.consume.UseAction
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Vec3d
 import org.joml.Vector3d
-import org.joml.Vector3f
 import org.joml.times
 import kotlin.math.cos
 import kotlin.math.sin
@@ -40,6 +39,9 @@ fun ClientPlayerEntity.setRotation(rotation: Rotation) {
 
 val Entity.box: Box
     get() = boundingBox.expand(targetingMargin.toDouble())
+
+val ClientPlayerEntity.hasFalldownDamage: Boolean
+    get() = fallDistance - velocity.y > 3.3
 
 val ClientPlayerEntity.moving
     get() = input.movementInput.x != 0.0f || input.movementInput.y != 0.0f

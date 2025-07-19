@@ -87,7 +87,7 @@ object ConfigUtils {
                 is MultiEnumSetting -> {
                     val multiJson = JsonObject()
                     multiJson.add("selects", gson.toJsonTree(setting.selects))
-                    multiJson.addProperty("actives", setting.getActivesArray().joinToString(", "))
+                    multiJson.add("actives", gson.toJsonTree(setting.getActivesArray()))
 
                     settingsJson.add(setting.name, multiJson)
                 }
@@ -144,9 +144,9 @@ object ConfigUtils {
                     is MultiEnumSetting -> {
                         val multiJson = settingsJson.getAsJsonObject(setting.name)
                         if (multiJson.has("actives")) {
-                            val actives = multiJson.get("actives").asString
-                            actives.split(",").forEach {
-                                setting.active(it.trim())
+                            val actives = multiJson.get("actives").asJsonArray
+                            actives.forEach {
+                                setting.active(it.asString)
                             }
                         }
                     }

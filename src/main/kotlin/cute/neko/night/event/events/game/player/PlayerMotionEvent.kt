@@ -1,5 +1,6 @@
 package cute.neko.night.event.events.game.player
 
+import cute.neko.night.event.CancellableEvent
 import cute.neko.night.event.Event
 
 /**
@@ -14,7 +15,7 @@ sealed class PlayerMotionEvent(
     var yaw: Float,
     var pitch: Float,
     var ground: Boolean
-) : Event() {
+) : CancellableEvent() {
     class Pre(
         x: Double,
         y: Double,
