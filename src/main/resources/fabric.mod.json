@@ -1,17 +1,16 @@
 {
 	"schemaVersion": 1,
-	"id": "night",
+	"id": "${id}",
 	"version": "${version}",
-	"name": "Night",
-	"description": "This is an example description! Tell everyone what your mod is about!",
+	"name": "${name}",
+	"description": "${description}",
 	"authors": [
 		"yuchenxue"
 	],
 	"contact": {
-		"homepage": "https://fabricmc.net/",
-		"sources": "https://github.com/FabricMC/fabric-example-mod"
+		"sources": "description"
 	},
-	"license": "CC0-1.0",
+	"license": "GPL-3.0",
 	"environment": "*",
 	"entrypoints": {
 		"main": [],

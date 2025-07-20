@@ -5,11 +5,12 @@ plugins {
 	id("org.jetbrains.kotlin.jvm") version("${kotlin_version}")
 }
 
+description = "This is a hack mod."
 version = project.mod_version
 group = project.maven_group
 
 base {
-	archivesName = project.archives_base_name
+	archivesName = project.mod_name
 }
 
 repositories {
@@ -24,6 +25,13 @@ fabricApi {
 		client = true
 	}
 }
+
+def properties = [
+        "id": project.mod_name.toLowerCase(),
+		"name": project.mod_name,
+		"version": project.mod_version,
+		"description": project.description
+]
 
 dependencies {
 	// Minecraft
@@ -44,14 +52,13 @@ dependencies {
 	include(implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}")
 	include(implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
 	include(implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinx_coroutines}")
-
 }
 
 processResources {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand properties
 	}
 }
 
