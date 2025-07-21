@@ -2,7 +2,6 @@ package cute.neko.injection.mixins.render;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.night.features.module.render.ModuleRotations;
-import cute.neko.night.utils.client.GlobalKt;
 import cute.neko.night.utils.rotation.RotationManager;
 import cute.neko.night.utils.rotation.data.Rotation;
 import net.minecraft.client.MinecraftClient;

@@ -1,5 +1,6 @@
 package cute.neko.night.utils.entity
 
+import cute.neko.night.utils.client.chat
 import cute.neko.night.utils.client.player
 import cute.neko.night.utils.extensions.squared
 import cute.neko.night.utils.extensions.toVec3d
@@ -44,7 +45,7 @@ val ClientPlayerEntity.hasFalldownDamage: Boolean
     get() = fallDistance - velocity.y > 3.3
 
 val ClientPlayerEntity.moving
-    get() = input.movementInput.x != 0.0f || input.movementInput.y != 0.0f
+    get() = input.movementInput.x != 0f || input.movementInput.y != 0f
 
 val ClientPlayerEntity.isBlockAction: Boolean
     get() = isUsingItem && activeItem.useAction == UseAction.BLOCK
@@ -62,10 +63,15 @@ val ClientPlayerEntity.sqrtSpeed
 fun ClientPlayerEntity.strafe(
     speed: Double = sqrtSpeed,
     strength: Double = 1.0,
+    fastStop: Boolean = false,
     input: DirectionalInput? = DirectionalInput(player.input),
     yaw: Float = player.getMovementDirectionOfInput(input ?: DirectionalInput(player.input)),
 ) {
     if (!moving) {
+        if (fastStop) {
+            velocity.x = .0
+            velocity.z = .0
+        }
         return
     }
 

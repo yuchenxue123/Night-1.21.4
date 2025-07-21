@@ -31,15 +31,6 @@ public abstract class MixinGameRenderer {
     @Final
     private Camera camera;
 
-    @Shadow
-    @Final
-    private MinecraftClient client;
-
-    @Shadow
-    @Final
-    public BufferBuilderStorage buffers;
-
-
     @Inject(method = "renderWorld",
             at = @At(
                     value = "FIELD",

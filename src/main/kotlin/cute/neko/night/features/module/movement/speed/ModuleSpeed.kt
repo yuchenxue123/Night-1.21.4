@@ -2,6 +2,7 @@ package cute.neko.night.features.module.movement.speed
 
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
+import cute.neko.night.features.module.movement.speed.modes.SpeedMotion
 import cute.neko.night.features.module.movement.speed.modes.SpeedWatchdog
 
 /**
@@ -14,6 +15,7 @@ object ModuleSpeed : ClientModule(
     ModuleCategory.MOVEMENT
 ) {
     val mode = choices("Mode", arrayOf(
+        SpeedMotion,
         SpeedWatchdog
     ))
 }
