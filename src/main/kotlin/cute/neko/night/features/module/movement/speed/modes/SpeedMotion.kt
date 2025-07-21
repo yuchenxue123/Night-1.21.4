@@ -12,8 +12,8 @@ import cute.neko.night.utils.entity.strafe
 
 object SpeedMotion : SpeedMode("Motion") {
 
-    private val horizontalSpeed by float("HorizontalSpeed", 1f, 0.5f..10f)
-    private val verticalSpeed by float("VerticalSpeed", 0.42f, 0.5f..10f)
+    private val horizontalSpeed by float("HorizontalSpeed", 0.5f, 0.1f..7f)
+    private val verticalSpeed by float("VerticalSpeed", 0.42f, 0.1f..2f)
 
     private val fastStop by boolean("FastStop", true)
 
