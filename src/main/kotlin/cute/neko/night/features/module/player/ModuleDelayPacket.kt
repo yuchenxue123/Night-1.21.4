@@ -1,5 +1,6 @@
 package cute.neko.night.features.module.player
 
+import cute.neko.night.event.EventState
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
@@ -26,7 +27,7 @@ object ModuleDelayPacket : ClientModule(
     }
 
     private val onPacket = handle<PacketEvent> { event ->
-        if (event.type != PacketEvent.PacketType.RECEIVE) {
+        if (event.state != EventState.RECEIVE) {
             return@handle
         }
 

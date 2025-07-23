@@ -1,6 +1,7 @@
 package cute.neko.night.utils.rotation
 
 import cute.neko.night.event.EventListener
+import cute.neko.night.event.EventState
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.event.events.game.player.PlayerVelocityEvent
@@ -192,7 +193,7 @@ object RotationManager : EventListener, Accessor {
 
     @Suppress("unused")
     private val onPackerSend = handle<PacketEvent> { event ->
-        if (event.type != PacketEvent.PacketType.SEND) {
+        if (event.state != EventState.SEND) {
             return@handle
         }
 

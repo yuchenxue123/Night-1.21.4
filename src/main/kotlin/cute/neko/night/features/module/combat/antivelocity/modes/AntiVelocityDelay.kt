@@ -1,5 +1,6 @@
 package cute.neko.night.features.module.combat.antivelocity.modes
 
+import cute.neko.night.event.EventState
 import cute.neko.night.event.events.game.misc.SwitchWorldEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
@@ -34,7 +35,7 @@ object AntiVelocityDelay : AntiVelocityMode("Delay") {
     }
 
     private val onPacketReceive = handle<PacketEvent> { event ->
-        if (event.type != PacketEvent.PacketType.RECEIVE) {
+        if (event.state != EventState.RECEIVE) {
             return@handle
         }
 

@@ -1,5 +1,6 @@
 package cute.neko.night.features.module.misc.disabler.modes
 
+import cute.neko.night.event.EventState
 import cute.neko.night.event.events.game.misc.MovementInputEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerAfterJumpEvent
@@ -70,7 +71,7 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
 
     @Suppress("unused")
     private val onPacket = handle<PacketEvent> { event ->
-        if (event.type != PacketEvent.PacketType.RECEIVE) {
+        if (event.state != EventState.RECEIVE) {
             return@handle
         }
 

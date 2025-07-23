@@ -1,5 +1,6 @@
 package cute.neko.night.features.module.player
 
+import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.event.events.game.player.PlayerMovementTickEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.event.handle
@@ -87,6 +88,10 @@ object ModuleBlockFly : ClientModule(
         updateRotation()
 
         place()
+    }
+
+    private val onMotionPre = handle<PlayerMotionEvent.Pre> {
+        
     }
 
     private fun updateRotation() {

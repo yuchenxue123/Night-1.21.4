@@ -1,9 +1,9 @@
 package cute.neko.night.utils.entity
 
 import cute.neko.night.event.EventListener
+import cute.neko.night.event.EventState
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.handle
-import cute.neko.night.utils.client.network
 import cute.neko.night.utils.extensions.sendPacketNoEvent
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.kotlin.Priority
@@ -36,7 +36,7 @@ object Blink : EventListener, Accessor {
     }
 
     private val onPacket = handle<PacketEvent>(priority = Priority.FINAL) { event ->
-        if (event.type != PacketEvent.PacketType.SEND) {
+        if (event.state != EventState.SEND) {
             return@handle
         }
 
