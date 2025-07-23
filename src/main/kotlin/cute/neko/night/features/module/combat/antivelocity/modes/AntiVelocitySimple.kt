@@ -34,7 +34,11 @@ object AntiVelocitySimple : AntiVelocityMode("Simple") {
         }
     }
 
-    private val onPacketReceive = handle<PacketEvent.Receive> { event ->
+    private val onPacket = handle<PacketEvent> { event ->
+        if (event.type != PacketEvent.PacketType.RECEIVE) {
+            return@handle
+        }
+
         val packet = event.packet
 
         if (packet is EntityVelocityUpdateS2CPacket && packet.entityId == player.id) {

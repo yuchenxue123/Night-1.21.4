@@ -8,9 +8,10 @@ import net.minecraft.network.packet.Packet
  * @date 2025/05/04
  */
 
-sealed class PacketEvent(val packet: Packet<*>) : CancellableEvent() {
+class PacketEvent(val packet: Packet<*>, val type: PacketType) : CancellableEvent() {
 
-    class Send(packet: Packet<*>) : PacketEvent(packet)
-
-    class Receive(packet: Packet<*>) : PacketEvent(packet)
+    enum class PacketType {
+        SEND,
+        RECEIVE
+    }
 }

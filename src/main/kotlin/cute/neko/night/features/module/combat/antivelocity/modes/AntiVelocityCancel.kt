@@ -11,7 +11,11 @@ import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 
 object AntiVelocityCancel : AntiVelocityMode("Cancel") {
 
-    private val onPacketReceive = handle<PacketEvent.Receive> { event ->
+    private val onPacket = handle<PacketEvent> { event ->
+        if (event.type != PacketEvent.PacketType.RECEIVE) {
+            return@handle
+        }
+
         val packet = event.packet
 
         if (packet is EntityVelocityUpdateS2CPacket && packet.entityId == player.id) {

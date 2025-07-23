@@ -35,7 +35,12 @@ object Blink : EventListener, Accessor {
         release()
     }
 
-    private val onPacketSend = handle<PacketEvent.Send>(priority = Priority.FINAL) { event ->
+    private val onPacket = handle<PacketEvent>(priority = Priority.FINAL) { event ->
+        if (event.type != PacketEvent.PacketType.SEND) {
+            return@handle
+        }
+
+
         if (event.isCancelled || !blinking) {
             return@handle
         }

@@ -25,7 +25,11 @@ object ModuleDelayPacket : ClientModule(
         Blink.stop()
     }
 
-    private val onPacketReceive = handle<PacketEvent.Receive> { event ->
+    private val onPacket = handle<PacketEvent> { event ->
+        if (event.type != PacketEvent.PacketType.RECEIVE) {
+            return@handle
+        }
+
         if (event.packet is DisconnectS2CPacket) {
             toggle()
         }

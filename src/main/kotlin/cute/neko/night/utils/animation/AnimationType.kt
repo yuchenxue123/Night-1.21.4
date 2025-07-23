@@ -40,7 +40,8 @@ enum class AnimationType(
         }
     ),
 
-    BACK_OUT("BackOut",
+    BACK_OUT(
+        "BackOut",
         { time ->
             val bezier = BezierCurve(
                 Vector2f(0.5f, 1.7f),

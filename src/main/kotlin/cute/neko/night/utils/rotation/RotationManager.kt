@@ -191,7 +191,12 @@ object RotationManager : EventListener, Accessor {
     }
 
     @Suppress("unused")
-    private val onPackerSend = handle<PacketEvent.Send> { event ->
+    private val onPackerSend = handle<PacketEvent> { event ->
+        if (event.type != PacketEvent.PacketType.SEND) {
+            return@handle
+        }
+
+
         val rotation = when (val packet = event.packet) {
             is PlayerMoveC2SPacket -> {
                 if (!packet.changeLook) {

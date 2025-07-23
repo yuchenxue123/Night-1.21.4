@@ -69,7 +69,11 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
     }
 
     @Suppress("unused")
-    private val onPacketReceive = handle<PacketEvent.Receive> { event ->
+    private val onPacket = handle<PacketEvent> { event ->
+        if (event.type != PacketEvent.PacketType.RECEIVE) {
+            return@handle
+        }
+
         val packet = event.packet
 
         when (packet) {

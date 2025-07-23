@@ -20,7 +20,7 @@ public class MixinClientConnection {
 
     @Inject(method = "send(Lnet/minecraft/network/packet/Packet;)V", at = @At(value = "HEAD"), cancellable = true)
     private void onSendPacket(Packet<?> packet, CallbackInfo ci) {
-        final PacketEvent.Send event = new PacketEvent.Send(packet);
+        final PacketEvent event = new PacketEvent(packet, PacketEvent.PacketType.SEND);
         EventManager.INSTANCE.callEvent(event);
         if (event.isCancelled()) {
             ci.cancel();
@@ -29,7 +29,7 @@ public class MixinClientConnection {
 
     @Inject(method = "handlePacket", at = @At(value = "HEAD"), cancellable = true)
     private static void onReceivePacket(Packet<?> packet, PacketListener listener, CallbackInfo ci) {
-        final PacketEvent.Receive event = new PacketEvent.Receive(packet);
+        final PacketEvent event = new PacketEvent(packet, PacketEvent.PacketType.RECEIVE);
         EventManager.INSTANCE.callEvent(event);
         if (event.isCancelled()) {
             ci.cancel();
