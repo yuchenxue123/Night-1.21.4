@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.render
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.render.ScreenRenderEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.module.render.share.SharedTargetOption
@@ -35,7 +35,7 @@ object ModuleNameTags : ClientModule(
         override val controller: ChoicesConfigurable<*>
             get() = mode
 
-        private val onScreenRender = handle<ScreenRenderEvent> { event ->
+        private val onScreenRender = handler<ScreenRenderEvent> { event ->
             world.entities.filterIsInstance<LivingEntity>()
                 .filter { targets.isTarget(it) }
                 .forEach { entity ->

@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.player
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.utils.player.inventory.isRubbish
@@ -40,7 +40,7 @@ object ModuleStealer : ClientModule(
         finished = false
     }
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
         val screen = mc.currentScreen
 
         if (screen !is GenericContainerScreen) {

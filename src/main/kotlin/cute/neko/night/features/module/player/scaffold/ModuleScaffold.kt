@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.player.scaffold
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.module.player.scaffold.features.ScaffoldPlace
@@ -34,14 +34,14 @@ object ModuleScaffold : ClientModule(
         RotationManager.remove(this)
     }
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
         ScaffoldSearchBlock.working()
 
-        val searchResult = ScaffoldSearchBlock.result ?: return@handle
+        val searchResult = ScaffoldSearchBlock.result ?: return@handler
 
         rotation = ScaffoldRotation.calculateRotation(searchResult.pos, searchResult.direction)
 
-        val rot = rotation ?: return@handle
+        val rot = rotation ?: return@handler
 
         RotationManager.request(
             this,

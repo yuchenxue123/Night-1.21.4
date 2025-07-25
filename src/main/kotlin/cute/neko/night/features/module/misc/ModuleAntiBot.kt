@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.misc
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import net.minecraft.entity.LivingEntity
@@ -29,9 +29,9 @@ object ModuleAntiBot : ClientModule(
         bots.clear()
     }
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
-        val world = mc.world ?: return@handle
-        val network = mc.networkHandler ?: return@handle
+    private val onPlayerTick = handler<PlayerTickEvent> {
+        val world = mc.world ?: return@handler
+        val network = mc.networkHandler ?: return@handler
 
         val players = mutableListOf<UUID>()
 

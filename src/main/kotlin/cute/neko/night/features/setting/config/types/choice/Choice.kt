@@ -1,10 +1,9 @@
 package cute.neko.night.features.setting.config.types.choice
 
-import cute.neko.night.event.EventListener
+import cute.neko.event.EventListener
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.type.mode.SubMode
-import cute.neko.night.utils.interfaces.Accessor
 
 /**
  * @author yuchenxue

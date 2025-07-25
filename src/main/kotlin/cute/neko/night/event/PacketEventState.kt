@@ -5,9 +5,7 @@ package cute.neko.night.event
  * @date 2025/07/23
  */
 
-enum class EventState {
-    PRE,
-    POST,
+enum class PacketEventState {
     SEND,
     RECEIVE,
 }

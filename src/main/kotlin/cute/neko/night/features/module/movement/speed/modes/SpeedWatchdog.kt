@@ -1,14 +1,14 @@
 package cute.neko.night.features.module.movement.speed.modes
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.misc.disabler.modes.DisablerWatchdog
 import cute.neko.night.utils.entity.moving
 import cute.neko.night.utils.entity.strafe
 import cute.neko.night.utils.extensions.getBlock
 import net.minecraft.block.SlabBlock
 import net.minecraft.entity.effect.StatusEffects
-import kotlin.math.round
+import kotlin.math.roundToInt
 
 
 /**
@@ -18,8 +18,7 @@ import kotlin.math.round
 
 object SpeedWatchdog : SpeedMode("Watchdog") {
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
-
+    private val onPlayerTick = handler<PlayerTickEvent> {
         low()
         if (player.isOnGround && player.moving) {
             player.jump()
@@ -43,7 +42,7 @@ object SpeedWatchdog : SpeedMode("Watchdog") {
             return
         }
 
-        val y =  Math.round(player.y % 1.0 * 10000.0).toInt()
+        val y = (player.y % 1.0 * 10000.0).roundToInt()
 
         when (y) {
             1138 -> player.velocity.y -= 0.13

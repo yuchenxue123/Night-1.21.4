@@ -1,8 +1,9 @@
 package cute.neko.injection.mixins.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
+import cute.neko.event.EventManager;
+import cute.neko.event.LifecycleEventState;
 import cute.neko.injection.addition.ClientPlayerEntityAddition;
-import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerMotionEvent;
 import cute.neko.night.event.events.game.player.PlayerMovementTickEvent;
 import cute.neko.night.event.events.game.player.PlayerTickEvent;
@@ -36,7 +37,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
     public Input input;
 
     @Unique
-    private PlayerMotionEvent.Pre playerMotionEvent;
+    private PlayerMotionEvent playerMotionEvent;
 
     @Unique
     private int groundTicks = 0;
@@ -60,7 +61,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         var tickEvent = new PlayerTickEvent();
         EventManager.INSTANCE.callEvent(tickEvent);
 
-        if (tickEvent.isCancelled()) {
+        if (tickEvent.getCancelled()) {
             ci.cancel();
         }
     }
@@ -82,14 +83,15 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
             return;
         }
 
-        playerMotionEvent = new PlayerMotionEvent.Pre(
+        playerMotionEvent = new PlayerMotionEvent(
                 player.getX(), player.getY(), player.getZ(),
                 player.getYaw(), player.getPitch(),
-                player.isOnGround()
+                player.isOnGround(),
+                LifecycleEventState.PRE
         );
         EventManager.INSTANCE.callEvent(playerMotionEvent);
 
-        if (playerMotionEvent.isCancelled()) {
+        if (playerMotionEvent.getCancelled()) {
             callbackInfo.cancel();
         }
     }
@@ -169,7 +171,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
             return original;
         }
 
-        return playerMotionEvent.getGround();
+        return playerMotionEvent.getOnGround();
     }
 
     @ModifyExpressionValue(
@@ -220,10 +222,12 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         }
 
         EventManager.INSTANCE.callEvent(
-                new PlayerMotionEvent.Post(
+                new PlayerMotionEvent(
                         this.getX(), this.getY(), this.getZ(),
                         this.getYaw(), this.getPitch(),
-                        this.isOnGround())
+                        this.isOnGround(),
+                        LifecycleEventState.POST
+                )
         );
     }
 

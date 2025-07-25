@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.player
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.utils.extensions.getState
@@ -27,12 +27,12 @@ object ModuleEagle : ClientModule(
         if (sneaked) release()
     }
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
         if (onlyGround && !player.isOnGround
             || onlyBack && !DirectionalInput.of(player.input).backwards)
         {
             if (sneaked) release()
-            return@handle
+            return@handler
         }
 
         val below = player.blockPos.down().getState()

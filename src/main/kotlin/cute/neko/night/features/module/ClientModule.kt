@@ -1,20 +1,17 @@
 package cute.neko.night.features.module
 
+import cute.neko.event.EventListener
+import cute.neko.event.EventManager
 import cute.neko.night.Night
-import cute.neko.night.event.EventListener
-import cute.neko.night.event.EventManager
 import cute.neko.night.event.events.client.ModuleToggleEvent
 import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.config.types.EmptyConfigurable
 import cute.neko.night.features.setting.config.types.ToggleConfigurable
 import cute.neko.night.features.setting.config.types.choice.Choice
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
-import cute.neko.night.utils.client.chat
-import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.lang.LanguageManager
 import cute.neko.night.utils.lang.translate
 import cute.neko.night.utils.misc.debug.Debug
-import net.minecraft.text.Text
 import org.lwjgl.glfw.GLFW
 
 /**

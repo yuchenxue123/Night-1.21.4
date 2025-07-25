@@ -1,6 +1,6 @@
 package cute.neko.night.event.events.game.misc
 
-import cute.neko.night.event.Event
+import cute.neko.event.Event
 import net.minecraft.client.world.ClientWorld
 
 /**
@@ -8,4 +8,4 @@ import net.minecraft.client.world.ClientWorld
  * @date 2025/07/10
  */
 
-class SwitchWorldEvent(val world: ClientWorld?) : Event()
+class SwitchWorldEvent(val world: ClientWorld?) : Event

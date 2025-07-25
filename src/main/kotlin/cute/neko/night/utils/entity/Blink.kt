@@ -1,12 +1,12 @@
 package cute.neko.night.utils.entity
 
-import cute.neko.night.event.EventListener
-import cute.neko.night.event.EventState
+import cute.neko.event.EventListener
+import cute.neko.event.handler
+import cute.neko.night.event.PacketEventState
+import cute.neko.night.event.Priorities
 import cute.neko.night.event.events.game.network.PacketEvent
-import cute.neko.night.event.handle
 import cute.neko.night.utils.extensions.sendPacketNoEvent
 import cute.neko.night.utils.interfaces.Accessor
-import cute.neko.night.utils.kotlin.Priority
 import net.minecraft.network.packet.Packet
 import net.minecraft.network.packet.c2s.handshake.HandshakeC2SPacket
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket
@@ -35,14 +35,13 @@ object Blink : EventListener, Accessor {
         release()
     }
 
-    private val onPacket = handle<PacketEvent>(priority = Priority.FINAL) { event ->
-        if (event.state != EventState.SEND) {
-            return@handle
+    private val onPacket = handler<PacketEvent>(priority = Priorities.FINAL) { event ->
+        if (event.state != PacketEventState.SEND) {
+            return@handler
         }
 
-
-        if (event.isCancelled || !blinking) {
-            return@handle
+        if (event.cancelled || !blinking) {
+            return@handler
         }
 
         val packet = event.packet
@@ -50,15 +49,15 @@ object Blink : EventListener, Accessor {
         when (packet) {
 
             is HandshakeC2SPacket, is QueryRequestC2SPacket, is QueryPingC2SPacket -> {
-                return@handle
+                return@handler
             }
 
             is ChatMessageC2SPacket, is CommandExecutionC2SPacket -> {
-                return@handle
+                return@handler
             }
         }
 
-        event.cancelEvent()
+        event.cancel()
         packets.add(packet)
     }
 

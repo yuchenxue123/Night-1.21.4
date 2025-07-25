@@ -1,7 +1,8 @@
 package cute.neko.night.features.module.movement.speed.modes
 
+import cute.neko.event.LifecycleEventState
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
-import cute.neko.night.event.handle
 import cute.neko.night.utils.entity.moving
 import cute.neko.night.utils.entity.strafe
 
@@ -17,9 +18,13 @@ object SpeedMotion : SpeedMode("Motion") {
 
     private val fastStop by boolean("FastStop", true)
 
-    private val onPlayerMotionPre = handle<PlayerMotionEvent.Pre> {
+    private val onPlayerMotionPre = handler<PlayerMotionEvent> { event ->
+        if (event.state != LifecycleEventState.PRE) {
+            return@handler
+        }
+
         if (player.isSneaking) {
-            return@handle
+            return@handler
         }
 
         if (player.moving && player.isOnGround) {

@@ -1,6 +1,6 @@
 package cute.neko.night.features.command
 
-import cute.neko.night.event.EventListener
+import cute.neko.event.EventListener
 import cute.neko.night.features.command.client.BindCommand
 import cute.neko.night.features.command.client.ConfigCommand
 import cute.neko.night.features.command.client.ToggleCommand

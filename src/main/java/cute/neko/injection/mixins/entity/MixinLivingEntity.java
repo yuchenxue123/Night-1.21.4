@@ -1,7 +1,7 @@
 package cute.neko.injection.mixins.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import cute.neko.night.event.EventManager;
+import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerAfterJumpEvent;
 import cute.neko.night.event.events.game.player.PlayerJumpEvent;
 import cute.neko.night.features.module.movement.ModuleNoJumpDelay;
@@ -43,7 +43,7 @@ public abstract class MixinLivingEntity extends MixinEntity {
 
         jumpEvent = new PlayerJumpEvent(getJumpVelocity());
         EventManager.INSTANCE.callEvent(jumpEvent);
-        if (jumpEvent.isCancelled()) {
+        if (jumpEvent.getCancelled()) {
             ci.cancel();
         }
     }

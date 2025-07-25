@@ -1,10 +1,9 @@
 package cute.neko.night.features.module.player
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
-import cute.neko.night.utils.client.chat
 import cute.neko.night.utils.player.inventory.*
 import cute.neko.night.utils.time.TimeTracker
 import net.minecraft.client.gui.screen.ingame.InventoryScreen
@@ -42,8 +41,8 @@ object ModuleInvManager : ClientModule(
         slotIndex = 0
     }
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
-        val screen = mc.currentScreen ?: return@handle
+    private val onPlayerTick = handler<PlayerTickEvent> {
+        val screen = mc.currentScreen ?: return@handler
 
         if (screen !is InventoryScreen) {
             stop()

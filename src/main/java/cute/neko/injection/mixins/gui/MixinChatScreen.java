@@ -1,6 +1,6 @@
 package cute.neko.injection.mixins.gui;
 
-import cute.neko.night.event.EventManager;
+import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.misc.ChatSendEvent;
 import net.minecraft.client.gui.screen.ChatScreen;
 import org.spongepowered.asm.mixin.Mixin;
@@ -20,7 +20,7 @@ public class MixinChatScreen {
     private void handleSendMessage(String chatText, boolean addToHistory, CallbackInfo ci) {
         ChatSendEvent event = new ChatSendEvent(chatText);
         EventManager.INSTANCE.callEvent(event);
-        if (event.isCancelled()) {
+        if (event.getCancelled()) {
             ci.cancel();
         }
     }

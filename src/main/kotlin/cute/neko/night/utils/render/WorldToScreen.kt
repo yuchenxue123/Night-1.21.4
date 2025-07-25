@@ -1,16 +1,18 @@
 package cute.neko.night.utils.render
 
 import com.mojang.blaze3d.systems.RenderSystem
-import cute.neko.night.event.EventListener
+import cute.neko.event.EventListener
+import cute.neko.event.handler
+import cute.neko.night.event.Priorities
 import cute.neko.night.event.events.game.render.WorldRenderEvent
-import cute.neko.night.event.handle
 import cute.neko.night.utils.extensions.minus
 import cute.neko.night.utils.interfaces.Accessor
-import cute.neko.night.utils.kotlin.Priority
 import net.minecraft.entity.Entity
 import net.minecraft.util.math.Box
 import net.minecraft.util.math.Vec3d
-import org.joml.*
+import org.joml.Matrix4f
+import org.joml.Vector2f
+import org.joml.Vector3f
 
 /**
  * @author yuchenxue
@@ -26,7 +28,7 @@ object WorldToScreen : EventListener, Accessor {
     private val cacheMatrix = Matrix4f()
     private val cacheVec3f = Vector3f()
 
-    private val onWorldRender = handle<WorldRenderEvent>(priority =  Priority.FINAL) { event ->
+    private val onWorldRender = handler<WorldRenderEvent>(priority = Priorities.FINAL) { event ->
         val matrixStack = event.matrixStack
 
         this.mvMatrix.set(matrixStack.peek().positionMatrix)

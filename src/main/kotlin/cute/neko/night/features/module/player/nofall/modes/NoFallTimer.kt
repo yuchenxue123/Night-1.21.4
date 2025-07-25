@@ -1,9 +1,9 @@
 package cute.neko.night.features.module.player.nofall.modes
 
+import cute.neko.event.LifecycleEventState
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
-import cute.neko.night.event.handle
 import cute.neko.night.utils.client.Timer
-import cute.neko.night.utils.client.network
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 
 /**
@@ -21,12 +21,15 @@ object NoFallTimer : NoFallMode("Timer") {
         Timer.reset()
     }
 
-    private val onMotionPre = handle<PlayerMotionEvent.Pre> {
+    private val onMotionPre = handler<PlayerMotionEvent> { event ->
+        if (event.state != LifecycleEventState.PRE) {
+            return@handler
+        }
 
         if (voidCheck()) {
             switch = false
             Timer.reset()
-            return@handle
+            return@handler
         }
 
         if (switch) {

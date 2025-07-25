@@ -1,6 +1,6 @@
 package cute.neko.injection.mixins.client;
 
-import cute.neko.night.event.EventManager;
+import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.misc.KeyboardEvent;
 import net.minecraft.client.Keyboard;
 import net.minecraft.client.MinecraftClient;

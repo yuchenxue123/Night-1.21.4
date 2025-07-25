@@ -1,6 +1,6 @@
 package cute.neko.night.event.events.game.render
 
-import cute.neko.night.event.Event
+import cute.neko.event.Event
 import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.util.Window
 
@@ -13,4 +13,4 @@ class ScreenRenderEvent(
     val context: DrawContext,
     val window: Window,
     val tickDelta: Float
-) : Event()
+) : Event

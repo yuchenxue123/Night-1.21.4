@@ -1,11 +1,12 @@
 package cute.neko.night.utils.rotation
 
-import cute.neko.night.event.EventListener
-import cute.neko.night.event.EventState
+import cute.neko.event.EventListener
+import cute.neko.event.LifecycleEventState
+import cute.neko.event.handler
+import cute.neko.night.event.PacketEventState
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.event.events.game.player.PlayerVelocityEvent
-import cute.neko.night.event.handle
 import cute.neko.night.utils.entity.box
 import cute.neko.night.utils.entity.rotation
 import cute.neko.night.utils.entity.setRotation
@@ -159,7 +160,11 @@ object RotationManager : EventListener, Accessor {
 
 
     @Suppress("unused")
-    private val onPlayerMotionPre = handle<PlayerMotionEvent.Pre> { event ->
+    private val onPlayerMotionPre = handler<PlayerMotionEvent> { event ->
+        if (event.state != LifecycleEventState.PRE) {
+            return@handler
+        }
+
         val correction = activeRequest?.correction ?: MovementCorrection.NONE
 
         currentRotation?.let {
@@ -177,7 +182,7 @@ object RotationManager : EventListener, Accessor {
     }
 
     @Suppress("unused")
-    private val onPlayerVelocityUpdate = handle<PlayerVelocityEvent> { event ->
+    private val onPlayerVelocityUpdate = handler<PlayerVelocityEvent> { event ->
         val correction = activeRequest?.correction ?: MovementCorrection.NONE
 
         currentRotation?.let {
@@ -192,16 +197,16 @@ object RotationManager : EventListener, Accessor {
     }
 
     @Suppress("unused")
-    private val onPackerSend = handle<PacketEvent> { event ->
-        if (event.state != EventState.SEND) {
-            return@handle
+    private val onPackerSend = handler<PacketEvent> { event ->
+        if (event.state != PacketEventState.SEND) {
+            return@handler
         }
 
 
         val rotation = when (val packet = event.packet) {
             is PlayerMoveC2SPacket -> {
                 if (!packet.changeLook) {
-                    return@handle
+                    return@handler
                 }
 
                 Rotation(packet.yaw, packet.pitch, true)
@@ -210,7 +215,7 @@ object RotationManager : EventListener, Accessor {
             is PlayerPositionLookS2CPacket -> Rotation(packet.change.yaw, packet.change.pitch, true)
             is PlayerInteractItemC2SPacket -> Rotation(packet.yaw, packet.pitch, true)
 
-            else -> return@handle
+            else -> return@handler
         }
 
         serverRotation = rotation

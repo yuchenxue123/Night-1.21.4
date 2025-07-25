@@ -1,6 +1,6 @@
 package cute.neko.injection.mixins.gui;
 
-import cute.neko.night.event.EventManager;
+import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.render.ScreenRenderEvent;
 import cute.neko.night.features.module.render.ModuleInterface;
 import cute.neko.night.utils.nano.NanoUtils;

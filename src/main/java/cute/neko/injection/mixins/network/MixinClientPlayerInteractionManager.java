@@ -1,6 +1,6 @@
 package cute.neko.injection.mixins.network;
 
-import cute.neko.night.event.EventManager;
+import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerAttackEntityEvent;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerInteractionManager;
@@ -32,7 +32,7 @@ public class MixinClientPlayerInteractionManager {
         final PlayerAttackEntityEvent playerAttackEntityEvent = new PlayerAttackEntityEvent(target);
         EventManager.INSTANCE.callEvent(playerAttackEntityEvent);
 
-        if (playerAttackEntityEvent.isCancelled()) {
+        if (playerAttackEntityEvent.getCancelled()) {
             ci.cancel();
         }
     }

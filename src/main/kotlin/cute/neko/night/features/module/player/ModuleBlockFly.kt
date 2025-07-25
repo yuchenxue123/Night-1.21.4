@@ -1,16 +1,12 @@
 package cute.neko.night.features.module.player
 
-import cute.neko.night.event.events.game.player.PlayerMotionEvent
-import cute.neko.night.event.events.game.player.PlayerMovementTickEvent
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.module.movement.speed.ModuleSpeed
 import cute.neko.night.features.setting.type.mode.SubMode
 import cute.neko.night.utils.entity.direction
-import cute.neko.night.utils.entity.moving
-import cute.neko.night.utils.entity.strafe
 import cute.neko.night.utils.extensions.*
 import cute.neko.night.utils.kotlin.Priority
 import cute.neko.night.utils.movement.MoveDirection
@@ -23,7 +19,6 @@ import cute.neko.night.utils.rotation.data.RotationRequest
 import cute.neko.night.utils.rotation.features.MovementCorrection
 import cute.neko.night.utils.rotation.util.BlockSearchDirections
 import net.minecraft.block.BlockState
-import net.minecraft.entity.effect.StatusEffects
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
@@ -82,16 +77,12 @@ object ModuleBlockFly : ClientModule(
     private var ground = false
 
     @Suppress("unused")
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
         findBlock()
 
         updateRotation()
 
         place()
-    }
-
-    private val onMotionPre = handle<PlayerMotionEvent.Pre> {
-        
     }
 
     private fun updateRotation() {

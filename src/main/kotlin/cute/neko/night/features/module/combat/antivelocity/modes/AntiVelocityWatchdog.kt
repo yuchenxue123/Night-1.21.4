@@ -1,9 +1,9 @@
 package cute.neko.night.features.module.combat.antivelocity.modes
 
-import cute.neko.night.event.EventState
+import cute.neko.event.handler
+import cute.neko.night.event.PacketEventState
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 
 /**
@@ -16,15 +16,15 @@ object AntiVelocityWatchdog : AntiVelocityMode("Watchdog") {
     private var absorbedVelocity = false
 
     @Suppress("unused")
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
         if (player.isOnGround) {
             absorbedVelocity = true
         }
     }
 
-    private val onPacket = handle<PacketEvent> { event ->
-        if (event.state != EventState.RECEIVE) {
-            return@handle
+    private val onPacket = handler<PacketEvent> { event ->
+        if (event.state != PacketEventState.RECEIVE) {
+            return@handler
         }
 
         val packet = event.packet
@@ -32,10 +32,10 @@ object AntiVelocityWatchdog : AntiVelocityMode("Watchdog") {
         if (packet is EntityVelocityUpdateS2CPacket && packet.entityId == player.id) {
             if (!player.isOnGround) {
                 if (!absorbedVelocity) {
-                    event.cancelEvent()
+                    event.cancel()
                     absorbedVelocity = true
 
-                    return@handle
+                    return@handler
                 }
             }
 

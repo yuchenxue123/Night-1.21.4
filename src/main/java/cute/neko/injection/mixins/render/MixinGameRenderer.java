@@ -1,11 +1,9 @@
 package cute.neko.injection.mixins.render;
 
 import com.llamalad7.mixinextras.sugar.Local;
-import cute.neko.night.event.EventManager;
+import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.render.WorldRenderEvent;
 import cute.neko.night.features.module.render.ModuleNoHurtCam;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.render.BufferBuilderStorage;
 import net.minecraft.client.render.Camera;
 import net.minecraft.client.render.GameRenderer;
 import net.minecraft.client.render.RenderTickCounter;

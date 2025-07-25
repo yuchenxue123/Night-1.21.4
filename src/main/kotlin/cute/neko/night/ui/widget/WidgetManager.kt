@@ -1,8 +1,8 @@
 package cute.neko.night.ui.widget
 
-import cute.neko.night.event.EventListener
+import cute.neko.event.EventListener
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.render.ScreenRenderEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.render.ModuleInterface
 import cute.neko.night.ui.widget.type.ArraylistWidget
 import cute.neko.night.ui.widget.type.DynamicIslandWidget
@@ -32,7 +32,7 @@ object WidgetManager : Accessor, EventListener {
 
     private var lastWindow = mc.window
 
-    private val onScreenRender = handle<ScreenRenderEvent> { event ->
+    private val onScreenRender = handler<ScreenRenderEvent> { event ->
 
         widgets.forEach {
             if (!it.condition) return@forEach

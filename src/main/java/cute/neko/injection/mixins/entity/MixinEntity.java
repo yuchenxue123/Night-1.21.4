@@ -2,7 +2,7 @@ package cute.neko.injection.mixins.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;
-import cute.neko.night.event.EventManager;
+import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerVelocityEvent;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.Entity;

@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.render
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.setting.config.types.choice.Choice
@@ -41,7 +41,7 @@ object ModuleBrightness : ClientModule(
             gamma = mc.options.gamma.value
         }
 
-        private val onPlayerTick = handle<PlayerTickEvent> {
+        private val onPlayerTick = handler<PlayerTickEvent> {
             if (gamma < brightness) {
                 gamma = (gamma + 0.1).coerceAtMost(brightness.toDouble())
             }
@@ -56,7 +56,7 @@ object ModuleBrightness : ClientModule(
             player.removeStatusEffect(StatusEffects.NIGHT_VISION)
         }
 
-        private val onPlayerTick = handle<PlayerTickEvent> {
+        private val onPlayerTick = handler<PlayerTickEvent> {
             player.addStatusEffect(StatusEffectInstance(StatusEffects.NIGHT_VISION, 20 * (13 * 60 + 38)))
         }
     }

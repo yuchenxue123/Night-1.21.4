@@ -1,11 +1,10 @@
 package cute.neko.injection.mixins.client;
 
+import cute.neko.event.EventManager;
 import cute.neko.night.Night;
-import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.misc.ClientShutdownEvent;
 import cute.neko.night.event.events.game.misc.ClientStartEvent;
 import cute.neko.night.event.events.game.misc.SwitchWorldEvent;
-import net.minecraft.client.ClientWatchdog;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.Window;
 import net.minecraft.client.world.ClientWorld;

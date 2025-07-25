@@ -14,6 +14,7 @@ base {
 }
 
 repositories {
+	maven { url 'https://jitpack.io' }
 }
 
 loom {
@@ -35,23 +36,26 @@ def properties = [
 
 dependencies {
 	// Minecraft
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+	minecraft("com.mojang:minecraft:${project.minecraft_version}")
+	mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
 
 	// Fabric
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+	modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
+	modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
 
 	// NanoVg
-	include(implementation "org.lwjgl:lwjgl-nanovg:${lwjgl_version}")
-	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-windows")
-	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-linux")
-	include(runtimeOnly "org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-macos")
+	include(implementation("org.lwjgl:lwjgl-nanovg:${lwjgl_version}"))
+	include(runtimeOnly("org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-windows"))
+	include(runtimeOnly("org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-linux"))
+	include(runtimeOnly("org.lwjgl:lwjgl-nanovg:${lwjgl_version}:natives-macos"))
 
 	// Kotlin
-	include(implementation "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}")
-	include(implementation "org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}")
-	include(implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinx_coroutines}")
+	include(implementation("org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"))
+	include(implementation("org.jetbrains.kotlin:kotlin-reflect:${kotlin_version}"))
+	include(implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinx_coroutines}"))
+
+	// EventSystem
+	include(implementation("com.github.yuchenxue123:event-system-kotlin:1.2"))
 }
 
 processResources {

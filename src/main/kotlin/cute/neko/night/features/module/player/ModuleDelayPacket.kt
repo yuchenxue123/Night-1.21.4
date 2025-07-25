@@ -1,8 +1,8 @@
 package cute.neko.night.features.module.player
 
-import cute.neko.night.event.EventState
+import cute.neko.event.handler
+import cute.neko.night.event.PacketEventState
 import cute.neko.night.event.events.game.network.PacketEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.utils.entity.Blink
@@ -26,9 +26,9 @@ object ModuleDelayPacket : ClientModule(
         Blink.stop()
     }
 
-    private val onPacket = handle<PacketEvent> { event ->
-        if (event.state != EventState.RECEIVE) {
-            return@handle
+    private val onPacket = handler<PacketEvent> { event ->
+        if (event.state != PacketEventState.RECEIVE) {
+            return@handler
         }
 
         if (event.packet is DisconnectS2CPacket) {

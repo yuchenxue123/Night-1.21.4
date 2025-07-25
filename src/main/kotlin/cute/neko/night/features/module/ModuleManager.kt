@@ -1,11 +1,11 @@
 package cute.neko.night.features.module
 
-import cute.neko.night.event.EventListener
+import cute.neko.event.EventListener
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.misc.KeyboardEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.combat.ModuleKeepSprint
-import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.combat.antivelocity.ModuleAntiVelocity
+import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.misc.ModuleAntiBot
 import cute.neko.night.features.module.misc.ModuleTest
 import cute.neko.night.features.module.misc.disabler.ModuleDisabler
@@ -16,7 +16,6 @@ import cute.neko.night.features.module.movement.fly.ModuleFly
 import cute.neko.night.features.module.movement.speed.ModuleSpeed
 import cute.neko.night.features.module.player.*
 import cute.neko.night.features.module.player.nofall.ModuleNoFall
-import cute.neko.night.features.module.player.scaffold.ModuleScaffold
 import cute.neko.night.features.module.render.*
 import cute.neko.night.ui.widget.type.DynamicIslandWidget
 import cute.neko.night.utils.interfaces.Accessor
@@ -98,8 +97,8 @@ object ModuleManager : EventListener, Accessor {
     }
 
     @Suppress("unused")
-    private val onKeyboard = handle<KeyboardEvent> { event ->
-        if (mc.currentScreen is ChatScreen) return@handle
+    private val onKeyboard = handler<KeyboardEvent> { event ->
+        if (mc.currentScreen is ChatScreen) return@handler
 
         when (event.action) {
             GLFW.GLFW_PRESS -> {

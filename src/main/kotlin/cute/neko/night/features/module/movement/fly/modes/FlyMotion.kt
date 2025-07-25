@@ -1,8 +1,9 @@
 package cute.neko.night.features.module.movement.fly.modes
 
+import cute.neko.event.LifecycleEventState
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.utils.entity.strafe
 
 /**
@@ -17,7 +18,7 @@ object FlyMotion : FlyMode("Motion") {
     private val noStayInAir by boolean("NoStayInAir", false)
     private val spoofGround by boolean("SpoofGround", false)
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
 
         player.strafe(horizontalSpeed.toDouble())
 
@@ -38,9 +39,13 @@ object FlyMotion : FlyMode("Motion") {
         }
     }
 
-    private val onPlayerMotionPre = handle<PlayerMotionEvent.Pre> { event ->
+    private val onPlayerMotionPre = handler<PlayerMotionEvent> { event ->
+        if (event.state != LifecycleEventState.PRE) {
+            return@handler
+        }
+
         if (spoofGround) {
-            event.ground = true
+            event.onGround = true
         }
     }
 }

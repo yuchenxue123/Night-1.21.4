@@ -1,7 +1,7 @@
 package cute.neko.injection.mixins.network;
 
-import cute.neko.night.event.EventManager;
-import cute.neko.night.event.EventState;
+import cute.neko.event.EventManager;
+import cute.neko.night.event.PacketEventState;
 import cute.neko.night.event.events.game.network.PacketEvent;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.listener.PacketListener;
@@ -21,18 +21,18 @@ public class MixinClientConnection {
 
     @Inject(method = "send(Lnet/minecraft/network/packet/Packet;)V", at = @At(value = "HEAD"), cancellable = true)
     private void onSendPacket(Packet<?> packet, CallbackInfo ci) {
-        final PacketEvent event = new PacketEvent(packet, EventState.SEND);
+        final PacketEvent event = new PacketEvent(packet, PacketEventState.SEND);
         EventManager.INSTANCE.callEvent(event);
-        if (event.isCancelled()) {
+        if (event.getCancelled()) {
             ci.cancel();
         }
     }
 
     @Inject(method = "handlePacket", at = @At(value = "HEAD"), cancellable = true)
     private static void onReceivePacket(Packet<?> packet, PacketListener listener, CallbackInfo ci) {
-        final PacketEvent event = new PacketEvent(packet, EventState.RECEIVE);
+        final PacketEvent event = new PacketEvent(packet, PacketEventState.RECEIVE);
         EventManager.INSTANCE.callEvent(event);
-        if (event.isCancelled()) {
+        if (event.getCancelled()) {
             ci.cancel();
         }
     }

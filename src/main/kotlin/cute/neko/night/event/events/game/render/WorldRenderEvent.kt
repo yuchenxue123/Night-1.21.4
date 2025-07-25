@@ -1,6 +1,6 @@
 package cute.neko.night.event.events.game.render
 
-import cute.neko.night.event.Event
+import cute.neko.event.Event
 import net.minecraft.client.render.Camera
 import net.minecraft.client.util.math.MatrixStack
 
@@ -9,4 +9,4 @@ import net.minecraft.client.util.math.MatrixStack
  * @date 2025/05/04
  */
 
-class WorldRenderEvent(val matrixStack: MatrixStack, val camera: Camera, val tickDelta: Float) : Event()
+class WorldRenderEvent(val matrixStack: MatrixStack, val camera: Camera, val tickDelta: Float) : Event

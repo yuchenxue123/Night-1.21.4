@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.movement
 
+import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import net.minecraft.client.MinecraftClient
@@ -17,9 +17,9 @@ object ModuleSprint : ClientModule(
 ) {
 
     @Suppress("unused")
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
         val mc = MinecraftClient.getInstance()
-        val player = mc.player ?: return@handle
+        val player = mc.player ?: return@handler
 
         if (mc.options.forwardKey.isPressed
             && !player.isSneaking && player.input.movementInput.y > 0.8f

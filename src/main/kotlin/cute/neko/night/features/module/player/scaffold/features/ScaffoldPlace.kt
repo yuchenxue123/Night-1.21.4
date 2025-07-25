@@ -1,6 +1,5 @@
 package cute.neko.night.features.module.player.scaffold.features
 
-import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.utils.extensions.times
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.rotation.RaytraceUtils

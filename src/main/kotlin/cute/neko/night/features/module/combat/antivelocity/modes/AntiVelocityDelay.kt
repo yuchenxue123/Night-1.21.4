@@ -1,10 +1,10 @@
 package cute.neko.night.features.module.combat.antivelocity.modes
 
-import cute.neko.night.event.EventState
+import cute.neko.event.handler
+import cute.neko.night.event.PacketEventState
 import cute.neko.night.event.events.game.misc.SwitchWorldEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.combat.killaura.features.KillAuraTargetTracker
 import net.minecraft.network.listener.ClientPlayPacketListener
@@ -30,35 +30,35 @@ object AntiVelocityDelay : AntiVelocityMode("Delay") {
         release(false)
     }
 
-    private val onPlayerTick = handle<PlayerTickEvent> {
+    private val onPlayerTick = handler<PlayerTickEvent> {
         release(true)
     }
 
-    private val onPacketReceive = handle<PacketEvent> { event ->
-        if (event.state != EventState.RECEIVE) {
-            return@handle
+    private val onPacketReceive = handler<PacketEvent> { event ->
+        if (event.state != PacketEventState.RECEIVE) {
+            return@handler
         }
 
         if (onlyHasTarget && (!ModuleKillAura.running || KillAuraTargetTracker.findTarget() == null)) {
-            return@handle
+            return@handler
         }
 
         when (val packet = event.packet) {
             is CommonPingS2CPacket -> {
-                event.cancelEvent()
+                event.cancel()
                 packets.add(TimePacket(packet, System.currentTimeMillis()))
             }
 
             is EntityVelocityUpdateS2CPacket -> {
                 if (packet.entityId == player.id) {
-                    event.cancelEvent()
+                    event.cancel()
                     packets.add(TimePacket(packet, System.currentTimeMillis()))
                 }
             }
         }
     }
 
-    private val onSwitchWorld = handle<SwitchWorldEvent> {
+    private val onSwitchWorld = handler<SwitchWorldEvent> {
         packets.clear()
     }
 

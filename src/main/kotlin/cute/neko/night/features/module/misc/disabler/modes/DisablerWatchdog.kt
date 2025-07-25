@@ -1,11 +1,12 @@
 package cute.neko.night.features.module.misc.disabler.modes
 
-import cute.neko.night.event.EventState
+import cute.neko.event.LifecycleEventState
+import cute.neko.event.handler
+import cute.neko.night.event.PacketEventState
 import cute.neko.night.event.events.game.misc.MovementInputEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerAfterJumpEvent
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
-import cute.neko.night.event.handle
 import cute.neko.night.features.module.misc.disabler.ModuleDisabler
 import cute.neko.night.features.setting.config.types.ToggleConfigurable
 import cute.neko.night.utils.extensions.airTicks
@@ -33,7 +34,10 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
     }
 
     @Suppress("unused")
-    private val onMotionPre = handle<PlayerMotionEvent.Pre> { event ->
+    private val onMotionPre = handler<PlayerMotionEvent> { event ->
+        if (event.state != LifecycleEventState.PRE) {
+            return@handler
+        }
 
         if (player.isOnGround && !disabled) {
             jump = true
@@ -56,23 +60,23 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
     }
 
     @Suppress("unused")
-    private val onMovementInput = handle<MovementInputEvent> { event ->
+    private val onMovementInput = handler<MovementInputEvent> { event ->
         if (jump) {
             event.jump = true
         }
     }
 
     @Suppress("unused")
-    private val onAfterJump = handle<PlayerAfterJumpEvent> {
-        if (!jump) return@handle
+    private val onAfterJump = handler<PlayerAfterJumpEvent> {
+        if (!jump) return@handler
         jump = false
         execute = true
     }
 
     @Suppress("unused")
-    private val onPacket = handle<PacketEvent> { event ->
-        if (event.state != EventState.RECEIVE) {
-            return@handle
+    private val onPacket = handler<PacketEvent> { event ->
+        if (event.state != PacketEventState.RECEIVE) {
+            return@handler
         }
 
         val packet = event.packet

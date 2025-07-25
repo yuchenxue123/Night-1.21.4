@@ -13,5 +13,7 @@ object ModuleFly : ClientModule(
     "Fly",
     ModuleCategory.MOVEMENT
 ) {
-    val mode = choices("Mode", arrayOf(FlyMotion))
+    val mode = choices("Mode", arrayOf(
+        FlyMotion
+    ))
 }
