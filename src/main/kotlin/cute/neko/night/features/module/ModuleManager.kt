@@ -13,6 +13,7 @@ import cute.neko.night.features.module.movement.ModuleNoJumpDelay
 import cute.neko.night.features.module.movement.ModuleNoPush
 import cute.neko.night.features.module.movement.ModuleSprint
 import cute.neko.night.features.module.movement.fly.ModuleFly
+import cute.neko.night.features.module.movement.noslow.ModuleNoSlow
 import cute.neko.night.features.module.movement.speed.ModuleSpeed
 import cute.neko.night.features.module.player.*
 import cute.neko.night.features.module.player.nofall.ModuleNoFall
@@ -54,6 +55,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleNoFall,
             ModuleDelayPacket,
             ModuleTimer,
+            ModuleNoSlow,
 //            ModuleScaffold,
 
             // render

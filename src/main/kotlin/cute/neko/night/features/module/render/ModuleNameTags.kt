@@ -11,7 +11,7 @@ import cute.neko.night.utils.entity.interpolatedBox
 import cute.neko.night.utils.nano.NanoManager.nvg
 import cute.neko.night.utils.nano.NanoUtils
 import cute.neko.night.utils.nano.font.NanoFontManager
-import cute.neko.night.utils.render.WorldToScreen
+import cute.neko.night.utils.render.utils.WorldToScreen
 import net.minecraft.entity.LivingEntity
 import org.lwjgl.nanovg.NanoVG
 import java.awt.Color

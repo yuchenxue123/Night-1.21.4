@@ -1,4 +1,4 @@
-package cute.neko.night.utils.render
+package cute.neko.night.utils.render.utils
 
 import com.mojang.blaze3d.systems.RenderSystem
 import cute.neko.event.EventListener
