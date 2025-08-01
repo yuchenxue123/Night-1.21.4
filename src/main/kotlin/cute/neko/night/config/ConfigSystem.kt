@@ -1,6 +1,5 @@
 package cute.neko.night.config
 
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import cute.neko.night.utils.client.FileUtils
