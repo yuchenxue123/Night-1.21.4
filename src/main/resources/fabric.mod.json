@@ -30,5 +30,5 @@
 	"suggests": {
 		"another-mod": "*"
 	},
-	"accessWidener": "liquidbounce.accesswidener"
+	"accessWidener": "${widener}"
 }

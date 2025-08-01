@@ -25,8 +25,10 @@ repositories {
     }
 }
 
+val access_widener_file_name: String by project
+
 loom {
-    accessWidenerPath = file("src/main/resources/liquidbounce.accesswidener")
+    accessWidenerPath = file("src/main/resources/$access_widener_file_name")
 }
 
 val minecraft_version: String by project
@@ -76,6 +78,7 @@ val properties = mapOf(
     "name" to mod_name,
     "version" to mod_version,
     "description" to mod_description,
+    "widener" to access_widener_file_name,
 )
 
 tasks.processResources {
