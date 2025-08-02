@@ -20,7 +20,7 @@ object FlyMotion : FlyMode("Motion") {
 
     private val onPlayerTick = handler<PlayerTickEvent> {
 
-        player.strafe(horizontalSpeed.toDouble())
+        player.strafe(horizontalSpeed.toDouble(), fastStop = true)
 
         when {
             noStayInAir -> {
