@@ -2,8 +2,8 @@ package cute.neko.night.features.module.movement.speed
 
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
+import cute.neko.night.features.module.movement.speed.modes.SpeedGrimCollision
 import cute.neko.night.features.module.movement.speed.modes.SpeedMotion
-import cute.neko.night.features.module.movement.speed.modes.SpeedWatchdog
 
 /**
  * @author yuchenxue
@@ -16,6 +16,9 @@ object ModuleSpeed : ClientModule(
 ) {
     val mode = choices("Mode", arrayOf(
         SpeedMotion,
-        SpeedWatchdog
+        SpeedGrimCollision
     ))
+
+    override val suffix: String
+        get() = mode.getActive().modeName
 }

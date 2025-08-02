@@ -18,6 +18,7 @@ object SpeedMotion : SpeedMode("Motion") {
 
     private val fastStop by boolean("FastStop", true)
 
+    @Suppress("unused")
     private val onPlayerMotionPre = handler<PlayerMotionEvent> { event ->
         if (event.state != LifecycleEventState.PRE) {
             return@handler
