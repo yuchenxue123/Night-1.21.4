@@ -11,7 +11,7 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
  * @date 2025/06/23
  */
 
-object NoFallTimer : NoFallMode("Timer") {
+object NoFallHypixel : NoFallMode("Hypixel") {
 
     private var switch = false
 
@@ -40,7 +40,7 @@ object NoFallTimer : NoFallMode("Timer") {
         if (player.fallDistance - player.velocity.y > 3.3) {
             Timer.set(0.5f)
             network.sendPacket(PlayerMoveC2SPacket.OnGroundOnly(true, false))
-            player.fallDistance = 0f
+            player.onLanding()
             switch = true
         }
     }

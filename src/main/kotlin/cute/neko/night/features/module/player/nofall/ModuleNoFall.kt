@@ -2,7 +2,8 @@ package cute.neko.night.features.module.player.nofall
 
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
-import cute.neko.night.features.module.player.nofall.modes.NoFallTimer
+import cute.neko.night.features.module.player.nofall.modes.NoFallHypixel
+import cute.neko.night.features.module.player.nofall.modes.NoFallPacket
 
 /**
  * @author yuchenxue
@@ -14,7 +15,8 @@ object ModuleNoFall : ClientModule(
     ModuleCategory.PLAYER
 ) {
     val mode = choices("Mode", arrayOf(
-        NoFallTimer
+        NoFallPacket,
+        NoFallHypixel,
     ))
 
     override val suffix: String
