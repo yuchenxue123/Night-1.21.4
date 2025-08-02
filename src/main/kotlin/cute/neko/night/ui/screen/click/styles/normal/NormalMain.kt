@@ -18,8 +18,8 @@ import cute.neko.night.ui.screen.special.CheckBox
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
 import cute.neko.night.utils.extensions.sum
-import cute.neko.night.utils.nano.NanoUtils
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.min
@@ -93,7 +93,7 @@ object NormalMain : Screen {
 
             val padding = 16f
 
-            font.render(
+            font.drawText(
                 text,
                 renderX + padding,
                 renderY + TOP_BOTTOM_SPACE + (MODULE_INFO_HEIGHT - font.height(text)) / 2,
@@ -117,7 +117,7 @@ object NormalMain : Screen {
         // empty
         if (module != null && settings.isEmpty()) {
             val text = "Empty"
-            font.render(
+            font.drawText(
                 text,
                 renderX + (MAIN_PANEL_WIDTH - font.width(text)) / 2,
                 renderY + TOP_BOTTOM_SPACE + MODULE_INFO_HEIGHT

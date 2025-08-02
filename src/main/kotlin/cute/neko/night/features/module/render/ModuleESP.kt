@@ -6,7 +6,7 @@ import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.module.render.share.SharedTargetOption
 import cute.neko.night.utils.entity.interpolatedBox
-import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoUtils
 import cute.neko.night.utils.render.utils.WorldToScreen
 import net.minecraft.entity.LivingEntity
 import java.awt.Color

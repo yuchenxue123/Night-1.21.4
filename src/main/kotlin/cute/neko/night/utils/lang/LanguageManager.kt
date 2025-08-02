@@ -1,7 +1,7 @@
 package cute.neko.night.utils.lang
 
 import cute.neko.night.features.module.render.ModuleSettings
-import cute.neko.night.utils.misc.AssetsManager
+import cute.neko.night.utils.misc.resources.Resource
 import java.util.concurrent.ConcurrentHashMap
 
 /**
@@ -22,7 +22,7 @@ object LanguageManager {
 
     fun load() {
         languages.forEach { language ->
-            val json = AssetsManager.getLanguageAsJsonObject("$language.json")
+            val json = Resource.language("$language.json").toJson()
             val translates = HashMap<String, String>()
             json.asMap().forEach { (k, v) ->
                 translates[k] = v.asString

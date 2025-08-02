@@ -4,8 +4,8 @@ import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.ColorAnimation
-import cute.neko.night.utils.nano.NanoUtils
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
@@ -49,7 +49,7 @@ class ModeButton(val modeName: String) : Screen {
             color
         )
 
-        font.render(
+        font.drawText(
             modeName,
             renderX + (width - font.width(modeName)) / 2,
             renderY + (height - font.height(modeName)) / 2,

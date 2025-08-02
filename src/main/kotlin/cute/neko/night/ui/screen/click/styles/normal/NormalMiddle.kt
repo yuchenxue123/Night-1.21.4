@@ -12,7 +12,7 @@ import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.SIDE_PANEL_WIDT
 import cute.neko.night.ui.screen.click.styles.normal.buttons.NormalModuleButton
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.min

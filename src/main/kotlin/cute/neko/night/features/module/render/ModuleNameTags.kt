@@ -8,9 +8,9 @@ import cute.neko.night.features.module.render.share.SharedTargetOption
 import cute.neko.night.features.setting.config.types.choice.Choice
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
 import cute.neko.night.utils.entity.interpolatedBox
-import cute.neko.night.utils.nano.NanoManager.nvg
-import cute.neko.night.utils.nano.NanoUtils
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils.nvg
+import cute.neko.night.utils.render.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoFontManager
 import cute.neko.night.utils.render.utils.WorldToScreen
 import net.minecraft.entity.LivingEntity
 import org.lwjgl.nanovg.NanoVG
@@ -58,7 +58,7 @@ object ModuleNameTags : ClientModule(
 
                         NanoUtils.drawRect(0f, 0f, w, h, Color(0, 225, 225, 120))
 
-                        font.render(text, padding, padding, Color.WHITE)
+                        font.drawText(text, padding, padding, Color.WHITE)
 
                         NanoVG.nvgRestore(nvg)
                     }

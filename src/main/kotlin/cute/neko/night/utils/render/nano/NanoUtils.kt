@@ -1,11 +1,18 @@
-package cute.neko.night.utils.nano
+package cute.neko.night.utils.render.nano
 
+import com.mojang.blaze3d.platform.GlConst
+import com.mojang.blaze3d.systems.RenderSystem
+import cute.neko.night.utils.extensions.*
 import cute.neko.night.utils.interfaces.Accessor
-import cute.neko.night.utils.nano.NanoManager.nvg
+import net.minecraft.client.render.BufferRenderer
 import org.joml.Vector2f
+import org.lwjgl.nanovg.NVGColor
 import org.lwjgl.nanovg.NanoVG
+import org.lwjgl.nanovg.NanoVGGL3
+import org.lwjgl.opengl.GL11
+import org.lwjgl.opengl.GL13
+import org.lwjgl.opengl.GL33
 import java.awt.Color
-
 
 /**
  * @author yuchenxue
@@ -14,16 +21,59 @@ import java.awt.Color
 
 object NanoUtils : Accessor {
 
+    var nvg: Long = 0L
+
+    fun create() {
+        nvg = NanoVGGL3.nvgCreate(NanoVGGL3.NVG_ANTIALIAS or NanoVGGL3.NVG_STENCIL_STROKES)
+
+        if (nvg != 0L) {
+            NanoFontManager
+        }
+    }
+
+    private val share = NVGColor.calloc()
+
+    fun free() {
+        share.free()
+    }
+
     /**
      * Draw with frame
      * @param block draw function
      */
     fun draw(block: () -> Unit) {
-        NanoManager.beginFrame()
+        RenderSystem.pixelStore(GlConst.GL_UNPACK_ROW_LENGTH, 0)
+        RenderSystem.pixelStore(GlConst.GL_UNPACK_SKIP_PIXELS, 0)
+        RenderSystem.pixelStore(GlConst.GL_UNPACK_SKIP_ROWS, 0)
+        RenderSystem.pixelStore(GlConst.GL_UNPACK_ALIGNMENT, 4)
+        RenderSystem.clearColor(0f, 0f, 0f, 0f)
+
+        beginFrame()
 
         block.invoke()
 
-        NanoManager.endFrame()
+        endFrame()
+
+        BufferRenderer.reset()
+        GL33.glBindSampler(0, 0)
+        RenderSystem.disableBlend()
+        GL11.glDisable(GL11.GL_BLEND)
+        RenderSystem.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE)
+        GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE)
+        RenderSystem.blendEquation(GL33.GL_FUNC_ADD)
+        GL33.glBlendEquation(GL33.GL_FUNC_ADD)
+        RenderSystem.colorMask(true, true, true, true)
+        GL11.glColorMask(true, true, true, true)
+        RenderSystem.depthMask(true)
+        GL11.glDepthMask(true)
+        RenderSystem.disableScissor()
+        GL11.glDisable(GL11.GL_SCISSOR_TEST)
+        GL11.glDisable(GL11.GL_STENCIL_TEST)
+        RenderSystem.disableDepthTest()
+        GL11.glDisable(GL11.GL_DEPTH_TEST)
+        GL13.glActiveTexture(GL13.GL_TEXTURE0)
+        RenderSystem.activeTexture(GL13.GL_TEXTURE0)
+        RenderSystem.disableCull()
     }
 
     /**
@@ -38,7 +88,7 @@ object NanoUtils : Accessor {
         NanoVG.nvgBeginPath(nvg)
 
         NanoVG.nvgRect(nvg, x, y, width, height)
-        NanoManager.fillColor(color)
+        fillColor(color)
 
         NanoVG.nvgFill(nvg)
     }
@@ -56,7 +106,7 @@ object NanoUtils : Accessor {
         NanoVG.nvgBeginPath(nvg)
 
         NanoVG.nvgRoundedRect(nvg, x, y, width, height, radius)
-        NanoManager.fillColor(color)
+        fillColor(color)
 
         NanoVG.nvgFill(nvg)
     }
@@ -72,7 +122,7 @@ object NanoUtils : Accessor {
         NanoVG.nvgBeginPath(nvg)
 
         NanoVG.nvgCircle(nvg, x, y, radius)
-        NanoManager.fillColor(color)
+        fillColor(color)
 
         NanoVG.nvgFill(nvg)
     }
@@ -92,7 +142,7 @@ object NanoUtils : Accessor {
         NanoVG.nvgMoveTo(nvg, x, y)
         NanoVG.nvgLineTo(nvg, x2, y2)
 
-        NanoManager.strokeColor(color)
+        strokeColor(color)
         NanoVG.nvgStrokeWidth(nvg, width)
         NanoVG.nvgStroke(nvg)
     }
@@ -132,7 +182,7 @@ object NanoUtils : Accessor {
             NanoVG.nvgClosePath(nvg)
         }
 
-        NanoManager.strokeColor(color)
+        strokeColor(color)
         NanoVG.nvgStrokeWidth(nvg, width)
         NanoVG.nvgStroke(nvg)
     }
@@ -160,7 +210,7 @@ object NanoUtils : Accessor {
 
         NanoVG.nvgClosePath(nvg)
 
-        NanoManager.fillColor(color)
+        fillColor(color)
         NanoVG.nvgFill(nvg)
     }
 
@@ -184,7 +234,7 @@ object NanoUtils : Accessor {
 
         NanoVG.nvgClosePath(nvg)
 
-        NanoManager.fillColor(color)
+        fillColor(color)
         NanoVG.nvgFill(nvg)
     }
 
@@ -197,14 +247,12 @@ object NanoUtils : Accessor {
         strokeWidth: Float,
         color: Color,
     ) {
-        NanoManager.beginFrame()
         NanoVG.nvgBeginPath(nvg)
         NanoVG.nvgRoundedRect(nvg, x, y, width, height, radius)
         NanoVG.nvgStrokeWidth(nvg, strokeWidth)
 
-        NanoManager.strokeColor(color)
+        strokeColor(color)
         NanoVG.nvgStroke(nvg)
-        NanoManager.endFrame()
     }
 
     fun drawShadow(x: Float, y: Float, width: Float, height: Float, radius: Float, strength: Int) {
@@ -222,12 +270,67 @@ object NanoUtils : Accessor {
     }
 
     fun scissor(x: Float, y: Float, width: Float, height: Float, block: () -> Unit) {
-        NanoVG.nvgSave(nvg)
+        save()
 
         NanoVG.nvgIntersectScissor(nvg, x, y, width, height)
 
         block.invoke()
 
+        restore()
+    }
+
+    fun fillColor(red: Float, green: Float, blue: Float, alpha: Float) {
+        share.r(red).g(green).b(blue).a(alpha)
+        NanoVG.nvgFillColor(nvg, share)
+    }
+
+    fun fillColor(color: Color) {
+        val (r, g, b, a) = color.float()
+        share.r(r).g(g).b(b).a(a)
+        NanoVG.nvgFillColor(nvg, share)
+    }
+
+    fun fillColor(red: Int, green: Int, blue: Int, alpha: Int) {
+        val color = Color(red, green, blue, alpha)
+        fillColor(color)
+    }
+
+    fun strokeColor(red: Float, green: Float, blue: Float, alpha: Float) {
+        share.r(red).g(green).b(blue).a(alpha)
+        NanoVG.nvgStrokeColor(nvg, share)
+    }
+
+    fun strokeColor(color: Color) {
+        val (r, g, b, a) = color.float()
+        share.r(r).g(g).b(b).a(a)
+        NanoVG.nvgStrokeColor(nvg, share)
+    }
+
+    fun strokeColor(red: Int, green: Int, blue: Int, alpha: Int) {
+        val color = Color(red, green, blue, alpha)
+        strokeColor(color)
+    }
+
+    fun beginFrame() {
+        val width = mc.window.width.toFloat()
+        val height = mc.window.height.toFloat()
+
+        NanoVG.nvgBeginFrame(nvg, width, height, 1f)
+    }
+
+    fun endFrame() {
+        NanoVG.nvgEndFrame(nvg)
+    }
+
+    fun alpha(alpha: Float) {
+        NanoVG.nvgGlobalAlpha(nvg, alpha)
+    }
+
+    fun save() {
+        NanoVG.nvgSave(nvg)
+    }
+
+    fun restore() {
         NanoVG.nvgRestore(nvg)
     }
 }

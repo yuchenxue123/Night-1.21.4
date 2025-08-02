@@ -6,7 +6,7 @@ import cute.neko.night.features.setting.type.number.IntegerSetting
 import cute.neko.night.ui.screen.special.Slider
 import cute.neko.night.utils.extensions.decimals
 import cute.neko.night.utils.extensions.step
-import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.max
@@ -75,7 +75,7 @@ class NumberSettingButton(
 
         var tempOffset = padding
 
-        font.render(
+        font.drawText(
             text,
             renderX + padding,
             renderY + offset + tempOffset,
@@ -84,14 +84,14 @@ class NumberSettingButton(
 
         tempOffset += font.height(text) + padding
 
-        font.render(
+        font.drawText(
             min,
             renderX + padding,
             renderY + offset + tempOffset,
             Color(200, 200, 200, 255)
         )
 
-        font.render(
+        font.drawText(
             max,
             renderX + width - padding - font.width(max),
             renderY + offset + tempOffset,

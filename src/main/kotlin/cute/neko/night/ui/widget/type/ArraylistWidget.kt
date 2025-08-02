@@ -8,8 +8,8 @@ import cute.neko.night.ui.widget.AbstractWidget
 import cute.neko.night.ui.widget.WidgetType
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.NanoUtils
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
@@ -176,7 +176,7 @@ object ArraylistWidget : AbstractWidget(
             side += SPACE_LEFT_RIGHT
 
             // name
-            font.render(
+            font.drawText(
                 name,
                 renderX + side,
                 renderY + SPACE_TOP_BOTTOM,
@@ -188,7 +188,7 @@ object ArraylistWidget : AbstractWidget(
 
             // suffix
             if (ModuleInterface.arraySuffix) {
-                font.render(
+                font.drawText(
                     suffix,
                     renderX + side,
                     renderY + SPACE_TOP_BOTTOM,

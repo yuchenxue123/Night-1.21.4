@@ -5,7 +5,7 @@ import cute.neko.night.ui.isHovered
 import cute.neko.night.ui.screen.click.styles.normal.setting.mode.ModeButton
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.max
@@ -52,7 +52,7 @@ abstract class AbstractSelectSetting<T : AbstractSetting<*>>(
         )
 
         val text = setting.name
-        font.render(
+        font.drawText(
             text,
             renderX + padding,
             renderY + offset + padding,

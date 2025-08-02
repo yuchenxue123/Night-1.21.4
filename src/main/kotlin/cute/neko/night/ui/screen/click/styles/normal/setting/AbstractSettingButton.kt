@@ -6,7 +6,7 @@ import cute.neko.night.ui.screen.click.styles.normal.NormalMain
 import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.MAIN_PANEL_WIDTH
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 
 /**

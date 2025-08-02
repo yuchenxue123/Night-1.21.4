@@ -3,8 +3,7 @@ package cute.neko.night.ui.screen.click.styles.normal
 import cute.neko.night.ui.screen.click.styles.Style
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.NanoManager
-import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 
 /**
@@ -53,15 +52,15 @@ object StyleNormal : Style {
         alpha = animation.animate()
 
         NanoUtils.draw {
-            NanoManager.save()
+            NanoUtils.save()
 
-            NanoManager.globalAlpha(alpha)
+            NanoUtils.alpha(alpha)
 
             NormalSide.render(context, mouseX, mouseY, delta)
             NormalMiddle.render(context, mouseX, mouseY, delta)
             NormalMain.render(context, mouseX, mouseY, delta)
 
-            NanoManager.restore()
+            NanoUtils.restore()
         }
     }
 

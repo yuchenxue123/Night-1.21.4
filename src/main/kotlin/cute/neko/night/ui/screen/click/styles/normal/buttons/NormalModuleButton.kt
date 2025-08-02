@@ -9,7 +9,7 @@ import cute.neko.night.ui.screen.click.styles.normal.NormalMiddle.MODULE_BUTTON_
 import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.MIDDLE_PANEL_WIDTH
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
@@ -39,7 +39,7 @@ class NormalModuleButton(
         val text = module.showName
         val color = if (module == NormalMain.module) Color.WHITE else Color(200, 200, 200, 255)
 
-        font.render(
+        font.drawText(
             text,
             renderX + (MIDDLE_PANEL_WIDTH - font.width(text)) / 2,
             renderY + offset + (MODULE_BUTTON_HEIGHT - font.height(text)) / 2,

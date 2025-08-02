@@ -4,8 +4,8 @@ import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.NanoUtils
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 import org.joml.Vector2f
 import java.awt.Color
@@ -116,7 +116,7 @@ class Slider : Screen {
                 Color(180, 180, 180, ((tagDistance / 8f) * 80).toInt())
             )
 
-            font.render(
+            font.drawText(
                 text,
                 start.x - pw + (pw * 2 - font.width(text)) / 2,
                 start.y - 32f + (24f - font.height(text)) / 2,

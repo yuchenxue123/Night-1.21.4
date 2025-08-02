@@ -7,7 +7,8 @@ import cute.neko.night.ui.widget.WidgetManager
 import cute.neko.night.utils.client.FileUtils
 import cute.neko.night.utils.client.KeyboardUtils
 import cute.neko.night.utils.lang.LanguageManager
-import cute.neko.night.utils.nano.NanoManager
+import cute.neko.night.utils.misc.resources.Buffers
+import cute.neko.night.utils.render.nano.NanoUtils
 
 object Night {
     // client info
@@ -24,7 +25,7 @@ object Night {
 
         KeyboardUtils.generate()
 
-        NanoManager.create()
+        NanoUtils.create()
 
         LanguageManager.load()
         ModuleManager.load()
@@ -39,5 +40,8 @@ object Night {
 
     fun shutdown() {
         ConfigSystem.save("default")
+
+        Buffers.release()
+        NanoUtils.free()
     }
 }

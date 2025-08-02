@@ -2,7 +2,7 @@ package cute.neko.night.ui.screen.click.styles.normal.setting
 
 import cute.neko.night.features.setting.type.primitive.BooleanSetting
 import cute.neko.night.ui.screen.special.CheckBox
-import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.max
@@ -38,7 +38,7 @@ class BooleanSettingButton(
         )
 
         val text = setting.name
-        font.render(
+        font.drawText(
             text,
             renderX + padding,
             renderY + offset + (height - font.height(text)) / 2,

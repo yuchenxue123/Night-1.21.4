@@ -4,7 +4,7 @@ import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 

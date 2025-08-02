@@ -7,8 +7,8 @@ import cute.neko.night.ui.widget.WidgetType
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
 import cute.neko.night.utils.extensions.sum
-import cute.neko.night.utils.nano.NanoUtils
-import cute.neko.night.utils.nano.font.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
+import cute.neko.night.utils.render.nano.NanoFontManager
 import cute.neko.night.utils.time.TimeTracker
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
@@ -231,7 +231,7 @@ object DynamicIslandWidget : AbstractWidget(
             }
 
         override fun render(context: DrawContext, renderX: Float, renderY: Float) {
-            font.render(
+            font.drawText(
                 text,
                 renderX + LEFT_RIGHT_SPACE,
                 renderY + UP_BOTTOM_SPACE,
@@ -317,7 +317,7 @@ object DynamicIslandWidget : AbstractWidget(
 
                 var interOffset = 0f
                 infos.forEach { info ->
-                    font.render(
+                    font.drawText(
                         info.text,
                         renderX + LEFT_RIGHT_SPACE + PADDING,
                         renderY + UP_BOTTOM_SPACE + offset + interOffset + PADDING,
