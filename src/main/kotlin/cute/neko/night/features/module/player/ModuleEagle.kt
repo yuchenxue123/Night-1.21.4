@@ -27,6 +27,7 @@ object ModuleEagle : ClientModule(
         if (sneaked) release()
     }
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         if (onlyGround && !player.isOnGround
             || onlyBack && !DirectionalInput.of(player.input).backwards)

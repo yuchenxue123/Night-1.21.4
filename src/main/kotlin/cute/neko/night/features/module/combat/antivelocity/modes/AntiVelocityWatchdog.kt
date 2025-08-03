@@ -22,6 +22,7 @@ object AntiVelocityWatchdog : AntiVelocityMode("Watchdog") {
         }
     }
 
+    @Suppress("unused")
     private val onPacket = handler<PacketEvent> { event ->
         if (event.state != PacketEventState.RECEIVE) {
             return@handler

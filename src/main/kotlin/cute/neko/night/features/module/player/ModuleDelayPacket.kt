@@ -26,6 +26,7 @@ object ModuleDelayPacket : ClientModule(
         Blink.stop()
     }
 
+    @Suppress("unused")
     private val onPacket = handler<PacketEvent> { event ->
         if (event.state != PacketEventState.RECEIVE) {
             return@handler

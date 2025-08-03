@@ -34,6 +34,7 @@ object ModuleScaffold : ClientModule(
         RotationManager.remove(this)
     }
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         ScaffoldSearchBlock.working()
 

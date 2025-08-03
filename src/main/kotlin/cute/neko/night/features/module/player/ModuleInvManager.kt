@@ -41,6 +41,7 @@ object ModuleInvManager : ClientModule(
         slotIndex = 0
     }
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         val screen = mc.currentScreen ?: return@handler
 

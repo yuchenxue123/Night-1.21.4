@@ -30,10 +30,12 @@ object AntiVelocityDelay : AntiVelocityMode("Delay") {
         release(false)
     }
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         release(true)
     }
 
+    @Suppress("unused")
     private val onPacketReceive = handler<PacketEvent> { event ->
         if (event.state != PacketEventState.RECEIVE) {
             return@handler
@@ -58,6 +60,7 @@ object AntiVelocityDelay : AntiVelocityMode("Delay") {
         }
     }
 
+    @Suppress("unused")
     private val onSwitchWorld = handler<SwitchWorldEvent> {
         packets.clear()
     }

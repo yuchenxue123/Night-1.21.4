@@ -16,4 +16,7 @@ object ModuleFly : ClientModule(
     val mode = choices("Mode", arrayOf(
         FlyMotion
     ))
+
+    override val suffix: String
+        get() = mode.getActive().name
 }

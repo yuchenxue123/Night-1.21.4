@@ -24,6 +24,7 @@ object ModuleESP : ClientModule(
 
     private val targets = tree(SharedTargetOption)
 
+    @Suppress("unused")
     private val onScreenRender = handler<ScreenRenderEvent> { event ->
         world.entities.filterIsInstance<LivingEntity>()
             .filter { targets.isTarget(it) }

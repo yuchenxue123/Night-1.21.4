@@ -12,6 +12,7 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 
 object NoFallPacket : NoFallMode("Packet") {
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
 
         if (player.hasFalldownDamage) {

@@ -17,6 +17,7 @@ object ConsumeGrimV1 : ConsumeMode("GrimV1") {
 
     private var ticks = 0
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         if (player.isUsingItem) {
             ticks++
@@ -25,6 +26,7 @@ object ConsumeGrimV1 : ConsumeMode("GrimV1") {
         }
     }
 
+    @Suppress("unused")
     private val onUse = handler<PlayerUseMultiplier> { event ->
         if (player.hungerManager.isNotFull) {
             return@handler

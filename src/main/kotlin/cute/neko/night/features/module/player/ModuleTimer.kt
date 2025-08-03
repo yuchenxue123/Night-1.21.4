@@ -22,6 +22,7 @@ object ModuleTimer : ClientModule(
         Timer.reset()
     }
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         Timer.set(timerSpeed)
     }

@@ -21,6 +21,7 @@ object NoFallHypixel : NoFallMode("Hypixel") {
         Timer.reset()
     }
 
+    @Suppress("unused")
     private val onMotionPre = handler<PlayerMotionEvent> { event ->
         if (event.state != LifecycleEventState.PRE) {
             return@handler

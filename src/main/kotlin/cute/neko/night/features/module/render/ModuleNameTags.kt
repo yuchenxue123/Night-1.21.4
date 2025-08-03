@@ -35,6 +35,7 @@ object ModuleNameTags : ClientModule(
         override val controller: ChoicesConfigurable<*>
             get() = mode
 
+        @Suppress("unused")
         private val onScreenRender = handler<ScreenRenderEvent> { event ->
             world.entities.filterIsInstance<LivingEntity>()
                 .filter { targets.isTarget(it) }

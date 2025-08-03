@@ -40,6 +40,7 @@ object ModuleStealer : ClientModule(
         finished = false
     }
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         val screen = mc.currentScreen
 

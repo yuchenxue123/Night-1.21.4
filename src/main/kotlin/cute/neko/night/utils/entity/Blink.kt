@@ -35,6 +35,7 @@ object Blink : EventListener, Accessor {
         release()
     }
 
+    @Suppress("unused")
     private val onPacket = handler<PacketEvent>(priority = Priorities.FINAL) { event ->
         if (event.state != PacketEventState.SEND) {
             return@handler

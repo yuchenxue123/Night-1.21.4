@@ -16,6 +16,7 @@ object AntiVelocitySimple : AntiVelocityMode("Simple") {
 
     private var hasReceivedVelocity = false
 
+    @Suppress("unused")
     private val onAttackEntity = handler<PlayerAttackEntityEvent> {
         if (player.isSprinting) {
             player.velocity.x *= 0.6f
@@ -23,6 +24,7 @@ object AntiVelocitySimple : AntiVelocityMode("Simple") {
         }
     }
 
+    @Suppress("unused")
     private val onPlayerVelocity = handler<PlayerVelocityEvent> {
         if (hasReceivedVelocity) {
             if (player.isOnGround && !mc.options.jumpKey.isPressed) {

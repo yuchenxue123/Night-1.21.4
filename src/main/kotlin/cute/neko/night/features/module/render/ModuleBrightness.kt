@@ -41,6 +41,7 @@ object ModuleBrightness : ClientModule(
             gamma = mc.options.gamma.value
         }
 
+        @Suppress("unused")
         private val onPlayerTick = handler<PlayerTickEvent> {
             if (gamma < brightness) {
                 gamma = (gamma + 0.1).coerceAtMost(brightness.toDouble())
@@ -56,6 +57,7 @@ object ModuleBrightness : ClientModule(
             player.removeStatusEffect(StatusEffects.NIGHT_VISION)
         }
 
+        @Suppress("unused")
         private val onPlayerTick = handler<PlayerTickEvent> {
             player.addStatusEffect(StatusEffectInstance(StatusEffects.NIGHT_VISION, 20 * (13 * 60 + 38)))
         }

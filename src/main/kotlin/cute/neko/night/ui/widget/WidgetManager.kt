@@ -32,6 +32,7 @@ object WidgetManager : Accessor, EventListener {
 
     private var lastWindow = mc.window
 
+    @Suppress("unused")
     private val onScreenRender = handler<ScreenRenderEvent> { event ->
 
         widgets.forEach {

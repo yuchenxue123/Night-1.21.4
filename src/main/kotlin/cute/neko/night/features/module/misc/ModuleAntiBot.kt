@@ -29,6 +29,7 @@ object ModuleAntiBot : ClientModule(
         bots.clear()
     }
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
         val world = mc.world ?: return@handler
         val network = mc.networkHandler ?: return@handler

@@ -18,6 +18,7 @@ object FlyMotion : FlyMode("Motion") {
     private val noStayInAir by boolean("NoStayInAir", false)
     private val spoofGround by boolean("SpoofGround", false)
 
+    @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
 
         player.strafe(horizontalSpeed.toDouble(), fastStop = true)
