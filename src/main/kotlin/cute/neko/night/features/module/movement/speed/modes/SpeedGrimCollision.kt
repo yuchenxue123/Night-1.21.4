@@ -6,6 +6,7 @@ import cute.neko.night.utils.entity.box
 import cute.neko.night.utils.entity.getMovementDirectionOfInput
 import cute.neko.night.utils.entity.moving
 import cute.neko.night.utils.entity.rotation
+import cute.neko.night.utils.extensions.toRadians
 import cute.neko.night.utils.movement.DirectionalInput
 import cute.neko.night.utils.rotation.RotationManager
 import net.minecraft.entity.LivingEntity
@@ -44,7 +45,7 @@ object SpeedGrimCollision : SpeedMode("GrimCollision") {
         if (collisions == 0) return@handler
 
         val rotation = RotationManager.currentRotation ?: player.rotation
-        val yaw = getMovementDirectionOfInput(facingYaw = rotation.yaw, input = DirectionalInput(player.input))
+        val yaw = getMovementDirectionOfInput(facingYaw = rotation.yaw, input = DirectionalInput(player.input)).toRadians()
         val speed = speed * collisions
 
         player.addVelocity(-sin(yaw) * speed.toDouble(), .0, cos(yaw) * speed.toDouble())

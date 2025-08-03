@@ -4,9 +4,11 @@ import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
 import cute.neko.night.utils.extensions.*
 import cute.neko.night.utils.interfaces.Accessor
+import cute.neko.night.utils.render.nano.image.NanoImage
 import net.minecraft.client.render.BufferRenderer
 import org.joml.Vector2f
 import org.lwjgl.nanovg.NVGColor
+import org.lwjgl.nanovg.NVGPaint
 import org.lwjgl.nanovg.NanoVG
 import org.lwjgl.nanovg.NanoVGGL3
 import org.lwjgl.opengl.GL11
@@ -91,6 +93,21 @@ object NanoUtils : Accessor {
         fillColor(color)
 
         NanoVG.nvgFill(nvg)
+    }
+
+
+    fun drawImage(image: NanoImage, x: Float, y: Float, width: Float = image.width.toFloat(), height: Float = image.height.toFloat()) {
+        val paint = NVGPaint.calloc()
+
+        NanoVG.nvgImagePattern(nvg, x, y, width, height, 0f, image.image, 1f, paint)
+
+        NanoVG.nvgBeginPath(nvg)
+        NanoVG.nvgRect(nvg, x, y, width, height)
+        NanoVG.nvgFillPaint(nvg, paint)
+        NanoVG.nvgFill(nvg)
+        NanoVG.nvgClosePath(nvg)
+
+        paint.free()
     }
 
     /**

@@ -3,6 +3,7 @@ package cute.neko.night.utils.entity
 import cute.neko.night.utils.client.chat
 import cute.neko.night.utils.client.player
 import cute.neko.night.utils.extensions.squared
+import cute.neko.night.utils.extensions.toRadians
 import cute.neko.night.utils.extensions.toVec3d
 import cute.neko.night.utils.movement.DirectionalInput
 import cute.neko.night.utils.rotation.data.Rotation
@@ -79,7 +80,7 @@ fun ClientPlayerEntity.strafe(
     val prevZ = z * (1.0 - strength)
     val useSpeed = speed * strength
 
-    val angle = Math.toRadians(yaw.toDouble())
+    val angle = yaw.toRadians().toDouble()
     val x = (-sin(angle) * useSpeed) + prevX
     val z = (cos(angle) * useSpeed) + prevZ
 
