@@ -18,8 +18,9 @@ object ModuleSprint : ClientModule(
 
     @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
-        if (mc.options.forwardKey.isPressed) {
-            KeyBinding.setKeyPressed(mc.options.sprintKey.boundKey, true)
+
+        if (mc.options.forwardKey.isPressed && player.input.movementForward > 0.8 && (!player.horizontalCollision || player.collidedSoftly)) {
+            player.isSprinting = true
         }
     }
 }
