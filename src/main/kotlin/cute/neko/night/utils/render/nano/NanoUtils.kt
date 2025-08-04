@@ -3,6 +3,7 @@ package cute.neko.night.utils.render.nano
 import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
 import cute.neko.night.utils.extensions.*
+import cute.neko.night.utils.extensions.color.toColor4f
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.render.nano.image.NanoImage
 import net.minecraft.client.render.BufferRenderer
@@ -302,7 +303,7 @@ object NanoUtils : Accessor {
     }
 
     fun fillColor(color: Color) {
-        val (r, g, b, a) = color.float()
+        val (r, g, b, a) = color.toColor4f()
         share.r(r).g(g).b(b).a(a)
         NanoVG.nvgFillColor(nvg, share)
     }
@@ -318,7 +319,7 @@ object NanoUtils : Accessor {
     }
 
     fun strokeColor(color: Color) {
-        val (r, g, b, a) = color.float()
+        val (r, g, b, a) = color.toColor4f()
         share.r(r).g(g).b(b).a(a)
         NanoVG.nvgStrokeColor(nvg, share)
     }

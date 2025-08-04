@@ -42,7 +42,7 @@ object ModuleNameTags : ClientModule(
                 .forEach { entity ->
                     WorldToScreen.calculate(entity.interpolatedBox(event.tickDelta)) { x, y, width, height ->
                         val padding = 8f
-                        val text = entity.name.string
+                        val text = entity.displayName!!
                         val w = font.width(text) + padding * 2
                         val h = font.height(text) + padding * 2
 
@@ -57,7 +57,7 @@ object ModuleNameTags : ClientModule(
                         NanoVG.nvgScale(nvg, scale, scale)
                         NanoVG.nvgTranslate(nvg, - w / 2f, - h / 2f)
 
-                        NanoUtils.drawRect(0f, 0f, w, h, Color(0, 225, 225, 120))
+                        NanoUtils.drawRect(0f, 0f, w, h, Color(40, 40, 40, 120))
 
                         font.drawText(text, padding, padding, Color.WHITE)
 
