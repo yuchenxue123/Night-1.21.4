@@ -97,19 +97,15 @@ class NanoFont(
             return 0f
         }
 
-        var height = 0f
+        val sb = StringBuilder()
 
         text.asOrderedText().accept { index, style, codePoint ->
 
-            val h = height(String(Character.toChars(codePoint)), size)
-
-            if (h > height) {
-                height = h
-            }
+            sb.append(Char(codePoint))
 
             true
         }
 
-        return height
+        return height(sb.toString(), size)
     }
 }
