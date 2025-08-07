@@ -1,7 +1,9 @@
 package cute.neko.night.utils.render.nano.image
 
+import cute.neko.night.utils.client.mc
 import cute.neko.night.utils.misc.resources.Resource
 import cute.neko.night.utils.render.nano.NanoUtils.nvg
+import net.minecraft.util.Identifier
 import org.lwjgl.nanovg.NanoVG
 import org.lwjgl.nanovg.NanoVGGL3
 import org.lwjgl.stb.STBImage
@@ -13,8 +15,8 @@ import org.lwjgl.stb.STBImage
 
 object NanoImageManager {
 
-    private val images = mutableMapOf<String, NanoImage>()
-    private val texture_to_images = mutableMapOf<Int, NanoImage>()
+    val images = mutableMapOf<String, NanoImage>()
+    val texture_to_images = mutableMapOf<Int, NanoImage>()
 
     fun getOrCreate(fileName: String): NanoImage {
         if (images.containsKey(fileName)) {

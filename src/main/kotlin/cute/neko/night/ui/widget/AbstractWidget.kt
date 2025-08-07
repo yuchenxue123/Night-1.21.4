@@ -10,11 +10,7 @@ import cute.neko.night.utils.interfaces.Nameable
  */
 
 abstract class AbstractWidget(
-    val type: WidgetType,
-    var x: Float,
-    var y: Float,
-    var width: Float,
-    var height: Float,
+    val type: WidgetType
 ) : Drawable, Nameable {
 
     override val name: String

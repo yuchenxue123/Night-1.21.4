@@ -30,7 +30,7 @@ public class MixinInGameHud {
     @Final
     private MinecraftClient client;
 
-    @Inject(method = "renderMainHud", at = @At(value = "TAIL"))
+    @Inject(method = "renderMiscOverlays", at = @At(value = "TAIL"))
     private void hookScreenEvent(DrawContext context, RenderTickCounter tickCounter, CallbackInfo ci) {
         NanoUtils.INSTANCE.draw(() -> {
             EventManager.INSTANCE.callEvent(new ScreenRenderEvent(context, client.getWindow(), tickCounter.getTickDelta(false)));

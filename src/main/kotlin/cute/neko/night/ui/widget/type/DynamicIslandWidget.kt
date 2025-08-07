@@ -2,13 +2,13 @@ package cute.neko.night.ui.widget.type
 
 import cute.neko.night.Night
 import cute.neko.night.features.module.ClientModule
-import cute.neko.night.ui.widget.AbstractWidget
+import cute.neko.night.ui.widget.LockedWidget
 import cute.neko.night.ui.widget.WidgetType
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
 import cute.neko.night.utils.extensions.sum
-import cute.neko.night.utils.render.nano.NanoUtils
 import cute.neko.night.utils.render.nano.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
 import cute.neko.night.utils.time.TimeTracker
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
@@ -20,13 +20,7 @@ import java.util.concurrent.CopyOnWriteArrayList
  * @date 2025/06/12
  */
 
-object DynamicIslandWidget : AbstractWidget(
-    WidgetType.DYNAMIC_ISLAND,
-    0f,
-    0f,
-    0f,
-    0f
-) {
+object DynamicIslandWidget : LockedWidget(WidgetType.DYNAMIC_ISLAND) {
 
     private val font = NanoFontManager.GENSHIN
 

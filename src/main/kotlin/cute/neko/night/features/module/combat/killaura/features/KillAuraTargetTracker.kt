@@ -1,5 +1,7 @@
 package cute.neko.night.features.module.combat.killaura.features
 
+import cute.neko.event.handler
+import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura.fov
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura.range
@@ -17,6 +19,17 @@ import net.minecraft.entity.LivingEntity
 
 object KillAuraTargetTracker : EmptyConfigurable("TargetTracker", ModuleKillAura) {
     private val targets = tree(TargetOption())
+
+    var target: LivingEntity? = null
+
+    override fun disable() {
+        target = null
+    }
+
+    @Suppress("unused")
+    private val onPlayerTick = handler<PlayerTickEvent> {
+        target = findTarget()
+    }
 
     fun findTarget(): LivingEntity? {
         val player = mc.player ?: return null

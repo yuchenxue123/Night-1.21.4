@@ -18,6 +18,9 @@ object WidgetManager : Accessor, EventListener {
 
     private val widgets = mutableListOf<AbstractWidget>()
 
+    val draggableWidgets: MutableList<DraggableWidget>
+        get() = widgets.filterIsInstance<DraggableWidget>().toMutableList()
+
     fun load() {
         register(
             ArraylistWidget,

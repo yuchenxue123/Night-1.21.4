@@ -4,13 +4,14 @@ import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleManager
 import cute.neko.night.features.module.render.ModuleInterface
 import cute.neko.night.ui.interfaces.Drawable
-import cute.neko.night.ui.widget.AbstractWidget
+import cute.neko.night.ui.widget.LockedWidget
 import cute.neko.night.ui.widget.WidgetType
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
 import cute.neko.night.utils.render.nano.NanoUtils
 import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
+import net.minecraft.text.Text
 import java.awt.Color
 
 /**
@@ -18,13 +19,11 @@ import java.awt.Color
  * @date 2025/06/01
  */
 
-object ArraylistWidget : AbstractWidget(
-    WidgetType.ARRAYLIST,
-    0f,
-    40f,
-    0f,
-    0f
-) {
+object ArraylistWidget : LockedWidget(WidgetType.ARRAYLIST) {
+
+    private const val X_POSITION = 0f
+    private const val Y_POSITION = 40f
+
     private val drawables = mutableListOf<TextDrawable>()
 
     init {
@@ -61,7 +60,7 @@ object ArraylistWidget : AbstractWidget(
     private fun build() {
         drawables.clear()
 
-        var currentY = y
+        var currentY = Y_POSITION
 
         ModuleManager.modules.forEach {
             val drawable = TextDrawable(it)
@@ -94,7 +93,7 @@ object ArraylistWidget : AbstractWidget(
         val width: Float
             get() = when {
                 ModuleInterface.arraySuffix && suffix.isNotEmpty() -> {
-                    font.width(name) + SPACE_NAME_SUFFIX + font.width(suffix) + SPACE_LEFT_RIGHT * 2
+                    font.width(name) + SPACE_NAME_SUFFIX + font.width(Text.of(suffix)) + SPACE_LEFT_RIGHT * 2
                 }
 
                 else -> font.width(name) + SPACE_LEFT_RIGHT * 2
@@ -115,7 +114,7 @@ object ArraylistWidget : AbstractWidget(
 
         // x position when show
         private val showX: Float
-            get() = x
+            get() = X_POSITION
 
         // hide and show distance, it is below zero
         private val distance: Float
@@ -134,8 +133,8 @@ object ArraylistWidget : AbstractWidget(
         private var state = false
 
         // true render position
-        private val renderX: Float get() = x + offsetX
-        private val renderY: Float get() = y + offsetY
+        private val renderX: Float get() = X_POSITION + offsetX
+        private val renderY: Float get() = Y_POSITION + offsetY
 
         override fun render(context: DrawContext) {
             // refresh module state

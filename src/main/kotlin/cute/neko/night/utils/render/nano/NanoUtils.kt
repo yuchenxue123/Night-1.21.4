@@ -2,7 +2,6 @@ package cute.neko.night.utils.render.nano
 
 import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
-import cute.neko.night.utils.extensions.*
 import cute.neko.night.utils.extensions.color.toColor4f
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.render.nano.image.NanoImage
@@ -27,6 +26,10 @@ object NanoUtils : Accessor {
     var nvg: Long = 0L
 
     fun create() {
+        if (nvg != 0L) {
+            return
+        }
+
         nvg = NanoVGGL3.nvgCreate(NanoVGGL3.NVG_ANTIALIAS or NanoVGGL3.NVG_STENCIL_STROKES)
 
         if (nvg != 0L) {
@@ -98,6 +101,10 @@ object NanoUtils : Accessor {
 
 
     fun drawImage(image: NanoImage, x: Float, y: Float, width: Float = image.width.toFloat(), height: Float = image.height.toFloat()) {
+        if (image.image == 0) {
+            return
+        }
+
         val paint = NVGPaint.calloc()
 
         NanoVG.nvgImagePattern(nvg, x, y, width, height, 0f, image.image, 1f, paint)

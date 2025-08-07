@@ -42,7 +42,7 @@ object ModuleKillAura : ClientModule(
 
     @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
-        val target = targetTracker.findTarget() ?: run {
+        val target = targetTracker.target ?: run {
             RotationManager.remove(this)
             return@handler
         }
