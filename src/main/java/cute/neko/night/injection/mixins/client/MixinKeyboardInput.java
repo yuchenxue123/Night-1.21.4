@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.client;
+package cute.neko.night.injection.mixins.client;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.event.EventManager;

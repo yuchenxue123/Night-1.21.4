@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.render;
+package cute.neko.night.injection.mixins.render;
 
 import cute.neko.night.features.module.render.ModuleAnimation;
 import net.minecraft.client.network.AbstractClientPlayerEntity;

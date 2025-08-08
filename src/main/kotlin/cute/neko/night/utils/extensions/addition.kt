@@ -1,7 +1,7 @@
 package cute.neko.night.utils.extensions
 
-import cute.neko.injection.addition.ClientPlayerEntityAddition
-import cute.neko.injection.addition.InputAddition
+import cute.neko.night.injection.addition.ClientPlayerEntityAddition
+import cute.neko.night.injection.addition.InputAddition
 import net.minecraft.client.input.Input
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.util.PlayerInput

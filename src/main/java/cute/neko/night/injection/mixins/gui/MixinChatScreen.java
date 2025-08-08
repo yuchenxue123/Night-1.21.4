@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.gui;
+package cute.neko.night.injection.mixins.gui;
 
 import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.misc.ChatSendEvent;

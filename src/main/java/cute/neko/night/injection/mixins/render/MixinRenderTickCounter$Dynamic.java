@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.render;
+package cute.neko.night.injection.mixins.render;
 
 import cute.neko.night.utils.client.Timer;
 import net.minecraft.client.render.RenderTickCounter;

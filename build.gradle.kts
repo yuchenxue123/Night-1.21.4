@@ -89,6 +89,12 @@ tasks.processResources {
     }
 }
 
+tasks.jar {
+    manifest {
+        attributes("Main-Class" to "cute.neko.night.main.Main")
+    }
+}
+
 tasks.withType<JavaCompile> {
     options.encoding = "UTF-8"
 

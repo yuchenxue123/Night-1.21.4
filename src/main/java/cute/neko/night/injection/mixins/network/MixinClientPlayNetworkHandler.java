@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.network;
+package cute.neko.night.injection.mixins.network;
 
 import cute.neko.night.features.command.CommandManager;
 import net.minecraft.client.network.ClientPlayNetworkHandler;

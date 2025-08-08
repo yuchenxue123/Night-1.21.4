@@ -5,6 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem
 import cute.neko.night.utils.extensions.color.toColor4f
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.render.nano.image.NanoImage
+import cute.neko.night.utils.render.nano.image.NanoImageManager
 import net.minecraft.client.render.BufferRenderer
 import org.joml.Vector2f
 import org.lwjgl.nanovg.NVGColor
@@ -44,8 +45,8 @@ object NanoUtils : Accessor {
     }
 
     /**
-     * Draw with frame
-     * @param block draw function
+     * 带帧同步的绘制
+     * @param block 绘制代码块
      */
     fun draw(block: () -> Unit) {
         RenderSystem.pixelStore(GlConst.GL_UNPACK_ROW_LENGTH, 0)
@@ -83,12 +84,12 @@ object NanoUtils : Accessor {
     }
 
     /**
-     * Draw a rect
-     * @param x top-left x position
-     * @param y top-left y position
-     * @param width rect width
-     * @param height rect height
-     * @param color rect color
+     * 绘制一个矩形
+     * @param x 左上角 x 坐标
+     * @param y 左上角 y 坐标
+     * @param width 矩形宽长
+     * @param height 矩形高长
+     * @param color 矩形颜色
      */
     fun drawRect(x: Float, y: Float, width: Float, height: Float, color: Color) {
         NanoVG.nvgBeginPath(nvg)
@@ -100,6 +101,10 @@ object NanoUtils : Accessor {
     }
 
 
+    /**
+     * 绘制一个图片
+     * @param image 使用 [NanoImageManager] 创建
+     */
     fun drawImage(image: NanoImage, x: Float, y: Float, width: Float = image.width.toFloat(), height: Float = image.height.toFloat()) {
         if (image.image == 0) {
             return
@@ -119,13 +124,13 @@ object NanoUtils : Accessor {
     }
 
     /**
-     * Draw a rounded rect
-     * @param x top-left x position
-     * @param y top-left y position
-     * @param width rect width
-     * @param height rect height
-     * @param radius radius
-     * @param color rect color
+     * 绘制一个圆角矩形
+     * @param x 左上角 x 坐标
+     * @param y 左上角 y 坐标
+     * @param width 矩形宽长
+     * @param height 矩形高长
+     * @param radius 圆角半径
+     * @param color 矩形颜色
      */
     fun drawRoundRect(x: Float, y: Float, width: Float, height: Float, radius: Float, color: Color) {
         NanoVG.nvgBeginPath(nvg)
@@ -137,11 +142,38 @@ object NanoUtils : Accessor {
     }
 
     /**
-     * Draw a circle
-     * @param x circle center x position
-     * @param y circle center y position
-     * @param radius radius
-     * @param color circle color
+     * 绘制圆角矩形边框
+     * @param x 左上角 x 坐标
+     * @param y 左上角 y 坐标
+     * @param width 矩形宽长
+     * @param height 矩形高长
+     * @param radius 圆角半径
+     * @param strokeWidth 边框宽度
+     * @param color 矩形颜色
+     */
+    fun drawOutlineRoundedRect(
+        x: Float,
+        y: Float,
+        width: Float,
+        height: Float,
+        radius: Float,
+        strokeWidth: Float,
+        color: Color,
+    ) {
+        NanoVG.nvgBeginPath(nvg)
+        NanoVG.nvgRoundedRect(nvg, x, y, width, height, radius)
+        NanoVG.nvgStrokeWidth(nvg, strokeWidth)
+
+        strokeColor(color)
+        NanoVG.nvgStroke(nvg)
+    }
+
+    /**
+     * 绘制一个圆形
+     * @param x 圆心 x 坐标
+     * @param y 圆心 y 坐标
+     * @param radius 半径
+     * @param color 圆形颜色
      */
     fun drawCircle(x: Float, y: Float, radius: Float, color: Color) {
         NanoVG.nvgBeginPath(nvg)
@@ -153,13 +185,13 @@ object NanoUtils : Accessor {
     }
 
     /**
-     * Draw a line
-     * @param x line start x
-     * @param y line start y
-     * @param x2 line end x
-     * @param y2 line end y
-     * @param width line width
-     * @param color line color
+     * 绘制一条线段
+     * @param x 始端 x 坐标
+     * @param y 始端 y 坐标
+     * @param x2 末端 x 坐标
+     * @param y2 末端 y 坐标
+     * @param width 线段宽度
+     * @param color 线段颜色
      */
     fun drawLine(x: Float, y: Float, x2: Float, y2: Float, width: Float, color: Color) {
         NanoVG.nvgBeginPath(nvg)
@@ -172,16 +204,36 @@ object NanoUtils : Accessor {
         NanoVG.nvgStroke(nvg)
     }
 
+    /**
+     * 绘制一条铅垂线段
+     * @param x 始端 x 坐标
+     * @param y 始端 y 坐标
+     * @param long 线段长度
+     * @param color 线段颜色
+     */
     fun drawVerticalLine(x: Float, y: Float, long: Float, width: Float, color: Color) {
         drawLine(x, y, x, y + long, width, color)
     }
 
+    /**
+     * 绘制一条水平线段
+     * @param x 始端 x 坐标
+     * @param y 始端 y 坐标
+     * @param long 线段长度
+     * @param color 线段颜色
+     */
     fun drawHorizontalLine(x: Float, y: Float, long: Float, width: Float, color: Color) {
         drawLine(x, y, x + long, y, width, color)
     }
 
     /**
-     * 绘制多变形
+     * 绘制多变形边框或折线
+     * @param x 开始点 x 坐标
+     * @param y 开始点 y 坐标
+     * @param points 多边形其他点
+     * @param width 线条宽度
+     * @param color 颜色
+     * @param closed 是否封闭
      */
     fun drawPolyline(
         x: Float,
@@ -213,7 +265,11 @@ object NanoUtils : Accessor {
     }
 
     /**
-     * 绘制填充的多边形
+     * 绘制多边形
+     * @param x 开始点 x 坐标
+     * @param y 开始点 y 坐标
+     * @param points 多边形其他点
+     * @param color 颜色
      */
     fun drawPolygon(
         x: Float,
@@ -239,6 +295,7 @@ object NanoUtils : Accessor {
         NanoVG.nvgFill(nvg)
     }
 
+    // x,y is up-center pos
     fun drawIsland(x: Float, y: Float, width: Float, height: Float, color: Color, radius: Float = 12f) {
 
         // center
@@ -263,23 +320,6 @@ object NanoUtils : Accessor {
         NanoVG.nvgFill(nvg)
     }
 
-    fun drawOutlineRoundedRect(
-        x: Float,
-        y: Float,
-        width: Float,
-        height: Float,
-        radius: Float,
-        strokeWidth: Float,
-        color: Color,
-    ) {
-        NanoVG.nvgBeginPath(nvg)
-        NanoVG.nvgRoundedRect(nvg, x, y, width, height, radius)
-        NanoVG.nvgStrokeWidth(nvg, strokeWidth)
-
-        strokeColor(color)
-        NanoVG.nvgStroke(nvg)
-    }
-
     fun drawShadow(x: Float, y: Float, width: Float, height: Float, radius: Float, strength: Int) {
         for (f in strength downTo 1) {
             drawOutlineRoundedRect(
@@ -294,6 +334,14 @@ object NanoUtils : Accessor {
         }
     }
 
+    /**
+     * 矩形剪刀
+     * @param x 左上角 x 坐标
+     * @param y 左上角 y 坐标
+     * @param width 矩形区域宽度
+     * @param height 矩形区域高度
+     * @param block 剪刀区域的绘制代码块
+     */
     fun scissor(x: Float, y: Float, width: Float, height: Float, block: () -> Unit) {
         save()
 

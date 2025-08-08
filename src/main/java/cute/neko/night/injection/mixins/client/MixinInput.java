@@ -1,6 +1,6 @@
-package cute.neko.injection.mixins.client;
+package cute.neko.night.injection.mixins.client;
 
-import cute.neko.injection.addition.InputAddition;
+import cute.neko.night.injection.addition.InputAddition;
 import net.minecraft.client.input.Input;
 import net.minecraft.util.PlayerInput;
 import org.spongepowered.asm.mixin.Mixin;

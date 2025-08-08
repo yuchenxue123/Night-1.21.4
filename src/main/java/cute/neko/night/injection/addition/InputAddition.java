@@ -1,4 +1,4 @@
-package cute.neko.injection.addition;
+package cute.neko.night.injection.addition;
 
 import net.minecraft.util.PlayerInput;
 

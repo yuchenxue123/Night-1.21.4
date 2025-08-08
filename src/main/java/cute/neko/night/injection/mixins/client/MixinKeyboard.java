@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.client;
+package cute.neko.night.injection.mixins.client;
 
 import cute.neko.event.EventManager;
 import cute.neko.night.event.events.game.misc.KeyboardEvent;

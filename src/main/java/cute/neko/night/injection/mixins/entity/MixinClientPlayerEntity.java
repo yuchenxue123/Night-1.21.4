@@ -1,9 +1,9 @@
-package cute.neko.injection.mixins.entity;
+package cute.neko.night.injection.mixins.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.event.EventManager;
 import cute.neko.event.LifecycleEventState;
-import cute.neko.injection.addition.ClientPlayerEntityAddition;
+import cute.neko.night.injection.addition.ClientPlayerEntityAddition;
 import cute.neko.night.event.events.game.player.*;
 import cute.neko.night.utils.rotation.RotationManager;
 import cute.neko.night.utils.rotation.data.Rotation;

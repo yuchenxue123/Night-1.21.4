@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.entity;
+package cute.neko.night.injection.mixins.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import com.llamalad7.mixinextras.sugar.Local;

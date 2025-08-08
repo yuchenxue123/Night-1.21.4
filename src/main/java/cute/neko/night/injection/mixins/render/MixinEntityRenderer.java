@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.render;
+package cute.neko.night.injection.mixins.render;
 
 import cute.neko.night.features.module.render.ModuleNameTags;
 import cute.neko.night.features.module.render.share.SharedTargetOption;

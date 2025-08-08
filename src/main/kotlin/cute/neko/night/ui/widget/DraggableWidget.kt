@@ -15,15 +15,21 @@ abstract class DraggableWidget(
     var height: Float,
 ) : AbstractWidget(type) {
 
+    private val scale : Double
+        get() = mc.window.scaleFactor
+
+    private val BOARD_PADDING = 4f
+
     private var dragging = false
     private var dragX = .0
     private var dragY = .0
 
     open fun handleScreenRender(mouseX: Int, mouseY: Int, deltaTime: Float) {
         if (dragging) {
-            x = (mouseX * mc.window.scaleFactor - dragX).toFloat()
-            y = (mouseY * mc.window.scaleFactor - dragY).toFloat()
+            x = (mouseX * scale - dragX).toFloat()
+            y = (mouseY * scale - dragY).toFloat()
         }
+
 
     }
 
@@ -31,8 +37,8 @@ abstract class DraggableWidget(
         if (isHovered(x, y, width, height, mouseX, mouseY)) {
             if (button == 0) {
                 dragging = true
-                dragX = mouseX * mc.window.scaleFactor - x
-                dragY = mouseY * mc.window.scaleFactor - y
+                dragX = mouseX * scale - x
+                dragY = mouseY * scale - y
             }
         }
     }

@@ -1,4 +1,4 @@
-package cute.neko.injection.mixins.render;
+package cute.neko.night.injection.mixins.render;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.night.features.module.render.ModuleBrightness;
