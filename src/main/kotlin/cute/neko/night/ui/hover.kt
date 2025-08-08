@@ -1,6 +1,7 @@
 package cute.neko.night.ui
 
 import cute.neko.night.utils.client.mc
+import cute.neko.night.utils.extensions.math.Rect
 
 /**
  * @author yuchenxue
@@ -20,3 +21,9 @@ fun isHovered(
 
     return mx >= renderX && mx <= renderX + width && my >= renderY && my <= renderY + height
 }
+
+fun isHovered(
+    rect: Rect,
+    mouseX: Double,
+    mouseY: Double
+) = isHovered(rect.x(), rect.y(), rect.width(), rect.height(), mouseX, mouseY)

@@ -11,7 +11,7 @@ import net.minecraft.client.gui.DrawContext
  * @date 2025/05/05
  */
 
-object StyleNormal : Style {
+object StyleNormal : Style() {
 
     const val SIDE_PANEL_WIDTH = 180f
     const val MIDDLE_PANEL_WIDTH = 180f
@@ -32,20 +32,19 @@ object StyleNormal : Style {
 
     private var alpha = 0.5f
     private val animation = SimpleAnimation.create().type(AnimationType.QUAD_OUT).target(alpha).finish()
-    private var closed = false
 
     override fun open() {
-        closed = false
+        super.open()
         animation.start(alpha).target(1f).reset()
     }
 
     override fun close() {
-        closed = true
+        super.close()
         animation.start(alpha).target(0.5f).reset()
     }
 
-    override fun hasClosed(): Boolean {
-        return closed && animation.hasFinished()
+    override fun shouldClose(): Boolean {
+        return super.shouldClose() && animation.hasFinished()
     }
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {

@@ -1,6 +1,7 @@
 package cute.neko.night.ui.screen.click.styles
 
 import cute.neko.night.ui.interfaces.Screen
+import cute.neko.night.utils.misc.option.BooleanOption
 import net.minecraft.client.util.Window
 
 /**
@@ -8,11 +9,19 @@ import net.minecraft.client.util.Window
  * @date 2025/05/05
  */
 
-interface Style : Screen {
-    val window: Window
+abstract class Style : Screen {
+    protected val window: Window
         get() = mc.window
 
-    fun open() {}
+    protected val closed = BooleanOption(false)
 
-    fun hasClosed(): Boolean
+    open fun open() {
+        closed.set(false)
+    }
+
+    open fun close() {
+        closed.set(true)
+    }
+
+    open fun shouldClose(): Boolean = closed.get()
 }

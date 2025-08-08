@@ -20,3 +20,10 @@ inline fun <T> Iterable<T>.sum(selector: (T) -> Float): Float {
     }
     return sum
 }
+
+public fun <T> Iterable<T>.reversedList(): Iterable<T> {
+    val list = mutableListOf<T>()
+    list.addAll(this)
+    list.reverse()
+    return list
+}

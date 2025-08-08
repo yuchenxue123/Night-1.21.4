@@ -24,6 +24,4 @@ interface Screen : Accessor {
 
     fun keyPressed(keyCode: Int, scanCode: Int, modifiers: Int) {}
     fun keyReleased(keyCode: Int, scanCode: Int, modifiers: Int) {}
-
-    fun close() {}
 }

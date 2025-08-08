@@ -21,7 +21,7 @@ class ClickScreen(private val style: Style = StyleNormal) : Screen(Text.of("Clic
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
         this.applyBlur()
 
-        if (style.hasClosed()) {
+        if (style.shouldClose()) {
             this.client?.setScreen(null)
         }
 
