@@ -2,6 +2,7 @@ package cute.neko.night.ui.screen.click.styles.drop
 
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.ui.isHovered
+import cute.neko.night.ui.screen.click.styles.drop.Constants.CATEGORY_BOTTOM_SPACE
 import cute.neko.night.ui.screen.click.styles.drop.Constants.CATEGORY_BUTTON_SPACE
 import cute.neko.night.ui.screen.click.styles.drop.Constants.CATEGORY_RADIUS
 import cute.neko.night.ui.screen.click.styles.drop.Constants.COMPONENT_HEIGHT
@@ -56,11 +57,13 @@ class DropCategoryBar(
 
         height_option.animate(height_animation)
 
+        update()
+
         NanoUtils.drawRoundRect(
             x(), y(),
             width(), height_option.get(),
             CATEGORY_RADIUS,
-            Color( 33, 32, 37)
+            Color( 50, 50, 50)
         )
 
         val text = category.showName
@@ -81,11 +84,11 @@ class DropCategoryBar(
         }
 
         NanoUtils.scissor(
-            x(), y() + height() + CATEGORY_BUTTON_SPACE,
-            width(), height_option.get() - height() - CATEGORY_BUTTON_SPACE
+            x(),
+            y() + height() + CATEGORY_BUTTON_SPACE,
+            width(),
+            height_option.get() - height() - CATEGORY_BUTTON_SPACE - CATEGORY_BOTTOM_SPACE
         ) {
-
-
             buttons.forEach {
                 it.render(context, mouseX, mouseY, delta)
             }
@@ -106,16 +109,20 @@ class DropCategoryBar(
             when (button) {
                 1 -> {
                     open.toggle { new ->
-                        if (new) {
-                            height_animation
-                                .start(height_option.get())
-                                .target(getHeight())
-                                .reset()
-                        } else {
-                            height_animation
-                                .start(height_option.get())
-                                .target(height())
-                                .reset()
+                        when (new) {
+                            true -> {
+                                height_animation
+                                    .start(height_option.get())
+                                    .target(getHeight())
+                                    .reset()
+                            }
+
+                            false -> {
+                                height_animation
+                                    .start(height_option.get())
+                                    .target(height())
+                                    .reset()
+                            }
                         }
                     }
                 }
@@ -148,8 +155,27 @@ class DropCategoryBar(
         }
     }
 
+    fun update() {
+        if (open.get()) {
+            height_animation
+                .target(getAnimationHeight())
+        }
+    }
+
     private fun getHeight(): Float {
-        return height() + if (open.get()) CATEGORY_BUTTON_SPACE + buttons.sum { it.getHeight() } + CATEGORY_BUTTON_SPACE else 0f
+        return height() + if (open.get()) {
+            CATEGORY_BUTTON_SPACE + buttons.sum { it.getHeight() } + CATEGORY_BOTTOM_SPACE
+        } else {
+            0f
+        }
+    }
+
+    private fun getAnimationHeight(): Float {
+        return height() + if (open.get()) {
+            CATEGORY_BUTTON_SPACE + buttons.sum { it.getAnimateHeight() } + CATEGORY_BOTTOM_SPACE
+        } else {
+            0f
+        }
     }
 
     private fun refresh() {
@@ -157,7 +183,7 @@ class DropCategoryBar(
 
         buttons.forEach {
             it.position(x = x(), y = offset)
-            offset += it.getHeight()
+            offset += it.getAnimateHeight()
         }
     }
 
@@ -166,6 +192,7 @@ class DropCategoryBar(
 
         category.modules.forEachIndexed { index, module ->
             buttons.add(DropModuleButton(
+                this,
                 module,
                 x(),
                 y() + height() + CATEGORY_BUTTON_SPACE + index * COMPONENT_HEIGHT,

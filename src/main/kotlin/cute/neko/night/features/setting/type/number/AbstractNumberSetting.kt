@@ -16,4 +16,8 @@ abstract class AbstractNumberSetting<T>(
 ) : MutableSetting<T>(name, value, visibility) where T : Number, T : Comparable<T> {
     abstract val min: T
     abstract val max: T
+
+    abstract val process: Float
+
+    abstract fun setProcess(process: Float)
 }

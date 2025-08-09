@@ -19,8 +19,6 @@ abstract class Bar(
 
     abstract val bars: Bars
 
-    private val scale = mc.window.scaleFactor
-
     val focus = BooleanOption(false)
 
     private val draggable = BooleanOption(false)

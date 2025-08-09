@@ -1,11 +1,11 @@
-package cute.neko.night.ui.screen.special
+package cute.neko.night.ui.screen.click.styles.normal.special
 
 import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
-import cute.neko.night.utils.render.nano.NanoUtils
 import cute.neko.night.utils.render.nano.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import org.joml.Vector2f
 import java.awt.Color

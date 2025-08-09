@@ -9,6 +9,10 @@ import net.minecraft.client.gui.DrawContext
  */
 
 interface Screen : Accessor {
+
+    val scale: Float
+        get() = mc.window.scaleFactor.toFloat()
+
     fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {}
 
     fun mouseClicked(mouseX: Double, mouseY: Double, button: Int) {}

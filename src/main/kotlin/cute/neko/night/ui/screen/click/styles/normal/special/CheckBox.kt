@@ -1,4 +1,4 @@
-package cute.neko.night.ui.screen.special
+package cute.neko.night.ui.screen.click.styles.normal.special
 
 import cute.neko.night.ui.interfaces.Screen
 import cute.neko.night.ui.isHovered

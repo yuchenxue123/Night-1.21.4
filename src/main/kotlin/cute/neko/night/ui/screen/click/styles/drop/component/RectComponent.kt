@@ -13,10 +13,17 @@ open class RectComponent(
     width: Float,
     height: Float,
 ) {
+
+    constructor(rect: Rect) : this(rect.x(), rect.y(), rect.width(), rect.height())
+
     protected val rect: Rect = Rect.of(x, y, width, height)
 
-    fun position(x: Float = rect.x(), y: Float = rect.y()) {
+    fun position(x: Float = rect.x(), y: Float = rect.y()) = apply {
         rect.position(x, y)
+    }
+
+    fun size(width: Float, height: Float) = apply {
+        rect.size(width, height)
     }
 
     fun x() = rect.x()

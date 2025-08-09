@@ -14,7 +14,7 @@ import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.PANEL_RADIUS
 import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.PANEL_SPACE
 import cute.neko.night.ui.screen.click.styles.normal.StyleNormal.SIDE_PANEL_WIDTH
 import cute.neko.night.ui.screen.click.styles.normal.setting.*
-import cute.neko.night.ui.screen.special.CheckBox
+import cute.neko.night.ui.screen.click.styles.normal.special.CheckBox
 import cute.neko.night.utils.animation.AnimationType
 import cute.neko.night.utils.animation.SimpleAnimation
 import cute.neko.night.utils.extensions.sum

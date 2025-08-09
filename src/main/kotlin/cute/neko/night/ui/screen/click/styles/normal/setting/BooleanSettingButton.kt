@@ -1,7 +1,7 @@
 package cute.neko.night.ui.screen.click.styles.normal.setting
 
 import cute.neko.night.features.setting.type.primitive.BooleanSetting
-import cute.neko.night.ui.screen.special.CheckBox
+import cute.neko.night.ui.screen.click.styles.normal.special.CheckBox
 import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color

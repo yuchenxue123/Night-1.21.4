@@ -1,11 +1,7 @@
 package cute.neko.night.ui.screen.click.styles.normal.setting
 
 import cute.neko.night.features.setting.type.number.AbstractNumberSetting
-import cute.neko.night.features.setting.type.number.FloatSetting
-import cute.neko.night.features.setting.type.number.IntegerSetting
-import cute.neko.night.ui.screen.special.Slider
-import cute.neko.night.utils.extensions.decimals
-import cute.neko.night.utils.extensions.step
+import cute.neko.night.ui.screen.click.styles.normal.special.Slider
 import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
@@ -27,32 +23,10 @@ class NumberSettingButton(
             setting.get().toString()
         }
         .receive {
-            return@receive when (setting) {
-                is FloatSetting -> {
-                    ((setting.get() - setting.min) / (setting.max - setting.min)).coerceIn(0f, 1f)
-                }
-
-                is IntegerSetting -> {
-                    ((setting.get() - setting.min).toFloat() / (setting.max - setting.min)).coerceIn(0f, 1f)
-                }
-
-                else -> 0f
-            }
+            setting.process
         }
         .callback { process ->
-            when (setting) {
-                is FloatSetting -> {
-                    setting.set(
-                        (setting.min + ((setting.max - setting.min) * process).step(setting.step)).decimals(2)
-                    )
-                }
-
-                is IntegerSetting -> {
-                    setting.set(
-                        setting.min + ((setting.max - setting.min) * process).step(setting.step.toFloat()).toInt()
-                    )
-                }
-            }
+            setting.setProcess(process)
         }
 
     // render text

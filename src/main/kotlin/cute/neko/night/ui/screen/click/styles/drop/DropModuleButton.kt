@@ -11,6 +11,7 @@ import cute.neko.night.utils.animation.ColorAnimation
 import cute.neko.night.utils.misc.option.BooleanOption
 import cute.neko.night.utils.misc.option.ColorOption
 import cute.neko.night.utils.render.nano.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
@@ -20,6 +21,7 @@ import java.awt.Color
  */
 
 class DropModuleButton(
+    private val bar: DropCategoryBar,
     val module: ClientModule,
     x: Float,
     y: Float,
@@ -29,7 +31,7 @@ class DropModuleButton(
 
     private val font = NanoFontManager.GENSHIN
 
-    private val open = BooleanOption(false)
+    val open = BooleanOption(false)
 
     private val state = BooleanOption(false)
     private val color = ColorOption(Color(255, 255, 255))
@@ -37,12 +39,23 @@ class DropModuleButton(
         .target(Color.WHITE)
         .finish()
 
-    override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
+    private val panel = ModuleSettingPanel(this)
 
+    override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
         // update color
         update()
 
         color.animate(color_animation)
+
+        panel.render(context, mouseX, mouseY, delta)
+
+        NanoUtils.drawRect(
+            x(),
+            y(),
+            width(),
+            height(),
+            Color( 50, 50, 50)
+        )
 
         val text = module.name
         font.drawText(
@@ -65,10 +78,18 @@ class DropModuleButton(
                 }
 
                 1 -> {
-                    open.toggle()
+                    open.toggle { new ->
+                        panel.update(new)
+                    }
                 }
             }
         }
+
+        panel.mouseClicked(mouseX, mouseY, button)
+    }
+
+    override fun mouseReleased(mouseX: Double, mouseY: Double, button: Int) {
+        panel.mouseReleased(mouseX, mouseY, button)
     }
 
     private fun update() {
@@ -94,6 +115,10 @@ class DropModuleButton(
     }
 
     fun getHeight(): Float {
-        return COMPONENT_HEIGHT
+        return COMPONENT_HEIGHT + panel.getHeight()
+    }
+
+    fun getAnimateHeight(): Float {
+        return COMPONENT_HEIGHT + panel.getAnimationHeight()
     }
 }
