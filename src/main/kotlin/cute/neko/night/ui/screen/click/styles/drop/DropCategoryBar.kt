@@ -42,7 +42,7 @@ class DropCategoryBar(
         build()
     }
 
-    private val open = BooleanOption(false)
+    val open = BooleanOption(false)
 
     private val height_option = FloatOption(height())
     private val height_animation = SimpleAnimation.create()
@@ -83,14 +83,18 @@ class DropCategoryBar(
             )
         }
 
-        NanoUtils.scissor(
-            x(),
-            y() + height() + CATEGORY_BUTTON_SPACE,
-            width(),
-            height_option.get() - height() - CATEGORY_BUTTON_SPACE - CATEGORY_BOTTOM_SPACE
-        ) {
-            buttons.forEach {
-                it.render(context, mouseX, mouseY, delta)
+        val height = height_option.get() - height() - CATEGORY_BUTTON_SPACE - CATEGORY_BOTTOM_SPACE
+
+        if (height > 0) {
+            NanoUtils.scissor(
+                x(),
+                y() + height() + CATEGORY_BUTTON_SPACE,
+                width(),
+                height
+            ) {
+                buttons.forEach {
+                    it.render(context, mouseX, mouseY, delta)
+                }
             }
         }
     }

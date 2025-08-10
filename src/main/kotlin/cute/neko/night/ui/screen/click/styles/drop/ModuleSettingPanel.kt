@@ -54,17 +54,19 @@ class ModuleSettingPanel(
 
         height.animate(height_animation)
 
-        NanoUtils.drawRect(
-            x(), y(),
-            width(), height.get(),
-            Color(40, 40, 40)
-        )
+        if (height.get() > 0) {
+            NanoUtils.drawRect(
+                x(), y(),
+                width(), height.get(),
+                Color(40, 40, 40)
+            )
 
-        NanoUtils.scissor(x(), y(), width(), height.get()) {
-            buttons.forEach {
-                if (!it.visible()) return@forEach
+            NanoUtils.scissor(x(), y(), width(), height.get()) {
+                buttons.forEach {
+                    if (!it.visible()) return@forEach
 
-                it.render(context, mouseX, mouseY, delta)
+                    it.render(context, mouseX, mouseY, delta)
+                }
             }
         }
     }
