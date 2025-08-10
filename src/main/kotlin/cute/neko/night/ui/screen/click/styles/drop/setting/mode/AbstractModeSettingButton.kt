@@ -2,6 +2,7 @@ package cute.neko.night.ui.screen.click.styles.drop.setting.mode
 
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.ui.isHovered
+import cute.neko.night.ui.screen.click.styles.drop.Constants.SELECT_SETTING_ARROW_SIZE
 import cute.neko.night.ui.screen.click.styles.drop.Constants.SETTING_LEFT_RIGHT_SPACE
 import cute.neko.night.ui.screen.click.styles.drop.setting.AbstractSettingButton
 import cute.neko.night.utils.animation.AnimationType
@@ -35,13 +36,20 @@ abstract class AbstractModeSettingButton<T : AbstractSetting<*>>(
         .type(AnimationType.QUAD_OUT)
         .finish()
 
+    private val rotate = FloatOption(0f)
+    private val rotate_animation = SimpleAnimation.create()
+        .type(AnimationType.QUAD_OUT)
+        .finish()
+
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
         refresh()
 
         height.animate(height_animation)
+        rotate.animate(rotate_animation)
 
         val text = setting.name
 
+        // 设置展开背景
         NanoUtils.drawRect(
             x(),
             y() + height(),
@@ -50,7 +58,7 @@ abstract class AbstractModeSettingButton<T : AbstractSetting<*>>(
             Color(35, 35, 35)
         )
 
-        // bbb
+        // 绘制设置背景
         NanoUtils.drawRect(
             x(),
             y(),
@@ -63,6 +71,14 @@ abstract class AbstractModeSettingButton<T : AbstractSetting<*>>(
             text,
             x() + SETTING_LEFT_RIGHT_SPACE,
             y() + (height() - font.height(text)) / 2f,
+            Color(255, 255, 255)
+        )
+        
+        NanoUtils.drawArrow(
+            x() + width() - SETTING_LEFT_RIGHT_SPACE - SELECT_SETTING_ARROW_SIZE,
+            y() + (height() - SELECT_SETTING_ARROW_SIZE) / 2f,
+            SELECT_SETTING_ARROW_SIZE,
+            rotate.get(),
             Color(255, 255, 255)
         )
 
@@ -78,21 +94,16 @@ abstract class AbstractModeSettingButton<T : AbstractSetting<*>>(
 
         if (hovered && button == 1) {
             open.toggle { new ->
-                when (new) {
-                    true -> {
-                        height_animation
-                            .start(height.get())
-                            .target(getHeight() - height())
-                            .reset()
-                    }
 
-                    false -> {
-                        height_animation
-                            .start(height.get())
-                            .target(height.default)
-                            .reset()
-                    }
-                }
+                height_animation
+                    .start(height.get())
+                    .target(if (new) getHeight() - height() else height.default)
+                    .reset()
+
+                rotate_animation
+                    .start(rotate.get())
+                    .target(if (new) 90f else 0f)
+                    .reset()
             }
         }
 

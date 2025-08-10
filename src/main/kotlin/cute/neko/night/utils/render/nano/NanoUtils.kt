@@ -3,6 +3,7 @@ package cute.neko.night.utils.render.nano
 import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
 import cute.neko.night.utils.extensions.color.toColor4f
+import cute.neko.night.utils.extensions.toRadians
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.render.nano.image.NanoImage
 import cute.neko.night.utils.render.nano.image.NanoImageManager
@@ -293,6 +294,28 @@ object NanoUtils : Accessor {
 
         fillColor(color)
         NanoVG.nvgFill(nvg)
+    }
+
+    fun drawArrow(x: Float, y: Float, size: Float, angle: Float, color: Color) {
+        save()
+
+        NanoVG.nvgTranslate(nvg,x + size / 2f, y + size / 2f)
+        NanoVG.nvgRotate(nvg, angle.toRadians())
+
+        NanoVG.nvgTranslate(nvg, -size / 2f, -size / 2f)
+
+        drawPolyline(
+            0f,
+            0f,
+            arrayOf(
+                Vector2f(size, size / 2),
+                Vector2f(0f, size),
+            ),
+            1f,
+            color
+        )
+
+        restore()
     }
 
     // x,y is up-center pos

@@ -36,4 +36,8 @@ object Constants {
     const val TOGGLE_BUTTON_WIDTH = 50f
 
     const val SELECT_BUTTON_HEIGHT = 30f
+
+    const val MODULE_ARROW_SIZE = 8f
+
+    const val SELECT_SETTING_ARROW_SIZE = 6f
 }

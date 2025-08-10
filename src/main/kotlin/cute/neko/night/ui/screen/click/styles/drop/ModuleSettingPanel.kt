@@ -35,8 +35,11 @@ class ModuleSettingPanel(
 
     private val buttons = mutableListOf<AbstractSettingButton<*>>()
 
+    fun isNotEmpty() = buttons.isNotEmpty()
+
     val height = FloatOption(0f)
     private val height_animation = SimpleAnimation.create()
+        .type(AnimationType.QUAD_OUT)
         .target(height.default)
         .finish()
 
@@ -115,7 +118,6 @@ class ModuleSettingPanel(
         when (state) {
             true -> {
                 height_animation
-                    .type(AnimationType.QUAD_OUT)
                     .start(height.get())
                     .target(getHeight())
                     .reset()
@@ -123,7 +125,6 @@ class ModuleSettingPanel(
 
             false -> {
                 height_animation
-                    .type(AnimationType.QUAD_IN)
                     .start(height.get())
                     .target(height.default)
                     .reset()

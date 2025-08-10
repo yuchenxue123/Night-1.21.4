@@ -4,7 +4,6 @@ import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.ui.screen.click.styles.Style
 import cute.neko.night.ui.screen.click.styles.drop.Constants.COMPONENT_HEIGHT
 import cute.neko.night.ui.screen.click.styles.drop.Constants.COMPONENT_WIDTH
-import cute.neko.night.ui.screen.click.styles.drop.component.Bar
 import cute.neko.night.ui.screen.click.styles.drop.component.Bars
 import cute.neko.night.utils.extensions.reversedList
 import cute.neko.night.utils.render.nano.NanoUtils
