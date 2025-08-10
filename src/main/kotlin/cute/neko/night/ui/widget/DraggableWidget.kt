@@ -1,6 +1,9 @@
 package cute.neko.night.ui.widget
 
 import cute.neko.night.ui.isHovered
+import cute.neko.night.utils.render.nano.NanoFontManager
+import cute.neko.night.utils.render.nano.NanoUtils
+import java.awt.Color
 
 /**
  * @author yuchenxue
@@ -14,6 +17,8 @@ abstract class DraggableWidget(
     var width: Float,
     var height: Float,
 ) : AbstractWidget(type) {
+
+    private val font = NanoFontManager.GENSHIN_12
 
     private val scale : Double
         get() = mc.window.scaleFactor
@@ -30,20 +35,44 @@ abstract class DraggableWidget(
             y = (mouseY * scale - dragY).toFloat()
         }
 
+        NanoUtils.drawOutlineRect(
+            x - BOARD_PADDING,
+            y - BOARD_PADDING,
+            width + BOARD_PADDING * 2f,
+            height + BOARD_PADDING * 2f,
+            1f,
+            Color(255, 255, 255, 255)
+        )
 
+        val text = type.modeName
+        font.drawText(
+            text,
+            x,
+            y - BOARD_PADDING - 4f - font.height(text),
+            Color(255, 255, 255)
+        )
     }
 
     open fun handleScreenMouseClick(mouseX: Double, mouseY: Double, button: Int) {
-        if (isHovered(x, y, width, height, mouseX, mouseY)) {
-            if (button == 0) {
-                dragging = true
-                dragX = mouseX * scale - x
-                dragY = mouseY * scale - y
-            }
+        val hovered = isHovered(
+            x - BOARD_PADDING,
+            y - BOARD_PADDING,
+            width + BOARD_PADDING * 2f,
+            height + BOARD_PADDING * 2f,
+            mouseX, mouseY
+        )
+
+        if (hovered && button == 0) {
+            dragging = true
+            dragX = mouseX * scale - x
+            dragY = mouseY * scale - y
         }
     }
 
     open fun handleScreenMouseRelease(mouseX: Double, mouseY: Double, button: Int) {
-        dragging = false
+        if (dragging && button == 0) {
+            dragging = false
+        }
+
     }
 }

@@ -27,6 +27,7 @@ object NanoUtils : Accessor {
 
     var nvg: Long = 0L
 
+    /* Create NanoVG context */
     fun create() {
         if (nvg != 0L) {
             return
@@ -99,6 +100,25 @@ object NanoUtils : Accessor {
         fillColor(color)
 
         NanoVG.nvgFill(nvg)
+    }
+
+    /**
+     * 绘制一个矩形外框
+     * @param x 左上角 x 坐标
+     * @param y 左上角 y 坐标
+     * @param width 矩形宽长
+     * @param height 矩形高长
+     * @param strokeWidth 边框宽度
+     * @param color 矩形颜色
+     */
+    fun drawOutlineRect(x: Float, y: Float, width: Float, height: Float, strokeWidth: Float, color: Color) {
+        NanoVG.nvgBeginPath(nvg)
+
+        NanoVG.nvgRect(nvg, x, y, width, height)
+        NanoVG.nvgStrokeWidth(nvg, strokeWidth)
+
+        strokeColor(color)
+        NanoVG.nvgStroke(nvg)
     }
 
 
@@ -183,6 +203,24 @@ object NanoUtils : Accessor {
         fillColor(color)
 
         NanoVG.nvgFill(nvg)
+    }
+
+    /**
+     * 绘制一个圆
+     * @param x 圆心 x 坐标
+     * @param y 圆心 y 坐标
+     * @param radius 半径
+     * @param width 边框宽度
+     * @param color 颜色
+     */
+    fun drawOutlineCircle(x: Float, y: Float, radius: Float, width: Float, color: Color) {
+        NanoVG.nvgBeginPath(nvg)
+
+        NanoVG.nvgCircle(nvg, x, y, radius)
+        NanoVG.nvgStrokeWidth(nvg, width)
+
+        strokeColor(color)
+        NanoVG.nvgStroke(nvg)
     }
 
     /**
@@ -296,6 +334,14 @@ object NanoUtils : Accessor {
         NanoVG.nvgFill(nvg)
     }
 
+    /**
+     * 绘制一个箭头
+     * @param x 左上角 x 坐标
+     * @param y 左上角 y 坐标
+     * @param size 大小
+     * @param angle 旋转角度
+     * @param color 颜色
+     */
     fun drawArrow(x: Float, y: Float, size: Float, angle: Float, color: Color) {
         save()
 

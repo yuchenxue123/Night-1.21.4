@@ -13,9 +13,9 @@ import java.awt.Color
  */
 
 class NanoFont(
-    private val name: String,
-    private val font: Int = -1,
-    private val size: Float = 18f,
+    val name: String,
+    val font: Int = -1,
+    val size: Float = 18f,
 ) : Accessor {
 
     fun drawText(text: Text, x: Float, y: Float, color: Color, size: Float = this.size): Float {

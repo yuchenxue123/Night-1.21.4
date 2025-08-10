@@ -9,6 +9,6 @@ import cute.neko.night.features.setting.type.mode.SubMode
 
 enum class WidgetType(override val modeName: String) : SubMode {
     ARRAYLIST("Arraylist"),
-    TARGET("Target"),
+    TARGET("TargetHUD"),
     DYNAMIC_ISLAND("DynamicIsland")
 }

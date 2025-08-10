@@ -67,6 +67,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleNoHurtCam,
             ModuleNameTags,
             ModuleESP,
+            ModuleEditScreen,
 
             // misc
             ModuleDisabler,

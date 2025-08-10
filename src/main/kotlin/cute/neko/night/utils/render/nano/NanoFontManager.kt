@@ -16,7 +16,8 @@ object NanoFontManager : Accessor {
 
     val ROBOTO = createFont("roboto", "roboto.ttf")
     val GENSHIN = createFont("genshin", "genshin.ttf")
-    val GENSHIN_15 = createFont("genshin_15", "genshin.ttf", 15f)
+    val GENSHIN_15 = NanoFont(GENSHIN.name, GENSHIN.font, 15f)
+    val GENSHIN_12 = NanoFont(GENSHIN.name, GENSHIN.font, 12f)
 
     private fun createFont(name: String, fontFileName: String, size: Float = 18f): NanoFont {
         var font = -1
