@@ -4,7 +4,7 @@ import cute.neko.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
-import net.minecraft.client.option.KeyBinding
+import cute.neko.night.features.setting.type.mode.SubMode
 
 /**
  * @author yuchenxue
@@ -16,11 +16,27 @@ object ModuleSprint : ClientModule(
     ModuleCategory.MOVEMENT
 ) {
 
+    private val mode by enum("Mode", SprintMode.FORCE)
+
     @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
 
-        if (mc.options.forwardKey.isPressed && player.input.movementForward > 0.8 && (!player.horizontalCollision || player.collidedSoftly)) {
-            player.isSprinting = true
+        when (mode) {
+            SprintMode.LEGIT -> {
+                if (mc.options.forwardKey.isPressed && player.input.movementForward > 0.8
+                    && (!player.horizontalCollision || player.collidedSoftly)) {
+                    player.isSprinting = true
+                }
+            }
+
+            SprintMode.FORCE -> {
+                player.isSprinting = true
+            }
         }
+    }
+
+    private enum class SprintMode(override val modeName: String) : SubMode {
+        LEGIT("Legit"),
+        FORCE("Force")
     }
 }
