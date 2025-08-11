@@ -57,6 +57,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleTimer,
             ModuleNoSlow,
 //            ModuleScaffold,
+            ModuleAutoEat,
 
             // render
             ModuleBrightness,

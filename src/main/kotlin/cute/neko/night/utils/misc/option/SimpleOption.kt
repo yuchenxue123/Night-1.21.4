@@ -16,4 +16,8 @@ open class SimpleOption<T>(
     }
 
     fun get(): T = value
+
+    fun reset() {
+        set(default)
+    }
 }
