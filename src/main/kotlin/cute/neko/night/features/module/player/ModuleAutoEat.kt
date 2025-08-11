@@ -7,7 +7,6 @@ import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.utils.misc.option.BooleanOption
 import cute.neko.night.utils.player.inventory.Slots
 import net.minecraft.component.DataComponentTypes
-import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 import net.minecraft.util.Hand
 
@@ -51,14 +50,14 @@ object ModuleAutoEat : ClientModule(
                 Slots.select(slot)
 
 //                network.sendPacket(UpdateSelectedSlotC2SPacket(slot))
-                interactionManager.sendSequencedPacket(world) { sequence ->
-                    PlayerInteractItemC2SPacket(
-                        Hand.MAIN_HAND,
-                        sequence,
-                        player.yaw,
-                        player.pitch
-                    )
-                }
+//                interactionManager.sendSequencedPacket(world) { sequence ->
+//                    PlayerInteractItemC2SPacket(
+//                        Hand.MAIN_HAND,
+//                        sequence,
+//                        player.yaw,
+//                        player.pitch
+//                    )
+//                }
                 interactionManager.interactItem(player, Hand.MAIN_HAND)
                 repeat(35) {
                     network.sendPacket(PlayerMoveC2SPacket.OnGroundOnly(player.isOnGround, player.horizontalCollision))
