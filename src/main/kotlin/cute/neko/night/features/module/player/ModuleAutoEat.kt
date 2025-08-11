@@ -5,9 +5,10 @@ import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.utils.misc.option.BooleanOption
+import cute.neko.night.utils.player.inventory.Slots
 import net.minecraft.component.DataComponentTypes
+import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
-import net.minecraft.network.packet.c2s.play.UpdateSelectedSlotC2SPacket
 import net.minecraft.util.Hand
 
 /**
@@ -35,6 +36,10 @@ object ModuleAutoEat : ClientModule(
             eating.set(true)
         }
 
+        if (player.hungerManager.foodLevel > hunger) {
+            eating.set(false)
+        }
+
         if (player.hungerManager.foodLevel <= hunger && eating.get()) {
             (0..8).map {
                 it to player.inventory.getStack(it)
@@ -43,12 +48,24 @@ object ModuleAutoEat : ClientModule(
             }?.let { (slot, stack) ->
                 val pre = player.inventory.selectedSlot
 
-                network.sendPacket(UpdateSelectedSlotC2SPacket(slot))
+                Slots.select(slot)
+
+//                network.sendPacket(UpdateSelectedSlotC2SPacket(slot))
+                interactionManager.sendSequencedPacket(world) { sequence ->
+                    PlayerInteractItemC2SPacket(
+                        Hand.MAIN_HAND,
+                        sequence,
+                        player.yaw,
+                        player.pitch
+                    )
+                }
                 interactionManager.interactItem(player, Hand.MAIN_HAND)
                 repeat(35) {
                     network.sendPacket(PlayerMoveC2SPacket.OnGroundOnly(player.isOnGround, player.horizontalCollision))
                 }
-                network.sendPacket(UpdateSelectedSlotC2SPacket(pre))
+//                network.sendPacket(UpdateSelectedSlotC2SPacket(pre))
+
+                Slots.select(pre)
 
                 eating.set(false)
             }

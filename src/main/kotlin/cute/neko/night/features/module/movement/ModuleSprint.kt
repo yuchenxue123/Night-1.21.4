@@ -16,7 +16,7 @@ object ModuleSprint : ClientModule(
     ModuleCategory.MOVEMENT
 ) {
 
-    private val mode by enum("Mode", SprintMode.FORCE)
+    private val mode by mode("Mode", SprintMode.FORCE)
 
     @Suppress("unused")
     private val onPlayerTick = handler<PlayerTickEvent> {
