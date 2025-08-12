@@ -58,7 +58,7 @@ class ToggleButton(
 
     private val color = ColorOption(Color(30, 30, 30))
     private val color_animation = ColorAnimation(AnimationType.QUAD_OUT)
-        .target(color.default)
+        .target(color.default())
         .finish()
 
     private val radius: Float
@@ -121,12 +121,12 @@ class ToggleButton(
             false -> {
                 x_animation
                     .start(x_offset.get())
-                    .target(x_offset.default)
+                    .target(x_offset.default())
                     .reset()
 
                 color_animation
                     .start(color.get())
-                    .target(color.default)
+                    .target(color.default())
                     .reset()
             }
         }

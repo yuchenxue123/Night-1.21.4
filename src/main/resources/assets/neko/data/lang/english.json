@@ -11,9 +11,9 @@
   "neko.module.KillAura.name": "KillAura",
   "neko.module.KeepSprint.name": "KeepSprint",
 
-  "neko.module.Test.name": "Test",
   "neko.module.Disabler.name": "Disabler",
   "neko.module.AntiBot.name": "AntiBot",
+  "neko.module.KeepContainer.name": "KeepContainer",
 
   "neko.module.InvMove.name": "InvMove",
   "neko.module.NoPush.name": "NoPush",
@@ -45,9 +45,9 @@
   "neko.module.KillAura.desc": "Auto attack around entity.",
   "neko.module.KeepSprint.desc": "Keep sprint when attack entity。",
 
-  "neko.module.Test.desc": "Test something.",
   "neko.module.Disabler.desc": "Disable some checks of anti-cheat.",
   "neko.module.AntiBot.desc": "Bot will remove from your targets.",
+  "neko.module.KeepContainer.desc": "Save container, then press Y to open.",
 
   "neko.module.InvMove.desc": "Move when inventory open.",
   "neko.module.NoPush.desc": "Remove push by other entity.",

@@ -5,19 +5,21 @@ package cute.neko.night.utils.misc.option
  * @date 2025/08/05
  */
 
-open class SimpleOption<T>(
-    val default: T
-) {
+open class SimpleOption<T : Any>(
+    private val default: T
+) : Option<T> {
 
     private var value: T = default
 
-    fun set(value: T) {
+    override fun set(value: T) {
         this.value = value
     }
 
-    fun get(): T = value
+    override fun get(): T = value
 
-    fun reset() {
+    override fun reset() {
         set(default)
     }
+
+    override fun default(): T = default
 }

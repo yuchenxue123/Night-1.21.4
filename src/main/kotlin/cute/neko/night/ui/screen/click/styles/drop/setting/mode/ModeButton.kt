@@ -48,7 +48,7 @@ class ModeButton(
 
     private val color = ColorOption(Color(255, 255, 255))
     private val color_animation = ColorAnimation(AnimationType.QUAD_OUT)
-        .target(color.default)
+        .target(color.default())
         .finish()
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {
@@ -90,7 +90,7 @@ class ModeButton(
                 false -> {
                     color_animation
                         .start(color.get())
-                        .target(color.default)
+                        .target(color.default())
                         .reset()
                 }
             }

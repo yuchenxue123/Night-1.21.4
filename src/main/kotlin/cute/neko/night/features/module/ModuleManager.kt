@@ -7,7 +7,7 @@ import cute.neko.night.features.module.combat.ModuleKeepSprint
 import cute.neko.night.features.module.combat.antivelocity.ModuleAntiVelocity
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.misc.ModuleAntiBot
-import cute.neko.night.features.module.misc.ModuleTest
+import cute.neko.night.features.module.misc.ModuleKeepContainer
 import cute.neko.night.features.module.misc.disabler.ModuleDisabler
 import cute.neko.night.features.module.movement.ModuleNoJumpDelay
 import cute.neko.night.features.module.movement.ModuleNoPush
@@ -73,8 +73,7 @@ object ModuleManager : EventListener, Accessor {
             // misc
             ModuleDisabler,
             ModuleAntiBot,
-
-            ModuleTest,
+            ModuleKeepContainer
         )
     }
 

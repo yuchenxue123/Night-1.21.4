@@ -97,7 +97,7 @@ abstract class AbstractModeSettingButton<T : AbstractSetting<*>>(
 
                 height_animation
                     .start(height.get())
-                    .target(if (new) getHeight() - height() else height.default)
+                    .target(if (new) getHeight() - height() else height.default())
                     .reset()
 
                 rotate_animation

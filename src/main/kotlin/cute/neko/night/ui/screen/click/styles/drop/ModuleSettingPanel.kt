@@ -40,7 +40,7 @@ class ModuleSettingPanel(
     val height = FloatOption(0f)
     private val height_animation = SimpleAnimation.create()
         .type(AnimationType.QUAD_OUT)
-        .target(height.default)
+        .target(height.default())
         .finish()
 
     init {
@@ -128,7 +128,7 @@ class ModuleSettingPanel(
             false -> {
                 height_animation
                     .start(height.get())
-                    .target(height.default)
+                    .target(height.default())
                     .reset()
             }
         }

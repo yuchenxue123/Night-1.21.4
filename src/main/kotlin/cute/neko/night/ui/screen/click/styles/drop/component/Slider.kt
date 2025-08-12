@@ -46,7 +46,7 @@ class Slider(
     private val process = FloatOption(0f)
     private val process_animation = SimpleAnimation.create()
         .type(AnimationType.QUAD_OUT)
-        .target(process.default)
+        .target(process.default())
         .finish()
 
     private val dragging = BooleanOption(false)

@@ -55,13 +55,13 @@ object TargetWidget : DraggableWidget(
 
     private val width_animation = SimpleAnimation.create()
         .type(AnimationType.QUAD_OUT)
-        .start(width_.default)
+        .start(width_.default())
         .target(_width)
         .duration(200f)
 
     private val height_animation = SimpleAnimation.create()
         .type(AnimationType.QUAD_OUT)
-        .start(height_.default)
+        .start(height_.default())
         .target(_height)
         .duration(200f)
 
