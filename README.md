@@ -14,4 +14,4 @@ Nothing
 #### ClickGui
 ![clickgui-1](/screenshot/1.png)
 
-![clickgui-1](/screenshot/2.png)
+![clickgui-2](/screenshot/2.png)
