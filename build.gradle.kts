@@ -1,18 +1,14 @@
-import kotlin.String
-
 plugins {
     kotlin("jvm")
     id("fabric-loom")
 }
 
 val mod_name: String by project
-val mod_group: String by project
 val mod_version: String by project
 val mod_description: String by project
 
 description = mod_description
 version = mod_version
-group = mod_group
 
 base {
     archivesName = mod_name
