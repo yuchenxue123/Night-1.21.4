@@ -8,5 +8,10 @@ Nothing
 
 - [Liquidbounce Legacy](https://github.com/CCBlueX/LiquidBounce/tree/legacy/)
 - [Liquidbounce NextGen](https://github.com/CCBlueX/LiquidBounce/tree/nextgen/)
-- [MoonLight](https://github.com/randomguy3725/MoonLight)
-- [ProtoHax](https://github.com/hax0r31337/ProtoHax)
+
+### 图片
+
+#### ClickGui
+![clickgui-1](/screenshot/1.png)
+
+![clickgui-1](/screenshot/2.png)

@@ -66,7 +66,7 @@ class DropModuleButton(
             Color( 50, 50, 50)
         )
 
-        val text = module.name
+        val text = module.showName
         font.drawText(
             text,
             x() + MODULE_TEXT_LEFT_SPACE,

@@ -21,6 +21,7 @@
   "neko.module.Sprint.name": "疾跑",
   "neko.module.Speed.name": "速度",
   "neko.module.Fly.name": "飞行",
+  "neko.module.NoSlow.name": "无减速",
 
   "neko.module.BlockFly.name": "自动搭路",
   "neko.module.Stealer.name": "顺手牵羊",
@@ -29,6 +30,7 @@
   "neko.module.NoFall.name": "如履平地",
   "neko.module.DelayPacket.name": "延迟发包",
   "neko.module.Timer.name": "游戏加速",
+  "neko.module.AutoEat.name": "自动吃饭",
 
   "neko.module.ClickScreen.name": "配置界面",
   "neko.module.Settings.name": "设置",
@@ -38,6 +40,7 @@
   "neko.module.NoHurtCam.name": "无伤害抖动",
   "neko.module.NameTags.name": "内幕他给",
   "neko.module.ESP.name": "透视",
+  "neko.module.EditScreen.name": "编辑界面",
 
 
 
@@ -55,6 +58,7 @@
   "neko.module.Sprint.desc": "自动疾跑",
   "neko.module.Speed.desc": "加快你的移动速度",
   "neko.module.Fly.desc": "让你遨游天空",
+  "neko.module.NoSlow.desc": "取消对玩家的移动减速效果",
 
   "neko.module.BlockFly.desc": "自动在你的脚下放置方块",
   "neko.module.Stealer.desc": "偷取容器里的物品",
@@ -63,6 +67,7 @@
   "neko.module.NoFall.desc": "防止摔落伤害",
   "neko.module.DelayPacket.desc": "积累数据包，然后一次性发送到服务器",
   "neko.module.Timer.desc": "修改客户端的游戏游戏刻刻速率",
+  "neko.module.AutoEat.desc": "在你饥饿时，吃食物，秒吃",
 
   "neko.module.ClickScreen.desc": "打开配置界面",
   "neko.module.Settings.desc": "客户端的一些设置",
@@ -71,5 +76,6 @@
   "neko.module.Interface.desc": "显示视觉组件",
   "neko.module.NoHurtCam.desc": "取消伤害抖动动画",
   "neko.module.NameTags.desc": "玩家名称可穿墙看到",
-  "neko.module.ESP.desc": "给玩家上框"
+  "neko.module.ESP.desc": "给玩家上框",
+  "neko.module.EditScreen.desc": "打开编辑界面"
 }

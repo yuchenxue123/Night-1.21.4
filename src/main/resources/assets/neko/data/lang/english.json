@@ -21,6 +21,7 @@
   "neko.module.Sprint.name": "Sprint",
   "neko.module.Speed.name": "Speed",
   "neko.module.Fly.name": "Fly",
+  "neko.module.NoSlow.name": "NoSlow",
 
   "neko.module.BlockFly.name": "BlockFly",
   "neko.module.Stealer.name": "Stealer",
@@ -29,6 +30,7 @@
   "neko.module.NoFall.name": "NoFall",
   "neko.module.DelayPacket.name": "DelayPacket",
   "neko.module.Timer.name": "Timer",
+  "neko.module.AutoEat.name": "AutoEat",
 
   "neko.module.ClickScreen.name": "ClickScreen",
   "neko.module.Settings.name": "Settings",
@@ -38,6 +40,7 @@
   "neko.module.NoHurtCam.name": "NoHurtCam",
   "neko.module.NameTags.name": "NameTags",
   "neko.module.ESP.name": "ESP",
+  "neko.module.EditScreen.name": "EditScreen",
 
 
 
@@ -55,6 +58,7 @@
   "neko.module.Sprint.desc": "Auto sprint.",
   "neko.module.Speed.desc": "Increase your move speed.",
   "neko.module.Fly.desc": "Fly in the sky.",
+  "neko.module.NoSlow.desc": "Cancel slowness effects.",
 
   "neko.module.BlockFly.desc": "Auto place block below your feet.",
   "neko.module.Stealer.desc": "Stealer items from the container.",
@@ -63,6 +67,7 @@
   "neko.module.NoFall.desc": "No fall down damage.",
   "neko.module.DelayPacket.desc": "Save packets, delayed send to server.",
   "neko.module.Timer.desc": "Scale the game tick speed.",
+  "neko.module.AutoEat.desc": "Auto eat food when you are hungry.",
 
   "neko.module.ClickScreen.desc": "Display click screen.",
   "neko.module.Settings.desc": "Some settings of client.",
@@ -71,5 +76,6 @@
   "neko.module.Interface.desc": "Render some visual widgets on screen.",
   "neko.module.NoHurtCam.desc": "Remove cam animation when player receive hurt.",
   "neko.module.NameTags.desc": "Render a through wall name label.",
-  "neko.module.ESP.desc": "Render a rect overlay player."
+  "neko.module.ESP.desc": "Render a rect overlay player.",
+  "neko.module.EditScreen.desc": "Display a screen to edit widgets position."
 }
