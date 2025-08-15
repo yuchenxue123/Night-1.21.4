@@ -1,6 +1,6 @@
 package cute.neko.night.event.events.client
 
-import cute.neko.event.Event
+import cute.neko.night.event.Event
 import cute.neko.night.features.module.ClientModule
 
 /**

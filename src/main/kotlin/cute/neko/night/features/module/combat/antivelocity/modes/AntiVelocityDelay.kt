@@ -1,10 +1,10 @@
 package cute.neko.night.features.module.combat.antivelocity.modes
 
-import cute.neko.event.handler
-import cute.neko.night.event.PacketEventState
-import cute.neko.night.event.events.game.misc.SwitchWorldEvent
+import cute.neko.night.event.PacketType
+import cute.neko.night.event.events.game.misc.WorldEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
+import cute.neko.night.event.handler
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.combat.killaura.features.KillAuraTargetTracker
 import net.minecraft.network.listener.ClientPlayPacketListener
@@ -37,7 +37,7 @@ object AntiVelocityDelay : AntiVelocityMode("Delay") {
 
     @Suppress("unused")
     private val onPacketReceive = handler<PacketEvent> { event ->
-        if (event.state != PacketEventState.RECEIVE) {
+        if (event.type != PacketType.RECEIVE) {
             return@handler
         }
 
@@ -61,7 +61,7 @@ object AntiVelocityDelay : AntiVelocityMode("Delay") {
     }
 
     @Suppress("unused")
-    private val onSwitchWorld = handler<SwitchWorldEvent> {
+    private val onSwitchWorld = handler<WorldEvent> {
         packets.clear()
     }
 

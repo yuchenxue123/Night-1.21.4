@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.player.nofall.modes
 
-import cute.neko.event.LifecycleEventState
-import cute.neko.event.handler
+import cute.neko.night.event.EventState
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.utils.client.Timer
 import cute.neko.night.utils.entity.hasFalldownDamage
@@ -24,7 +24,7 @@ object NoFallHypixel : NoFallMode("Hypixel") {
 
     @Suppress("unused")
     private val onMotionPre = handler<PlayerMotionEvent> { event ->
-        if (event.state != LifecycleEventState.PRE) {
+        if (event.state != EventState.PRE) {
             return@handler
         }
 

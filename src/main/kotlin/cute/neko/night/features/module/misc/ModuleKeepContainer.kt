@@ -1,6 +1,6 @@
 package cute.neko.night.features.module.misc
 
-import cute.neko.event.handler
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.misc.KeyboardEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent

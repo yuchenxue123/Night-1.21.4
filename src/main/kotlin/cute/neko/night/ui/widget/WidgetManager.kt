@@ -1,7 +1,7 @@
 package cute.neko.night.ui.widget
 
-import cute.neko.event.EventListener
-import cute.neko.event.handler
+import cute.neko.night.event.EventListener
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.render.ScreenRenderEvent
 import cute.neko.night.features.module.render.ModuleInterface
 import cute.neko.night.ui.widget.type.ArraylistWidget

@@ -27,6 +27,10 @@ val world: ClientWorld
 val network: ClientPlayNetworkHandler
     get() = mc.networkHandler!!
 
+val inGame: Boolean
+    get() = MinecraftClient.getInstance()?.let { mc -> mc.player != null && mc.world != null } == true
+
+
 /**
  * Add a new chat message to ChatHud
  */

@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.combat.antivelocity.modes
 
-import cute.neko.event.handler
-import cute.neko.night.event.PacketEventState
+import cute.neko.night.event.handler
+import cute.neko.night.event.PacketType
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerAttackEntityEvent
 import cute.neko.night.event.events.game.player.PlayerVelocityEvent
@@ -38,7 +38,7 @@ object AntiVelocitySimple : AntiVelocityMode("Simple") {
     }
 
     private val onPacket = handler<PacketEvent> { event ->
-        if (event.state != PacketEventState.RECEIVE) {
+        if (event.type != PacketType.RECEIVE) {
             return@handler
         }
 

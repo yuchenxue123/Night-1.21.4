@@ -1,6 +1,6 @@
 package cute.neko.night.event.events.game.player
 
-import cute.neko.event.Event
+import cute.neko.night.event.Event
 import net.minecraft.util.math.Vec3d
 
 /**

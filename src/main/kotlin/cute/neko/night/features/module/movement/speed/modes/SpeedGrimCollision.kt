@@ -1,6 +1,6 @@
 package cute.neko.night.features.module.movement.speed.modes
 
-import cute.neko.event.handler
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.utils.entity.box
 import cute.neko.night.utils.entity.getMovementDirectionOfInput

@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.movement.speed.modes
 
-import cute.neko.event.LifecycleEventState
-import cute.neko.event.handler
+import cute.neko.night.event.EventState
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.utils.entity.moving
 import cute.neko.night.utils.entity.strafe
@@ -20,7 +20,7 @@ object SpeedMotion : SpeedMode("Motion") {
 
     @Suppress("unused")
     private val onPlayerMotionPre = handler<PlayerMotionEvent> { event ->
-        if (event.state != LifecycleEventState.PRE) {
+        if (event.state != EventState.PRE) {
             return@handler
         }
 

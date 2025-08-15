@@ -1,7 +1,7 @@
 package cute.neko.night.event.events.game.player
 
-import cute.neko.event.CancellableEvent
-import cute.neko.event.LifecycleEventState
+import cute.neko.night.event.CancellableEvent
+import cute.neko.night.event.EventState
 
 /**
  * @author yuchenxue
@@ -15,5 +15,5 @@ class PlayerMotionEvent(
     var yaw: Float,
     var pitch: Float,
     var onGround: Boolean,
-    val state: LifecycleEventState
+    val state: EventState
 ) : CancellableEvent()

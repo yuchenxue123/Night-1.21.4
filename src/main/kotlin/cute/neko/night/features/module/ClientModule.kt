@@ -1,14 +1,15 @@
 package cute.neko.night.features.module
 
-import cute.neko.event.EventListener
 import cute.neko.event.EventManager
 import cute.neko.night.Night
+import cute.neko.night.event.EventListener
 import cute.neko.night.event.events.client.ModuleToggleEvent
 import cute.neko.night.features.setting.config.Configurable
-import cute.neko.night.features.setting.config.types.EmptyConfigurable
-import cute.neko.night.features.setting.config.types.ToggleConfigurable
+import cute.neko.night.features.setting.config.types.ToggleListener
+import cute.neko.night.features.setting.config.types.Toggleable
 import cute.neko.night.features.setting.config.types.choice.Choice
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
+import cute.neko.night.utils.client.inGame
 import cute.neko.night.utils.lang.LanguageManager
 import cute.neko.night.utils.lang.translate
 import cute.neko.night.utils.misc.debug.Debug
@@ -25,7 +26,7 @@ open class ClientModule(
     var key: Int = GLFW.GLFW_KEY_UNKNOWN,
     val locked: Boolean = false,
     var hidden: Boolean = false,
-) : Configurable(name), EventListener {
+) : Configurable(name), Toggleable, EventListener {
 
     val showName: String
         get() {
@@ -45,25 +46,21 @@ open class ClientModule(
     protected val debug = Debug(Debug.Type.MODULE)
 
     var state = false
-        set(new) {
-            if (new == field) return
+        set(newState) {
+            if (newState == field) return
 
-            field = new
+            inner.filterIsInstance<ToggleListener>().forEach { it.onToggled(newState) }
 
-            if (new) enable() else disable()
+            field = newState
+
+            // call enable and disable function
+            super.onToggled(newState)
 
             // module toggle event
             if (Night.loaded) {
-                EventManager.callEvent(ModuleToggleEvent(this, new))
+                EventManager.callEvent(ModuleToggleEvent(this, newState))
             }
-
-            inner.filterIsInstance<ChoicesConfigurable<*>>().forEach { it.newState(new) }
-            inner.filterIsInstance<ToggleConfigurable>().forEach { it.newState(new) }
-            inner.filterIsInstance<EmptyConfigurable>().forEach { it.newState(new) }
         }
-
-    open fun enable() {}
-    open fun disable() {}
 
     fun toggle() {
         state = !state
@@ -78,5 +75,5 @@ open class ClientModule(
     }
 
     override val running: Boolean
-        get() = super.running && state
+        get() = super.running && inGame && state
 }

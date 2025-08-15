@@ -1,9 +1,9 @@
 package cute.neko.night.features.setting.config.types
 
-import cute.neko.event.EventListener
+import cute.neko.night.event.EventListener
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
-import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
+import cute.neko.night.utils.client.inGame
 
 /**
  * @author yuchenxue
@@ -14,30 +14,19 @@ import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
     name: String,
     state: Boolean,
     private val parent: EventListener? = null
-) : Configurable(name), EventListener {
+) : Configurable(name), Toggleable, EventListener {
 
     private val enable by boolean(name, state)
-        .listener { _, new ->
-            if (new) {
-                enable()
-            } else {
-                disable()
-            }
+        .listener { _, new -> onToggled(new) }
+
+    override fun onToggled(state: Boolean) {
+        inner.filterIsInstance<ToggleListener>().forEach { it.onToggled(state) }
+
+        if (!inGame) {
+            return
         }
 
-    open fun enable() {}
-    open fun disable() {}
-
-    fun newState(new: Boolean) {
-        inner.filterIsInstance<ChoicesConfigurable<*>>().forEach { it.newState(new) }
-        inner.filterIsInstance<ToggleConfigurable>().forEach { it.newState(new) }
-        inner.filterIsInstance<EmptyConfigurable>().forEach { it.newState(new) }
-
-        if (new) {
-            enable()
-        } else {
-            disable()
-        }
+        super.onToggled(state)
     }
 
     override fun parent(): EventListener? = parent

@@ -1,6 +1,6 @@
 package cute.neko.night.features.module.combat.killaura.features
 
-import cute.neko.event.handler
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura.fov

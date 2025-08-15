@@ -1,7 +1,7 @@
 package cute.neko.night.features.module
 
-import cute.neko.event.EventListener
-import cute.neko.event.handler
+import cute.neko.night.event.EventListener
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.misc.KeyboardEvent
 import cute.neko.night.features.module.combat.ModuleKeepSprint
 import cute.neko.night.features.module.combat.antivelocity.ModuleAntiVelocity

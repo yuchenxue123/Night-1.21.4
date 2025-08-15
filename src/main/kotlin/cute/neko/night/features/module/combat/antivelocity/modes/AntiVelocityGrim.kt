@@ -1,7 +1,6 @@
 package cute.neko.night.features.module.combat.antivelocity.modes
 
-import cute.neko.event.handler
-import cute.neko.night.event.events.game.misc.MovementInputEvent
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.utils.extensions.getState
 import cute.neko.night.utils.rotation.RaytraceUtils

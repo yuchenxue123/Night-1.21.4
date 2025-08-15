@@ -1,8 +1,8 @@
 package cute.neko.night.features.setting.config.types
 
-import cute.neko.event.EventListener
+import cute.neko.night.event.EventListener
 import cute.neko.night.features.setting.config.Configurable
-import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
+import cute.neko.night.utils.client.inGame
 
 /**
  * @author yuchenxue
@@ -12,22 +12,17 @@ import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
 open class EmptyConfigurable(
     name: String,
     private val parent: EventListener? = null,
-) : Configurable(name), EventListener {
+) : Configurable(name), Toggleable, EventListener {
 
     override fun parent(): EventListener? = parent
 
-    open fun enable() {}
-    open fun disable() {}
+    override fun onToggled(state: Boolean) {
+        inner.filterIsInstance<ToggleListener>().forEach { it.onToggled(state) }
 
-    fun newState(new: Boolean) {
-        inner.filterIsInstance<ChoicesConfigurable<*>>().forEach { it.newState(new) }
-        inner.filterIsInstance<ToggleConfigurable>().forEach { it.newState(new) }
-        inner.filterIsInstance<EmptyConfigurable>().forEach { it.newState(new) }
-
-        if (new) {
-            enable()
-        } else {
-            disable()
+        if (!inGame) {
+            return
         }
+
+        super.onToggled(state)
     }
 }

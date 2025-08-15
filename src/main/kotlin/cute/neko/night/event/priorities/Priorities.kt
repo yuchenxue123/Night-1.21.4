@@ -1,6 +1,4 @@
-package cute.neko.night.event
-
-import cute.neko.event.api.EventPriority
+package cute.neko.night.event.priorities
 
 /**
  * @author yuchenxue
@@ -13,7 +11,7 @@ enum class Priorities(override val value: Int) : EventPriority {
 
     NOT_IMPORTANT(50),
 
-    // DEFAULT -> DefaultPriority.DEFAULT == 100
+    DEFAULT(100),
 
     IMPORTANT(150),
 }

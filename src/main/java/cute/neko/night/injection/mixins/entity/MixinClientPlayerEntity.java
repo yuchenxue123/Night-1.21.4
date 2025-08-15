@@ -2,7 +2,7 @@ package cute.neko.night.injection.mixins.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
 import cute.neko.event.EventManager;
-import cute.neko.event.LifecycleEventState;
+import cute.neko.night.event.EventState;
 import cute.neko.night.injection.addition.ClientPlayerEntityAddition;
 import cute.neko.night.event.events.game.player.*;
 import cute.neko.night.utils.rotation.RotationManager;
@@ -84,7 +84,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
                 player.getX(), player.getY(), player.getZ(),
                 player.getYaw(), player.getPitch(),
                 player.isOnGround(),
-                LifecycleEventState.PRE
+                EventState.PRE
         );
         EventManager.INSTANCE.callEvent(playerMotionEvent);
 
@@ -223,7 +223,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
                         this.getX(), this.getY(), this.getZ(),
                         this.getYaw(), this.getPitch(),
                         this.isOnGround(),
-                        LifecycleEventState.POST
+                        EventState.POST
                 )
         );
     }

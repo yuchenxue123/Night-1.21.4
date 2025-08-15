@@ -1,9 +1,9 @@
 package cute.neko.night.utils.render.utils
 
 import com.mojang.blaze3d.systems.RenderSystem
-import cute.neko.event.EventListener
-import cute.neko.event.handler
-import cute.neko.night.event.Priorities
+import cute.neko.night.event.EventListener
+import cute.neko.night.event.handler
+import cute.neko.night.event.priorities.Priorities
 import cute.neko.night.event.events.game.render.WorldRenderEvent
 import cute.neko.night.utils.extensions.minus
 import cute.neko.night.utils.interfaces.Accessor

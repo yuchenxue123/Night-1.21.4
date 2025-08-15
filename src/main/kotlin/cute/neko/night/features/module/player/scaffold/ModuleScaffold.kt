@@ -1,6 +1,6 @@
 package cute.neko.night.features.module.player.scaffold
 
-import cute.neko.event.handler
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory

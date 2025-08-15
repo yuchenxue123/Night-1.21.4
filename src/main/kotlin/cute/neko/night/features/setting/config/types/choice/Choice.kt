@@ -1,24 +1,34 @@
 package cute.neko.night.features.setting.config.types.choice
 
-import cute.neko.event.EventListener
+import cute.neko.night.event.EventListener
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
+import cute.neko.night.features.setting.config.types.ToggleListener
+import cute.neko.night.features.setting.config.types.Toggleable
 import cute.neko.night.features.setting.type.mode.SubMode
+import cute.neko.night.utils.client.inGame
 
 /**
  * @author yuchenxue
  * @date 2025/05/10
  */
 
-abstract class Choice(override val modeName: String) : Configurable(modeName), SubMode, EventListener {
+abstract class Choice(override val modeName: String) : Configurable(modeName), Toggleable, SubMode, EventListener {
     abstract val controller: ChoicesConfigurable<*>
-
-    open fun enable() {}
-    open fun disable() {}
 
     override fun parent(): EventListener? = controller.parent
 
     fun isActive(): Boolean = controller.getActive() == this
+
+    override fun onToggled(state: Boolean) {
+        inner.filterIsInstance<ToggleListener>().forEach { it.onToggled(state) }
+
+        if (!inGame) {
+            return
+        }
+
+        super.onToggled(state)
+    }
 
     override val running: Boolean
         get() = super.running && isActive()

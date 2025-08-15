@@ -1,6 +1,6 @@
 package cute.neko.night.event.events.game.misc
 
-import cute.neko.event.CancellableEvent
+import cute.neko.night.event.CancellableEvent
 
 /**
  * @author yuchenxue

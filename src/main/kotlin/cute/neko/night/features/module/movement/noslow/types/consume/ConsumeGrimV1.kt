@@ -1,6 +1,6 @@
 package cute.neko.night.features.module.movement.noslow.types.consume
 
-import cute.neko.event.handler
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.event.events.game.player.PlayerUseMultiplier
 import net.minecraft.network.packet.c2s.play.PlayerInteractItemC2SPacket

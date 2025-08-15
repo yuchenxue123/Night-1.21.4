@@ -1,8 +1,8 @@
 package cute.neko.night.features.module.misc.disabler.modes
 
-import cute.neko.event.LifecycleEventState
-import cute.neko.event.handler
-import cute.neko.night.event.PacketEventState
+import cute.neko.night.event.EventState
+import cute.neko.night.event.handler
+import cute.neko.night.event.PacketType
 import cute.neko.night.event.events.game.misc.MovementInputEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerAfterJumpEvent
@@ -35,7 +35,7 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
 
     @Suppress("unused")
     private val onMotionPre = handler<PlayerMotionEvent> { event ->
-        if (event.state != LifecycleEventState.PRE) {
+        if (event.state != EventState.PRE) {
             return@handler
         }
 
@@ -75,7 +75,7 @@ object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) 
 
     @Suppress("unused")
     private val onPacket = handler<PacketEvent> { event ->
-        if (event.state != PacketEventState.RECEIVE) {
+        if (event.type != PacketType.RECEIVE) {
             return@handler
         }
 
