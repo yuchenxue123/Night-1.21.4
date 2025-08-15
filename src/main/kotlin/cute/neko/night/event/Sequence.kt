@@ -25,7 +25,7 @@ object SequenceManager : EventListener {
     internal val sequences = CopyOnWriteArrayList<Sequence>()
 
     @Suppress("unused")
-    private val onGameTick = handler<GameTickEvent> {
+    private val onGameTick = handler<GameTickEvent>(priority = Priorities.FIRST_PRIORITY) {
         for (sequence in sequences) {
             if (!sequence.owner.running) {
                 sequence.cancel()
@@ -181,5 +181,4 @@ class TickSequence(owner: EventListener, handler: SuspendableHandler) : Sequence
     override fun cancel() {
         running = false
     }
-
 }

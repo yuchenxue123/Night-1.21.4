@@ -14,4 +14,6 @@ enum class Priorities(override val value: Int) : EventPriority {
     DEFAULT(100),
 
     IMPORTANT(150),
+
+    FIRST_PRIORITY(999),
 }

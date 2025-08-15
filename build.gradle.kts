@@ -64,9 +64,6 @@ dependencies {
     packageImplementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
     packageImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
     packageImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version")
-
-    // EventSystem
-//    packageImplementation("com.github.yuchenxue123:event-system-kotlin:1.2")
 }
 
 val properties = mapOf(
