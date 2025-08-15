@@ -1,7 +1,7 @@
 package cute.neko.night.injection.mixins.entity;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import cute.neko.event.EventManager;
+import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.player.PlayerAfterJumpEvent;
 import cute.neko.night.event.events.game.player.PlayerJumpEvent;
 import cute.neko.night.features.module.movement.ModuleNoJumpDelay;

@@ -1,8 +1,8 @@
 package cute.neko.night.features.module
 
-import cute.neko.event.EventManager
 import cute.neko.night.Night
 import cute.neko.night.event.EventListener
+import cute.neko.night.event.EventManager
 import cute.neko.night.event.SequenceManager
 import cute.neko.night.event.events.client.ModuleToggleEvent
 import cute.neko.night.features.setting.config.Configurable
@@ -57,9 +57,14 @@ open class ClientModule(
             // call enable and disable function
             super.onToggled(newState)
 
-            if (!newState) {
-                SequenceManager.cancelAllSequences(this)
+            runCatching {
+                if (!newState) {
+                    SequenceManager.cancelAllSequences(this)
+                }
+            }.onFailure {
+                error("failed cancel sequences: $it")
             }
+
 
             // module toggle event
             if (Night.loaded) {

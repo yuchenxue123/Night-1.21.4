@@ -1,6 +1,6 @@
 package cute.neko.night.injection.mixins.network;
 
-import cute.neko.event.EventManager;
+import cute.neko.night.event.EventManager;
 import cute.neko.night.event.PacketType;
 import cute.neko.night.event.events.game.network.PacketEvent;
 import net.minecraft.network.ClientConnection;

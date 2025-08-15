@@ -1,6 +1,6 @@
 package cute.neko.night.injection.mixins.gui;
 
-import cute.neko.event.EventManager;
+import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.misc.ChatSendEvent;
 import net.minecraft.client.gui.screen.ChatScreen;
 import org.spongepowered.asm.mixin.Mixin;

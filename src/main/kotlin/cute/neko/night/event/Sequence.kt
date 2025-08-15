@@ -166,6 +166,8 @@ open class Sequence(val owner: EventListener, val handler: SuspendableHandler) {
     }
 }
 
+object DummyEvent
+
 class TickSequence(owner: EventListener, handler: SuspendableHandler) : Sequence(owner, handler) {
     private var running = true
 

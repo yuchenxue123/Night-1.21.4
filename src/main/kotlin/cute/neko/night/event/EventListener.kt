@@ -1,6 +1,5 @@
 package cute.neko.night.event
 
-import cute.neko.event.EventManager
 import cute.neko.night.event.events.game.client.GameTickEvent
 import cute.neko.night.event.priorities.EventPriority
 import cute.neko.night.event.priorities.Priorities

@@ -1,17 +1,14 @@
 package cute.neko.night.injection.mixins.client;
 
-import cute.neko.event.EventManager;
+import cute.neko.night.event.EventManager;
 import cute.neko.night.Night;
 import cute.neko.night.event.events.game.client.GameShutdownEvent;
 import cute.neko.night.event.events.game.client.GameStartEvent;
 import cute.neko.night.event.events.game.client.GameTickEvent;
 import cute.neko.night.event.events.game.misc.WorldEvent;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.util.Window;
 import net.minecraft.client.world.ClientWorld;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;

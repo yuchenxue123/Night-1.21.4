@@ -1,7 +1,7 @@
 package cute.neko.night.injection.mixins.client;
 
 import com.llamalad7.mixinextras.injector.ModifyExpressionValue;
-import cute.neko.event.EventManager;
+import cute.neko.night.event.EventManager;
 import cute.neko.night.event.events.game.misc.MovementInputEvent;
 import cute.neko.night.utils.movement.DirectionalInput;
 import cute.neko.night.utils.rotation.RotationManager;
