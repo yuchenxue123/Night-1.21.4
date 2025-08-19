@@ -16,7 +16,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ChatScreen.class)
 public class MixinChatScreen {
 
-    @Inject(method = "sendMessage", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(
+            method = "sendMessage",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Ljava/lang/String;startsWith(Ljava/lang/String;)Z",
+                    shift = At.Shift.BEFORE
+            ),
+            cancellable = true
+    )
     private void handleSendMessage(String chatText, boolean addToHistory, CallbackInfo ci) {
         ChatSendEvent event = new ChatSendEvent(chatText);
         EventManager.INSTANCE.callEvent(event);
