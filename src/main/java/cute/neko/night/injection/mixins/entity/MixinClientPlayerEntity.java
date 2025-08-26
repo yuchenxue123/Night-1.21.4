@@ -107,6 +107,11 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
         // then
         final PlayerUseMultiplier playerUseMultiplier = new PlayerUseMultiplier(0.2f, 0.2f);
         EventManager.INSTANCE.callEvent(playerUseMultiplier);
+
+        if (playerUseMultiplier.getCancelled()) {
+            return;
+        }
+
         input.movementForward *= playerUseMultiplier.getForward();
         input.movementSideways *= playerUseMultiplier.getSideways();
     }

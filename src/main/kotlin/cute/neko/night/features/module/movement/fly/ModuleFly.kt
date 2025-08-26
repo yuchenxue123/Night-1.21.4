@@ -18,5 +18,5 @@ object ModuleFly : ClientModule(
     ))
 
     override val suffix: String
-        get() = mode.getActive().name
+        get() = mode.getActive().modeName
 }
