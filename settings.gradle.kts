@@ -16,3 +16,5 @@ pluginManagement {
         id("fabric-loom") version fabric_loom_version
     }
 }
+
+include("plugin")

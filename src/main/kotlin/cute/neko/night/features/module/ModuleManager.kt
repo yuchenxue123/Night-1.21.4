@@ -12,6 +12,7 @@ import cute.neko.night.features.module.misc.chat.ModuleChat
 import cute.neko.night.features.module.misc.disabler.ModuleDisabler
 import cute.neko.night.features.module.movement.ModuleNoJumpDelay
 import cute.neko.night.features.module.movement.ModuleNoPush
+import cute.neko.night.features.module.movement.ModuleSpider
 import cute.neko.night.features.module.movement.ModuleSprint
 import cute.neko.night.features.module.movement.fly.ModuleFly
 import cute.neko.night.features.module.movement.noslow.ModuleNoSlow
@@ -47,6 +48,7 @@ object ModuleManager : EventListener, Accessor {
             ModuleNoPush,
             ModuleSpeed,
             ModuleFly,
+            ModuleSpider,
 
             // player
             ModuleBlockFly,

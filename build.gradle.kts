@@ -64,6 +64,9 @@ dependencies {
     packageImplementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
     packageImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
     packageImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version")
+
+    // plugin api
+    packageImplementation(project(":plugin"))
 }
 
 val properties = mapOf(
