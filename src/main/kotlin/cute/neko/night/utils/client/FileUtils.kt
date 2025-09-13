@@ -5,11 +5,6 @@ import cute.neko.night.Night
 import cute.neko.night.utils.interfaces.Accessor
 import java.io.File
 
-/**
- * @author yuchenxue
- * @date 2025/06/02
- */
-
 object FileUtils : Accessor {
     val CLIENT_DIR = File(mc.runDirectory, Night.CLIENT_NAME)
     val CONFIG_DIR = File(CLIENT_DIR, "configs")

@@ -5,11 +5,6 @@ import cute.neko.night.utils.render.nano.NanoFontManager
 import cute.neko.night.utils.render.nano.NanoUtils
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/08/07
- */
-
 abstract class DraggableWidget(
     type: WidgetType,
     var x: Float,

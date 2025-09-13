@@ -9,11 +9,6 @@ import cute.neko.night.features.module.combat.killaura.features.KillAuraTargetTr
 import cute.neko.night.utils.rotation.RotationManager
 import cute.neko.night.utils.rotation.features.MovementCorrection
 
-/**
- * @author yuchenxue
- * @date 2025/07/06
- */
-
 object ModuleKillAura : ClientModule(
     "KillAura",
     ModuleCategory.COMBAT

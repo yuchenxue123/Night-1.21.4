@@ -2,11 +2,6 @@ package cute.neko.night.utils.animation
 
 import cute.neko.night.utils.time.TimeTracker
 
-/**
- * @author yuchenxue
- * @date 2025/02/20
- */
-
 open class SimpleAnimation : Animation<Float, SimpleAnimation> {
 
     companion object {

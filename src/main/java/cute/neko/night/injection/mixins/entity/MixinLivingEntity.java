@@ -19,11 +19,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 @Mixin(LivingEntity.class)
 public abstract class MixinLivingEntity extends MixinEntity {
     @Shadow

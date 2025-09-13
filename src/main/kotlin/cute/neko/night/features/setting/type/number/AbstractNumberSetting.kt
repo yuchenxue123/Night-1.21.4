@@ -2,11 +2,6 @@ package cute.neko.night.features.setting.type.number
 
 import cute.neko.night.features.setting.MutableSetting
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 abstract class AbstractNumberSetting<T>(
     name: String,
     value: T,

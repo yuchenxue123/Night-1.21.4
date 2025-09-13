@@ -4,11 +4,6 @@ import cute.neko.night.features.command.Command
 import cute.neko.night.features.module.ModuleManager
 import cute.neko.night.utils.client.KeyboardUtils
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 object BindCommand : Command(
     name = "bind",
     alias = arrayOf("key"),

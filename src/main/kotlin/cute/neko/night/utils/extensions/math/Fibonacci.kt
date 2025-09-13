@@ -1,10 +1,5 @@
 package cute.neko.night.utils.extensions.math
 
-/**
- * @author yuchenxue
- * @date 2024/09/28 - 16:04
- */
-
 class Fibonacci(val size: Int) {
     val data = IntArray(size)
 

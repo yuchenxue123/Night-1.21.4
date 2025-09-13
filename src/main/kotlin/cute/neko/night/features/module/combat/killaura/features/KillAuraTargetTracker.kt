@@ -12,11 +12,6 @@ import cute.neko.night.features.setting.config.types.TargetOption
 import cute.neko.night.utils.rotation.RotationUtils
 import net.minecraft.entity.LivingEntity
 
-/**
- * @author yuchenxue
- * @date 2025/07/06
- */
-
 object KillAuraTargetTracker : EmptyConfigurable("TargetTracker", ModuleKillAura) {
     private val targets = tree(TargetOption())
 

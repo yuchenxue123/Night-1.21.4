@@ -17,11 +17,6 @@ import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.min
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 object NormalMiddle : Screen {
 
     val renderX: Float

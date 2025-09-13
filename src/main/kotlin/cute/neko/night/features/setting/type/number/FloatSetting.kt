@@ -3,11 +3,6 @@ package cute.neko.night.features.setting.type.number
 import cute.neko.night.utils.extensions.decimals
 import cute.neko.night.utils.extensions.step
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 class FloatSetting(
     name: String,
     value: Float,

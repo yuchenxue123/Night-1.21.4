@@ -26,11 +26,6 @@ import net.minecraft.util.math.Direction
 import net.minecraft.util.math.Vec3d
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/05/11
- */
-
 object ModuleBlockFly : ClientModule(
     "BlockFly",
     ModuleCategory.PLAYER,

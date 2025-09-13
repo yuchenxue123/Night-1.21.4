@@ -14,11 +14,6 @@ import net.minecraft.client.gui.DrawContext
 import net.minecraft.text.Text
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/06/01
- */
-
 object ArraylistWidget : LockedWidget(WidgetType.ARRAYLIST) {
 
     private const val X_POSITION = 0f

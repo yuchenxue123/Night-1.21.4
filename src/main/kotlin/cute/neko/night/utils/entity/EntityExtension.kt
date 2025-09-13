@@ -1,6 +1,5 @@
 package cute.neko.night.utils.entity
 
-import cute.neko.night.utils.client.chat
 import cute.neko.night.utils.client.player
 import cute.neko.night.utils.extensions.squared
 import cute.neko.night.utils.extensions.toRadians
@@ -17,11 +16,6 @@ import org.joml.times
 import kotlin.math.cos
 import kotlin.math.sin
 import kotlin.math.sqrt
-
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
 
 val Entity.rotation: Rotation
     get() = Rotation(yaw, pitch, true)

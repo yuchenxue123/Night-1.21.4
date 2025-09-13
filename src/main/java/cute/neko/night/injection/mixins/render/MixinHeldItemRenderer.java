@@ -17,11 +17,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Slice;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/**
- * @author yuchenxue
- * @date 2025/06/17
- */
-
 @Mixin(HeldItemRenderer.class)
 public class MixinHeldItemRenderer {
 

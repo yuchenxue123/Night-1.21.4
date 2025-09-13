@@ -3,11 +3,6 @@ package cute.neko.night.ui.screen.click.styles.drop.setting.mode
 import cute.neko.night.features.setting.type.mode.MultiEnumSetting
 import cute.neko.night.ui.screen.click.styles.drop.Constants.SELECT_BUTTON_HEIGHT
 
-/**
- * @author yuchenxue
- * @date 2025/08/09
- */
-
 class MultiEnumSettingButton(
     setting: MultiEnumSetting<*>
 ) : AbstractModeSettingButton<MultiEnumSetting<*>>(setting) {

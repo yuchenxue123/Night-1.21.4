@@ -1,10 +1,5 @@
 package cute.neko.night.ui.screen.click.styles.drop
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 object Constants {
 
     // 抽屉的圆角

@@ -12,11 +12,6 @@ import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 object NormalSide : Screen {
 
     private val renderX: Float

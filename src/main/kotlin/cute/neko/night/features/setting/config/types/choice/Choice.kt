@@ -8,11 +8,6 @@ import cute.neko.night.features.setting.config.types.Toggleable
 import cute.neko.night.features.setting.type.mode.SubMode
 import cute.neko.night.utils.client.inGame
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 abstract class Choice(override val modeName: String) : Configurable(modeName), Toggleable, SubMode, EventListener {
     abstract val controller: ChoicesConfigurable<*>
 

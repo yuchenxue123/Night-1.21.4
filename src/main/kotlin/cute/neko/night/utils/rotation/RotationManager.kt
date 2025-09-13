@@ -27,12 +27,6 @@ import java.util.*
 import kotlin.math.abs
 import kotlin.math.hypot
 
-
-/**
- * @author yuchenxue
- * @date 2025/05/09
- */
-
 object RotationManager : EventListener, Accessor {
 
     /**

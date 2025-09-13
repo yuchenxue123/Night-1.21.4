@@ -5,11 +5,6 @@ import net.minecraft.text.CharacterVisitor
 import net.minecraft.text.Style
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/08/04
- */
-
 class DrawVisitor(
     private val font: NanoFont,
     private var x: Float,

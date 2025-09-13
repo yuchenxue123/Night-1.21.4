@@ -5,11 +5,6 @@ import cute.neko.night.ui.isHovered
 import cute.neko.night.utils.misc.option.BooleanOption
 import net.minecraft.client.gui.DrawContext
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 abstract class Bar(
     x: Float,
     y: Float,

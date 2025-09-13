@@ -16,11 +16,6 @@ import cute.neko.night.utils.lang.translate
 import cute.neko.night.utils.misc.debug.Debug
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/01/12 - 19:09
- */
-
 open class ClientModule(
     override val name: String,
     val category: ModuleCategory,

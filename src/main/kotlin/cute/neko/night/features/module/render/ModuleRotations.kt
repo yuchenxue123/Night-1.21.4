@@ -4,11 +4,6 @@ import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.setting.type.mode.SubMode
 
-/**
- * @author yuchenxue
- * @date 2025/05/11
- */
-
 object ModuleRotations : ClientModule(
     "Rotations",
     ModuleCategory.RENDER

@@ -7,11 +7,6 @@ import cute.neko.night.ui.screen.click.ClickScreen
 import cute.neko.night.ui.screen.click.styles.drop.StyleDrop
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 object ModuleClickScreen : ClientModule(
     "ClickScreen",
     ModuleCategory.RENDER,

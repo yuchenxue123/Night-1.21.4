@@ -10,11 +10,6 @@ import net.minecraft.util.PlayerInput;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 @Mixin(KeyboardInput.class)
 public class MixinKeyboardInput extends MixinInput {
 

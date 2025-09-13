@@ -4,11 +4,6 @@ import cute.neko.night.utils.interfaces.Accessor
 import net.minecraft.item.BlockItem
 import net.minecraft.item.Item
 
-/**
- * @author yuchenxue
- * @date 2025/05/23
- */
-
 object Slots : Accessor {
 
     private var preSlot = -1

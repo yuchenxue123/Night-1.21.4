@@ -4,11 +4,6 @@ import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.handler
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 
-/**
- * @author yuchenxue
- * @date 2025/08/26
- */
-
 object NoFallNoGround : NoFallMode("NoGround") {
 
     @Suppress("unused")

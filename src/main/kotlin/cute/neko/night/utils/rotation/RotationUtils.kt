@@ -13,11 +13,6 @@ import kotlin.math.atan2
 import kotlin.math.hypot
 import kotlin.math.sqrt
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 object RotationUtils : Accessor {
 
     val gcd: Double

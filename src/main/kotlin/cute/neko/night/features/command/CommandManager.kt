@@ -7,11 +7,6 @@ import cute.neko.night.features.command.client.ToggleCommand
 import cute.neko.night.features.command.game.GameModeCommand
 import cute.neko.night.utils.misc.debug.Debug
 
-/**
- * @author yuchenxue
- * @date 2025/01/13 - 14:34
- */
-
 object CommandManager : EventListener {
     val commands = mutableListOf<Command>()
 

@@ -9,11 +9,6 @@ import cute.neko.night.ui.widget.type.DynamicIslandWidget
 import cute.neko.night.ui.widget.type.TargetWidget
 import cute.neko.night.utils.interfaces.Accessor
 
-/**
- * @author yuchenxue
- * @date 2025/06/01
- */
-
 object WidgetManager : Accessor, EventListener {
 
     private val widgets = mutableListOf<AbstractWidget>()

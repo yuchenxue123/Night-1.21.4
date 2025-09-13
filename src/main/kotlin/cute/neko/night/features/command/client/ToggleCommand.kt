@@ -3,11 +3,6 @@ package cute.neko.night.features.command.client
 import cute.neko.night.features.command.Command
 import cute.neko.night.features.module.ModuleManager
 
-/**
- * @author yuchenxue
- * @date 2025/06/24
- */
-
 object ToggleCommand : Command(
     name = "toggle",
     alias = arrayOf("t"),

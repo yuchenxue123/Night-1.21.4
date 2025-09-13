@@ -9,11 +9,6 @@ import java.math.RoundingMode
 import kotlin.math.round
 import kotlin.math.sqrt
 
-/**
- * @author yuchenxue
- * @date 2025/05/06
- */
-
 fun Double.decimals(n: Int): Double {
     val bigDecimal = BigDecimal(this)
     val rounded = bigDecimal.setScale(n, RoundingMode.HALF_UP)

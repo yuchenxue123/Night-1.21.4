@@ -2,11 +2,6 @@ package cute.neko.night.features.setting.type.number
 
 import cute.neko.night.utils.extensions.step
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 class IntegerSetting(
     name: String,
     value: Int,

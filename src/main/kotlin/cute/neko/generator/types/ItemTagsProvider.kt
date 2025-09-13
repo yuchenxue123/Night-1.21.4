@@ -7,11 +7,6 @@ import net.minecraft.item.Items
 import net.minecraft.registry.RegistryWrapper.WrapperLookup
 import java.util.concurrent.CompletableFuture
 
-/**
- * @author yuchenxue
- * @date 2025/06/19
- */
-
 class ItemTagsProvider(
     output: FabricDataOutput,
     completableFuture: CompletableFuture<WrapperLookup>

@@ -16,11 +16,6 @@ import net.minecraft.screen.slot.Slot
 import net.minecraft.screen.slot.SlotActionType
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/06/14
- */
-
 object ModuleInvManager : ClientModule(
     "InvManager",
     ModuleCategory.PLAYER,

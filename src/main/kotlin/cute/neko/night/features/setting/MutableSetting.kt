@@ -2,11 +2,6 @@ package cute.neko.night.features.setting
 
 import kotlin.reflect.KProperty
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 typealias Consumer<T> = (old: T, new: T) -> T
 
 open class MutableSetting<T : Any>(

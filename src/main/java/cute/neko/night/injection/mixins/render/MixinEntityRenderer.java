@@ -15,11 +15,6 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-/**
- * @author yuchenxue
- * @date 2025/06/24
- */
-
 @Mixin(EntityRenderer.class)
 public abstract class MixinEntityRenderer<T extends Entity, S extends EntityRenderState> {
 

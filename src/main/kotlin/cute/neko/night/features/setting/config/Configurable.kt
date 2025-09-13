@@ -11,11 +11,6 @@ import cute.neko.night.features.setting.type.primitive.BooleanSetting
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.interfaces.Nameable
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 open class Configurable(override val name: String) : Nameable, Accessor {
     private val _settings = mutableListOf<AbstractSetting<*>>()
 

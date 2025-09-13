@@ -4,11 +4,6 @@ import cute.neko.night.features.setting.type.mode.SubMode
 import org.joml.Vector2f
 import cute.neko.night.utils.extensions.math.BezierCurve
 
-/**
- * @author yuchenxue
- * @date 2025/02/20
- */
-
 enum class AnimationType(
     override val modeName: String,
     private val function: (time: Float) -> Float

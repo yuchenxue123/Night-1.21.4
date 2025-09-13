@@ -1,10 +1,5 @@
 package cute.neko.night.features.setting
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 open class ImmutableSetting<T : Any>(
     override val name: String,
     valueIn: T,

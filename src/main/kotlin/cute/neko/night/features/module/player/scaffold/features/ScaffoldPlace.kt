@@ -8,11 +8,6 @@ import net.minecraft.util.hit.BlockHitResult
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 
-/**
- * @author yuchenxue
- * @date 2025/07/08
- */
-
 object ScaffoldPlace : Accessor {
 
     fun place(pos: BlockPos, direction: Direction) {
@@ -35,7 +30,8 @@ object ScaffoldPlace : Accessor {
                     player,
                     Hand.MAIN_HAND,
                     BlockHitResult(raytrace.pos, direction, pos, false)
-                ).isAccepted) {
+                ).isAccepted
+            ) {
                 player.swingHand(Hand.MAIN_HAND)
             }
         }

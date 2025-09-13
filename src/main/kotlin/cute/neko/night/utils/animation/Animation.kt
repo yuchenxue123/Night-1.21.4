@@ -1,10 +1,5 @@
 package cute.neko.night.utils.animation
 
-/**
- * @author yuchenxue
- * @date 2025/02/21
- */
-
 interface Animation<T, A : Animation<T, A>> {
     /**
      * 运行动画

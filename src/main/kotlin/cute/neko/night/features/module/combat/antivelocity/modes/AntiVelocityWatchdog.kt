@@ -6,11 +6,6 @@ import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 
-/**
- * @author yuchenxue
- * @date 2025/06/03
- */
-
 object AntiVelocityWatchdog : AntiVelocityMode("Watchdog") {
 
     private var absorbedVelocity = false

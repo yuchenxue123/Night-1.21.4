@@ -3,11 +3,6 @@ package cute.neko.night.ui.screen.click.styles.normal.setting
 import cute.neko.night.features.setting.type.mode.MultiEnumSetting
 import cute.neko.night.ui.screen.click.styles.normal.setting.mode.ModeButton
 
-/**
- * @author yuchenxue
- * @date 2025/05/07
- */
-
 class MultiEnumSettingButton(
     setting: MultiEnumSetting<*>
 ) : AbstractSelectSetting<MultiEnumSetting<*>>(setting) {

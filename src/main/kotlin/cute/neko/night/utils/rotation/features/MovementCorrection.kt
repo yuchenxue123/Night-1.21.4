@@ -2,11 +2,6 @@ package cute.neko.night.utils.rotation.features
 
 import cute.neko.night.features.setting.type.mode.SubMode
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 enum class MovementCorrection(override val modeName: String) : SubMode {
 
     /**

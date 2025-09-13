@@ -10,11 +10,6 @@ import net.minecraft.entity.passive.IronGolemEntity
 import net.minecraft.entity.passive.PassiveEntity
 import net.minecraft.entity.player.PlayerEntity
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 open class TargetOption : Configurable("Target") {
 
     private val targets = enum("Targets", TargetType.PLAYERS)

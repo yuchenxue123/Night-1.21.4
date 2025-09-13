@@ -13,11 +13,6 @@ import net.minecraft.entity.LivingEntity
 import kotlin.math.cos
 import kotlin.math.sin
 
-/**
- * @author yuchenxue
- * @date 2025/08/02
- */
-
 object SpeedGrimCollision : SpeedMode("GrimCollision") {
 
     private val speed by float("Speed", 0.08f, 0.01f..0.1f, 0.01f)

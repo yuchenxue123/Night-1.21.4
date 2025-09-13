@@ -7,11 +7,6 @@ import cute.neko.night.utils.rotation.data.Rotation
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 
-/**
- * @author yuchenxue
- * @date 2025/07/08
- */
-
 object ScaffoldRotation : Configurable("ScaffoldRotation") {
 
     fun calculateRotation(pos: BlockPos, direction: Direction): Rotation {

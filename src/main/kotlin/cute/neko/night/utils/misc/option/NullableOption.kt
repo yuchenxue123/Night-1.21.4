@@ -1,10 +1,5 @@
 package cute.neko.night.utils.misc.option
 
-/**
- * @author yuchenxue
- * @date 2025/08/12
- */
-
 class NullableOption<T : Any>(
     private val default: T? = null,
 ) : Option<T?> {

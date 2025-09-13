@@ -1,10 +1,5 @@
 package cute.neko.night.event.priorities
 
-/**
- * @author yuchenxue
- * @date 2025/07/25
- */
-
 enum class Priorities(override val value: Int) : EventPriority {
 
     FINAL(0),

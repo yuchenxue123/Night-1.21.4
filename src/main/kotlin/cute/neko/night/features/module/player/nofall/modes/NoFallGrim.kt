@@ -5,11 +5,6 @@ import cute.neko.night.event.events.game.misc.MovementInputEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 
-/**
- * @author yuchenxue
- * @date 2025/08/14
- */
-
 object NoFallGrim : NoFallMode("Grim") {
 
     private var lastOnGround = false

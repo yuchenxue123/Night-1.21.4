@@ -9,11 +9,6 @@ import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
 import net.minecraft.entity.effect.StatusEffectInstance
 import net.minecraft.entity.effect.StatusEffects
 
-/**
- * @author yuchenxue
- * @date 2025/01/15 - 14:16
- */
-
 object ModuleBrightness : ClientModule(
     "Brightness",
     ModuleCategory.RENDER

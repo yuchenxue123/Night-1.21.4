@@ -2,11 +2,6 @@ package cute.neko.night.features.setting.type.mode
 
 import cute.neko.night.features.setting.MutableSetting
 
-/**
- * @author yuchenxue
- * @date 2025/05/07
- */
-
 class MultiEnumSetting<E>(
     name: String,
     private val enums: Array<E>,

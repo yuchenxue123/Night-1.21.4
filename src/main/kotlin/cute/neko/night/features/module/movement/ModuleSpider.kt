@@ -5,11 +5,6 @@ import cute.neko.night.event.handler
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 
-/**
- * @author yuchenxue
- * @date 2025/08/27
- */
-
 object ModuleSpider : ClientModule(
     "Spider",
     ModuleCategory.MOVEMENT

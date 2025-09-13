@@ -13,11 +13,6 @@ import net.minecraft.network.packet.s2c.common.CommonPingS2CPacket
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 import java.util.concurrent.ConcurrentLinkedQueue
 
-/**
- * @author yuchenxue
- * @date 2025/07/09
- */
-
 object AntiVelocityDelay : AntiVelocityMode("Delay") {
 
     private val delayTime by int("Delay", 1000, 100..5000, 100)

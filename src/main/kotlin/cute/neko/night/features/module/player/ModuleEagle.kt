@@ -8,11 +8,6 @@ import cute.neko.night.utils.extensions.getState
 import cute.neko.night.utils.movement.DirectionalInput
 import net.minecraft.client.option.KeyBinding
 
-/**
- * @author yuchenxue
- * @date 2025/06/15
- */
-
 object ModuleEagle : ClientModule(
     "Eagle",
     ModuleCategory.PLAYER

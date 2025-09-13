@@ -12,11 +12,6 @@ import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-/**
- * @author yuchenxue
- * @date 2025/08/15
- */
-
 typealias SuspendableEventHandler<T> = suspend Sequence.(T) -> Unit
 typealias SuspendableHandler = suspend Sequence.() -> Unit
 

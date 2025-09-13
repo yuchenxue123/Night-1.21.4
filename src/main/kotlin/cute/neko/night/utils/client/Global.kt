@@ -7,11 +7,6 @@ import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.world.ClientWorld
 import net.minecraft.text.Text
 
-/**
- * @author yuchenxue
- * @date 2025/01/12 - 20:10
- */
-
 // minecraft instance
 val mc: MinecraftClient
     inline get() = MinecraftClient.getInstance()

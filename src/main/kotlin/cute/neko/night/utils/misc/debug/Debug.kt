@@ -5,11 +5,6 @@ import cute.neko.night.utils.extensions.space
 import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 private val CLIENT_PREFIX: Text = Text.empty()
     .append(Text.of("["))
     .append(Text.literal("Client").formatted(Formatting.YELLOW))

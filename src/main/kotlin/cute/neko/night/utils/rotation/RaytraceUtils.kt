@@ -16,11 +16,6 @@ import net.minecraft.util.math.Vec3d
 import net.minecraft.world.RaycastContext
 import kotlin.math.max
 
-/**
- * @author yuchenxue
- * @date 2025/05/11
- */
-
 object RaytraceUtils : Accessor {
 
     fun raytraceEntity(

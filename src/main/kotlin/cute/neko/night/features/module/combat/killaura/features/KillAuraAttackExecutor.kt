@@ -13,11 +13,6 @@ import cute.neko.night.utils.time.TimeTracker
 import net.minecraft.entity.LivingEntity
 import net.minecraft.util.Hand
 
-/**
- * @author yuchenxue
- * @date 2025/07/06
- */
-
 object KillAuraAttackExecutor : EmptyConfigurable("AttackExecutor", ModuleKillAura) {
     private val clickMode by mode("ClickMode", ClickMode.STABILIZED)
 

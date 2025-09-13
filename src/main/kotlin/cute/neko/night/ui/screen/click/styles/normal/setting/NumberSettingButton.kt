@@ -7,11 +7,6 @@ import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.max
 
-/**
- * @author yuchenxue
- * @date 2025/05/06
- */
-
 class NumberSettingButton(
     setting: AbstractNumberSetting<*>
 ) : AbstractSettingButton<AbstractNumberSetting<*>>(setting) {
@@ -31,7 +26,7 @@ class NumberSettingButton(
 
     // render text
     private val text
-        get()= "${setting.name}: ${setting.get()}"
+        get() = "${setting.name}: ${setting.get()}"
     private val min = setting.min.toString()
     private val max = setting.max.toString()
 
@@ -89,5 +84,8 @@ class NumberSettingButton(
     }
 
     override val height: Float
-        get() = padding + font.height(text) + padding + max(font.height(min), font.height(min)) + padding + slider.height + padding
+        get() = padding + font.height(text) + padding + max(
+            font.height(min),
+            font.height(min)
+        ) + padding + slider.height + padding
 }

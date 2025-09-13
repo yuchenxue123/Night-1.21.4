@@ -3,11 +3,6 @@ package cute.neko.night.utils.misc.web
 import java.net.HttpURLConnection
 import java.net.URI
 
-/**
- * @author yuchenxue
- * @date 2025/06/12
- */
-
 class HttpConnection(private val url: String) {
 
     private var method = METHOD.GET

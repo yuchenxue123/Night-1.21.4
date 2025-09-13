@@ -1,17 +1,10 @@
 package cute.neko.night.utils.render.nano.image
 
-import cute.neko.night.utils.client.mc
 import cute.neko.night.utils.misc.resources.Resource
 import cute.neko.night.utils.render.nano.NanoUtils.nvg
-import net.minecraft.util.Identifier
 import org.lwjgl.nanovg.NanoVG
 import org.lwjgl.nanovg.NanoVGGL3
 import org.lwjgl.stb.STBImage
-
-/**
- * @author yuchenxue
- * @date 2025/08/03
- */
 
 object NanoImageManager {
 

@@ -2,11 +2,6 @@ package cute.neko.night.utils.extensions.math
 
 import org.joml.Vector2f
 
-/**
- * @author yuchenxue
- * @date 2024/11/16 - 12:51
- */
-
 class BezierCurve(
     val start: Vector2f,
     val first: Vector2f,

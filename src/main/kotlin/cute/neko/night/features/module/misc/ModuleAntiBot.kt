@@ -7,11 +7,6 @@ import cute.neko.night.features.module.ModuleCategory
 import net.minecraft.entity.LivingEntity
 import java.util.*
 
-/**
- * @author yuchenxue
- * @date 2025/06/23
- */
-
 object ModuleAntiBot : ClientModule(
     "AntiBot",
     ModuleCategory.MISC

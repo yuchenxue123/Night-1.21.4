@@ -9,11 +9,6 @@ import cute.neko.night.utils.interfaces.Accessor
 import java.io.File
 import java.nio.file.Files
 
-/**
- * @author yuchenxue
- * @date 2025/04/01
- */
-
 object ConfigSystem : Accessor {
 
     fun save(name: String): Boolean {

@@ -11,11 +11,6 @@ import org.joml.Vector2f
 import java.awt.Color
 import kotlin.math.max
 
-/**
- * @author yuchenxue
- * @date 2025/05/06
- */
-
 class Slider : Screen {
 
     companion object {

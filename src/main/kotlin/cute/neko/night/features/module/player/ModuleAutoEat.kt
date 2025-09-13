@@ -10,11 +10,6 @@ import net.minecraft.component.DataComponentTypes
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 import net.minecraft.util.Hand
 
-/**
- * @author yuchenxue
- * @date 2025/08/11
- */
-
 object ModuleAutoEat : ClientModule(
     "AutoEat",
     ModuleCategory.PLAYER

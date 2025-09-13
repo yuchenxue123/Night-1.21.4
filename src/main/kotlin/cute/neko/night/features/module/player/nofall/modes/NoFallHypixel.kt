@@ -7,11 +7,6 @@ import cute.neko.night.utils.client.Timer
 import cute.neko.night.utils.entity.hasFalldownDamage
 import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 
-/**
- * @author yuchenxue
- * @date 2025/06/23
- */
-
 object NoFallHypixel : NoFallMode("Hypixel") {
 
     private var switch = false

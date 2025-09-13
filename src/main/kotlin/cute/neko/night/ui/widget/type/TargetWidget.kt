@@ -17,12 +17,6 @@ import net.minecraft.text.Text
 import java.awt.Color
 import java.util.*
 
-/**
- * @author yuchenxue
- * @date 2025/06/03
- */
-
-// Test
 object TargetWidget : DraggableWidget(
     WidgetType.TARGET,
     200f,

@@ -15,11 +15,6 @@ import java.awt.Color
 import java.util.*
 import java.util.concurrent.CopyOnWriteArrayList
 
-/**
- * @author yuchenxue
- * @date 2025/06/12
- */
-
 object DynamicIslandWidget : LockedWidget(WidgetType.DYNAMIC_ISLAND) {
 
     private val font = NanoFontManager.GENSHIN

@@ -5,11 +5,6 @@ import cute.neko.night.features.command.Command
 import cute.neko.night.utils.client.FileUtils.CONFIG_DIR
 import java.awt.Desktop
 
-/**
- * @author yuchenxue
- * @date 2025/07/11
- */
-
 object ConfigCommand : Command(
     name = "config",
     alias = arrayOf("cfg"),

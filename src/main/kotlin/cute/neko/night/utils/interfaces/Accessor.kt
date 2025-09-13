@@ -5,11 +5,6 @@ import net.minecraft.client.network.ClientPlayNetworkHandler
 import net.minecraft.client.network.ClientPlayerEntity
 import net.minecraft.client.world.ClientWorld
 
-/**
- * @author yuchenxue
- * @date 2025/01/13 - 11:46
- */
-
 interface Accessor {
     val mc: MinecraftClient
         get() = MinecraftClient.getInstance()

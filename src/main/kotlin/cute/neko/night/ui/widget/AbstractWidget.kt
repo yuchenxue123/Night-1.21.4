@@ -4,11 +4,6 @@ import cute.neko.night.features.module.render.ModuleInterface
 import cute.neko.night.ui.interfaces.Drawable
 import cute.neko.night.utils.interfaces.Nameable
 
-/**
- * @author yuchenxue
- * @date 2025/06/01
- */
-
 abstract class AbstractWidget(
     val type: WidgetType
 ) : Drawable, Nameable {

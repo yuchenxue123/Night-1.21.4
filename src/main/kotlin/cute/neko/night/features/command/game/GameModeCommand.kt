@@ -3,11 +3,6 @@ package cute.neko.night.features.command.game
 import cute.neko.night.features.command.Command
 import cute.neko.night.utils.client.network
 
-/**
- * @author yuchenxue
- * @date 2025/06/01
- */
-
 object GameModeCommand : Command(
     name = "gm",
     usage = ".gm <0/1/2/3>"

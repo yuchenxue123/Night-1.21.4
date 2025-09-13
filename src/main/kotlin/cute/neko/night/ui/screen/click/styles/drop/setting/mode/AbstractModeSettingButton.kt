@@ -14,11 +14,6 @@ import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/08/09
- */
-
 abstract class AbstractModeSettingButton<T : AbstractSetting<*>>(
     setting: T
 ) : AbstractSettingButton<T>(setting) {

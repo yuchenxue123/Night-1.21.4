@@ -4,11 +4,6 @@ import cute.neko.night.utils.extensions.untransformed
 import net.minecraft.client.input.Input
 import net.minecraft.util.PlayerInput
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 class DirectionalInput(
     val forwards: Boolean,
     val backwards: Boolean,

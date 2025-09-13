@@ -7,21 +7,16 @@ import cute.neko.night.features.module.combat.antivelocity.modes.AntiVelocityDel
 import cute.neko.night.features.module.combat.antivelocity.modes.AntiVelocitySimple
 import cute.neko.night.features.module.combat.antivelocity.modes.AntiVelocityWatchdog
 
-/**
- * @author yuchenxue
- * @date 2025/01/15 - 13:56
- */
-
 object ModuleAntiVelocity : ClientModule(
-    "AntiVelocity",
-    ModuleCategory.COMBAT
+    "AntiVelocity", ModuleCategory.COMBAT
 ) {
-    val mode = choices("Mode", arrayOf(
-        AntiVelocityCancel,
-        AntiVelocityWatchdog,
-        AntiVelocitySimple,
-        AntiVelocityDelay
-    ), AntiVelocityCancel
+    val mode = choices(
+        "Mode", arrayOf(
+            AntiVelocityCancel,
+            AntiVelocityWatchdog,
+            AntiVelocitySimple,
+            AntiVelocityDelay
+        ), AntiVelocityCancel
     )
 
     override val suffix: String

@@ -2,11 +2,6 @@ package cute.neko.night.utils.rotation.util
 
 import net.minecraft.util.math.Direction
 
-/**
- * @author yuchenxue
- * @date 2025/05/11
- */
-
 enum class BlockSearchDirections {
 
     /**

@@ -20,11 +20,6 @@ import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.entry.RegistryEntry
 import net.minecraft.registry.tag.ItemTags
 
-/**
- * @author yuchenxue
- * @date 2025/06/20
- */
-
 private val DAMAGE_OLD_VERSION = mapOf<Item, Double>(
     // sword
     Items.WOODEN_SWORD to 4.0,

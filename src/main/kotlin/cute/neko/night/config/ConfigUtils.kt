@@ -11,11 +11,6 @@ import cute.neko.night.features.setting.type.primitive.BooleanSetting
 import cute.neko.night.utils.client.FileUtils.gson
 import cute.neko.night.utils.client.KeyboardUtils
 
-/**
- * @author yuchenxue
- * @date 2025/06/02
- */
-
 object ConfigUtils {
 
     /**

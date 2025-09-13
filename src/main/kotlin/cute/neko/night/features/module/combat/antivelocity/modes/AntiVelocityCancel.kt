@@ -5,11 +5,6 @@ import cute.neko.night.event.PacketType
 import cute.neko.night.event.events.game.network.PacketEvent
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 object AntiVelocityCancel : AntiVelocityMode("Cancel") {
 
     @Suppress("unused")

@@ -1,10 +1,5 @@
 package cute.neko.night.utils.misc.option
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 class BooleanOption(default: Boolean) : SimpleOption<Boolean>(default) {
 
     fun toggle(block: (new: Boolean) -> Unit = {}) {

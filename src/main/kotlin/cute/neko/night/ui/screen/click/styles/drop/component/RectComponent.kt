@@ -2,11 +2,6 @@ package cute.neko.night.ui.screen.click.styles.drop.component
 
 import cute.neko.night.utils.extensions.math.Rect
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 open class RectComponent(
     x: Float,
     y: Float,

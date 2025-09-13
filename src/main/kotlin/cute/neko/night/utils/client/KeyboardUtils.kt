@@ -2,11 +2,6 @@ package cute.neko.night.utils.client
 
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 object KeyboardUtils {
 
     // letters

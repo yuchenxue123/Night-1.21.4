@@ -12,11 +12,6 @@ import cute.neko.night.utils.rotation.RotationManager
 import cute.neko.night.utils.rotation.data.Rotation
 import cute.neko.night.utils.rotation.features.MovementCorrection
 
-/**
- * @author yuchenxue
- * @date 2025/07/08
- */
-
 object ModuleScaffold : ClientModule(
     "Scaffold",
     ModuleCategory.PLAYER

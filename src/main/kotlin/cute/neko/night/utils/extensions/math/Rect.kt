@@ -1,10 +1,5 @@
 package cute.neko.night.utils.extensions.math
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 class Rect(
     private var x: Float,
     private var y: Float,

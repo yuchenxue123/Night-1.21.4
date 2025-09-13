@@ -1,10 +1,5 @@
 package cute.neko.night.utils.extensions.math
 
-/**
- * @author yuchenxue
- * @date 2024/09/24 - 16:41
- */
-
 open class Matrix(val rows: Int, val cols: Int, init: IntArray = IntArray(rows * cols) { 0 }) {
     val data = Array(rows) { IntArray(cols) }
     val size: Int = rows * cols

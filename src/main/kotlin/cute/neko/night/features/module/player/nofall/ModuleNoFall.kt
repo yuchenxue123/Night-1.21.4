@@ -7,21 +7,18 @@ import cute.neko.night.features.module.player.nofall.modes.NoFallHypixel
 import cute.neko.night.features.module.player.nofall.modes.NoFallNoGround
 import cute.neko.night.features.module.player.nofall.modes.NoFallPacket
 
-/**
- * @author yuchenxue
- * @date 2025/06/23
- */
-
 object ModuleNoFall : ClientModule(
     "NoFall",
     ModuleCategory.PLAYER
 ) {
-    val mode = choices("Mode", arrayOf(
-        NoFallPacket,
-        NoFallNoGround,
-        NoFallHypixel,
-        NoFallGrim
-    ))
+    val mode = choices(
+        "Mode", arrayOf(
+            NoFallPacket,
+            NoFallNoGround,
+            NoFallHypixel,
+            NoFallGrim
+        )
+    )
 
     override val suffix: String
         get() = mode.getActive().modeName

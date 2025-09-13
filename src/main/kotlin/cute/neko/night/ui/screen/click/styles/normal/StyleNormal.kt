@@ -6,11 +6,6 @@ import cute.neko.night.utils.animation.SimpleAnimation
 import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 object StyleNormal : Style() {
 
     const val SIDE_PANEL_WIDTH = 180f

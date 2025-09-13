@@ -1,10 +1,5 @@
 package cute.neko.night.utils.time
 
-/**
- * @author yuchenxue
- * @date 2025/02/21
- */
-
 class TimeTracker {
     private var time = System.nanoTime().div(1_000_000)
 

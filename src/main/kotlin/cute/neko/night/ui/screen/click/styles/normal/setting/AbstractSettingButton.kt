@@ -9,11 +9,6 @@ import cute.neko.night.utils.animation.SimpleAnimation
 import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 abstract class AbstractSettingButton<T : AbstractSetting<*>>(
     protected val setting: T
 ) : Screen {

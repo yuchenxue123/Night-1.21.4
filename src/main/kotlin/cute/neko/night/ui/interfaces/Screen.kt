@@ -3,11 +3,6 @@ package cute.neko.night.ui.interfaces
 import cute.neko.night.utils.interfaces.Accessor
 import net.minecraft.client.gui.DrawContext
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 interface Screen : Accessor {
 
     val scale: Float

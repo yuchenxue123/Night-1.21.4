@@ -1,10 +1,5 @@
 package cute.neko.night.ui.screen.click.styles.drop.component
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 class Bars {
     private val bars = mutableListOf<Bar>()
 

@@ -3,11 +3,6 @@ package cute.neko.night.features.module
 import cute.neko.night.utils.lang.LanguageManager
 import cute.neko.night.utils.lang.translate
 
-/**
- * @author yuchenxue
- * @date 2025/01/12 - 19:10
- */
-
 enum class ModuleCategory(private val renderName: String) {
     COMBAT("Combat"),
     MOVEMENT("Movement"),

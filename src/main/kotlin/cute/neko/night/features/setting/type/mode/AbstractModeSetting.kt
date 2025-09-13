@@ -2,11 +2,6 @@ package cute.neko.night.features.setting.type.mode
 
 import cute.neko.night.features.setting.MutableSetting
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 abstract class AbstractModeSetting<T : Any>(
     name: String,
     valueIn: T,

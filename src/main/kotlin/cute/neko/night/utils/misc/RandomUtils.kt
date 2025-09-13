@@ -1,10 +1,5 @@
 package cute.neko.night.utils.misc
 
-/**
- * @author yuchenxue
- * @date 2025/05/11
- */
-
 object RandomUtils {
     fun int(base: Int, range: Int): Int {
         return (base - range) + (range * 2 * Math.random()).toInt()

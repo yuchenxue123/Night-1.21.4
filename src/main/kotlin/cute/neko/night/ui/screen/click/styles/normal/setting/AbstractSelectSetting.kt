@@ -10,11 +10,6 @@ import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.max
 
-/**
- * @author yuchenxue
- * @date 2025/05/06
- */
-
 abstract class AbstractSelectSetting<T : AbstractSetting<*>>(
     setting: T
 ) : AbstractSettingButton<T>(setting) {

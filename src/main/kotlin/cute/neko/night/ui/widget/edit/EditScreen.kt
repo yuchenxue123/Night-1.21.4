@@ -5,11 +5,6 @@ import net.minecraft.client.gui.DrawContext
 import net.minecraft.client.gui.screen.Screen
 import net.minecraft.text.Text
 
-/**
- * @author yuchenxue
- * @date 2025/08/05
- */
-
 class EditScreen : Screen(Text.of("EditScreen")) {
 
     override fun render(context: DrawContext, mouseX: Int, mouseY: Int, delta: Float) {

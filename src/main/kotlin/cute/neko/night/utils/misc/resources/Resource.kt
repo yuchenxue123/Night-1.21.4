@@ -8,11 +8,6 @@ import net.minecraft.util.Identifier
 import org.lwjgl.system.MemoryUtil
 import java.nio.ByteBuffer
 
-/**
- * @author yuchenxue
- * @date 2025/08/02
- */
-
 open class Resource(private val path: String) {
 
     companion object {

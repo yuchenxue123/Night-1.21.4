@@ -6,11 +6,6 @@ import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.setting.type.mode.SubMode
 
-/**
- * @author yuchenxue
- * @date 2025/01/12 - 20:24
- */
-
 object ModuleSprint : ClientModule(
     "Sprint",
     ModuleCategory.MOVEMENT
@@ -24,7 +19,8 @@ object ModuleSprint : ClientModule(
         when (mode) {
             SprintMode.LEGIT -> {
                 if (mc.options.forwardKey.isPressed && player.input.movementForward > 0.8
-                    && (!player.horizontalCollision || player.collidedSoftly)) {
+                    && (!player.horizontalCollision || player.collidedSoftly)
+                ) {
                     player.isSprinting = true
                 }
             }

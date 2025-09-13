@@ -8,11 +8,6 @@ import cute.neko.night.utils.rotation.RotationUtils.angleDifference
 import net.minecraft.util.math.Vec3d
 import kotlin.math.roundToInt
 
-/**
- * @author yuchenxue
- * @date 2025/05/09
- */
-
 class Rotation(
     var yaw: Float,
     var pitch: Float,

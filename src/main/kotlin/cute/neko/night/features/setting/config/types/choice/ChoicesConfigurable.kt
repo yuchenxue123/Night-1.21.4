@@ -5,11 +5,6 @@ import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.config.types.ToggleListener
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 open class ChoicesConfigurable<T : Choice>(
     name: String,
     private val choices: Array<T>,

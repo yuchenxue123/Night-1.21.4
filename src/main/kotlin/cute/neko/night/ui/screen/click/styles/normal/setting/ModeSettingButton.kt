@@ -3,11 +3,6 @@ package cute.neko.night.ui.screen.click.styles.normal.setting
 import cute.neko.night.features.setting.type.mode.AbstractModeSetting
 import cute.neko.night.ui.screen.click.styles.normal.setting.mode.ModeButton
 
-/**
- * @author yuchenxue
- * @date 2025/05/07
- */
-
 class ModeSettingButton(
     setting: AbstractModeSetting<*>
 ) : AbstractSelectSetting<AbstractModeSetting<*>>(setting) {

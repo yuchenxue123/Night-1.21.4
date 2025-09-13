@@ -4,11 +4,6 @@ import com.mojang.blaze3d.platform.GlStateManager
 import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL30
 
-/**
- * @author yuchenxue
- * @date 2025/07/26
- */
-
 class FrameBuffer(
     private var width: Int,
     private var height: Int

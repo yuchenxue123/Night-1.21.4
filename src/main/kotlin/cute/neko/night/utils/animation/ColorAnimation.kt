@@ -2,11 +2,6 @@ package cute.neko.night.utils.animation
 
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/01/25
- */
-
 class ColorAnimation(
     type: AnimationType,
 ) : Animation<Color, ColorAnimation> {

@@ -13,11 +13,6 @@ import cute.neko.night.utils.render.nano.NanoFontManager
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 class NormalModuleButton(
     val module: ClientModule
 ) : Screen {

@@ -8,11 +8,6 @@ import cute.neko.night.utils.rotation.data.Rotation
 import net.minecraft.network.packet.s2c.play.EntityDamageS2CPacket
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 
-/**
- * @author yuchenxue
- * @date 2025/08/14
- */
-
 object AntiVelocityGrim : AntiVelocityMode("Grim") {
 
     private val skipTicks = int("SkipTicks", 2, 1..10)

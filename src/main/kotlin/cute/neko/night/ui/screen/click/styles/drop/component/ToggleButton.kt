@@ -14,11 +14,6 @@ import net.minecraft.client.gui.DrawContext
 import org.joml.Vector2f
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/08/09
- */
-
 class ToggleButton(
     x: Float,
     y: Float,

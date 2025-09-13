@@ -16,11 +16,6 @@ import cute.neko.night.utils.rotation.data.RotationRequest
 import net.minecraft.network.packet.s2c.play.PlayerPositionLookS2CPacket
 import net.minecraft.network.packet.s2c.play.PlayerRespawnS2CPacket
 
-/**
- * @author yuchenxue
- * @date 2025/06/04
- */
-
 object DisablerWatchdog : ToggleConfigurable("Watchdog", false, ModuleDisabler) {
 
     private var flags = 0

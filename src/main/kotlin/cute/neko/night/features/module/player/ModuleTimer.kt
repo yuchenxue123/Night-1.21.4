@@ -6,11 +6,6 @@ import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.utils.client.Timer
 
-/**
- * @author yuchenxue
- * @date 2025/07/03
- */
-
 object ModuleTimer : ClientModule(
     "Timer",
     ModuleCategory.PLAYER

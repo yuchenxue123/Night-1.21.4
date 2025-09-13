@@ -4,11 +4,6 @@ import cute.neko.night.features.module.render.ModuleSettings
 import cute.neko.night.utils.misc.resources.Resource
 import java.util.concurrent.ConcurrentHashMap
 
-/**
- * @author yuchenxue
- * @date 2025/05/08
- */
-
 fun translate(key: String): String = LanguageManager.translate(key)
 
 object LanguageManager {

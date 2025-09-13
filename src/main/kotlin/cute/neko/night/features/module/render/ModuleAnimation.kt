@@ -10,11 +10,6 @@ import net.minecraft.util.Arm
 import net.minecraft.util.math.MathHelper
 import net.minecraft.util.math.RotationAxis
 
-/**
- * @author yuchenxue
- * @date 2025/06/17
- */
-
 object ModuleAnimation : ClientModule(
     "Animation",
     ModuleCategory.RENDER

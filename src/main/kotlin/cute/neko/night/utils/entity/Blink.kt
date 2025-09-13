@@ -15,11 +15,6 @@ import net.minecraft.network.packet.c2s.query.QueryPingC2SPacket
 import net.minecraft.network.packet.c2s.query.QueryRequestC2SPacket
 import java.util.concurrent.LinkedBlockingQueue
 
-/**
- * @author yuchenxue
- * @date 2025/07/02
- */
-
 object Blink : EventListener, Accessor {
 
     private val packets = LinkedBlockingQueue<Packet<*>>()

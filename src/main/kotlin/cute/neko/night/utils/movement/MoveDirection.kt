@@ -3,11 +3,6 @@ package cute.neko.night.utils.movement
 import net.minecraft.util.math.Direction
 import kotlin.math.abs
 
-/**
- * @author yuchenxue
- * @date 2025/05/16
- */
-
 enum class MoveDirection(val yaw: Float, val diagonal: Boolean) {
     NORTH(0f, false),
     NORTHEAST(45f, true),

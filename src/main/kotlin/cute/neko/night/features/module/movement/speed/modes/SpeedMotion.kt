@@ -6,11 +6,6 @@ import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.utils.entity.moving
 import cute.neko.night.utils.entity.strafe
 
-/**
- * @author yuchenxue
- * @date 2025/07/21
- */
-
 object SpeedMotion : SpeedMode("Motion") {
 
     private val horizontalSpeed by float("HorizontalSpeed", 0.5f, 0.1f..7f)

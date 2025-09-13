@@ -7,11 +7,6 @@ import net.minecraft.client.gui.screen.Screen
 import net.minecraft.text.Text
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 class ClickScreen(private val style: Style = StyleNormal) : Screen(Text.of("ClickScreen")) {
 
     init {

@@ -10,11 +10,6 @@ import net.minecraft.client.gui.screen.ingame.GenericContainerScreen
 import net.minecraft.screen.slot.SlotActionType
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/06/14
- */
-
 object ModuleStealer : ClientModule(
     "Stealer",
     ModuleCategory.PLAYER,

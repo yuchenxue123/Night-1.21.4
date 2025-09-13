@@ -5,11 +5,6 @@ import cute.neko.night.features.setting.config.types.choice.Choice
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
 import net.minecraft.util.shape.VoxelShapes
 
-/**
- * @author yuchenxue
- * @date 2025/06/23
- */
-
 open class NoFallMode(name: String) : Choice(name) {
     override val controller: ChoicesConfigurable<*>
         get() = ModuleNoFall.mode

@@ -7,11 +7,6 @@ import cute.neko.night.ui.screen.click.styles.drop.Constants.SETTING_BUTTON_HEIG
 import cute.neko.night.ui.screen.click.styles.drop.component.RectComponent
 import cute.neko.night.utils.render.nano.NanoFontManager
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 abstract class AbstractSettingButton<T : AbstractSetting<*>>(
     protected val setting: T,
 ) : RectComponent(0f, 0f, COMPONENT_WIDTH, SETTING_BUTTON_HEIGHT), Screen {

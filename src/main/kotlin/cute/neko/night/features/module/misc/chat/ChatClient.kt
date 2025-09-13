@@ -8,12 +8,6 @@ import java.io.PrintWriter
 import java.net.Socket
 import java.nio.charset.StandardCharsets
 
-
-/**
- * @author yuchenxue
- * @date 2025/08/19
- */
-
 class ChatClient {
 
     private var socket: Socket? = null

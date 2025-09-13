@@ -11,11 +11,6 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 
-/**
- * @author yuchenxue
- * @date 2025/05/10
- */
-
 @Mixin(Entity.class)
 public abstract class MixinEntity {
     @Shadow

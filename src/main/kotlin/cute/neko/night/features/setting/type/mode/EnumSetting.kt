@@ -1,10 +1,5 @@
 package cute.neko.night.features.setting.type.mode
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 class EnumSetting<E>(
     name: String,
     private val enums: Array<E>,

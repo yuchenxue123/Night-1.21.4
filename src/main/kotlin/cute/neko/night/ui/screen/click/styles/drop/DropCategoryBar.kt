@@ -19,11 +19,6 @@ import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 class DropCategoryBar(
     private val category: ModuleCategory,
     x: Float,

@@ -26,11 +26,6 @@ import net.minecraft.client.gui.screen.ChatScreen
 import net.minecraft.client.util.InputUtil
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/01/12 - 19:10
- */
-
 object ModuleManager : EventListener, Accessor {
 
     val modules = mutableListOf<ClientModule>()

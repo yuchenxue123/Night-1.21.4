@@ -16,11 +16,6 @@ import net.minecraft.entity.LivingEntity
 import org.lwjgl.nanovg.NanoVG
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/06/24
- */
-
 object ModuleNameTags : ClientModule(
     "NameTags",
     ModuleCategory.RENDER

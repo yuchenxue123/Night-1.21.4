@@ -9,11 +9,6 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-/**
- * @author yuchenxue
- * @date 2025/06/23
- */
-
 @Mixin(RenderTickCounter.Dynamic.class)
 public class MixinRenderTickCounter$Dynamic {
     @Shadow

@@ -6,11 +6,6 @@ import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL12
 import org.lwjgl.opengl.GL30
 
-/**
- * @author yuchenxue
- * @date 2025/08/07
- */
-
 object TextureScissor {
 
     fun scissor(texture: Int, x: Int, y: Int, width: Int, height: Int): Int {

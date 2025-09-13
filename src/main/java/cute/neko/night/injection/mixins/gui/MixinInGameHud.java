@@ -18,11 +18,6 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-/**
- * @author yuchenxue
- * @date 2025/06/17
- */
-
 @Mixin(InGameHud.class)
 public class MixinInGameHud {
 

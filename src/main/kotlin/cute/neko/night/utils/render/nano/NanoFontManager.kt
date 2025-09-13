@@ -6,11 +6,6 @@ import cute.neko.night.utils.render.font.NanoFont
 import cute.neko.night.utils.render.nano.NanoUtils.nvg
 import org.lwjgl.nanovg.NanoVG
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 object NanoFontManager : Accessor {
     private val fonts = mutableListOf<NanoFont>()
 

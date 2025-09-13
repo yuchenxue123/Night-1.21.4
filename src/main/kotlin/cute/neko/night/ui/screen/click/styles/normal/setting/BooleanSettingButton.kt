@@ -7,11 +7,6 @@ import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 import kotlin.math.max
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 class BooleanSettingButton(
     setting: BooleanSetting
 ) : AbstractSettingButton<BooleanSetting>(setting) {

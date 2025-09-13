@@ -5,12 +5,7 @@ import cute.neko.night.event.handler
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 
-/**
- * @author yuchenxue
- * @date 2025/08/19
- * @description 连接本地开的IRC服务端，在没有/tell指令的服务器上给自己MCC机器人发送指令
- */
-
+// 连接本地开的IRC服务端，在没有/tell指令的服务器上给自己MCC机器人发送指令
 object ModuleChat : ClientModule(
     "Chat",
     ModuleCategory.MISC

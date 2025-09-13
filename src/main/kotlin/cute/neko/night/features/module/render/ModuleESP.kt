@@ -11,12 +11,6 @@ import cute.neko.night.utils.render.utils.WorldToScreen
 import net.minecraft.entity.LivingEntity
 import java.awt.Color
 
-
-/**
- * @author yuchenxue
- * @date 2025/07/07
- */
-
 object ModuleESP : ClientModule(
     "ESP",
     ModuleCategory.RENDER

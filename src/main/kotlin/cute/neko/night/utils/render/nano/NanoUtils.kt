@@ -18,11 +18,6 @@ import org.lwjgl.opengl.GL13
 import org.lwjgl.opengl.GL33
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 object NanoUtils : Accessor {
 
     var nvg: Long = 0L

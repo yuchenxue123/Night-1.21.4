@@ -9,11 +9,6 @@ import cute.neko.night.utils.extensions.reversedList
 import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 object StyleDrop : Style() {
 
     val bars = Bars()

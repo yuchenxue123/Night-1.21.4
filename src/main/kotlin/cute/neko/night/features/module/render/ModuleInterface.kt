@@ -4,11 +4,6 @@ import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.ui.widget.WidgetType
 
-/**
- * @author yuchenxue
- * @date 2025/06/01
- */
-
 object ModuleInterface : ClientModule(
     "Interface",
     ModuleCategory.RENDER

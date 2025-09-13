@@ -8,11 +8,6 @@ import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.utils.entity.Blink
 import net.minecraft.network.packet.s2c.common.DisconnectS2CPacket
 
-/**
- * @author yuchenxue
- * @date 2025/07/02
- */
-
 object ModuleDelayPacket : ClientModule(
     "DelayPacket",
     ModuleCategory.PLAYER,

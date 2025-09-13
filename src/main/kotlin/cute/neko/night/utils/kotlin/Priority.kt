@@ -1,10 +1,5 @@
 package cute.neko.night.utils.kotlin
 
-/**
- * @author yuchenxue
- * @date 2025/06/23
- */
-
 object Priority {
 
     // event 0-200

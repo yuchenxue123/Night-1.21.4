@@ -8,11 +8,6 @@ import cute.neko.night.utils.render.nano.NanoUtils
 import net.minecraft.client.gui.DrawContext
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/05/06
- */
-
 class CheckBox : Screen {
 
     companion object {

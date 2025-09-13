@@ -7,11 +7,6 @@ import cute.neko.night.event.events.game.player.PlayerAttackEntityEvent
 import cute.neko.night.event.events.game.player.PlayerVelocityEvent
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket
 
-/**
- * @author yuchenxue
- * @date 2025/07/09
- */
-
 object AntiVelocitySimple : AntiVelocityMode("Simple") {
 
     private var hasReceivedVelocity = false

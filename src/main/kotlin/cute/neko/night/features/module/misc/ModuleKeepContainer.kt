@@ -13,11 +13,6 @@ import net.minecraft.network.packet.c2s.play.CloseHandledScreenC2SPacket
 import net.minecraft.network.packet.s2c.play.CloseScreenS2CPacket
 import org.lwjgl.glfw.GLFW
 
-/**
- * @author yuchenxue
- * @date 2025/08/12
- */
-
 object ModuleKeepContainer : ClientModule(
     "KeepContainer",
     ModuleCategory.MISC

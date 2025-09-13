@@ -5,11 +5,6 @@ import javax.swing.plaf.basic.BasicButtonUI;
 import java.awt.*;
 import java.awt.event.*;
 
-/**
- * @author yuchenxue
- * @date 2025/08/08
- */
-
 public class Main extends JDialog {
 
     private Point position;

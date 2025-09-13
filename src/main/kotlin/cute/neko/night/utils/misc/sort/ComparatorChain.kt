@@ -1,10 +1,5 @@
 package cute.neko.night.utils.misc.sort
 
-/**
- * @author yuchenxue
- * @date 2025/06/20
- */
-
 class ComparatorChain<T>(
     private vararg val conditions: Comparator<T>
 ) : Comparator<T> {

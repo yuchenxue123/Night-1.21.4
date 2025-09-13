@@ -1,10 +1,5 @@
 package cute.neko.night.features.setting.type.mode
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 class ModeSetting(
     name: String,
     override val modes: Array<String>,

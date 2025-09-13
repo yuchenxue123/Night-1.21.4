@@ -3,11 +3,6 @@ package cute.neko.night.ui
 import cute.neko.night.utils.client.mc
 import cute.neko.night.utils.extensions.math.Rect
 
-/**
- * @author yuchenxue
- * @date 2025/05/05
- */
-
 fun isHovered(
     renderX: Float,
     renderY: Float,

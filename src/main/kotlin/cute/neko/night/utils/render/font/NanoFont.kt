@@ -7,11 +7,6 @@ import net.minecraft.text.Text
 import org.lwjgl.nanovg.NanoVG
 import java.awt.Color
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 class NanoFont(
     val name: String,
     val font: Int = -1,

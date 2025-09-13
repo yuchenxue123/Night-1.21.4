@@ -14,11 +14,6 @@ import org.joml.Matrix4f
 import org.joml.Vector2f
 import org.joml.Vector3f
 
-/**
- * @author yuchenxue
- * @date 2025/07/07
- */
-
 // skid LiquidBounce
 object WorldToScreen : EventListener, Accessor {
 

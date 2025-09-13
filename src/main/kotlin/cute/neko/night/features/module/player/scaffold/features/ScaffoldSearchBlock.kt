@@ -7,11 +7,6 @@ import net.minecraft.block.BlockState
 import net.minecraft.util.math.BlockPos
 import net.minecraft.util.math.Direction
 
-/**
- * @author yuchenxue
- * @date 2025/07/08
- */
-
 object ScaffoldSearchBlock : Configurable("ScaffoldSearchBlock") {
 
     /**

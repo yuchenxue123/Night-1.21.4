@@ -3,11 +3,6 @@ package cute.neko.night.features.setting
 import cute.neko.night.utils.interfaces.Nameable
 import kotlin.reflect.KProperty
 
-/**
- * @author yuchenxue
- * @date 2025/05/04
- */
-
 typealias ValueListener<T> = (old: T, new: T) -> Unit
 
 abstract class AbstractSetting<T : Any>(
