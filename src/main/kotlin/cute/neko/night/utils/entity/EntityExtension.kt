@@ -105,9 +105,9 @@ fun getMovementDirectionOfInput(facingYaw: Float, input: DirectionalInput): Floa
 
 fun Entity.interpolatedPos(tickDelta: Float): Vec3d {
     return Vector3d(x, y, z)
-        .sub(prevX, prevY, prevZ)
+        .sub(lastX, lastY, lastZ)
         .times(tickDelta.toDouble())
-        .add(prevX, prevY, prevZ)
+        .add(lastX, lastY, lastZ)
         .toVec3d()
 }
 

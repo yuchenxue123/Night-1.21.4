@@ -8,12 +8,12 @@ import net.minecraft.network.packet.c2s.play.PlayerMoveC2SPacket
 object NoFallGrim : NoFallMode("Grim") {
 
     private var lastOnGround = false
-    private var lastFallDistance = 0f
+    private var lastFallDistance = .0
     private var shouldJump = false
 
     override fun disable() {
         lastOnGround = false
-        lastFallDistance = 0f
+        lastFallDistance = .0
         shouldJump = false
     }
 

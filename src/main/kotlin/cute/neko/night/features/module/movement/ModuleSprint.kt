@@ -5,6 +5,7 @@ import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.setting.type.mode.SubMode
+import cute.neko.night.utils.entity.movementForward
 
 object ModuleSprint : ClientModule(
     "Sprint",

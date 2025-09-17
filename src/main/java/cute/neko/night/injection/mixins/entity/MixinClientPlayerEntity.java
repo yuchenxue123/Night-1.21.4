@@ -94,7 +94,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
             return;
         }
 
-        final Input input = this.input;
+        final Input input = this.input.playerInput;
         // reverse
         input.movementForward /= 0.2f;
         input.movementSideways /= 0.2f;
