@@ -12,12 +12,12 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(RenderTickCounter.Dynamic.class)
 public class MixinRenderTickCounter$Dynamic {
     @Shadow
-    private float lastFrameDuration;
+    private float dynamicDeltaTicks;
 
     @Inject(
             method = "beginRenderTick(J)I",
             at = @At(value = "FIELD",
-                    target = "Lnet/minecraft/client/render/RenderTickCounter$Dynamic;prevTimeMillis:J",
+                    target = "Lnet/minecraft/client/render/RenderTickCounter$Dynamic;lastTimeMillis:J",
                     opcode = Opcodes.PUTFIELD,
                     ordinal = 0
             )
@@ -26,7 +26,7 @@ public class MixinRenderTickCounter$Dynamic {
         float timerSpeed = Timer.INSTANCE.get();
 
         if (timerSpeed > 0) {
-            lastFrameDuration *= timerSpeed;
+            dynamicDeltaTicks *= timerSpeed;
         }
     }
 }

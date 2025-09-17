@@ -72,6 +72,7 @@ object TargetWidget : DraggableWidget(
 
             NanoUtils.drawRect(x + SIDE_WIDTH, y, _width - SIDE_WIDTH, _height, Color(40, 40, 40, 120))
 
+            /*
             (target as? AbstractClientPlayerEntity)?.let { target ->
                 target.skinTextures?.texture()?.let { texture ->
 
@@ -99,6 +100,7 @@ object TargetWidget : DraggableWidget(
 
                 }
             }
+            */
 
             if (target is AbstractClientPlayerEntity) {
                 font.drawText(

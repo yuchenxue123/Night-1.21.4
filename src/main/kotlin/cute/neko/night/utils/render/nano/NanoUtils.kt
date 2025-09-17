@@ -1,13 +1,11 @@
 package cute.neko.night.utils.render.nano
 
-import com.mojang.blaze3d.platform.GlConst
 import com.mojang.blaze3d.systems.RenderSystem
 import cute.neko.night.utils.extensions.color.toColor4f
 import cute.neko.night.utils.extensions.toRadians
 import cute.neko.night.utils.interfaces.Accessor
 import cute.neko.night.utils.render.nano.image.NanoImage
 import cute.neko.night.utils.render.nano.image.NanoImageManager
-import net.minecraft.client.render.BufferRenderer
 import org.joml.Vector2f
 import org.lwjgl.nanovg.NVGColor
 import org.lwjgl.nanovg.NVGPaint
@@ -46,11 +44,13 @@ object NanoUtils : Accessor {
      * @param block 绘制代码块
      */
     fun draw(block: () -> Unit) {
-        RenderSystem.pixelStore(GlConst.GL_UNPACK_ROW_LENGTH, 0)
-        RenderSystem.pixelStore(GlConst.GL_UNPACK_SKIP_PIXELS, 0)
-        RenderSystem.pixelStore(GlConst.GL_UNPACK_SKIP_ROWS, 0)
-        RenderSystem.pixelStore(GlConst.GL_UNPACK_ALIGNMENT, 4)
-        RenderSystem.clearColor(0f, 0f, 0f, 0f)
+//        RenderSystem.pixelStore(GlConst.GL_UNPACK_ROW_LENGTH, 0)
+//        RenderSystem.pixelStore(GlConst.GL_UNPACK_SKIP_PIXELS, 0)
+//        RenderSystem.pixelStore(GlConst.GL_UNPACK_SKIP_ROWS, 0)
+//        RenderSystem.pixelStore(GlConst.GL_UNPACK_ALIGNMENT, 4)
+//        RenderSystem.clearColor(0f, 0f, 0f, 0f)
+
+
 
         beginFrame()
 
@@ -58,26 +58,26 @@ object NanoUtils : Accessor {
 
         endFrame()
 
-        BufferRenderer.reset()
+//        BufferRenderer.reset()
         GL33.glBindSampler(0, 0)
-        RenderSystem.disableBlend()
+//        RenderSystem.disableBlend()
         GL11.glDisable(GL11.GL_BLEND)
-        RenderSystem.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE)
+//        RenderSystem.blendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE)
         GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE)
-        RenderSystem.blendEquation(GL33.GL_FUNC_ADD)
+//        RenderSystem.blendEquation(GL33.GL_FUNC_ADD)
         GL33.glBlendEquation(GL33.GL_FUNC_ADD)
-        RenderSystem.colorMask(true, true, true, true)
+//        RenderSystem.colorMask(true, true, true, true)
         GL11.glColorMask(true, true, true, true)
-        RenderSystem.depthMask(true)
+//        RenderSystem.depthMask(true)
         GL11.glDepthMask(true)
         RenderSystem.disableScissor()
         GL11.glDisable(GL11.GL_SCISSOR_TEST)
         GL11.glDisable(GL11.GL_STENCIL_TEST)
-        RenderSystem.disableDepthTest()
+//        RenderSystem.disableDepthTest()
         GL11.glDisable(GL11.GL_DEPTH_TEST)
         GL13.glActiveTexture(GL13.GL_TEXTURE0)
-        RenderSystem.activeTexture(GL13.GL_TEXTURE0)
-        RenderSystem.disableCull()
+//        RenderSystem.activeTexture(GL13.GL_TEXTURE0)
+//        RenderSystem.disableCull()
     }
 
     /**

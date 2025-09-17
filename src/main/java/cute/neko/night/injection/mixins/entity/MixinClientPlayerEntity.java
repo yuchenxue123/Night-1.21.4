@@ -5,6 +5,7 @@ import cute.neko.night.event.EventManager;
 import cute.neko.night.event.EventState;
 import cute.neko.night.injection.addition.ClientPlayerEntityAddition;
 import cute.neko.night.event.events.game.player.*;
+import cute.neko.night.injection.addition.InputAddition;
 import cute.neko.night.utils.rotation.RotationManager;
 import cute.neko.night.utils.rotation.data.Rotation;
 import net.minecraft.client.MinecraftClient;
@@ -94,21 +95,7 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
             return;
         }
 
-        final Input input = this.input.playerInput;
-        // reverse
-        input.movementForward /= 0.2f;
-        input.movementSideways /= 0.2f;
-
-        // then
-        final PlayerUseMultiplier playerUseMultiplier = new PlayerUseMultiplier(0.2f, 0.2f);
-        EventManager.INSTANCE.callEvent(playerUseMultiplier);
-
-        if (playerUseMultiplier.getCancelled()) {
-            return;
-        }
-
-        input.movementForward *= playerUseMultiplier.getForward();
-        input.movementSideways *= playerUseMultiplier.getSideways();
+        PlayerUseMultiplier.hookCustomMultiplier(this.input);
     }
 
     @ModifyExpressionValue(

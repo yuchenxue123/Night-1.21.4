@@ -1,7 +1,6 @@
 package cute.neko.night.utils.render.utils
 
 import com.mojang.blaze3d.opengl.GlStateManager
-import com.mojang.blaze3d.platform.GlStateManager
 import cute.neko.night.utils.client.mc
 import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL12
@@ -9,6 +8,7 @@ import org.lwjgl.opengl.GL30
 
 object TextureScissor {
 
+    /*
     fun scissor(texture: Int, x: Int, y: Int, width: Int, height: Int): Int {
         val newTex = GlStateManager._genTexture()
         GlStateManager._bindTexture(newTex)
@@ -52,5 +52,6 @@ object TextureScissor {
 
         return newTex
     }
+     */
 
 }

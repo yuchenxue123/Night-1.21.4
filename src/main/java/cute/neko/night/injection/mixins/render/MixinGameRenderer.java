@@ -37,7 +37,7 @@ public abstract class MixinGameRenderer {
 
         newMatStack.multiplyPositionMatrix(matrix4f2);
 
-        EventManager.INSTANCE.callEvent(new WorldRenderEvent(newMatStack, this.camera, tickCounter.getTickDelta(false)));
+        EventManager.INSTANCE.callEvent(new WorldRenderEvent(newMatStack, this.camera, tickCounter.getTickProgress(false)));
     }
 
     @Inject(method = "tiltViewWhenHurt", at = @At("HEAD"), cancellable = true)
