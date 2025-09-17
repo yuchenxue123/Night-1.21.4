@@ -35,4 +35,6 @@ object ModuleSprint : ClientModule(
         LEGIT("Legit"),
         FORCE("Force")
     }
+
+    fun isForced() = mode == SprintMode.FORCE
 }
