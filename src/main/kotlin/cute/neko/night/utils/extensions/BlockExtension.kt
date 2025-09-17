@@ -2,6 +2,9 @@ package cute.neko.night.utils.extensions
 
 import cute.neko.night.utils.client.mc
 import net.minecraft.util.math.BlockPos
+import net.minecraft.util.math.Vec3i
+
+fun Vec3i.toBlockPos() = BlockPos(this)
 
 fun BlockPos.getState() = mc.world?.getBlockState(this)
 
@@ -12,7 +15,7 @@ fun BlockPos.sequence(
     yRange: IntRange,
     zRange: IntRange,
 ): Sequence<BlockPos> {
-    return sequence genshin@{
+    return sequence genshin@ {
         for (x in xRange) {
             for (y in yRange) {
                 for (z in zRange) {

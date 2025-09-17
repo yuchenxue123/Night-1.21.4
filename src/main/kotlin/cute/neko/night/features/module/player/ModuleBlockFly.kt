@@ -18,6 +18,7 @@ import cute.neko.night.utils.rotation.data.Rotation
 import cute.neko.night.utils.rotation.data.RotationRequest
 import cute.neko.night.utils.rotation.features.MovementCorrection
 import cute.neko.night.utils.rotation.util.BlockSearchDirections
+import net.minecraft.block.AirBlock
 import net.minecraft.block.BlockState
 import net.minecraft.util.Hand
 import net.minecraft.util.hit.BlockHitResult
@@ -166,7 +167,7 @@ object ModuleBlockFly : ClientModule(
                 val east = yaw > 10f && yaw < 170f
                 val west = yaw > 190f && yaw < 350f
 
-                val yawF = if (player.blockPos.down().getState()?.isAir == true)
+                val yawF = if (player.blockPos.down().getBlock() is AirBlock)
                 {
                     direct + 70f
                 }
