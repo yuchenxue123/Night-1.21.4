@@ -3,6 +3,8 @@ package cute.neko.night.event
 import cute.neko.night.event.events.game.client.GameTickEvent
 import cute.neko.night.event.priorities.EventPriority
 import cute.neko.night.event.priorities.Priorities
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Job
 
 interface EventListener {
 
@@ -71,27 +73,22 @@ inline fun <reified T : Event> EventListener.once(
 
 inline fun <reified T : Event> EventListener.sequenceHandler(
     priority: EventPriority = Priorities.DEFAULT,
-    crossinline eventHandler: SuspendableEventHandler<T>
-) {
-    handler<T>(priority) { event ->
-        Sequence(this) { eventHandler.invoke(this@Sequence, event) }
-    }
-}
+    dispatcher: CoroutineDispatcher? = null,
+    onCancellation: Runnable? = null,
+    crossinline eventHandler: SuspendableEventHandler<T>,
+) = handler<T>(priority) { event -> launchSequence(dispatcher, onCancellation) { eventHandler(event) } }
 
-@Suppress("AssignedValueIsNeverRead")
-fun EventListener.tickHandler(eventHandler: SuspendableHandler) {
-    var sequence: TickSequence? = TickSequence(this, eventHandler)
+fun EventListener.tickHandler(
+    dispatcher: CoroutineDispatcher? = null,
+    onCancellation: Runnable? = null,
+    eventHandler: SuspendableHandler,
+): EventHook<GameTickEvent> {
+    var sequence: Job? = null
 
-    SequenceManager.handler<GameTickEvent> {
-        if (this.running) {
-            if (sequence == null) {
-                sequence = TickSequence(this, eventHandler)
-            }
-        } else if (sequence != null) {
-            sequence?.cancel()
-            sequence = null
+    return handler<GameTickEvent> {
+        // Check if the sequence is already running (completed or null)
+        if (sequence == null || !sequence!!.isActive) {
+            sequence = launchSequence(dispatcher, onCancellation, eventHandler)
         }
     }
 }
-
-

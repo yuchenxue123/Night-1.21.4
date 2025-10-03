@@ -3,8 +3,8 @@ package cute.neko.night.features.module
 import cute.neko.night.Night
 import cute.neko.night.event.EventListener
 import cute.neko.night.event.EventManager
-import cute.neko.night.event.SequenceManager
 import cute.neko.night.event.events.client.ModuleToggleEvent
+import cute.neko.night.event.removeEventListenerScope
 import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.config.types.ToggleListener
 import cute.neko.night.features.setting.config.types.Toggleable
@@ -54,7 +54,7 @@ open class ClientModule(
 
             runCatching {
                 if (!newState) {
-                    SequenceManager.cancelAllSequences(this)
+                    removeEventListenerScope()
                 }
             }.onFailure {
                 error("failed cancel sequences: $it")

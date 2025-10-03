@@ -14,6 +14,8 @@ import cute.neko.night.utils.lang.LanguageManager
 import cute.neko.night.utils.misc.resources.Buffers
 import cute.neko.night.utils.render.nano.NanoUtils
 import net.fabricmc.api.ModInitializer
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 object Night : ModInitializer, EventListener {
     // client info
@@ -22,6 +24,8 @@ object Night : ModInitializer, EventListener {
     const val CLIENT_VERSION = "0.1"
 
     const val MOD_ID = "night"
+
+    val logger: Logger = LogManager.getLogger(Night::class)
 
     var loaded = false
 

@@ -49,6 +49,10 @@ object EventManager {
     private val registry: Map<Class<out Event>, CopyOnWriteArrayList<EventHook<in Event>>> =
         ALL_EVENT_CLASSES.associate { it.java to CopyOnWriteArrayList() }
 
+    init {
+        CoroutineTicker
+    }
+
     /**
      * Register EventHook
      */

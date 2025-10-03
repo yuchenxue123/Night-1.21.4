@@ -4,6 +4,7 @@ import cute.neko.night.event.EventState
 import cute.neko.night.event.events.game.player.PlayerMotionEvent
 import cute.neko.night.event.handler
 import cute.neko.night.event.tickHandler
+import cute.neko.night.event.waitTicks
 import cute.neko.night.utils.entity.strafe
 
 object FlyMotion : FlyMode("Motion") {
