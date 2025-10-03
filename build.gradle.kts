@@ -21,10 +21,8 @@ repositories {
     }
 }
 
-val access_widener_file_name: String by project
-
 loom {
-    accessWidenerPath = file("src/main/resources/$access_widener_file_name")
+    accessWidenerPath = file("src/main/resources/night.accesswidener")
 }
 
 val minecraft_version: String by project
@@ -43,6 +41,7 @@ fun DependencyHandler.packageImplementation(dependency: Any) {
 
 val kotlin_version: String by project
 val kotlinx_coroutines_version: String by project
+val fabric_kotlin_version: String by project
 val lwjgl_version: String by project
 
 dependencies {
@@ -53,28 +52,20 @@ dependencies {
     // Fabric
     modImplementation("net.fabricmc:fabric-loader:$loader_version")
     modImplementation("net.fabricmc.fabric-api:fabric-api:$fabric_version")
+    modImplementation("net.fabricmc:fabric-language-kotlin:$fabric_kotlin_version")
 
     // NanoVg
     packageImplementation("org.lwjgl:lwjgl-nanovg:$lwjgl_version")
     packageImplementation("org.lwjgl:lwjgl-nanovg:$lwjgl_version:natives-windows")
     packageImplementation("org.lwjgl:lwjgl-nanovg:$lwjgl_version:natives-linux")
     packageImplementation("org.lwjgl:lwjgl-nanovg:$lwjgl_version:natives-macos")
-
-    // Kotlin
-    packageImplementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version")
-    packageImplementation("org.jetbrains.kotlin:kotlin-reflect:$kotlin_version")
-    packageImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinx_coroutines_version")
-
-    // plugin api
-    packageImplementation(project(":plugin"))
 }
 
 val properties = mapOf(
-    "id" to mod_name.lowercase(),
     "name" to mod_name,
     "version" to mod_version,
     "description" to mod_description,
-    "widener" to access_widener_file_name,
+    "fabric_kotlin_version" to fabric_kotlin_version
 )
 
 tasks.processResources {

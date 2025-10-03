@@ -2,7 +2,7 @@ package cute.neko.night.event
 
 import cute.neko.night.event.events.client.ModuleToggleEvent
 import cute.neko.night.event.events.game.client.GameShutdownEvent
-import cute.neko.night.event.events.game.client.GameStartEvent
+import cute.neko.night.event.events.game.client.GameInitializeEvent
 import cute.neko.night.event.events.game.client.GameTickEvent
 import cute.neko.night.event.events.game.misc.ChatSendEvent
 import cute.neko.night.event.events.game.misc.KeyboardEvent
@@ -20,7 +20,7 @@ val ALL_EVENT_CLASSES: Array<KClass<out Event>> = arrayOf(
     ModuleToggleEvent::class,
 
     // game
-    GameStartEvent::class,
+    GameInitializeEvent::class,
     GameShutdownEvent::class,
     GameTickEvent::class,
 

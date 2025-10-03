@@ -3,7 +3,7 @@ package cute.neko.night.utils.player.inventory
 import cute.neko.night.features.setting.type.mode.SubMode
 import cute.neko.night.utils.client.player
 import cute.neko.night.utils.client.world
-import cute.neko.night.utils.player.inventory.ExtraItemTags.RUBBISH_ITEM_TAG
+import cute.neko.night.utils.player.inventory.ItemTags.RUBBISH_ITEM_TAG
 import net.minecraft.block.Blocks
 import net.minecraft.component.DataComponentTypes
 import net.minecraft.component.type.AttributeModifiersComponent

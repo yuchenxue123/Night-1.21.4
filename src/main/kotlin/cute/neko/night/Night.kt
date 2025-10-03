@@ -1,6 +1,10 @@
 package cute.neko.night
 
 import cute.neko.night.config.ConfigSystem
+import cute.neko.night.event.EventListener
+import cute.neko.night.event.events.game.client.GameInitializeEvent
+import cute.neko.night.event.events.game.client.GameShutdownEvent
+import cute.neko.night.event.handler
 import cute.neko.night.features.command.CommandManager
 import cute.neko.night.features.module.ModuleManager
 import cute.neko.night.ui.widget.WidgetManager
@@ -9,8 +13,9 @@ import cute.neko.night.utils.client.KeyboardUtils
 import cute.neko.night.utils.lang.LanguageManager
 import cute.neko.night.utils.misc.resources.Buffers
 import cute.neko.night.utils.render.nano.NanoUtils
+import net.fabricmc.api.ModInitializer
 
-object Night {
+object Night : ModInitializer, EventListener {
     // client info
     // "Stay" -> "Today" -> "Night"
     const val CLIENT_NAME = "Night"
@@ -20,7 +25,12 @@ object Night {
 
     var loaded = false
 
-    fun initiate() {
+    override fun onInitialize() {
+        println("Night mod entrypoint is loaded...")
+    }
+
+    @Suppress("unused")
+    private val onInitialize = handler<GameInitializeEvent> {
         FileUtils.create()
 
         KeyboardUtils.generate()
@@ -38,7 +48,8 @@ object Night {
         loaded = true
     }
 
-    fun shutdown() {
+    @Suppress("unused")
+    private val onShutdown = handler<GameShutdownEvent> {
         ConfigSystem.save("default")
 
         Buffers.release()

@@ -1,34 +1,40 @@
 {
-	"schemaVersion": 1,
-	"id": "${id}",
-	"version": "${version}",
-	"name": "${name}",
-	"description": "${description}",
-	"authors": [
-		"yuchenxue"
-	],
-	"contact": {
-		"sources": "https://github.com/yuchenxue123/Night-1.21.4"
-	},
-	"license": "GPL-3.0",
-	"environment": "*",
-	"entrypoints": {
-		"main": [],
-		"fabric-datagen": [
-			"cute.neko.generator.DataGenerator"
-		]
-	},
-	"mixins": [
-		"night.mixins.json"
-	],
-	"depends": {
-		"fabricloader": ">=0.16.10",
-		"minecraft": "~1.21.4",
-		"java": ">=21",
-		"fabric-api": "*"
-	},
-	"suggests": {
-		"another-mod": "*"
-	},
-	"accessWidener": "${widener}"
+  "schemaVersion": 1,
+  "id": "night",
+  "version": "${version}",
+  "name": "${name}",
+  "description": "${description}",
+  "authors": [
+    "yuchenxue"
+  ],
+  "contact": {
+    "sources": "https://github.com/yuchenxue123/Night-1.21.4"
+  },
+  "license": "GPL-3.0",
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "~1.21.4",
+    "java": ">=21",
+    "fabric-api": "*",
+    "fabric-language-kotlin": ">=${fabric_kotlin_version}"
+  },
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      {
+        "adapter": "kotlin",
+        "value": "cute.neko.night.Night"
+      }
+    ],
+    "fabric-datagen": [
+      "cute.neko.generator.DataGenerator"
+    ]
+  },
+  "mixins": [
+    "night.mixins.json"
+  ],
+  "suggests": {
+    "another-mod": "*"
+  },
+  "accessWidener": "night.accesswidener"
 }

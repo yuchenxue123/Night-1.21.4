@@ -7,7 +7,7 @@ import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.tag.TagKey
 import net.minecraft.util.Identifier
 
-object ExtraItemTags : Accessor {
+object ItemTags : Accessor {
     @JvmField
     val RUBBISH_ITEM_TAG: TagKey<Item> = TagKey.of(RegistryKeys.ITEM, Identifier.of(Night.MOD_ID, "rubbish_item"))
 }

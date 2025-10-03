@@ -1,9 +1,8 @@
 package cute.neko.night.injection.mixins.client;
 
 import cute.neko.night.event.EventManager;
-import cute.neko.night.Night;
 import cute.neko.night.event.events.game.client.GameShutdownEvent;
-import cute.neko.night.event.events.game.client.GameStartEvent;
+import cute.neko.night.event.events.game.client.GameInitializeEvent;
 import cute.neko.night.event.events.game.client.GameTickEvent;
 import cute.neko.night.event.events.game.misc.WorldEvent;
 import net.minecraft.client.MinecraftClient;
@@ -18,14 +17,12 @@ public abstract class MixinMinecraftClient {
 
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     private void startClient(CallbackInfo info) {
-        EventManager.INSTANCE.callEvent(new GameStartEvent());
-        Night.INSTANCE.initiate();
+        EventManager.INSTANCE.callEvent(new GameInitializeEvent());
     }
 
     @Inject(method = "stop", at = @At(value = "HEAD"))
     private void stopClient(CallbackInfo info) {
         EventManager.INSTANCE.callEvent(new GameShutdownEvent());
-        Night.INSTANCE.shutdown();
     }
 
     @Inject(method = "tick", at = @At(value = "HEAD"))
