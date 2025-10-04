@@ -1,8 +1,8 @@
 package cute.neko.night.features.module.misc.disabler.modes
 
 import cute.neko.night.event.EventState
-import cute.neko.night.event.handler
 import cute.neko.night.event.PacketType
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.misc.MovementInputEvent
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerAfterJumpEvent

@@ -16,6 +16,7 @@ import org.lwjgl.nanovg.NanoVGGL3
 import org.lwjgl.opengl.GL11
 import org.lwjgl.opengl.GL13
 import org.lwjgl.opengl.GL33
+import org.lwjgl.system.MemoryStack
 import java.awt.Color
 
 object NanoUtils : Accessor {
@@ -33,12 +34,6 @@ object NanoUtils : Accessor {
         if (nvg != 0L) {
             NanoFontManager
         }
-    }
-
-    private val share = NVGColor.calloc()
-
-    fun free() {
-        share.free()
     }
 
     /**
@@ -416,15 +411,10 @@ object NanoUtils : Accessor {
         restore()
     }
 
-    fun fillColor(red: Float, green: Float, blue: Float, alpha: Float) {
-        share.r(red).g(green).b(blue).a(alpha)
-        NanoVG.nvgFillColor(nvg, share)
-    }
-
     fun fillColor(color: Color) {
-        val (r, g, b, a) = color.toColor4f()
-        share.r(r).g(g).b(b).a(a)
-        NanoVG.nvgFillColor(nvg, share)
+        createColor(color) {
+            NanoVG.nvgFillColor(nvg, it)
+        }
     }
 
     fun fillColor(red: Int, green: Int, blue: Int, alpha: Int) {
@@ -432,20 +422,24 @@ object NanoUtils : Accessor {
         fillColor(color)
     }
 
-    fun strokeColor(red: Float, green: Float, blue: Float, alpha: Float) {
-        share.r(red).g(green).b(blue).a(alpha)
-        NanoVG.nvgStrokeColor(nvg, share)
-    }
-
     fun strokeColor(color: Color) {
-        val (r, g, b, a) = color.toColor4f()
-        share.r(r).g(g).b(b).a(a)
-        NanoVG.nvgStrokeColor(nvg, share)
+        createColor(color) {
+            NanoVG.nvgStrokeColor(nvg, it)
+        }
     }
 
     fun strokeColor(red: Int, green: Int, blue: Int, alpha: Int) {
         val color = Color(red, green, blue, alpha)
         strokeColor(color)
+    }
+
+    fun createColor(color: Color, block: (color: NVGColor) -> Unit) {
+        MemoryStack.stackPush().use { stack ->
+            val nvgColor = NVGColor.malloc(stack)
+            val (r, g, b, a) = color.toColor4f()
+            nvgColor.r(r).g(g).b(b).a(a)
+            block.invoke(nvgColor)
+        }
     }
 
     fun beginFrame() {

@@ -102,7 +102,6 @@ suspend fun waitTicks(ticks: Int) {
  */
 suspend fun waitSeconds(seconds: Int) = waitTicks(seconds * 20)
 
-// A special version of [suspendHandler]...
 fun EventListener.launchSequence(
     dispatcher: CoroutineDispatcher? = null,
     onCancellation: Runnable?,

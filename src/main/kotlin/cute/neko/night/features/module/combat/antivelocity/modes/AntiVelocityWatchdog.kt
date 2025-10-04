@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.combat.antivelocity.modes
 
-import cute.neko.night.event.handler
 import cute.neko.night.event.PacketType
+import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import net.minecraft.network.packet.s2c.play.EntityVelocityUpdateS2CPacket

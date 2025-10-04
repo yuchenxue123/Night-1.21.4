@@ -39,7 +39,10 @@ object CommandManager : EventListener {
 
         val args = parse(input.substring(1))
 
-        val command = commands.find { it.name.equals(args[0], true) } ?: run {
+        val command = commands.find {
+            it.name.equals(args[0], true)
+                    || it.alias.any { alia -> alia.equals(args[0], true) }
+        } ?: run {
             debug.error("未找到该指令")
             return
         }

@@ -57,6 +57,5 @@ object Night : ModInitializer, EventListener {
         ConfigSystem.save("default")
 
         Buffers.release()
-        NanoUtils.free()
     }
 }
