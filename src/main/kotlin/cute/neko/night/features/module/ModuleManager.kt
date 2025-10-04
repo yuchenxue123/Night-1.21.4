@@ -20,6 +20,7 @@ import cute.neko.night.features.module.movement.speed.ModuleSpeed
 import cute.neko.night.features.module.player.*
 import cute.neko.night.features.module.player.nofall.ModuleNoFall
 import cute.neko.night.features.module.render.*
+import cute.neko.night.mod.mousetweaks.MouseTweaks
 import cute.neko.night.ui.widget.type.DynamicIslandWidget
 import cute.neko.night.utils.interfaces.Accessor
 import net.minecraft.client.gui.screen.ChatScreen
@@ -73,6 +74,9 @@ object ModuleManager : EventListener, Accessor {
             ModuleAntiBot,
             ModuleKeepContainer,
             ModuleChat,
+
+            // mods
+            MouseTweaks
         )
     }
 

@@ -12,6 +12,9 @@ import cute.neko.night.event.events.game.network.PacketEvent
 import cute.neko.night.event.events.game.player.*
 import cute.neko.night.event.events.game.render.ScreenRenderEvent
 import cute.neko.night.event.events.game.render.WorldRenderEvent
+import cute.neko.night.mod.mousetweaks.HandledScreenKeyboardInputEvent
+import cute.neko.night.mod.mousetweaks.HandledScreenMouseInputEvent
+import cute.neko.night.mod.mousetweaks.HandledScreenRenderEvent
 import java.util.concurrent.CopyOnWriteArrayList
 import kotlin.reflect.KClass
 
@@ -42,6 +45,11 @@ val ALL_EVENT_CLASSES: Array<KClass<out Event>> = arrayOf(
 
     ScreenRenderEvent::class,
     WorldRenderEvent::class,
+
+    // mods
+    HandledScreenRenderEvent::class,
+    HandledScreenMouseInputEvent::class,
+    HandledScreenKeyboardInputEvent::class,
 )
 
 object EventManager {

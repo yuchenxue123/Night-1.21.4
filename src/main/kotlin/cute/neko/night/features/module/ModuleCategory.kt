@@ -8,7 +8,8 @@ enum class ModuleCategory(private val renderName: String) {
     MOVEMENT("Movement"),
     PLAYER("Player"),
     RENDER("Render"),
-    MISC("Misc")
+    MISC("Misc"),
+    MOD("Mod"),
     ;
 
     val showName: String
