@@ -13,7 +13,6 @@ object ModuleKillAura : ClientModule(
     "KillAura",
     ModuleCategory.COMBAT
 ) {
-
     private val attackExecutor = tree(KillAuraAttackExecutor)
 
     val range by float("Range", 3f, 1f..7f, 0.1f)
@@ -32,6 +31,7 @@ object ModuleKillAura : ClientModule(
     private val targetTracker = tree(KillAuraTargetTracker)
 
     override fun disable() {
+        targetTracker.reset()
         RotationManager.remove(this)
     }
 

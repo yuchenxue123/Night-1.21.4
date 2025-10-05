@@ -1,9 +1,8 @@
 package cute.neko.night.features.module.combat.killaura.features
 
-import cute.neko.night.features.module.combat.killaura.ModuleKillAura
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura.range
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura.wallRange
-import cute.neko.night.features.setting.config.types.EmptyConfigurable
+import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.type.mode.SubMode
 import cute.neko.night.utils.entity.rotation
 import cute.neko.night.utils.misc.RandomUtils
@@ -13,7 +12,7 @@ import cute.neko.night.utils.time.TimeTracker
 import net.minecraft.entity.LivingEntity
 import net.minecraft.util.Hand
 
-object KillAuraAttackExecutor : EmptyConfigurable("AttackExecutor", ModuleKillAura) {
+object KillAuraAttackExecutor : Configurable("AttackExecutor") {
     private val clickMode by mode("ClickMode", ClickMode.STABILIZED)
 
     // cps

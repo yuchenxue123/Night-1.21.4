@@ -2,6 +2,7 @@ package cute.neko.night.features.module.movement.fly
 
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
+import cute.neko.night.features.module.movement.fly.modes.FlyCreative
 import cute.neko.night.features.module.movement.fly.modes.FlyMotion
 
 object ModuleFly : ClientModule(
@@ -10,7 +11,8 @@ object ModuleFly : ClientModule(
 ) {
     val mode = choices(
         "Mode", arrayOf(
-            FlyMotion
+            FlyMotion,
+            FlyCreative
         )
     )
 

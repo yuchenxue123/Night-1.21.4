@@ -1,5 +1,6 @@
 package cute.neko.night.features.module.combat.killaura.features
 
+import cute.neko.night.event.EventListener
 import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.player.PlayerTickEvent
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura
@@ -7,17 +8,17 @@ import cute.neko.night.features.module.combat.killaura.ModuleKillAura.fov
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura.range
 import cute.neko.night.features.module.combat.killaura.ModuleKillAura.scanRange
 import cute.neko.night.features.module.misc.ModuleAntiBot
-import cute.neko.night.features.setting.config.types.EmptyConfigurable
+import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.config.types.TargetOption
 import cute.neko.night.utils.rotation.RotationUtils
 import net.minecraft.entity.LivingEntity
 
-object KillAuraTargetTracker : EmptyConfigurable("TargetTracker", ModuleKillAura) {
+object KillAuraTargetTracker : Configurable("TargetTracker"), EventListener {
     private val targets = tree(TargetOption())
 
     var target: LivingEntity? = null
 
-    override fun disable() {
+    fun reset() {
         target = null
     }
 
@@ -44,4 +45,6 @@ object KillAuraTargetTracker : EmptyConfigurable("TargetTracker", ModuleKillAura
                 && RotationUtils.rotationDifference(entity) <= fov
                 && entity.isAlive
     }
+
+    override fun parent(): EventListener = ModuleKillAura
 }

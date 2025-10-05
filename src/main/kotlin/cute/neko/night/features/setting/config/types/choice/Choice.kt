@@ -3,7 +3,6 @@ package cute.neko.night.features.setting.config.types.choice
 import cute.neko.night.event.EventListener
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
-import cute.neko.night.features.setting.config.types.ToggleListener
 import cute.neko.night.features.setting.config.types.Toggleable
 import cute.neko.night.features.setting.type.mode.SubMode
 import cute.neko.night.utils.client.inGame
@@ -15,14 +14,10 @@ abstract class Choice(override val modeName: String) : Configurable(modeName), T
 
     fun isActive(): Boolean = controller.getActive() == this
 
-    override fun onToggled(state: Boolean) {
-        inner.filterIsInstance<ToggleListener>().forEach { it.onToggled(state) }
-
-        if (!inGame) {
-            return
-        }
-
-        super.onToggled(state)
+    override fun onToggled(state: Boolean): Boolean {
+        val state = super.onToggled(state)
+        inner.filterIsInstance<Toggleable>().forEach { it.onToggled(state) }
+        return state
     }
 
     override val running: Boolean

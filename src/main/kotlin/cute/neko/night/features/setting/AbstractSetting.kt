@@ -25,10 +25,4 @@ abstract class AbstractSetting<T : Any>(
     operator fun getValue(thisRef: Any?, property: KProperty<*>): T = value
 
     abstract fun get(): T
-
-    protected val listeners: MutableList<ValueListener<T>> = mutableListOf()
-
-    fun listener(listener: (old: T, new: T) -> Unit) = apply {
-        listeners.add(listener)
-    }
 }

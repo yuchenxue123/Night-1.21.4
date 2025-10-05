@@ -1,27 +1,32 @@
 package cute.neko.night.features.setting.config.types
 
 import cute.neko.night.event.EventListener
+import cute.neko.night.event.removeEventListenerScope
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
-import cute.neko.night.utils.client.inGame
 
- open class ToggleConfigurable(
+open class ToggleConfigurable(
     name: String,
     state: Boolean,
     private val parent: EventListener? = null
 ) : Configurable(name), Toggleable, EventListener {
 
-    private val enable by boolean(name, state)
+    open var enable by boolean(name, state)
         .listener { _, new -> onToggled(new) }
 
-    override fun onToggled(state: Boolean) {
-        inner.filterIsInstance<ToggleListener>().forEach { it.onToggled(state) }
-
-        if (!inGame) {
-            return
+    override fun onToggled(state: Boolean): Boolean {
+        if (!state) {
+            runCatching {
+                // Remove and cancel coroutine scope
+                removeEventListenerScope()
+            }.onFailure {
+                error("failed cancel sequences: $it")
+            }
         }
 
-        super.onToggled(state)
+        val state = super.onToggled(state)
+        inner.filterIsInstance<Toggleable>().forEach { it.onToggled(state) }
+        return state
     }
 
     override fun parent(): EventListener? = parent

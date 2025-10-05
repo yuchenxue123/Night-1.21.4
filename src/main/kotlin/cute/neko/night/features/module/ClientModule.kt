@@ -1,12 +1,10 @@
 package cute.neko.night.features.module
 
-import cute.neko.night.Night
 import cute.neko.night.event.EventListener
 import cute.neko.night.event.EventManager
 import cute.neko.night.event.events.client.ModuleToggleEvent
 import cute.neko.night.event.removeEventListenerScope
 import cute.neko.night.features.setting.config.Configurable
-import cute.neko.night.features.setting.config.types.ToggleListener
 import cute.neko.night.features.setting.config.types.Toggleable
 import cute.neko.night.features.setting.config.types.choice.Choice
 import cute.neko.night.features.setting.config.types.choice.ChoicesConfigurable
@@ -22,6 +20,7 @@ open class ClientModule(
     var key: Int = GLFW.GLFW_KEY_UNKNOWN,
     val locked: Boolean = false,
     var hidden: Boolean = false,
+    state: Boolean = false,
 ) : Configurable(name), Toggleable, EventListener {
 
     val showName: String
@@ -41,34 +40,39 @@ open class ClientModule(
 
     protected val debug = Debug(Debug.Type.MODULE)
 
-    var state = false
+    var state = state
         set(newState) {
             if (newState == field) return
 
-            inner.filterIsInstance<ToggleListener>().forEach { it.onToggled(newState) }
-
             field = newState
 
-            // call enable and disable function
-            super.onToggled(newState)
-
-            runCatching {
-                if (!newState) {
-                    removeEventListenerScope()
-                }
-            }.onFailure {
-                error("failed cancel sequences: $it")
-            }
-
-
-            // module toggle event
-            if (Night.loaded) {
-                EventManager.callEvent(ModuleToggleEvent(this, newState))
-            }
+            this.onToggled(newState)
         }
 
     fun toggle() {
         state = !state
+    }
+
+    override fun onToggled(state: Boolean): Boolean {
+        if (!inGame) {
+            return state
+        }
+
+        if (!state) {
+            runCatching {
+                // Remove and cancel coroutine scope
+                removeEventListenerScope()
+            }.onFailure {
+                error("failed cancel sequences: $it")
+            }
+        }
+
+        val state = super.onToggled(state)
+        inner.filterIsInstance<Toggleable>().forEach { it.onToggled(state) }
+
+        // Call module toggle event
+        EventManager.callEvent(ModuleToggleEvent(this, state))
+        return state
     }
 
     protected fun <T: Choice> choices(

@@ -28,6 +28,12 @@ open class MutableSetting<T : Any>(
 
     protected val consumers = mutableListOf<Consumer<T>>()
 
+    protected val listeners: MutableList<ValueListener<T>> = mutableListOf()
+
+    fun listener(listener: ValueListener<T>) = apply {
+        listeners.add(listener)
+    }
+
     // mutable value setter
     operator fun setValue(thisRef: Any?, property: KProperty<*>, value: T) {
         this.value = value
