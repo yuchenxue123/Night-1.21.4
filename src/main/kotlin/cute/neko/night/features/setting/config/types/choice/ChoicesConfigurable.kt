@@ -1,6 +1,7 @@
 package cute.neko.night.features.setting.config.types.choice
 
 import cute.neko.night.event.EventListener
+import cute.neko.night.event.removeEventListenerScope
 import cute.neko.night.features.setting.AbstractSetting
 import cute.neko.night.features.setting.config.Configurable
 import cute.neko.night.features.setting.config.types.Toggleable
@@ -36,6 +37,7 @@ open class ChoicesConfigurable<T : Choice>(
         }
 
         if (activeChoice.running) {
+            activeChoice.removeEventListenerScope()
             activeChoice.disable()
         }
 

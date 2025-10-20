@@ -1,7 +1,7 @@
 package cute.neko.night.features.module.render
 
-import cute.neko.night.event.handler
 import cute.neko.night.event.events.game.render.ScreenRenderEvent
+import cute.neko.night.event.handler
 import cute.neko.night.features.module.ClientModule
 import cute.neko.night.features.module.ModuleCategory
 import cute.neko.night.features.module.render.share.SharedTargetOption

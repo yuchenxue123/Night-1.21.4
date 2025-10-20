@@ -23,7 +23,7 @@ object ScaffoldRotation : Configurable("ScaffoldRotation") {
             pitch += 5f
         }
 
-        return Rotation(yaw, pitch)
+        return Rotation(yaw, pitch).normalize()
     }
 
     private fun findPitch(pos: BlockPos, yaw: Float): Float? {

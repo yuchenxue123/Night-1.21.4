@@ -192,3 +192,6 @@ accessible method net/minecraft/client/gui/screen/multiplayer/ConnectScreen setS
 
 accessible method net/minecraft/client/gui/hud/InGameHud renderVignetteOverlay (Lnet/minecraft/client/gui/DrawContext;Lnet/minecraft/entity/Entity;)V
 accessible field net/minecraft/client/render/GameRenderer buffers Lnet/minecraft/client/render/BufferBuilderStorage;
+
+accessible field net/minecraft/client/MinecraftClient fontManager Lnet/minecraft/client/font/FontManager;
+accessible field net/minecraft/client/font/FontManager fontStorages Ljava/util/Map;
