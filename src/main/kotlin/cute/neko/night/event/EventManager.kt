@@ -42,6 +42,7 @@ val ALL_EVENT_CLASSES: Array<KClass<out Event>> = arrayOf(
     PlayerTickEvent::class,
     PlayerUseMultiplier::class,
     PlayerVelocityEvent::class,
+    PlayerMoveEvent::class,
 
     ScreenRenderEvent::class,
     WorldRenderEvent::class,

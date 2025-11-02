@@ -8,4 +8,11 @@ interface EventPriority {
      */
     val value: Int
 
+    companion object {
+        fun valueOf(value: Int): EventPriority {
+            return Implement(value)
+        }
+    }
+
+    private class Implement(override val value: Int) : EventPriority
 }

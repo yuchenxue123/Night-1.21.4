@@ -10,12 +10,15 @@ import cute.neko.night.utils.rotation.data.Rotation;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.input.Input;
 import net.minecraft.client.network.ClientPlayerEntity;
+import net.minecraft.entity.MovementType;
+import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayerEntity.class)
@@ -109,6 +112,11 @@ public abstract class MixinClientPlayerEntity extends MixinPlayerEntity implemen
 
         input.movementForward *= playerUseMultiplier.getForward();
         input.movementSideways *= playerUseMultiplier.getSideways();
+    }
+
+    @ModifyVariable(method = "move", at = @At("HEAD"), name = "arg2", ordinal = 0, index = 2, argsOnly = true)
+    private Vec3d hookMove(Vec3d movement, MovementType type) {
+        return EventManager.INSTANCE.callEvent(new PlayerMoveEvent(type, movement)).getMovement();
     }
 
     @ModifyExpressionValue(
